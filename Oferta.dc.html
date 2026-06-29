@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}html{scroll-behavior:smooth}
+  body{margin:0;background:#14160E;color:#ECE7D7;font-family:'Hanken Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  h1,h2,h3,h4{font-family:'Bricolage Grotesque','Hanken Grotesk',sans-serif;margin:0;font-weight:700;letter-spacing:-.015em}
+  p{margin:0}a{color:inherit;text-decoration:none}input,textarea,button{font-family:inherit}
+  ::selection{background:#B7D44B;color:#14160E}
+  [data-reveal]{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+  [data-reveal][data-in]{opacity:1;transform:none}
+  .aw-row{transition:background .3s}
+  .aw-row:hover{background:#1E2113}
+  .aw-row:hover .aw-rowidx{color:#B7D44B}
+  .aw-row:hover .aw-rowimg{transform:scale(1.07) rotate(-1deg)}
+  .aw-row:hover .aw-rowarrow{transform:translate(4px,-4px);opacity:1}
+  .aw-rowimg{transition:transform .55s cubic-bezier(.2,.7,.2,1)}
+  .aw-rowarrow{transition:transform .35s,opacity .35s;opacity:.45}
+  .aw-link{transition:color .25s}.aw-link:hover{color:#B7D44B}
+  .aw-navlink{position:relative;transition:color .25s}
+  .aw-navlink::after{content:'';position:absolute;left:0;bottom:-6px;width:0;height:2px;background:#B7D44B;transition:width .3s}
+  .aw-navlink:hover{color:#fff}.aw-navlink:hover::after{width:100%}
+  .aw-btn{transition:transform .25s,background .3s,color .3s,border-color .3s,box-shadow .3s}
+  .aw-btn:hover{transform:translateY(-2px)}
+  .aw-btno:hover{background:#ECE7D7;color:#14160E;border-color:#ECE7D7}
+  .aw-chip{transition:background .25s,color .25s,border-color .25s}
+  .aw-chip:hover{background:#B7D44B;color:#14160E;border-color:#B7D44B}
+  .aw-langitem{transition:background .2s,color .2s}.aw-langitem:hover{background:#232719;color:#fff}
+  .aw-mob{display:none}.aw-hamb{display:none}.aw-mob.is-open{display:block}
+  @media(max-width:1000px){.aw-navlinks{display:none!important}.aw-hamb{display:inline-flex!important}.aw-h1{font-size:48px!important}}
+  @media(max-width:680px){.aw-pad{padding-left:20px!important;padding-right:20px!important}.aw-h1{font-size:36px!important}.aw-rowimg-wrap{display:none!important}.aw-rowmodels{display:none!important}.aw-row{grid-template-columns:48px 1fr auto!important;gap:14px!important}}
+</style>
+</helmet>
+<div id="top" style="overflow-x:clip">
+
+  <header style="position:sticky;top:0;z-index:60;background:rgba(20,22,14,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(236,231,215,.12)">
+    <div class="aw-pad" style="max-width:1280px;margin:0 auto;padding:0 32px;height:78px;display:flex;align-items:center;justify-content:space-between;gap:24px">
+      <a href="Strona-glowna.dc.html" style="display:flex;align-items:center;gap:11px;flex-shrink:0">
+        <span style="background:#ECE7D7;border-radius:8px;padding:7px 9px;display:flex"><img src="assets/logo.webp" alt="Agro-Weld" style="height:34px;width:auto;display:block"></span>
+      </a>
+      <nav class="aw-navlinks" style="display:flex;align-items:center;gap:34px;font-size:14.5px;font-weight:600;color:#C3C8AF">
+        <a class="aw-navlink" href="Oferta.dc.html" style="color:#B7D44B">{{ t.nav.offer }}</a>
+        <a class="aw-navlink" href="Strona-glowna.dc.html#proces">{{ t.nav.process }}</a>
+        <a class="aw-navlink" href="Strona-glowna.dc.html#dlaczego">{{ t.nav.why }}</a>
+        <a class="aw-navlink" href="Strona-glowna.dc.html#linie">{{ t.nav.projects }}</a>
+        <a class="aw-navlink" href="Strona-glowna.dc.html#kontakt">{{ t.nav.contact }}</a>
+      </nav>
+      <div style="display:flex;align-items:center;gap:12px;flex-shrink:0">
+        <div data-lang-switch style="position:relative">
+          <button onClick="{{ toggleLang }}" class="aw-btn" style="display:flex;align-items:center;gap:7px;background:transparent;border:1px solid rgba(236,231,215,.22);color:#ECE7D7;padding:8px 12px;border-radius:6px;font-family:'Space Mono',monospace;font-size:13px;font-weight:700;cursor:pointer;letter-spacing:.04em">
+            <span style="width:6px;height:6px;border-radius:50%;background:#B7D44B;display:inline-block"></span>{{ curLabel }}<span style="font-size:9px;opacity:.6">▾</span>
+          </button>
+          <sc-if value="{{ langOpen }}" hint-placeholder-val="{{ false }}">
+            <div style="position:absolute;top:48px;right:0;background:#1E2113;border:1px solid rgba(236,231,215,.16);border-radius:10px;box-shadow:0 24px 50px -18px rgba(0,0,0,.7);padding:6px;min-width:158px;z-index:70">
+              <sc-for list="{{ langs }}" as="l" hint-placeholder-count="5">
+                <button onClick="{{ l.pick }}" class="aw-langitem" style="display:flex;align-items:center;justify-content:space-between;width:100%;background:transparent;border:0;padding:10px 12px;border-radius:6px;cursor:pointer;font-size:14px;font-weight:600;color:#C3C8AF;text-align:left">
+                  <span>{{ l.name }}</span><span style="font-family:'Space Mono',monospace;font-size:11px;color:#7E8A63">{{ l.label }}</span>
+                </button>
+              </sc-for>
+            </div>
+          </sc-if>
+        </div>
+        <a class="aw-btn aw-navlinks" href="Strona-glowna.dc.html#kontakt" style="background:#B7D44B;color:#14160E;padding:11px 18px;border-radius:6px;font-weight:700;font-size:14px;display:inline-block">{{ t.cta.askOffer }}</a>
+        <button onClick="{{ toggleMobile }}" class="aw-hamb aw-btn" style="background:transparent;border:1px solid rgba(236,231,215,.22);border-radius:6px;width:44px;height:40px;align-items:center;justify-content:center;cursor:pointer;font-size:18px;color:#ECE7D7">≡</button>
+      </div>
+    </div>
+    <div class="aw-mob {{ mobClass }}" style="border-top:1px solid rgba(236,231,215,.12);background:#1E2113;padding:12px 24px">
+      <div style="display:flex;flex-direction:column;font-weight:600;color:#C3C8AF">
+        <a href="Strona-glowna.dc.html" onClick="{{ closeMobile }}" style="padding:13px 4px;border-bottom:1px solid rgba(236,231,215,.1)">{{ t.nav.home }}</a>
+        <a href="Strona-glowna.dc.html#proces" onClick="{{ closeMobile }}" style="padding:13px 4px;border-bottom:1px solid rgba(236,231,215,.1)">{{ t.nav.process }}</a>
+        <a href="Strona-glowna.dc.html#dlaczego" onClick="{{ closeMobile }}" style="padding:13px 4px;border-bottom:1px solid rgba(236,231,215,.1)">{{ t.nav.why }}</a>
+        <a href="Strona-glowna.dc.html#kontakt" onClick="{{ closeMobile }}" style="padding:13px 4px">{{ t.nav.contact }}</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- INTRO -->
+  <section style="position:relative;overflow:hidden;padding:64px 0 44px">
+    <div aria-hidden="true" style="position:absolute;top:-120px;right:-100px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(65,87,31,.45),transparent 68%);pointer-events:none"></div>
+    <div class="aw-pad" style="max-width:1280px;margin:0 auto;padding:0 32px;position:relative">
+      <a class="aw-link" data-reveal href="Strona-glowna.dc.html" style="font-family:'Space Mono',monospace;font-size:12.5px;color:#7E8A63;letter-spacing:.04em;display:inline-block;margin-bottom:30px">← {{ t.cta.backHome }}</a>
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:32px;flex-wrap:wrap">
+        <div style="max-width:720px">
+          <div data-reveal style="font-family:'Space Mono',monospace;font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8C3A43;margin-bottom:18px">/ {{ t.offer.eyebrow }}</div>
+          <h1 class="aw-h1" data-reveal style="font-size:64px;font-weight:700;line-height:1;margin-bottom:18px;text-wrap:balance;transition-delay:.05s">{{ t.offer.title }}</h1>
+          <p data-reveal style="font-size:18px;line-height:1.6;color:#A7AE92;max-width:580px;transition-delay:.1s;text-wrap:pretty">{{ t.offer.sub }}</p>
+        </div>
+        <div data-reveal style="text-align:right">
+          <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:64px;font-weight:700;color:#B7D44B;line-height:.9">{{ total }}</div>
+          <div style="font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:#7E8A63;margin-top:6px">{{ t.offer.count }}</div>
+        </div>
+      </div>
+      <div data-reveal style="display:flex;flex-wrap:wrap;gap:9px;margin-top:36px">
+        <sc-for list="{{ chips }}" as="c" hint-placeholder-count="8">
+          <a class="aw-chip" href="{{ c.href }}" style="border:1px solid rgba(236,231,215,.2);border-radius:30px;padding:9px 16px;font-size:13.5px;font-weight:600;color:#C3C8AF">{{ c.name }}</a>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- GROUPS -->
+  <section style="padding:24px 0 90px">
+    <div class="aw-pad" style="max-width:1280px;margin:0 auto;padding:0 32px;display:flex;flex-direction:column;gap:60px">
+      <sc-for list="{{ groupsReady }}" as="g" hint-placeholder-count="0">
+        <div id="{{ g.id }}" style="scroll-margin-top:96px">
+          <div data-reveal style="display:flex;align-items:center;gap:16px;margin-bottom:18px">
+            <span style="font-family:'Space Mono',monospace;font-size:13px;font-weight:700;color:#8C3A43">{{ g.idx }}</span>
+            <h2 style="font-size:28px;font-weight:700;letter-spacing:-.01em;color:#ECE7D7">{{ g.name }}</h2>
+            <span style="flex:1;height:1px;background:rgba(236,231,215,.16)"></span>
+            <span style="font-family:'Space Mono',monospace;font-size:12px;color:#7E8A63">{{ g.count }} ×</span>
+          </div>
+          <div data-reveal style="border-top:1px solid rgba(236,231,215,.14)">
+            <sc-for list="{{ g.machines }}" as="m" hint-placeholder-count="3">
+              <a class="aw-row" id="{{ m.id }}" href="{{ m.href }}" style="display:grid;grid-template-columns:64px 1fr auto;gap:24px;align-items:center;padding:22px 18px;border-bottom:1px solid rgba(236,231,215,.1);scroll-margin-top:96px">
+                <span class="aw-rowidx" style="font-family:'Bricolage Grotesque',sans-serif;font-size:26px;font-weight:700;color:#5E6A47;transition:color .3s">{{ m.idx }}</span>
+                <div style="display:flex;align-items:center;gap:22px;min-width:0">
+                  <span class="aw-rowimg-wrap" style="width:90px;height:68px;flex-shrink:0;background-color:#1A1E12;background-image:{{ m.imgCss }};background-size:84% auto;background-repeat:no-repeat;background-position:center;border:1px solid rgba(236,231,215,.12);border-radius:10px;display:flex;align-items:center;justify-content:center;overflow:hidden">
+                    <sc-if value="{{ m.noImg }}" hint-placeholder-val="{{ false }}"><span style="font-family:'Space Mono',monospace;font-size:10px;color:#8FA862;letter-spacing:.05em;text-align:center;padding:0 4px">{{ m.code }}</span></sc-if>
+                  </span>
+                  <div style="min-width:0">
+                    <div style="display:flex;align-items:center;gap:11px;flex-wrap:wrap;margin-bottom:5px">
+                      <h3 style="font-size:21px;font-weight:700;letter-spacing:-.01em;color:#ECE7D7">{{ m.name }}</h3>
+                      <sc-if value="{{ m.isExample }}" hint-placeholder-val="{{ false }}"><span style="font-family:'Space Mono',monospace;font-size:10px;font-weight:700;color:#14160E;background:#B7D44B;padding:3px 8px;border-radius:4px;letter-spacing:.03em">{{ exampleLabel }}</span></sc-if>
+                    </div>
+                    <p style="font-size:14px;line-height:1.5;color:#8E9678;max-width:600px">{{ m.short }}</p>
+                  </div>
+                </div>
+                <div style="display:flex;align-items:center;gap:20px;white-space:nowrap">
+                  <span class="aw-rowmodels" style="font-family:'Space Mono',monospace;font-size:12px;color:#7E8A63">{{ m.models }}</span>
+                  <span class="aw-rowarrow" style="font-size:21px;color:#8C3A43;font-weight:700">↗</span>
+                </div>
+              </a>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="background:#ECE7D7;color:#14160E;padding:80px 0">
+    <div class="aw-pad" style="max-width:1280px;margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap">
+      <div data-reveal>
+        <h2 style="font-size:38px;font-weight:700;line-height:1.04;margin-bottom:10px;text-wrap:balance">{{ t.contact.title }}</h2>
+        <p style="font-size:16.5px;color:#56603F;max-width:520px;text-wrap:pretty">{{ t.contact.sub }}</p>
+      </div>
+      <div data-reveal style="display:flex;gap:12px;flex-wrap:wrap">
+        <a class="aw-btn" href="Strona-glowna.dc.html#kontakt" style="background:#14160E;color:#ECE7D7;padding:16px 26px;border-radius:7px;font-weight:700;font-size:15.5px">{{ t.cta.askOffer }} →</a>
+        <a class="aw-btn" href="uploads/AgroWeld katalog 2026 20 01.pdf" style="background:transparent;color:#14160E;border:1.5px solid #14160E;padding:15px 24px;border-radius:7px;font-weight:600;font-size:15.5px">↓ {{ t.cta.downloadCatalog }}</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="background:#0F110A;color:#A7AE92;padding:54px 0 34px;border-top:1px solid rgba(236,231,215,.1)">
+    <div class="aw-pad" style="max-width:1280px;margin:0 auto;padding:0 32px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap">
+      <div style="display:flex;align-items:center;gap:16px">
+        <span style="background:#ECE7D7;display:inline-block;padding:9px 11px;border-radius:8px"><img src="assets/logo.webp" alt="Agro-Weld" style="height:36px;display:block"></span>
+        <div style="font-size:13.5px;line-height:1.5;color:#7E8A63">{{ contact.company }}<br>{{ contact.address }}</div>
+      </div>
+      <div style="display:flex;gap:24px;flex-wrap:wrap;font-size:14.5px">
+        <a class="aw-link" href="/cdn-cgi/l/email-protection#2d4f44585f426d4c4a5f42005a484149035d41" style="color:#ECE7D7;font-weight:600">{{ contact.email }}</a>
+        <a class="aw-link" href="tel:+48725140257" style="color:#ECE7D7;font-weight:600">{{ contact.phone1 }}</a>
+      </div>
+    </div>
+    <div class="aw-pad" style="max-width:1280px;margin:24px auto 0;padding:24px 32px 0;border-top:1px solid rgba(236,231,215,.1)">
+      <span style="font-size:13px;color:#5E6A47">© {{ year }} {{ contact.company }}. {{ t.footer.rights }}</span>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { lang: 'pl', data: null, langOpen: false, mobileOpen: false };
+
+  componentDidMount() {
+    try { const s = localStorage.getItem('aw-lang'); if (s) this.setState({ lang: s }); } catch (e) {}
+    import('./aw-data.js').then((m) => { this.setState({ data: m.default }); });
+    this._onDoc = (e) => {
+      if (this.state.langOpen && e.target && e.target.closest && !e.target.closest('[data-lang-switch]')) this.setState({ langOpen: false });
+    };
+    document.addEventListener('click', this._onDoc);
+    this._checkReveal = () => {
+      const h = window.innerHeight || 800;
+      document.querySelectorAll('[data-reveal]:not([data-in])').forEach((el) => {
+        if (el.getBoundingClientRect().top < h * 0.94) el.setAttribute('data-in', '');
+      });
+    };
+    this._onScroll = () => { this._checkReveal(); };
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    window.addEventListener('resize', this._onScroll, { passive: true });
+    this._revTimer = setInterval(this._checkReveal, 400);
+    if (location.hash) setTimeout(() => { try { const el = document.querySelector(location.hash); if (el) el.scrollIntoView(); } catch (e) {} }, 300);
+  }
+  componentDidUpdate() {
+    if (this.state.data && this._checkReveal) { this._checkReveal(); setTimeout(this._checkReveal, 60); setTimeout(this._checkReveal, 220); }
+  }
+  componentWillUnmount() {
+    if (this._onDoc) document.removeEventListener('click', this._onDoc);
+    if (this._onScroll) { window.removeEventListener('scroll', this._onScroll); window.removeEventListener('resize', this._onScroll); }
+    if (this._revTimer) clearInterval(this._revTimer);
+  }
+  setLang(code) { try { localStorage.setItem('aw-lang', code); } catch (e) {} this.setState({ lang: code, langOpen: false }); }
+
+  renderVals() {
+    const D = this.state.data;
+    const lang = this.state.lang;
+    const year = new Date().getFullYear();
+    if (!D) {
+      return { t: {}, langs: [], chips: [], groups: [], contact: {}, total: '', curLabel: '', langOpen: false, mobClass: '', year, exampleLabel: '',
+        toggleLang: () => {}, toggleMobile: () => {}, closeMobile: () => {} };
+    }
+    const t = D.UI[lang];
+    const pad = (i) => String(i + 1).padStart(2, '0');
+    const exampleId = 'kosz';
+    const exampleLabels = { pl: 'Karta produktu', en: 'Product page', de: 'Produktseite', ru: 'Карта товара', fr: 'Fiche produit' };
+    const tiles = ['linear-gradient(160deg,#23291A,#191C11)', 'linear-gradient(160deg,#2A2118,#191C11)', 'linear-gradient(160deg,#1F2618,#191C11)'];
+    let gi = 0;
+    const groups = D.CATEGORIES.map((c) => {
+      const list = D.MACHINES.filter((m) => m.cat === c.id);
+      const machines = list.map((m) => {
+        gi += 1;
+        const hasImg = !!m.img;
+        const isEx = m.id === exampleId;
+        return { idx: pad(gi - 1), id: m.id, name: m.name[lang], short: m.short[lang], models: m.models,
+          img: m.img, imgCss: hasImg ? ('url("' + m.img + '")') : undefined, hasImg, noImg: !hasImg, code: (m.models.split(/[·–-]/)[0] || '').trim().slice(0, 10),
+          tileBg: tiles[gi % tiles.length], isExample: isEx,
+          href: isEx ? 'Kosz-przyjeciowy.dc.html' : 'Strona-glowna.dc.html#kontakt' };
+      });
+      return { id: c.id, name: c.name[lang], count: list.length, machines };
+    });
+    const chips = D.CATEGORIES.map((c, i) => ({ name: c.name[lang], href: '#' + c.id }));
+    const langs = D.LANGS.map((l) => ({ code: l.code, label: l.label, name: l.name, pick: () => this.setLang(l.code) }));
+    const cur = D.LANGS.find((l) => l.code === lang) || D.LANGS[0];
+    return {
+      t, langs, chips, groups, groupsReady: groups, contact: D.CONTACT, total: D.MACHINES.length, curLabel: cur.label,
+      langOpen: this.state.langOpen, mobClass: this.state.mobileOpen ? 'is-open' : '', year, exampleLabel: (exampleLabels[lang] || exampleLabels.pl) + ' →',
+      toggleLang: () => this.setState({ langOpen: !this.state.langOpen }),
+      toggleMobile: () => this.setState({ mobileOpen: !this.state.mobileOpen }),
+      closeMobile: () => this.setState({ mobileOpen: false }),
+    };
+  }
+}
+</script>
+</body>
+</html>
