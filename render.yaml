@@ -13,3 +13,6 @@ services:
       - type: rewrite
         source: /maszyny/
         destination: /Oferta.dc.html
+      - type: rewrite
+        source: /maszyny/kosz-przyjeciowy
+        destination: /Kosz-przyjeciowy.dc.html

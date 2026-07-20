@@ -125,7 +125,7 @@
         <span style="background:#ECE7D7;border-radius:8px;padding:7px 9px;display:flex"><img src="assets/logo.webp" alt="Agro-Weld" style="height:34px;width:auto;display:block"></span>
       </a>
       <nav class="aw-navlinks" style="display:flex;align-items:center;gap:34px;font-size:14.5px;font-weight:600;color:#C3C8AF">
-        <a class="aw-navlink" href="Oferta.dc.html">{{ t.nav.offer }}</a>
+        <a class="aw-navlink" href="/maszyny">{{ t.nav.offer }}</a>
         <a class="aw-navlink" href="#proces">{{ t.nav.process }}</a>
         <a class="aw-navlink" href="#dlaczego">{{ t.nav.why }}</a>
         <a class="aw-navlink" href="#linie">{{ t.nav.projects }}</a>
@@ -152,7 +152,7 @@
     </div>
     <div class="aw-mob {{ mobClass }}" style="border-top:1px solid rgba(236,231,215,.12);background:#1E2113;padding:12px 24px">
       <div style="display:flex;flex-direction:column;font-weight:600;color:#C3C8AF">
-        <a href="Oferta.dc.html" onClick="{{ closeMobile }}" style="padding:13px 4px;border-bottom:1px solid rgba(236,231,215,.1)">{{ t.nav.offer }}</a>
+        <a href="/maszyny" onClick="{{ closeMobile }}" style="padding:13px 4px;border-bottom:1px solid rgba(236,231,215,.1)">{{ t.nav.offer }}</a>
         <a href="#proces" onClick="{{ closeMobile }}" style="padding:13px 4px;border-bottom:1px solid rgba(236,231,215,.1)">{{ t.nav.process }}</a>
         <a href="#dlaczego" onClick="{{ closeMobile }}" style="padding:13px 4px;border-bottom:1px solid rgba(236,231,215,.1)">{{ t.nav.why }}</a>
         <a href="#linie" onClick="{{ closeMobile }}" style="padding:13px 4px;border-bottom:1px solid rgba(236,231,215,.1)">{{ t.nav.projects }}</a>
@@ -184,7 +184,7 @@
             <p data-reveal="" style="font-size:17px;line-height:1.56;color:#4C543B;max-width:496px;margin-bottom:24px;transition-delay:.12s;text-wrap:pretty">{{ t.hero.sub }}</p>
             <div data-reveal="" style="display:flex;flex-wrap:wrap;gap:13px;margin-bottom:30px;transition-delay:.18s">
               <a class="aw-btn aw-btnp" href="#kontakt" style="background:#14160E;color:#ECE7D7;padding:16px 28px;border-radius:7px;font-weight:700;font-size:15.5px">{{ t.cta.askOffer }} →</a>
-              <a class="aw-btn" href="Oferta.dc.html" style="background:transparent;color:#14160E;border:1.5px solid rgba(20,22,14,.38);padding:15px 26px;border-radius:7px;font-weight:600;font-size:15.5px">{{ t.cta.viewMachines }}</a>
+              <a class="aw-btn" href="/maszyny" style="background:transparent;color:#14160E;border:1.5px solid rgba(20,22,14,.38);padding:15px 26px;border-radius:7px;font-weight:600;font-size:15.5px">{{ t.cta.viewMachines }}</a>
             </div>
             <div data-reveal="" style="display:flex;gap:0;transition-delay:.24s;border-top:1px solid rgba(20,22,14,.18);padding-top:18px;max-width:540px">
               <sc-for list="{{ heroStats }}" as="st" hint-placeholder-count="3">
@@ -337,7 +337,7 @@
           <h2 class="aw-h2" data-reveal="" style="font-size:44px;font-weight:700;line-height:1.03;margin-bottom:16px;text-wrap:balance">{{ t.featured.title }}</h2>
           <p data-reveal="" style="font-size:17px;line-height:1.6;color:#56603F;transition-delay:.05s">{{ t.featured.sub }}</p>
         </div>
-        <a class="aw-btn" data-reveal="" href="Oferta.dc.html" style="background:#14160E;color:#ECE7D7;padding:14px 22px;border-radius:7px;font-weight:700;font-size:14.5px;white-space:nowrap">{{ t.cta.viewAll }} →</a>
+        <a class="aw-btn" data-reveal="" href="/maszyny" style="background:#14160E;color:#ECE7D7;padding:14px 22px;border-radius:7px;font-weight:700;font-size:14.5px;white-space:nowrap">{{ t.cta.viewAll }} →</a>
       </div>
       <div data-reveal="" class="aw-cardgrid" style="display:grid;gap:1px;background:#14160E;border:1px solid #14160E">
         <sc-for list="{{ featuredReady }}" as="m" hint-placeholder-count="6">
@@ -396,7 +396,7 @@
         <div>
           <h2 class="aw-h2" data-reveal="" style="font-size:44px;font-weight:700;line-height:1.03;margin-bottom:16px;text-wrap:balance">{{ t.catalog.title }}</h2>
           <p data-reveal="" style="font-size:17px;line-height:1.6;color:#56603F;margin-bottom:28px;transition-delay:.1s">{{ t.catalog.sub }}</p>
-          <a class="aw-btn" data-reveal="" href="Oferta.dc.html" style="display:inline-block;background:#41571F;color:#ECE7D7;padding:14px 24px;border-radius:7px;font-weight:700;font-size:15px;transition-delay:.15s">{{ t.cta.viewAll }} →</a>
+          <a class="aw-btn" data-reveal="" href="/maszyny" style="display:inline-block;background:#41571F;color:#ECE7D7;padding:14px 24px;border-radius:7px;font-weight:700;font-size:15px;transition-delay:.15s">{{ t.cta.viewAll }} →</a>
         </div>
         <div data-reveal="">
         <div class="aw-tilegrid" style="display:grid;gap:1px;background:#14160E;border:1px solid #14160E">
@@ -550,7 +550,7 @@
         <div>
           <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#5E6A47;margin-bottom:18px">{{ t.footer.col1 }}</div>
           <div style="display:flex;flex-direction:column;gap:12px;font-size:14.5px">
-            <a class="aw-link" href="Oferta.dc.html">{{ t.nav.offer }}</a>
+            <a class="aw-link" href="/maszyny">{{ t.nav.offer }}</a>
             <a class="aw-link" href="#proces">{{ t.nav.process }}</a>
             <a class="aw-link" href="#dlaczego">{{ t.nav.why }}</a>
             <a class="aw-link" href="#linie">{{ t.nav.projects }}</a>
@@ -561,7 +561,7 @@
           <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#5E6A47;margin-bottom:18px">{{ t.footer.col2 }}</div>
           <div style="display:flex;flex-direction:column;gap:12px;font-size:14.5px">
             <sc-for list="{{ steps }}" as="s" hint-placeholder-count="7">
-              <a class="aw-link" href="Oferta.dc.html">{{ s.name }}</a>
+              <a class="aw-link" href="/maszyny">{{ s.name }}</a>
             </sc-for>
           </div>
         </div>
@@ -811,7 +811,7 @@ class Component extends DCLogic {
     const featured = D.FEATURED.map((id, i) => {
       const m = byId(id);
       return { idx: pad(i), id: m.id, img: m.img, imgCss: m.img ? ('url("' + m.img + '")') : undefined, models: m.models, name: m.name[lang], short: m.short[lang],
-        cat: catName(m.cat), href: 'maszyny/' + m.slug + '/index.html' };
+        cat: catName(m.cat), href: '/maszyny/' + m.slug };
     });
     const CAT_ICONS = {
       unload: 'M4 13h16v7H4z M8 16.5h2 M14 16.5h2 M12 10V3 M8.5 6.5 12 3l3.5 3.5',
@@ -826,7 +826,7 @@ class Component extends DCLogic {
       weeding: 'M12 21v-8 M12 13c0-4 3-6.5 7.5-6.5-.8 4.5-3.5 6.5-7.5 6.5z M12 13c0-4-3-6.5-7.5-6.5.8 4.5 3.5 6.5 7.5 6.5z',
     };
     const cats = D.CATEGORIES.map((c, i) => ({ idx: pad(i), name: c.name[lang], icon: CAT_ICONS[c.id] || CAT_ICONS.packing,
-      count: D.MACHINES.filter((m) => m.cat === c.id).length, href: 'maszyny/' + c.slug + '/index.html' }));
+      count: D.MACHINES.filter((m) => m.cat === c.id).length, href: '/maszyny/' + c.slug }));
     const heroStats = [
       { n: t.hero.s1n, l: t.hero.s1l }, { n: t.hero.s2n, l: t.hero.s2l }, { n: t.hero.s3n, l: t.hero.s3l },
     ];
