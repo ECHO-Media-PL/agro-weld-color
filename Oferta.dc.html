@@ -10,20 +10,26 @@
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   *{box-sizing:border-box}html{scroll-behavior:smooth}
   body{margin:0;background:#14160E;color:#ECE7D7;font-family:'Hanken Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
-  h1,h2,h3,h4{font-family:'Bricolage Grotesque','Hanken Grotesk',sans-serif;margin:0;font-weight:700;letter-spacing:-.015em}
+  h1,h2,h3,h4{font-family:'Chakra Petch','Hanken Grotesk',sans-serif;margin:0;font-weight:700;letter-spacing:-.015em}
   p{margin:0}a{color:inherit;text-decoration:none}input,textarea,button{font-family:inherit}
   ::selection{background:#B7D44B;color:#14160E}
   [data-reveal]{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
   [data-reveal][data-in]{opacity:1;transform:none}
-  .aw-row{transition:background .3s}
-  .aw-row:hover{background:#1E2113}
-  .aw-row:hover .aw-rowidx{color:#B7D44B}
-  .aw-row:hover .aw-rowimg{transform:scale(1.07) rotate(-1deg)}
-  .aw-row:hover .aw-rowarrow{transform:translate(4px,-4px);opacity:1}
+  @keyframes awDrift{0%,100%{transform:translate(0,0)}50%{transform:translate(-26px,20px)}}
+  @keyframes awScanX{0%{left:-30%}100%{left:130%}}
+  .aw-idx svg{transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+  .aw-idx:hover svg{transform:rotate(-8deg) scale(1.08)}
+  .aw-idxwrap{position:relative;overflow:hidden}
+  .aw-idxscan{position:absolute;top:0;bottom:0;width:26%;background:linear-gradient(90deg,transparent,rgba(183,212,75,.12),transparent);animation:awScanX 7s cubic-bezier(.55,0,.45,1) infinite;pointer-events:none;z-index:2}
+  .aw-prow{transition:background .3s}
+  .aw-prow:hover{background:#F4EFE2}
+  .aw-prow:hover .aw-rowimg{transform:scale(1.05)}
+  .aw-prow:hover .aw-rowarrow{transform:translate(3px,-3px);opacity:1}
+  .aw-linkd{transition:color .25s}.aw-linkd:hover{color:#8C3A43}
   .aw-rowimg{transition:transform .55s cubic-bezier(.2,.7,.2,1)}
   .aw-rowarrow{transition:transform .35s,opacity .35s;opacity:.45}
   .aw-link{transition:color .25s}.aw-link:hover{color:#B7D44B}
@@ -33,12 +39,19 @@
   .aw-btn{transition:transform .25s,background .3s,color .3s,border-color .3s,box-shadow .3s}
   .aw-btn:hover{transform:translateY(-2px)}
   .aw-btno:hover{background:#ECE7D7;color:#14160E;border-color:#ECE7D7}
-  .aw-chip{transition:background .25s,color .25s,border-color .25s}
-  .aw-chip:hover{background:#B7D44B;color:#14160E;border-color:#B7D44B}
+  .aw-idx{position:relative;background:#14160E;transition:background .3s;overflow:hidden}
+  .aw-idx::after{content:'';position:absolute;left:0;bottom:0;width:100%;height:2px;background:#B7D44B;transform:scaleX(0);transform-origin:left;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+  .aw-idx:hover{background:#1E2113}
+  .aw-idx:hover::after{transform:scaleX(1)}
+  .aw-idx:hover .aw-idxn{color:#B7D44B}
+  .aw-idx:hover .aw-idxi{background:#B7D44B;color:#14160E;border-color:#B7D44B}
+  .aw-idx:hover .aw-idxa{opacity:1;transform:translate(2px,-2px)}
+  .aw-idxn{transition:color .3s}
+  .aw-idxa{opacity:.35;transition:opacity .3s,transform .3s}
   .aw-langitem{transition:background .2s,color .2s}.aw-langitem:hover{background:#232719;color:#fff}
   .aw-mob{display:none}.aw-hamb{display:none}.aw-mob.is-open{display:block}
   @media(max-width:1000px){.aw-navlinks{display:none!important}.aw-hamb{display:inline-flex!important}.aw-h1{font-size:48px!important}}
-  @media(max-width:680px){.aw-pad{padding-left:20px!important;padding-right:20px!important}.aw-h1{font-size:36px!important}.aw-rowimg-wrap{display:none!important}.aw-rowmodels{display:none!important}.aw-row{grid-template-columns:48px 1fr auto!important;gap:14px!important}}
+  @media(max-width:680px){.aw-pad{padding-left:20px!important;padding-right:20px!important}.aw-h1{font-size:36px!important}.aw-prow{grid-template-columns:1fr!important}.aw-pimg{height:200px!important;border-right:0!important;border-bottom:1px solid #14160E!important}}
 </style>
 </helmet>
 <div id="top" style="overflow-x:clip">
@@ -86,101 +99,141 @@
 
   <!-- INTRO -->
   <section style="position:relative;overflow:hidden;padding:64px 0 44px">
-    <div aria-hidden="true" style="position:absolute;top:-120px;right:-100px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(65,87,31,.45),transparent 68%);pointer-events:none"></div>
+    <div aria-hidden="true" style="position:absolute;top:-120px;right:-100px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(65,87,31,.45),transparent 68%);pointer-events:none;animation:awDrift 14s ease-in-out infinite"></div>
     <div class="aw-pad" style="max-width:1280px;margin:0 auto;padding:0 32px;position:relative">
-      <a class="aw-link" data-reveal href="Strona-glowna.dc.html" style="font-family:'Space Mono',monospace;font-size:12.5px;color:#7E8A63;letter-spacing:.04em;display:inline-block;margin-bottom:30px">← {{ t.cta.backHome }}</a>
+      <a class="aw-link" data-reveal href="Strona-glowna.dc.html" style="font-family:'Space Mono',monospace;font-size:12.5px;color:#7E8A63;letter-spacing:.04em;display:inline-block;margin-bottom:26px">← {{ t.cta.backHome }}</a>
+      <div data-reveal style="display:flex;align-items:center;justify-content:space-between;gap:20px;border-top:1px solid rgba(236,231,215,.16);padding-top:14px;margin-bottom:34px;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase">
+        <span style="color:#8C3A43">/ {{ t.offer.eyebrow }}</span>
+        <span style="color:#7E8A63">Katalog 2026</span>
+      </div>
       <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:32px;flex-wrap:wrap">
         <div style="max-width:720px">
-          <div data-reveal style="font-family:'Space Mono',monospace;font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8C3A43;margin-bottom:18px">/ {{ t.offer.eyebrow }}</div>
           <h1 class="aw-h1" data-reveal style="font-size:64px;font-weight:700;line-height:1;margin-bottom:18px;text-wrap:balance;transition-delay:.05s">{{ t.offer.title }}</h1>
           <p data-reveal style="font-size:18px;line-height:1.6;color:#A7AE92;max-width:580px;transition-delay:.1s;text-wrap:pretty">{{ t.offer.sub }}</p>
         </div>
         <div data-reveal style="text-align:right">
-          <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:64px;font-weight:700;color:#B7D44B;line-height:.9">{{ total }}</div>
+          <div style="font-family:'Chakra Petch',sans-serif;font-size:64px;font-weight:700;color:#B7D44B;line-height:.9">{{ total }}</div>
           <div style="font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:#7E8A63;margin-top:6px">{{ t.offer.count }}</div>
         </div>
       </div>
-      <div data-reveal style="display:flex;flex-wrap:wrap;gap:9px;margin-top:36px">
+      <div data-reveal class="aw-idxwrap" style="margin-top:40px;border:1px solid rgba(236,231,215,.18);background:rgba(236,231,215,.18);display:flex;flex-wrap:wrap;gap:1px"><span class="aw-idxscan" aria-hidden="true"></span>
         <sc-for list="{{ chips }}" as="c" hint-placeholder-count="8">
-          <a class="aw-chip" href="{{ c.href }}" style="border:1px solid rgba(236,231,215,.2);border-radius:30px;padding:9px 16px;font-size:13.5px;font-weight:600;color:#C3C8AF">{{ c.name }}</a>
+          <a class="aw-idx" href="{{ c.href }}" style="flex:1 1 auto;min-width:215px;display:flex;align-items:center;gap:14px;padding:16px 18px">
+            <span class="aw-idxi" style="width:42px;height:42px;flex-shrink:0;display:flex;align-items:center;justify-content:center;border:1px solid rgba(183,212,75,.4);color:#B7D44B;background:rgba(183,212,75,.07);transition:background .3s,color .3s,border-color .3s">
+              <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="{{ c.icon }}"></path></svg>
+            </span>
+            <span style="display:flex;flex-direction:column;gap:3px;min-width:0">
+              <span class="aw-idxn" style="font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.1em;color:#8C3A43">{{ c.idx }}</span>
+              <span style="font-size:15px;font-weight:700;color:#ECE7D7;white-space:nowrap">{{ c.name }}</span>
+            </span>
+            <span class="aw-idxa" style="margin-left:auto;font-size:14px;color:#8C3A43;font-weight:700">↗</span>
+          </a>
         </sc-for>
       </div>
     </div>
   </section>
 
   <!-- GROUPS -->
-  <section style="padding:24px 0 90px">
-    <div class="aw-pad" style="max-width:1280px;margin:0 auto;padding:0 32px;display:flex;flex-direction:column;gap:60px">
+  <section style="background:#ECE7D7;color:#14160E;padding:78px 0 84px">
+    <div class="aw-pad" style="max-width:1280px;margin:0 auto;padding:0 32px;display:flex;flex-direction:column;gap:56px">
       <sc-for list="{{ groupsReady }}" as="g" hint-placeholder-count="0">
         <div id="{{ g.id }}" style="scroll-margin-top:96px">
-          <div data-reveal style="display:flex;align-items:center;gap:16px;margin-bottom:18px">
-            <span style="font-family:'Space Mono',monospace;font-size:13px;font-weight:700;color:#8C3A43">{{ g.idx }}</span>
-            <h2 style="font-size:28px;font-weight:700;letter-spacing:-.01em;color:#ECE7D7">{{ g.name }}</h2>
-            <span style="flex:1;height:1px;background:rgba(236,231,215,.16)"></span>
-            <span style="font-family:'Space Mono',monospace;font-size:12px;color:#7E8A63">{{ g.count }} ×</span>
+          <div data-reveal style="display:flex;align-items:center;gap:16px;margin-bottom:20px">
+            <span style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.1em;color:#8C3A43">{{ g.idx }}</span>
+            <h2 style="font-size:28px;font-weight:700;letter-spacing:-.01em">{{ g.name }}</h2>
+            <span style="flex:1;height:1px;background:rgba(20,22,14,.2)"></span>
+            <span style="font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.06em;color:#8A8163">{{ g.count }} ×</span>
           </div>
-          <div data-reveal style="border-top:1px solid rgba(236,231,215,.14)">
-            <sc-for list="{{ g.machines }}" as="m" hint-placeholder-count="3">
-              <a class="aw-row" id="{{ m.id }}" href="{{ m.href }}" style="display:grid;grid-template-columns:64px 1fr auto;gap:24px;align-items:center;padding:22px 18px;border-bottom:1px solid rgba(236,231,215,.1);scroll-margin-top:96px">
-                <span class="aw-rowidx" style="font-family:'Bricolage Grotesque',sans-serif;font-size:26px;font-weight:700;color:#5E6A47;transition:color .3s">{{ m.idx }}</span>
-                <div style="display:flex;align-items:center;gap:22px;min-width:0">
-                  <span class="aw-rowimg-wrap" style="width:90px;height:68px;flex-shrink:0;background-color:#1A1E12;background-image:{{ m.imgCss }};background-size:84% auto;background-repeat:no-repeat;background-position:center;border:1px solid rgba(236,231,215,.12);border-radius:10px;display:flex;align-items:center;justify-content:center;overflow:hidden">
-                    <sc-if value="{{ m.noImg }}" hint-placeholder-val="{{ false }}"><span style="font-family:'Space Mono',monospace;font-size:10px;color:#8FA862;letter-spacing:.05em;text-align:center;padding:0 4px">{{ m.code }}</span></sc-if>
-                  </span>
-                  <div style="min-width:0">
-                    <div style="display:flex;align-items:center;gap:11px;flex-wrap:wrap;margin-bottom:5px">
-                      <h3 style="font-size:21px;font-weight:700;letter-spacing:-.01em;color:#ECE7D7">{{ m.name }}</h3>
-                      <sc-if value="{{ m.isExample }}" hint-placeholder-val="{{ false }}"><span style="font-family:'Space Mono',monospace;font-size:10px;font-weight:700;color:#14160E;background:#B7D44B;padding:3px 8px;border-radius:4px;letter-spacing:.03em">{{ exampleLabel }}</span></sc-if>
-                    </div>
-                    <p style="font-size:14px;line-height:1.5;color:#8E9678;max-width:600px">{{ m.short }}</p>
-                  </div>
+          <div data-reveal style="border:1px solid #14160E;background:#14160E;display:grid;gap:1px">
+            <sc-for list="{{ g.machines }}" as="m" hint-placeholder-count="1">
+              <a class="aw-prow" id="{{ m.id }}" href="{{ m.href }}" style="display:grid;grid-template-columns:360px 1fr;background:#ECE7D7;color:#14160E;scroll-margin-top:96px">
+                <div class="aw-pimg" style="height:250px;border-right:1px solid #14160E;background-color:#F1ECDF;background-image:linear-gradient(rgba(20,22,14,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(20,22,14,.05) 1px,transparent 1px);background-size:24px 24px;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:20px">
+                  <span class="aw-rowimg" style="width:100%;height:100%;background-image:{{ m.imgCss }};background-size:contain;background-repeat:no-repeat;background-position:center;display:block"></span>
                 </div>
-                <div style="display:flex;align-items:center;gap:20px;white-space:nowrap">
-                  <span class="aw-rowmodels" style="font-family:'Space Mono',monospace;font-size:12px;color:#7E8A63">{{ m.models }}</span>
-                  <span class="aw-rowarrow" style="font-size:21px;color:#8C3A43;font-weight:700">↗</span>
+                <div style="padding:26px 30px;display:flex;flex-direction:column;justify-content:center">
+                  <div style="display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:12px;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.05em">
+                    <span style="color:#8C3A43;font-weight:700">{{ m.models }}</span>
+                    <span class="aw-rowarrow" style="font-size:19px;color:#8C3A43;font-weight:700">↗</span>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
+                    <h3 style="font-size:27px;font-weight:700;letter-spacing:-.01em;line-height:1.1">{{ m.name }}</h3>
+                    <sc-if value="{{ m.isExample }}" hint-placeholder-val="{{ false }}"><span style="font-family:'Space Mono',monospace;font-size:10px;font-weight:700;color:#14160E;background:#B7D44B;padding:4px 9px;border-radius:4px;letter-spacing:.03em">{{ exampleLabel }}</span></sc-if>
+                  </div>
+                  <p style="font-size:15px;line-height:1.6;color:#56603F;max-width:620px;text-wrap:pretty">{{ m.short }}</p>
                 </div>
               </a>
             </sc-for>
           </div>
         </div>
       </sc-for>
+      <div data-reveal style="border-top:1px solid rgba(20,22,14,.2);padding-top:18px;display:flex;align-items:center;justify-content:flex-end;gap:14px;flex-wrap:wrap;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.02em;color:#8A8163">
+        <a class="aw-linkd" href="uploads/AgroWeld katalog 2026 20 01.pdf" style="color:#41571F;font-weight:700;white-space:nowrap">↓ {{ t.cta.downloadCatalog }}</a>
+      </div>
     </div>
   </section>
 
   <!-- CTA -->
-  <section style="background:#ECE7D7;color:#14160E;padding:80px 0">
-    <div class="aw-pad" style="max-width:1280px;margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap">
-      <div data-reveal>
-        <h2 style="font-size:38px;font-weight:700;line-height:1.04;margin-bottom:10px;text-wrap:balance">{{ t.contact.title }}</h2>
-        <p style="font-size:16.5px;color:#56603F;max-width:520px;text-wrap:pretty">{{ t.contact.sub }}</p>
-      </div>
-      <div data-reveal style="display:flex;gap:12px;flex-wrap:wrap">
-        <a class="aw-btn" href="Strona-glowna.dc.html#kontakt" style="background:#14160E;color:#ECE7D7;padding:16px 26px;border-radius:7px;font-weight:700;font-size:15.5px">{{ t.cta.askOffer }} →</a>
-        <a class="aw-btn" href="uploads/AgroWeld katalog 2026 20 01.pdf" style="background:transparent;color:#14160E;border:1.5px solid #14160E;padding:15px 24px;border-radius:7px;font-weight:600;font-size:15.5px">↓ {{ t.cta.downloadCatalog }}</a>
+  <section style="background:#ECE7D7;color:#14160E;padding:0 0 90px">
+    <div class="aw-pad" style="max-width:1280px;margin:0 auto;padding:0 32px">
+      <div data-reveal style="background:linear-gradient(165deg,#243015,#1A2110);padding:46px 44px;display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap">
+        <div>
+          <h2 style="font-size:30px;font-weight:700;line-height:1.06;color:#fff;margin-bottom:10px;text-wrap:balance">{{ t.contact.title }}</h2>
+          <p style="font-size:15.5px;line-height:1.6;color:#A7AE92;max-width:540px;text-wrap:pretty">{{ t.contact.sub }}</p>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <a class="aw-btn" href="Strona-glowna.dc.html#kontakt" style="background:#ECE7D7;color:#14160E;padding:16px 26px;font-weight:700;font-size:15.5px">{{ t.cta.askOffer }} →</a>
+          <a class="aw-btn" href="uploads/AgroWeld katalog 2026 20 01.pdf" style="background:transparent;color:#ECE7D7;border:1.5px solid rgba(236,231,215,.4);padding:15px 24px;font-weight:600;font-size:15.5px">↓ {{ t.cta.downloadCatalog }}</a>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer style="background:#0F110A;color:#A7AE92;padding:54px 0 34px;border-top:1px solid rgba(236,231,215,.1)">
-    <div class="aw-pad" style="max-width:1280px;margin:0 auto;padding:0 32px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap">
-      <div style="display:flex;align-items:center;gap:16px">
-        <span style="background:#ECE7D7;display:inline-block;padding:9px 11px;border-radius:8px"><img src="assets/logo.webp" alt="Agro-Weld" style="height:36px;display:block"></span>
-        <div style="font-size:13.5px;line-height:1.5;color:#7E8A63">{{ contact.company }}<br>{{ contact.address }}</div>
+  <footer style="background:#0F110A;color:#A7AE92;padding:66px 0 34px;border-top:1px solid rgba(236,231,215,.1)">
+    <div class="aw-pad" style="max-width:1280px;margin:0 auto;padding:0 32px">
+      <div class="aw-2col" style="display:grid;grid-template-columns:1.5fr 1fr 1fr 1.3fr;gap:40px;padding-bottom:46px;border-bottom:1px solid rgba(236,231,215,.1)">
+        <div>
+          <span style="background:#ECE7D7;display:inline-block;padding:11px 13px;border-radius:9px;margin-bottom:20px"><img src="assets/logo.webp" alt="Agro-Weld" style="height:42px;display:block"></span>
+          <p style="font-size:14.5px;line-height:1.6;max-width:300px;color:#7E8A63">{{ t.footer.tagline }}</p>
+        </div>
+        <div>
+          <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#5E6A47;margin-bottom:18px">{{ t.footer.col1 }}</div>
+          <div style="display:flex;flex-direction:column;gap:12px;font-size:14.5px">
+            <a class="aw-link" href="Oferta.dc.html">{{ t.nav.offer }}</a>
+            <a class="aw-link" href="Strona-glowna.dc.html#proces">{{ t.nav.process }}</a>
+            <a class="aw-link" href="Strona-glowna.dc.html#dlaczego">{{ t.nav.why }}</a>
+            <a class="aw-link" href="Strona-glowna.dc.html#linie">{{ t.nav.projects }}</a>
+            <a class="aw-link" href="Strona-glowna.dc.html#kontakt">{{ t.nav.contact }}</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#5E6A47;margin-bottom:18px">{{ t.footer.col2 }}</div>
+          <div style="display:flex;flex-direction:column;gap:12px;font-size:14.5px">
+            <sc-for list="{{ steps }}" as="s" hint-placeholder-count="7">
+              <a class="aw-link" href="Strona-glowna.dc.html#proces">{{ s.name }}</a>
+            </sc-for>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#5E6A47;margin-bottom:18px">{{ t.footer.col3 }}</div>
+          <div style="display:flex;flex-direction:column;gap:12px;font-size:14.5px">
+            <span style="color:#7E8A63">{{ contact.address }}</span>
+            <a class="aw-link" href="mailto:biuro@agro-weld.pl" style="color:#ECE7D7;font-weight:600">{{ contact.email }}</a>
+            <a class="aw-link" href="tel:+48725140257" style="color:#ECE7D7;font-weight:600">{{ contact.phone1 }}</a>
+            <a class="aw-link" href="tel:+48608230369" style="color:#ECE7D7;font-weight:600">{{ contact.phone2 }}</a>
+          </div>
+        </div>
       </div>
-      <div style="display:flex;gap:24px;flex-wrap:wrap;font-size:14.5px">
-        <a class="aw-link" href="/cdn-cgi/l/email-protection#2d4f44585f426d4c4a5f42005a484149035d41" style="color:#ECE7D7;font-weight:600">{{ contact.email }}</a>
-        <a class="aw-link" href="tel:+48725140257" style="color:#ECE7D7;font-weight:600">{{ contact.phone1 }}</a>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;padding-top:26px;flex-wrap:wrap">
+        <span style="font-size:13px;color:#5E6A47">© {{ year }} {{ contact.company }}. {{ t.footer.rights }}</span>
+        <a class="aw-link" href="uploads/AgroWeld katalog 2026 20 01.pdf" style="font-family:'Space Mono',monospace;font-size:12.5px;color:#7E8A63;letter-spacing:.04em">↓ {{ t.cta.downloadCatalog }}</a>
       </div>
-    </div>
-    <div class="aw-pad" style="max-width:1280px;margin:24px auto 0;padding:24px 32px 0;border-top:1px solid rgba(236,231,215,.1)">
-      <span style="font-size:13px;color:#5E6A47">© {{ year }} {{ contact.company }}. {{ t.footer.rights }}</span>
     </div>
   </footer>
 
 </div>
 </x-dc>
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/x-dc" data-dc-script>
+<script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
   state = { lang: 'pl', data: null, langOpen: false, mobileOpen: false };
 
@@ -218,7 +271,7 @@ class Component extends DCLogic {
     const lang = this.state.lang;
     const year = new Date().getFullYear();
     if (!D) {
-      return { t: {}, langs: [], chips: [], groups: [], contact: {}, total: '', curLabel: '', langOpen: false, mobClass: '', year, exampleLabel: '',
+      return { t: {}, langs: [], chips: [], ticker: '', groups: [], contact: {}, total: '', curLabel: '', langOpen: false, mobClass: '', year, exampleLabel: '', comingNote: '', steps: [],
         toggleLang: () => {}, toggleMobile: () => {}, closeMobile: () => {} };
     }
     const t = D.UI[lang];
@@ -226,9 +279,11 @@ class Component extends DCLogic {
     const exampleId = 'kosz';
     const exampleLabels = { pl: 'Karta produktu', en: 'Product page', de: 'Produktseite', ru: 'Карта товара', fr: 'Fiche produit' };
     const tiles = ['linear-gradient(160deg,#23291A,#191C11)', 'linear-gradient(160deg,#2A2118,#191C11)', 'linear-gradient(160deg,#1F2618,#191C11)'];
+    const READY = ['kosz']; // only machines with complete photo + copy + product page
+    const MACH = D.MACHINES.filter((m) => READY.includes(m.id));
     let gi = 0;
     const groups = D.CATEGORIES.map((c) => {
-      const list = D.MACHINES.filter((m) => m.cat === c.id);
+      const list = MACH.filter((m) => m.cat === c.id);
       const machines = list.map((m) => {
         gi += 1;
         const hasImg = !!m.img;
@@ -236,16 +291,30 @@ class Component extends DCLogic {
         return { idx: pad(gi - 1), id: m.id, name: m.name[lang], short: m.short[lang], models: m.models,
           img: m.img, imgCss: hasImg ? ('url("' + m.img + '")') : undefined, hasImg, noImg: !hasImg, code: (m.models.split(/[·–-]/)[0] || '').trim().slice(0, 10),
           tileBg: tiles[gi % tiles.length], isExample: isEx,
-          href: isEx ? 'Kosz-przyjeciowy.dc.html' : 'Strona-glowna.dc.html#kontakt' };
+          href: isEx ? 'Kosz-przyjeciowy.dc.html' : ('maszyny/' + m.slug + '/index.html') };
       });
       return { id: c.id, name: c.name[lang], count: list.length, machines };
-    });
-    const chips = D.CATEGORIES.map((c, i) => ({ name: c.name[lang], href: '#' + c.id }));
+    }).filter((g) => g.count > 0).map((g, i) => Object.assign(g, { idx: pad(i) }));
+    const ICONS = {
+      unload: 'M4 13h16v7H4z M8 16.5h2 M14 16.5h2 M12 10V3 M8.5 6.5 12 3l3.5 3.5',
+      reception: 'M4 4h16l-6 8v8h-4v-8z',
+      cleaning: 'M8 12a4 4 0 1 0 8 0a4 4 0 1 0 -8 0 M12 4v2 M12 18v2 M4 12h2 M18 12h2 M6.3 6.3l1.4 1.4 M16.3 16.3l1.4 1.4 M17.7 6.3l-1.4 1.4 M7.7 16.3l-1.4 1.4',
+      sorting: 'M3 20h18 M4.5 16.5a1.7 1.7 0 1 0 3.4 0a1.7 1.7 0 1 0 -3.4 0 M9.7 15.6a2.6 2.6 0 1 0 5.2 0a2.6 2.6 0 1 0 -5.2 0 M15.4 14.6a3.6 3.6 0 1 0 7.2 0a3.6 3.6 0 1 0 -7.2 0',
+      selection: 'M4 11a6.5 6.5 0 1 0 13 0a6.5 6.5 0 1 0 -13 0 M15.3 15.8 20 20.5 M7.8 11l2.1 2.1 3.8-3.8',
+      weighing: 'M9 8h6l2 10a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2z M9.5 8a2.5 2.5 0 0 1 5 0',
+      packing: 'M4 8l8-4 8 4v8l-8 4-8-4z M4 8l8 4 8-4 M12 12v8',
+      palletising: 'M3 18h18 M4 18v3 M12 18v3 M20 18v3 M6 12h5.2v6H6z M12.8 12H18v6h-5.2z M9.4 6h5.2v6H9.4z',
+      conveyors: 'M6.5 13h11a3 3 0 0 1 0 6h-11a3 3 0 0 1 0-6z M9 5h6v4H9z',
+      weeding: 'M12 21v-8 M12 13c0-4 3-6.5 7.5-6.5-.8 4.5-3.5 6.5-7.5 6.5z M12 13c0-4-3-6.5-7.5-6.5.8 4.5 3.5 6.5 7.5 6.5z',
+    };
+    const chips = D.CATEGORIES.map((c, i) => ({ idx: pad(i), name: c.name[lang], icon: ICONS[c.id] || ICONS.packing, href: 'maszyny/' + c.slug + '/index.html' }));
+    const ticker = D.CATEGORIES.map((c) => '◆  ' + c.name[lang] + '  ').join('');
     const langs = D.LANGS.map((l) => ({ code: l.code, label: l.label, name: l.name, pick: () => this.setLang(l.code) }));
     const cur = D.LANGS.find((l) => l.code === lang) || D.LANGS[0];
     return {
-      t, langs, chips, groups, groupsReady: groups, contact: D.CONTACT, total: D.MACHINES.length, curLabel: cur.label,
+      t, langs, chips, groups, groupsReady: groups, contact: D.CONTACT, total: String(MACH.length).padStart(2, '0'), curLabel: cur.label, steps: (t.steps || []).map((s) => ({ name: s.name })),
       langOpen: this.state.langOpen, mobClass: this.state.mobileOpen ? 'is-open' : '', year, exampleLabel: (exampleLabels[lang] || exampleLabels.pl) + ' →',
+      comingNote: ({ pl: 'Kolejne karty produktów są w przygotowaniu — pełną ofertę znajdziesz w katalogu PDF.', en: 'More product pages are in preparation — the full range is in the PDF catalogue.', de: 'Weitere Produktseiten folgen — das komplette Programm finden Sie im PDF-Katalog.', ru: 'Карточки остальных машин готовятся — полный ассортимент в PDF-каталоге.', fr: 'D’autres fiches produits arrivent — la gamme complète figure dans le catalogue PDF.' })[lang] || '',
       toggleLang: () => this.setState({ langOpen: !this.state.langOpen }),
       toggleMobile: () => this.setState({ mobileOpen: !this.state.mobileOpen }),
       closeMobile: () => this.setState({ mobileOpen: false }),

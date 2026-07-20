@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&amp;family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&amp;family=Chakra+Petch:wght@500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:#14160E;color:#ECE7D7;font-family:'Hanken Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  h1,h2,h3,h4{font-family:var(--df,'Bricolage Grotesque'),'Hanken Grotesk',sans-serif;margin:0;font-weight:700;letter-spacing:-.015em}
+  p{margin:0}a{color:inherit;text-decoration:none}
+  input,textarea,button{font-family:inherit}
+  ::selection{background:var(--accent,#B7D44B);color:#14160E}
+  [data-reveal]{opacity:0}
+  [data-reveal][data-in]{animation:awReveal .85s cubic-bezier(.2,.7,.2,1) both}
+  @keyframes awReveal{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+  @keyframes awTravel{0%{left:-2%}100%{left:102%}}
+  @keyframes awMarquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+  @keyframes awPulse{0%,100%{box-shadow:0 0 0 0 rgba(183,212,75,.55)}50%{box-shadow:0 0 0 9px rgba(183,212,75,0)}}
+  @keyframes awSpin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+  @keyframes awHeroGlow{0%,100%{opacity:.5;transform:translate(-50%,-50%) scale(1)}50%{opacity:.82;transform:translate(-50%,-50%) scale(1.06)}}
+  @keyframes awRingSpin{from{transform:translate(-50%,-50%) rotate(0)}to{transform:translate(-50%,-50%) rotate(360deg)}}
+  @keyframes awDrawLine{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+  @keyframes awGhostIn{from{opacity:0;letter-spacing:.06em}to{opacity:1;letter-spacing:-.03em}}
+  @keyframes awImgSwap{0%{opacity:0;transform:translateY(10px) scale(.985)}100%{opacity:1;transform:none}}
+  @keyframes awSheen{0%,100%{transform:translateX(0) skewX(-14deg)}50%{transform:translateX(340%) skewX(-14deg)}}
+  .aw-hdot{cursor:pointer;transition:background .3s,width .3s}
+  .aw-heroimg2{animation:awImgSwap 1.1s cubic-bezier(.2,.7,.2,1) both}
+  @keyframes awPulseGold{0%,100%{box-shadow:0 0 0 0 rgba(242,194,48,.5)}50%{box-shadow:0 0 0 8px rgba(242,194,48,0)}}
+  .aw-btngold{box-shadow:0 14px 34px -14px rgba(242,194,48,.55)}
+  .aw-btngold:hover{box-shadow:0 18px 42px -12px rgba(242,194,48,.75)}
+  .aw-row{transition:background .3s,box-shadow .3s}
+  .aw-row{box-shadow:inset 3px 0 0 transparent}
+  .aw-row:hover{background:#E3DCC8;box-shadow:inset 3px 0 0 #8C3A43}
+  .aw-row:hover .aw-rowidx{color:var(--accent,#B7D44B)}
+  .aw-row:hover .aw-rowimg{transform:scale(1.07) rotate(-1deg)}
+  .aw-row:hover .aw-rowarrow{transform:translate(4px,-4px);opacity:1}
+  .aw-rowimg{transition:transform .55s cubic-bezier(.2,.7,.2,1)}
+  .aw-rowarrow{transition:transform .35s,opacity .35s;opacity:.4}
+  .aw-station{transition:transform .3s}
+  .aw-station:hover{transform:translateY(-3px)}
+  .aw-link{transition:color .25s}.aw-link:hover{color:var(--accent,#B7D44B)}
+  .aw-navlink{position:relative;transition:color .25s}
+  .aw-navlink::after{content:'';position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--accent,#B7D44B);transition:width .3s}
+  .aw-navlink:hover{color:#fff}.aw-navlink:hover::after{width:100%}
+  .aw-btn{transition:transform .25s,background .3s,color .3s,border-color .3s,box-shadow .3s}
+  .aw-btn:hover{transform:translateY(-2px)}
+  .aw-btnp{box-shadow:0 0 0 0 rgba(183,212,75,.4)}
+  .aw-btnp:hover{box-shadow:0 12px 30px -10px rgba(183,212,75,.55)}
+  .aw-btno:hover{background:#ECE7D7;color:#14160E;border-color:#ECE7D7}
+  .aw-cat{transition:color .25s,box-shadow .3s,background .3s}
+  .aw-cat{box-shadow:inset 3px 0 0 transparent}
+  .aw-cat:hover{color:var(--accent,#B7D44B);background:#E3DCC8;box-shadow:inset 3px 0 0 #8C3A43}
+  .aw-cat:hover .aw-catnum{color:var(--accent,#B7D44B)}
+  .aw-langitem{transition:background .2s,color .2s}.aw-langitem:hover{background:#232719;color:#fff}
+  /* ── industrial linework ─────────────────────────────── */
+  .aw-hr{flex:1;height:1px;background:rgba(236,231,215,.22)}
+  .aw-metabar{display:flex;flex-wrap:wrap}
+  .aw-frame{position:relative}
+  .aw-frame::before,.aw-frame::after{content:'';position:absolute;width:26px;height:26px;border:2.5px solid var(--accent,#B7D44B);pointer-events:none;z-index:4}
+  .aw-frame::before{top:-9px;left:-9px;border-right:0;border-bottom:0}
+  .aw-frame::after{bottom:-9px;right:-9px;border-left:0;border-top:0}
+  .aw-card{background:#ECE7D7;transition:background .3s}
+  .aw-card:hover{background:#F4EFE2}
+  .aw-card:hover .aw-cardimg{transform:scale(1.06)}
+  .aw-card:hover .aw-rowarrow{transform:translate(3px,-3px);opacity:1}
+  .aw-cardimg{transition:transform .55s cubic-bezier(.2,.7,.2,1)}
+  .aw-tile{background:#ECE7D7;color:#14160E;transition:background .28s,color .28s}
+  .aw-tile:hover{background:#14160E;color:#ECE7D7}
+  .aw-tile:hover .aw-tnum{color:var(--accent,#B7D44B)}
+  .aw-tile:hover .aw-tili{background:var(--accent,#B7D44B);color:#14160E;border-color:var(--accent,#B7D44B)}
+  .aw-tile:hover .aw-tarr{color:var(--accent,#B7D44B);transform:translateX(3px)}
+  .aw-tarr{transition:transform .28s,color .28s}
+  .aw-rz{background:#ECE7D7;transition:background .3s}
+  .aw-rz:hover{background:#F4EFE2}
+  .aw-rz:hover .aw-rzimg{transform:scale(1.06)}
+  .aw-rz:hover .aw-rzarr{transform:translate(3px,-3px);opacity:1}
+  .aw-rzimg{transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+  @media(max-width:900px){.aw-rzgrid{grid-template-columns:1fr!important}.aw-rzcta{grid-column:auto!important;grid-row:auto!important}}
+  .aw-cardgrid{grid-template-columns:repeat(3,1fr)}
+  .aw-tilegrid{grid-template-columns:1fr 1fr}
+  @media(max-width:900px){.aw-cardgrid{grid-template-columns:1fr 1fr!important}}
+  @media(max-width:680px){.aw-cardgrid,.aw-tilegrid{grid-template-columns:1fr!important}}
+  .aw-mob{display:none}.aw-hamb{display:none}
+  .aw-mob.is-open{display:block}
+  @media(max-width:1000px){
+    .aw-navlinks{display:none!important}.aw-hamb{display:inline-flex!important}
+    .aw-verbgrid{grid-template-columns:1fr!important;gap:38px!important}
+    .aw-hero{gap:36px!important}
+    .aw-herogrid{grid-template-columns:1fr!important;gap:30px!important}
+    .aw-ghost{display:none!important}
+    .aw-herostage{min-height:340px!important;order:-1}
+    .aw-2col{grid-template-columns:1fr!important;gap:40px!important}
+    .aw-h1{font-size:54px!important}
+    .aw-travel{display:none!important}
+    .aw-line{flex-wrap:wrap!important;gap:22px!important}
+    .aw-line::before{display:none!important}
+    .aw-station{flex:0 0 calc(50% - 11px)!important}
+  }
+  @media(max-width:680px){
+    .aw-secpad{padding:60px 0!important}
+    .aw-h1{font-size:40px!important}.aw-h2{font-size:32px!important}
+    .aw-pad{padding-left:20px!important;padding-right:20px!important}
+    .aw-rowimg-wrap{display:none!important}
+    .aw-bignum{font-size:60px!important}
+    .aw-lpts{grid-template-columns:1fr!important}
+    .aw-station{flex:0 0 100%!important}
+  }
+</style>
+</helmet>
+<div id="top" style="overflow-x:clip">
+
+  <!-- HEADER -->
+  <header style="position:sticky;top:0;z-index:60;background:rgba(20,22,14,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(236,231,215,.12)">
+    <div class="aw-pad" style="max-width:1280px;margin:0 auto;padding:0 32px;height:78px;display:flex;align-items:center;justify-content:space-between;gap:24px">
+      <a href="#top" style="display:flex;align-items:center;gap:11px;flex-shrink:0">
+        <span style="background:#ECE7D7;border-radius:8px;padding:7px 9px;display:flex"><img src="assets/logo.webp" alt="Agro-Weld" style="height:34px;width:auto;display:block"></span>
+      </a>
+      <nav class="aw-navlinks" style="display:flex;align-items:center;gap:34px;font-size:14.5px;font-weight:600;color:#C3C8AF">
+        <a class="aw-navlink" href="Oferta.dc.html">{{ t.nav.offer }}</a>
+        <a class="aw-navlink" href="#proces">{{ t.nav.process }}</a>
+        <a class="aw-navlink" href="#dlaczego">{{ t.nav.why }}</a>
+        <a class="aw-navlink" href="#linie">{{ t.nav.projects }}</a>
+        <a class="aw-navlink" href="#kontakt">{{ t.nav.contact }}</a>
+      </nav>
+      <div style="display:flex;align-items:center;gap:12px;flex-shrink:0">
+        <div data-lang-switch="" style="position:relative">
+          <button onClick="{{ toggleLang }}" class="aw-btn" style="display:flex;align-items:center;gap:7px;background:transparent;border:1px solid rgba(236,231,215,.22);color:#ECE7D7;padding:8px 12px;border-radius:6px;font-family:'Space Mono',monospace;font-size:13px;font-weight:700;cursor:pointer;letter-spacing:.04em">
+            <span style="width:6px;height:6px;border-radius:50%;background:var(--accent,#B7D44B);display:inline-block"></span>{{ curLabel }}<span style="font-size:9px;opacity:.6">▾</span>
+          </button>
+          <sc-if value="{{ langOpen }}" hint-placeholder-val="{{ false }}">
+            <div style="position:absolute;top:48px;right:0;background:#1E2113;border:1px solid rgba(236,231,215,.16);border-radius:10px;box-shadow:0 24px 50px -18px rgba(0,0,0,.7);padding:6px;min-width:158px;z-index:70">
+              <sc-for list="{{ langs }}" as="l" hint-placeholder-count="5">
+                <button onClick="{{ l.pick }}" class="aw-langitem" style="display:flex;align-items:center;justify-content:space-between;width:100%;background:transparent;border:0;padding:10px 12px;border-radius:6px;cursor:pointer;font-size:14px;font-weight:600;color:#C3C8AF;text-align:left">
+                  <span>{{ l.name }}</span><span style="font-family:'Space Mono',monospace;font-size:11px;color:#7E8A63">{{ l.label }}</span>
+                </button>
+              </sc-for>
+            </div>
+          </sc-if>
+        </div>
+        <a class="aw-btn aw-btnp aw-navlinks" href="#kontakt" style="background:var(--accent,#B7D44B);color:#14160E;padding:11px 18px;border-radius:6px;font-weight:700;font-size:14px;display:inline-block">{{ t.cta.askOffer }}</a>
+        <button onClick="{{ toggleMobile }}" class="aw-hamb aw-btn" style="background:transparent;border:1px solid rgba(236,231,215,.22);border-radius:6px;width:44px;height:40px;align-items:center;justify-content:center;cursor:pointer;font-size:18px;color:#ECE7D7">≡</button>
+      </div>
+    </div>
+    <div class="aw-mob {{ mobClass }}" style="border-top:1px solid rgba(236,231,215,.12);background:#1E2113;padding:12px 24px">
+      <div style="display:flex;flex-direction:column;font-weight:600;color:#C3C8AF">
+        <a href="Oferta.dc.html" onClick="{{ closeMobile }}" style="padding:13px 4px;border-bottom:1px solid rgba(236,231,215,.1)">{{ t.nav.offer }}</a>
+        <a href="#proces" onClick="{{ closeMobile }}" style="padding:13px 4px;border-bottom:1px solid rgba(236,231,215,.1)">{{ t.nav.process }}</a>
+        <a href="#dlaczego" onClick="{{ closeMobile }}" style="padding:13px 4px;border-bottom:1px solid rgba(236,231,215,.1)">{{ t.nav.why }}</a>
+        <a href="#linie" onClick="{{ closeMobile }}" style="padding:13px 4px;border-bottom:1px solid rgba(236,231,215,.1)">{{ t.nav.projects }}</a>
+        <a href="#kontakt" onClick="{{ closeMobile }}" style="padding:13px 4px">{{ t.nav.contact }}</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section style="position:relative;background:#ECE7D7;color:#14160E;overflow:hidden">
+    <div aria-hidden="true" style="position:absolute;inset:0;background-image:linear-gradient(rgba(20,22,14,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(20,22,14,.08) 1px,transparent 1px);background-size:66px 66px;mask-image:radial-gradient(circle at 72% 44%,#000 0%,transparent 68%);-webkit-mask-image:radial-gradient(circle at 72% 44%,#000 0%,transparent 68%)"></div>
+    <div aria-hidden="true" style="position:absolute;top:-180px;right:-150px;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(65,87,31,.2),transparent 64%);pointer-events:none"></div>
+    <div class="aw-pad" style="max-width:1280px;margin:0 auto;padding:0 32px;position:relative">
+      <div class="aw-metabar" data-reveal="" style="border-top:1px solid rgba(20,22,14,.18);border-bottom:1px solid rgba(20,22,14,.18);font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.11em;text-transform:uppercase;color:#7E7A5E">
+        <div style="flex:1.6;min-width:230px;padding:9px 0;display:flex;align-items:center;gap:9px"><span style="width:7px;height:7px;background:#8C3A43;display:inline-block"></span>Projektowanie · Produkcja · Serwis</div>
+        <div style="flex:1;min-width:200px;padding:9px 18px;border-left:1px solid rgba(20,22,14,.18);display:flex;align-items:center">Rolnictwo · Przetwórstwo · Przemysł</div>
+        <a href="uploads/AgroWeld katalog 2026 20 01.pdf" target="_blank" rel="noopener" style="padding:9px 0 9px 18px;border-left:1px solid rgba(20,22,14,.18);display:flex;align-items:center;justify-content:flex-end;color:#41571F;font-weight:700">Katalog 2026 ↗</a>
+      </div>
+      <div class="aw-hero" style="position:relative;min-height:calc(100vh - 214px);padding:10px 0 20px">
+        <div aria-hidden="true" class="aw-ghost" key="{{ heroBigNum }}n" style="position:absolute;top:50%;right:6%;transform:translateY(-53%);font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:clamp(300px,42vw,600px);line-height:.66;letter-spacing:-.05em;color:transparent;-webkit-text-stroke:1.5px rgba(20,22,14,.09);z-index:0;pointer-events:none;animation:awGhostIn 1.1s cubic-bezier(.2,.7,.2,1) both">{{ heroBigNum }}</div>
+        <div class="aw-herogrid" style="position:relative;z-index:2;display:grid;grid-template-columns:1fr .94fr;gap:40px;align-items:center;min-height:inherit">
+          <div>
+            <div data-reveal="" style="display:flex;align-items:center;gap:13px;margin-bottom:14px;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#41571F">
+              <span style="width:30px;height:1px;background:#8C3A43;display:inline-block;transform-origin:left;animation:awDrawLine 1s cubic-bezier(.2,.7,.2,1) .3s both"></span>Rolnictwo · Przetwórstwo · Przemysł
+            </div>
+            <h1 class="aw-h1" data-reveal="" style="font-size:clamp(42px,5vw,68px);line-height:.98;font-weight:700;letter-spacing:-.03em;margin-bottom:18px;text-wrap:balance;transition-delay:.06s;color:#14160E">
+              {{ t.hero.titleA }}<br><span style="color:#3B5115">{{ t.hero.titleB }}</span>
+            </h1>
+            <p data-reveal="" style="font-size:17px;line-height:1.56;color:#4C543B;max-width:496px;margin-bottom:24px;transition-delay:.12s;text-wrap:pretty">{{ t.hero.sub }}</p>
+            <div data-reveal="" style="display:flex;flex-wrap:wrap;gap:13px;margin-bottom:30px;transition-delay:.18s">
+              <a class="aw-btn aw-btnp" href="#kontakt" style="background:#14160E;color:#ECE7D7;padding:16px 28px;border-radius:7px;font-weight:700;font-size:15.5px">{{ t.cta.askOffer }} →</a>
+              <a class="aw-btn" href="Oferta.dc.html" style="background:transparent;color:#14160E;border:1.5px solid rgba(20,22,14,.38);padding:15px 26px;border-radius:7px;font-weight:600;font-size:15.5px">{{ t.cta.viewMachines }}</a>
+            </div>
+            <div data-reveal="" style="display:flex;gap:0;transition-delay:.24s;border-top:1px solid rgba(20,22,14,.18);padding-top:18px;max-width:540px">
+              <sc-for list="{{ heroStats }}" as="st" hint-placeholder-count="3">
+                <div style="flex:1;border-left:1px solid rgba(20,22,14,.18);padding-left:18px">
+                  <div style="font-family:var(--df,'Bricolage Grotesque'),sans-serif;font-size:32px;font-weight:700;color:#14160E;line-height:1">{{ st.n }}</div>
+                  <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:#7E7A5E;margin-top:8px;line-height:1.3">{{ st.l }}</div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+          <div data-reveal="" class="aw-herostage" style="position:relative;display:flex;align-items:center;justify-content:center;min-height:345px;padding-bottom:26px;transition-delay:.1s">
+            <div aria-hidden="true" style="position:absolute;top:47%;left:50%;width:104%;padding-bottom:104%;border-radius:50%;background:radial-gradient(circle,rgba(65,87,31,.24),transparent 62%);animation:awHeroGlow 6.5s ease-in-out infinite;z-index:0"></div>
+            <span aria-hidden="true" style="position:absolute;top:2%;left:3%;width:26px;height:26px;border-top:2px solid #8C3A43;border-left:2px solid #8C3A43;z-index:3"></span>
+            <span aria-hidden="true" style="position:absolute;top:2%;right:3%;width:26px;height:26px;border-top:2px solid #8C3A43;border-right:2px solid #8C3A43;z-index:3"></span>
+            <span aria-hidden="true" style="position:absolute;bottom:2%;left:3%;width:26px;height:26px;border-bottom:2px solid #8C3A43;border-left:2px solid #8C3A43;z-index:3"></span>
+            <span aria-hidden="true" style="position:absolute;bottom:2%;right:3%;width:26px;height:26px;border-bottom:2px solid #8C3A43;border-right:2px solid #8C3A43;z-index:3"></span>
+            <img id="awHeroImg" src="assets/kp5000.webp" alt="{{ heroName }} — maszyna Agro-Weld" style="position:relative;z-index:2;width:100%;max-width:560px;height:auto;max-height:345px;object-fit:contain;display:block;filter:drop-shadow(0 32px 36px rgba(20,22,14,.32));opacity:1;transition:opacity .8s cubic-bezier(.4,0,.2,1),transform .8s cubic-bezier(.4,0,.2,1)">
+            <div aria-hidden="true" style="position:absolute;bottom:12%;left:50%;transform:translateX(-50%);width:72%;height:40px;background:radial-gradient(ellipse at 50% 50%,rgba(20,22,14,.24),transparent 72%);z-index:1"></div>
+            <div key="{{ heroCode }}c" class="aw-heroimg2" style="position:absolute;top:7%;left:3%;z-index:3;display:flex;align-items:center;gap:9px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;color:#8C3A43;font-weight:700"><span style="width:7px;height:7px;border-radius:50%;background:#8C3A43;display:inline-block;animation:awPulse 2.4s infinite"></span>{{ heroCode }}</div>
+            <div key="{{ heroName }}n" class="aw-heroimg2" style="position:absolute;bottom:13%;right:3%;z-index:3;text-align:right;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.06em;color:#7E7A5E;line-height:1.5;max-width:60%">{{ heroName }}</div>
+            <div style="position:absolute;bottom:0;left:50%;transform:translateX(-50%);z-index:3;display:flex;align-items:center;gap:10px;white-space:nowrap">
+              <div style="display:flex;align-items:center;gap:7px">
+                <sc-for list="{{ heroShow }}" as="d" hint-placeholder-count="5">
+                  <button onClick="{{ d.pick }}" class="aw-hdot" aria-label="pokaż maszynę" style="height:6px;width:{{ d.w }};border-radius:3px;border:0;padding:0;background:{{ d.bg }}"></button>
+                </sc-for>
+              </div>
+              <span style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.08em;color:#A29A7C;white-space:nowrap">{{ heroCounter }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div style="color: #14160E; overflow: hidden; border-top: 1px solid #14160E; border-bottom: 1px solid #14160E; background-color: #B7D44B">
+    <div style="display:flex;width:max-content;animation:awMarquee var(--mqDur,38s) linear infinite;font-family:'Space Mono',monospace;font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;padding:13px 0">
+      <div style="display:flex;gap:0">{{ marqueeA }}</div>
+      <div style="display:flex;gap:0">{{ marqueeB }}</div>
+    </div>
+  </div>
+
+  <!-- PRODUCTION LINE (signature) -->
+  <section id="proces" class="aw-secpad" style="background:#14160E;padding:104px 0">
+    <div class="aw-pad" style="max-width:1280px;margin:0 auto;padding:0 32px">
+      <div data-reveal="" style="display:flex;align-items:center;justify-content:space-between;gap:20px;border-top:1px solid rgba(236,231,215,.16);padding-top:14px;margin-bottom:44px;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase">
+        <span style="color:#8C3A43">/ {{ t.process.eyebrow }}</span>
+        <span style="color:var(--accent,#B7D44B)">{{ lineState }} {{ activeStep.n }} / 07</span>
+      </div>
+      <div style="max-width:680px;margin-bottom:56px">
+        <h2 class="aw-h2" data-reveal="" style="font-size:44px;font-weight:700;line-height:1.03;color:#ECE7D7;margin-bottom:16px;text-wrap:balance">{{ t.process.title }}</h2>
+        <p data-reveal="" style="font-size:17px;line-height:1.6;color:#A7AE92;text-wrap:pretty;transition-delay:.05s">{{ t.process.sub }}</p>
+      </div>
+
+      <!-- track -->
+      <div data-reveal="" style="position:relative;margin-bottom:42px">
+        <div class="aw-line" style="position:relative;display:flex;justify-content:space-between;align-items:flex-start;gap:8px">
+          <div class="aw-travel" aria-hidden="true" style="position:absolute;top:11px;left:0;width:100%;height:2px;background:rgba(236,231,215,.16);z-index:0"></div>
+          <div id="awFill" class="aw-travel" aria-hidden="true" style="position:absolute;top:11px;left:0;width:0%;height:2px;background:var(--accent,#B7D44B);opacity:.5;z-index:1"></div>
+          <div id="awDot" class="aw-travel" aria-hidden="true" style="position:absolute;top:-2px;left:0%;width:28px;height:28px;border-radius:50%;background:var(--accent,#B7D44B);box-shadow:0 0 16px 3px rgba(183,212,75,.55);z-index:1;transform:translateX(-50%)"></div>
+          <sc-for list="{{ steps }}" as="s" hint-placeholder-count="7">
+            <button onClick="{{ s.pick }}" class="aw-station" style="position:relative;z-index:1;background:transparent;border:0;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:14px;flex:1;padding:0;text-align:center">
+              <span style="width:24px;height:24px;border-radius:50%;background:{{ s.dotBg }};border:2px solid {{ s.dotBorder }};display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:10px;font-weight:700;color:{{ s.dotText }};flex-shrink:0;transition:all .3s">{{ s.idx }}</span>
+              <span style="font-family:'Hanken Grotesk',sans-serif;font-size:13.5px;font-weight:700;color:{{ s.labelColor }};line-height:1.2;transition:color .3s">{{ s.name }}</span>
+            </button>
+          </sc-for>
+        </div>
+      </div>
+
+      <!-- detail panel -->
+      <div data-reveal="" style="background:linear-gradient(150deg,#1E2113,#191C11);border:1px solid rgba(236,231,215,.12);border-radius:16px;padding:38px 40px;display:grid;grid-template-columns:auto 1fr;gap:34px;align-items:center">
+        <div class="aw-bignum" style="font-family:var(--df,'Bricolage Grotesque'),sans-serif;font-size:96px;font-weight:700;color:#41571F;line-height:.8;letter-spacing:-.04em">{{ activeStep.idx }}</div>
+        <div>
+          <div style="font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:#8C3A43;margin-bottom:10px">{{ t.process.eyebrow }} · {{ activeStep.n }}</div>
+          <h3 style="font-size:30px;font-weight:700;color:#ECE7D7;margin-bottom:12px">{{ activeStep.name }}</h3>
+          <p style="font-size:16.5px;line-height:1.6;color:#A7AE92;max-width:640px">{{ activeStep.desc }}</p>
+        </div>
+      </div>
+      <p data-reveal="" style="font-family:'Space Mono',monospace;font-size:12.5px;color:#5E6A47;margin-top:22px;letter-spacing:.02em">↳ {{ t.process.note }}</p>
+    </div>
+  </section>
+
+  <!-- VERBRUGGEN — official distributor spotlight -->
+  <section style="position:relative;background:#14160E;overflow:hidden;padding:112px 0">
+    <div aria-hidden="true" style="position:absolute;inset:0;background-image:linear-gradient(rgba(236,231,215,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(236,231,215,.04) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(circle at 78% 30%,#000 0%,transparent 68%);-webkit-mask-image:radial-gradient(circle at 78% 30%,#000 0%,transparent 68%)"></div>
+    <div aria-hidden="true" style="position:absolute;top:-260px;right:-260px;width:960px;height:960px;border-radius:50%;background:radial-gradient(circle,rgba(37,71,166,.4),transparent 64%);pointer-events:none"></div>
+    <div aria-hidden="true" style="position:absolute;top:-15%;left:-10%;width:42%;height:130%;background:linear-gradient(100deg,transparent,rgba(242,194,48,.07) 45%,rgba(139,155,199,.06) 55%,transparent);transform:skewX(-14deg);animation:awSheen 10s ease-in-out infinite;pointer-events:none"></div>
+    <div class="aw-pad" style="max-width:1280px;margin:0 auto;padding:0 32px;position:relative">
+      <div data-reveal style="display:flex;align-items:center;justify-content:space-between;gap:20px;border-top:1px solid rgba(236,231,215,.16);border-bottom:1px solid rgba(236,231,215,.16);padding:13px 0;margin-bottom:54px;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase">
+        <span style="color:#F2C230">/ Paletyzacja</span>
+        <span style="color:#7E8A63">Oficjalny dystrybutor w Polsce</span>
+      </div>
+      <div class="aw-verbgrid" style="display:grid;grid-template-columns:1.02fr .98fr;gap:56px;align-items:center">
+        <div data-reveal>
+          <div style="display:flex;align-items:center;gap:13px;margin-bottom:26px;font-family:'Space Mono',monospace">
+            <span style="width:7px;height:7px;border-radius:50%;background:#F2C230;display:inline-block;animation:awPulseGold 2.6s infinite"></span>
+            <span style="font-family:'Chakra Petch',sans-serif;font-size:16px;font-weight:700;letter-spacing:.03em;color:#ECE7D7">VERBRUGGEN</span>
+            <span style="width:1px;height:14px;background:rgba(236,231,215,.24);display:inline-block"></span>
+            <span style="font-size:11px;color:#8B9BC7;letter-spacing:.05em;white-space:nowrap">Holandia · od 1991</span>
+          </div>
+          <h2 class="aw-h2" style="font-size:44px;font-weight:700;line-height:1.05;margin-bottom:20px;color:#ECE7D7;text-wrap:balance">Automatyczna paletyzacja <span style="color:#F2C230">klasy światowej</span></h2>
+          <p style="font-size:17px;line-height:1.65;color:#A7AE92;max-width:540px;margin-bottom:36px;text-wrap:pretty">Agro-Weld jest oficjalnym dystrybutorem Verbruggen w Polsce — holenderskiej firmy rodzinnej, która od ponad 30 lat buduje jedne z najbardziej wytrzymałych paletyzatorów na świecie. Systemy VPM automatycznie układają worki, kartony i skrzynki z precyzją i tempem niedostępnym w konwencjonalnych liniach.</p>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid rgba(236,231,215,.16);border-bottom:1px solid rgba(236,231,215,.16);padding:22px 0;margin-bottom:32px">
+            <div style="border-left:1px solid rgba(236,231,215,.16);padding-left:16px"><div style="font-family:'Chakra Petch',sans-serif;font-size:30px;font-weight:700;color:#ECE7D7;line-height:1">30+</div><div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.04em;text-transform:uppercase;color:#7E8A63;margin-top:6px;line-height:1.3">lat doświadczenia</div></div>
+            <div style="border-left:1px solid rgba(236,231,215,.16);padding-left:16px"><div style="font-family:'Chakra Petch',sans-serif;font-size:30px;font-weight:700;color:#ECE7D7;line-height:1">70</div><div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.04em;text-transform:uppercase;color:#7E8A63;margin-top:6px;line-height:1.3">worków / min (HS)</div></div>
+            <div style="border-left:1px solid rgba(236,231,215,.16);padding-left:16px"><div style="font-family:'Chakra Petch',sans-serif;font-size:30px;font-weight:700;color:#ECE7D7;line-height:1">2,5–75</div><div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.04em;text-transform:uppercase;color:#7E8A63;margin-top:6px;line-height:1.3">kg na worek</div></div>
+            <div style="border-left:1px solid rgba(236,231,215,.16);padding-left:16px"><div style="font-family:'Chakra Petch',sans-serif;font-size:30px;font-weight:700;color:#ECE7D7;line-height:1">20+</div><div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.04em;text-transform:uppercase;color:#7E8A63;margin-top:6px;line-height:1.3">wzorów układania</div></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:0;margin-bottom:36px">
+            <div style="display:flex;gap:16px;align-items:baseline;padding:13px 0;border-top:1px solid rgba(236,231,215,.12)"><span style="font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:#F2C230">01</span><span style="font-size:15px;font-weight:600;color:#ECE7D7">Worki, kartony i skrzynki obsługiwane jedną maszyną</span></div>
+            <div style="display:flex;gap:16px;align-items:baseline;padding:13px 0;border-top:1px solid rgba(236,231,215,.12)"><span style="font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:#F2C230">02</span><span style="font-size:15px;font-weight:600;color:#ECE7D7">Zamknięta komora robocza, inteligentne sterowanie i zdalny serwis</span></div>
+            <div style="display:flex;gap:16px;align-items:baseline;padding:13px 0;border-top:1px solid rgba(236,231,215,.12);border-bottom:1px solid rgba(236,231,215,.12)"><span style="font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:#F2C230">03</span><span style="font-size:15px;font-weight:600;color:#ECE7D7">Maszyny pracujące niezawodnie ponad 25 lat w eksploatacji</span></div>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:13px">
+            <a class="aw-btn aw-btngold" href="#kontakt" style="background:#F2C230;color:#14160E;padding:16px 28px;border-radius:7px;font-weight:700;font-size:15.5px">Zapytaj o paletyzator Verbruggen →</a>
+            <a class="aw-btn" href="uploads/verbruggen-katalog-paletyzatorow.pdf" target="_blank" rel="noopener" style="background:transparent;color:#ECE7D7;border:1.5px solid rgba(236,231,215,.34);padding:15px 26px;border-radius:7px;font-weight:600;font-size:15.5px">Karta katalogowa VPM (PDF)</a>
+          </div>
+        </div>
+        <div data-reveal style="position:relative;transition-delay:.1s">
+          <div style="position:relative;border-radius:18px;overflow:hidden;border:1px solid rgba(236,231,215,.14);background:linear-gradient(155deg,#161B2E,#0E1120);box-shadow:0 60px 120px -55px rgba(0,0,0,.9);padding:28px 26px 0">
+            <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(ellipse 62% 46% at 50% 0%,rgba(37,71,166,.38),transparent 72%);pointer-events:none;animation:awHeroGlow 7s ease-in-out infinite"></div>
+            <span aria-hidden="true" style="position:absolute;top:14px;left:14px;width:24px;height:24px;border-top:2px solid #F2C230;border-left:2px solid #F2C230;z-index:3"></span>
+            <span aria-hidden="true" style="position:absolute;top:14px;right:14px;width:24px;height:24px;border-top:2px solid #F2C230;border-right:2px solid #F2C230;z-index:3"></span>
+            <span aria-hidden="true" style="position:absolute;bottom:14px;left:14px;width:24px;height:24px;border-bottom:2px solid #F2C230;border-left:2px solid #F2C230;z-index:3"></span>
+            <span aria-hidden="true" style="position:absolute;bottom:14px;right:14px;width:24px;height:24px;border-bottom:2px solid #F2C230;border-right:2px solid #F2C230;z-index:3"></span>
+            <div style="position:relative;z-index:2;display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:0 26px 16px 2px;font-family:'Space Mono',monospace;letter-spacing:.1em;text-transform:uppercase">
+              <span style="font-size:13px;font-weight:700;color:#ECE7D7">VPM-B</span>
+              <span style="font-size:10px;color:#7B87AE">Wersja wysokiej wydajności</span>
+            </div>
+            <img src="assets/verbruggen-vpm.png" alt="Paletyzator Verbruggen VPM-B — linia workowa" style="position:relative;z-index:2;width:100%;max-width:520px;height:auto;display:block;margin:0 auto;filter:drop-shadow(0 20px 26px rgba(0,0,0,.45))">
+            <div style="position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:8px;padding:16px 28px 16px 2px;border-top:1px solid rgba(236,231,215,.12);font-family:'Space Mono',monospace;font-size:11px;color:#7E8A63;letter-spacing:.04em">
+              <span style="display:flex;align-items:center;gap:8px;color:#F2C230;font-weight:700"><span style="width:6px;height:6px;border-radius:50%;background:#F2C230;display:inline-block"></span>Automatyczna paletyzacja</span>
+              <span>Worki 2,5–75 kg · do 70/min</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED — engineering catalog rows on bone -->
+  <section id="maszyny" class="aw-secpad" style="background:#ECE7D7;color:#14160E;padding:104px 0">
+    <div class="aw-pad" style="max-width:1280px;margin:0 auto;padding:0 32px">
+      <div data-reveal="" style="display:flex;align-items:center;justify-content:space-between;gap:20px;border-top:1px solid rgba(20,22,14,.18);padding-top:14px;margin-bottom:42px;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase">
+        <span style="color:#8C3A43">/ {{ t.featured.eyebrow }}</span>
+        <span style="color:#8A8163">{{ featuredCount }} ×</span>
+      </div>
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:30px;flex-wrap:wrap;margin-bottom:40px">
+        <div style="max-width:640px">
+          <h2 class="aw-h2" data-reveal="" style="font-size:44px;font-weight:700;line-height:1.03;margin-bottom:16px;text-wrap:balance">{{ t.featured.title }}</h2>
+          <p data-reveal="" style="font-size:17px;line-height:1.6;color:#56603F;transition-delay:.05s">{{ t.featured.sub }}</p>
+        </div>
+        <a class="aw-btn" data-reveal="" href="Oferta.dc.html" style="background:#14160E;color:#ECE7D7;padding:14px 22px;border-radius:7px;font-weight:700;font-size:14.5px;white-space:nowrap">{{ t.cta.viewAll }} →</a>
+      </div>
+      <div data-reveal="" class="aw-cardgrid" style="display:grid;gap:1px;background:#14160E;border:1px solid #14160E">
+        <sc-for list="{{ featuredReady }}" as="m" hint-placeholder-count="6">
+          <a class="aw-card" href="{{ m.href }}" style="display:flex;flex-direction:column;text-decoration:none;color:#14160E">
+            <div style="height:200px;background-color:#F1ECDF;background-image:linear-gradient(rgba(20,22,14,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(20,22,14,.05) 1px,transparent 1px);background-size:24px 24px;border-bottom:1px solid #14160E;display:flex;align-items:center;justify-content:center;overflow:hidden">
+              <span class="aw-cardimg" style="width:74%;height:74%;background-image:{{ m.imgCss }};background-size:contain;background-repeat:no-repeat;background-position:center"></span>
+            </div>
+            <div style="padding:18px 20px 20px;flex:1;display:flex;flex-direction:column">
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:11px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.05em">
+                <span style="color:#8C3A43;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0">{{ m.models }}</span>
+                <span style="color:#8A8163;text-transform:uppercase;letter-spacing:.1em;white-space:nowrap">{{ m.cat }}</span>
+              </div>
+              <h3 style="font-size:22px;font-weight:700;letter-spacing:-.01em;line-height:1.12;margin-bottom:10px;text-wrap:balance">{{ m.name }}</h3>
+              <p style="font-size:14px;line-height:1.5;color:#56603F;text-wrap:pretty">{{ m.short }}</p>
+            </div>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY — dark, big numbered claims -->
+  <section id="dlaczego" class="aw-secpad" style="background:#14160E;padding:104px 0">
+    <div class="aw-pad" style="max-width:1280px;margin:0 auto;padding:0 32px">
+      <div data-reveal="" style="display:flex;align-items:center;justify-content:space-between;gap:20px;border-top:1px solid rgba(236,231,215,.16);padding-top:14px;margin-bottom:44px;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase">
+        <span style="color:#8C3A43">/ {{ t.why.eyebrow }}</span>
+      </div>
+      <div class="aw-2col" style="display:grid;grid-template-columns:.82fr 1.18fr;gap:56px;align-items:start">
+        <div style="position:sticky;top:110px">
+          <h2 class="aw-h2" data-reveal="" style="font-size:44px;font-weight:700;line-height:1.03;color:#ECE7D7;margin-bottom:18px;text-wrap:balance">{{ t.why.title }}</h2>
+          <p data-reveal="" style="font-size:17px;line-height:1.62;color:#A7AE92;transition-delay:.1s;text-wrap:pretty">{{ t.why.sub }}</p>
+        </div>
+        <div style="display:flex;flex-direction:column">
+          <sc-for list="{{ whyItems }}" as="w" hint-placeholder-count="4">
+            <div data-reveal="" style="display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:start;padding:30px 0;border-top:1px solid rgba(236,231,215,.14)">
+              <span style="font-family:var(--df,'Bricolage Grotesque'),sans-serif;font-size:24px;font-weight:700;color:var(--accent,#B7D44B);line-height:1">{{ w.n }}</span>
+              <div>
+                <h3 style="font-size:24px;font-weight:700;color:#ECE7D7;margin-bottom:10px">{{ w.title }}</h3>
+                <p style="font-size:16px;line-height:1.6;color:#A7AE92;max-width:560px">{{ w.desc }}</p>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATALOG categories — technical index on bone -->
+  <section class="aw-secpad" style="background:#ECE7D7;color:#14160E;padding:104px 0">
+    <div class="aw-pad" style="max-width:1280px;margin:0 auto;padding:0 32px">
+      <div data-reveal="" style="display:flex;align-items:center;justify-content:space-between;gap:20px;border-top:1px solid rgba(20,22,14,.18);padding-top:14px;margin-bottom:44px;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase">
+        <span style="color:#8C3A43">/ {{ t.catalog.eyebrow }}</span>
+        <span style="color:#8A8163">{{ machinesTotal }} ×</span>
+      </div>
+      <div class="aw-2col" style="display:grid;grid-template-columns:.82fr 1.18fr;gap:56px;align-items:start">
+        <div>
+          <h2 class="aw-h2" data-reveal="" style="font-size:44px;font-weight:700;line-height:1.03;margin-bottom:16px;text-wrap:balance">{{ t.catalog.title }}</h2>
+          <p data-reveal="" style="font-size:17px;line-height:1.6;color:#56603F;margin-bottom:28px;transition-delay:.1s">{{ t.catalog.sub }}</p>
+          <a class="aw-btn" data-reveal="" href="Oferta.dc.html" style="display:inline-block;background:#41571F;color:#ECE7D7;padding:14px 24px;border-radius:7px;font-weight:700;font-size:15px;transition-delay:.15s">{{ t.cta.viewAll }} →</a>
+        </div>
+        <div data-reveal="">
+        <div class="aw-tilegrid" style="display:grid;gap:1px;background:#14160E;border:1px solid #14160E">
+          <sc-for list="{{ cats }}" as="c" hint-placeholder-count="8">
+            <a class="aw-tile" href="{{ c.href }}" style="display:flex;align-items:center;gap:15px;padding:20px 22px;text-decoration:none">
+              <span class="aw-tili" style="width:42px;height:42px;flex-shrink:0;display:flex;align-items:center;justify-content:center;border:1px solid rgba(140,58,67,.4);color:#8C3A43;transition:background .28s,color .28s,border-color .28s">
+                <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="{{ c.icon }}"></path></svg>
+              </span>
+              <span style="display:flex;flex-direction:column;gap:3px;flex:1;min-width:0">
+                <span class="aw-tnum" style="font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.1em;color:#8C3A43">{{ c.idx }}</span>
+                <span style="font-size:18px;font-weight:700;font-family:var(--df,'Bricolage Grotesque'),sans-serif;letter-spacing:-.01em;color:inherit">{{ c.name }}</span>
+              </span>
+              <span style="font-family:'Space Mono',monospace;font-size:11.5px;color:#8A8163">{{ c.count }} ×</span>
+              <span class="aw-tarr" style="font-size:16px;color:#8C3A43">→</span>
+            </a>
+          </sc-for>
+        </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LINES -->
+  <section id="linie" class="aw-secpad" style="background:#14160E;padding:104px 0 0">
+    <div class="aw-pad" style="max-width:1280px;margin:0 auto;padding:0 32px">
+      <div data-reveal="" style="display:flex;align-items:center;justify-content:space-between;gap:20px;border-top:1px solid rgba(236,231,215,.16);padding-top:14px;margin-bottom:44px;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase">
+        <span style="color:var(--accent,#B7D44B)">/ {{ t.lines.eyebrow }}</span>
+        <span style="color:#5E6A47">Projekt · Montaż · Serwis</span>
+      </div>
+    </div>
+    <div data-reveal="" style="position:relative;overflow:hidden">
+      <img src="assets/hala-linia.jpg" alt="Maszyna pakująca Agro-Weld na hali produkcyjnej" style="width:100%;height:min(80vh,720px);min-height:560px;object-fit:cover;object-position:center;display:block">
+      <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,#14160E 0%,rgba(20,22,14,0) 24%),linear-gradient(0deg,rgba(15,17,10,.94) 0%,rgba(15,17,10,.55) 44%,rgba(15,17,10,.04) 76%)"></div>
+      <div class="aw-pad" style="position:absolute;inset:0;max-width:1280px;margin:0 auto;padding:28px 32px 56px;display:flex;flex-direction:column;justify-content:space-between;align-items:stretch">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#D9DCC9">
+          <span style="display:inline-flex;align-items:center;gap:9px;background:rgba(15,17,10,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:9px 15px;border:1px solid rgba(236,231,215,.2)"><span style="width:7px;height:7px;border-radius:50%;background:var(--accent,#B7D44B);display:inline-block;animation:awPulse 2.4s infinite"></span>Raszlownica produkcji Agro-Weld</span>
+          <span style="background:rgba(15,17,10,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:9px 15px;border:1px solid rgba(236,231,215,.2)">Środa Wlkp. · PL</span>
+        </div>
+        <div>
+          <h2 class="aw-h2" style="font-size:48px;font-weight:700;line-height:1.02;color:#fff;margin-bottom:18px;max-width:660px;text-wrap:balance;text-shadow:0 2px 34px rgba(0,0,0,.45)">{{ t.lines.title }}</h2>
+          <p style="font-size:17.5px;line-height:1.62;color:#D9DCC9;margin-bottom:30px;max-width:560px;text-wrap:pretty;text-shadow:0 1px 18px rgba(0,0,0,.4)">{{ t.lines.body }}</p>
+          <a class="aw-btn aw-btnp" href="#kontakt" style="display:inline-block;background:var(--accent,#B7D44B);color:#14160E;padding:15px 26px;border-radius:7px;font-weight:700;font-size:15.5px">{{ t.lines.cta }} →</a>
+        </div>
+      </div>
+    </div>
+    <div style="background:#0F110A;border-top:1px solid rgba(236,231,215,.12)">
+      <div class="aw-pad aw-lpts" style="max-width:1280px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:repeat(3,1fr)">
+        <sc-for list="{{ linePoints }}" as="p" hint-placeholder-count="3">
+          <div style="display:flex;align-items:center;gap:15px;padding:22px 24px 22px 22px;border-left:1px solid rgba(236,231,215,.12)">
+            <span style="font-family:'Space Mono',monospace;font-size:11px;color:var(--accent,#B7D44B);font-weight:700">0{{ p.i }}</span>
+            <span style="font-size:15.5px;font-weight:600;color:#C3C8AF">{{ p.text }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- REALIZACJE -->
+  <section id="realizacje" class="aw-secpad" style="background:#ECE7D7;color:#14160E;padding:104px 0">
+    <div class="aw-pad" style="max-width:1280px;margin:0 auto;padding:0 32px">
+      <div data-reveal="" style="display:flex;align-items:center;justify-content:space-between;gap:20px;border-top:1px solid rgba(20,22,14,.18);padding-top:14px;margin-bottom:42px;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase">
+        <span style="color:#8C3A43">/ {{ real.eyebrow }}</span>
+      </div>
+      <div style="max-width:680px;margin-bottom:40px">
+        <h2 class="aw-h2" data-reveal="" style="font-size:44px;font-weight:700;line-height:1.03;margin-bottom:14px;text-wrap:balance">{{ real.title }}</h2>
+        <p data-reveal="" style="font-size:17px;line-height:1.6;color:#56603F;text-wrap:pretty;transition-delay:.05s">{{ real.tag }}</p>
+      </div>
+      <div data-reveal="" style="border:1px solid #14160E">
+        <div class="aw-rzgrid" style="display:grid;grid-template-columns:1fr 1fr 1.05fr;gap:1px;background:#14160E">
+          <sc-for list="{{ realItems }}" as="p" hint-placeholder-count="4">
+            <a class="aw-rz" href="#kontakt" style="display:flex;flex-direction:column;text-decoration:none;color:#14160E">
+              <div style="height:210px;overflow:hidden;border-bottom:1px solid #14160E">
+                <div class="aw-rzimg" style="width:100%;height:100%;background-color:#DAD3BF;background-image:{{ p.imgCss }};background-size:cover;background-position:center"></div>
+              </div>
+              <div style="padding:18px 20px 20px;flex:1;display:flex;flex-direction:column">
+                <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:11px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.05em">
+                  <span style="color:#8C3A43;font-weight:700">REF. {{ p.ref }}</span>
+                  <span style="color:#8A8163;text-transform:uppercase;letter-spacing:.1em">{{ p.cat }}</span>
+                </div>
+                <h3 style="font-size:22px;font-weight:700;letter-spacing:-.01em;line-height:1.12;margin-bottom:10px;text-wrap:balance">{{ p.title }}</h3>
+                <p style="font-size:14px;line-height:1.5;color:#56603F;text-wrap:pretty">{{ p.desc }}</p>
+              </div>
+            </a>
+          </sc-for>
+          <div class="aw-rzcta" style="grid-column:3;grid-row:1 / span 2;background:linear-gradient(165deg,#243015,#1A2110);display:flex;flex-direction:column;justify-content:center;padding:44px 40px">
+            <div style="font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8FA862;margin-bottom:16px">{{ real.ctaEyebrow }}</div>
+            <h3 style="font-size:30px;font-weight:700;line-height:1.06;color:#fff;margin-bottom:16px;text-wrap:balance">{{ real.ctaTitle }}</h3>
+            <p style="font-size:15.5px;line-height:1.6;color:#A7AE92;margin-bottom:28px;max-width:360px;text-wrap:pretty">{{ real.ctaSub }}</p>
+            <a class="aw-btn aw-btno" href="#kontakt" style="align-self:flex-start;background:#ECE7D7;color:#14160E;border:1.5px solid #ECE7D7;padding:14px 24px;font-weight:700;font-size:15px">{{ real.ctaBtn }} ↗</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="kontakt" class="aw-secpad" style="background:#14160E;padding:104px 0">
+    <div class="aw-pad" style="max-width:1280px;margin:0 auto;padding:0 32px">
+      <div data-reveal="" style="display:flex;align-items:center;justify-content:space-between;gap:20px;border-top:1px solid rgba(236,231,215,.16);padding-top:14px;margin-bottom:44px;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase">
+        <span style="color:#8C3A43">/ {{ t.contact.eyebrow }}</span>
+      </div>
+      <div class="aw-2col" style="display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start">
+        <div>
+          <h2 class="aw-h2" data-reveal="" style="font-size:44px;font-weight:700;line-height:1.03;color:#ECE7D7;margin-bottom:18px;text-wrap:balance">{{ t.contact.title }}</h2>
+          <p data-reveal="" style="font-size:17px;line-height:1.62;color:#A7AE92;margin-bottom:36px;max-width:460px;transition-delay:.1s;text-wrap:pretty">{{ t.contact.sub }}</p>
+          <div data-reveal="" style="transition-delay:.15s">
+            <div style="font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:#7E8A63;margin-bottom:16px">{{ t.contact.infoTitle }}</div>
+            <div style="font-size:17px;font-weight:700;color:#ECE7D7;margin-bottom:8px">{{ contact.company }}</div>
+            <div style="display:flex;gap:14px;padding:14px 0;border-top:1px solid rgba(236,231,215,.14)"><span style="width:108px;font-size:13px;color:#7E8A63;font-family:'Space Mono',monospace">{{ t.contact.addrL }}</span><span style="font-size:15.5px;color:#C3C8AF">{{ contact.address }}</span></div>
+            <a class="aw-link" href="tel:+48725140257" style="display:flex;gap:14px;padding:14px 0;border-top:1px solid rgba(236,231,215,.14)"><span style="width:108px;font-size:13px;color:#7E8A63;font-family:'Space Mono',monospace">{{ t.contact.phoneL }}</span><span style="font-size:15.5px;font-weight:600;color:var(--accent,#B7D44B)">{{ contact.phone1 }} · {{ contact.phone2 }}</span></a>
+            <a class="aw-link" href="mailto:biuro@agro-weld.pl" style="display:flex;gap:14px;padding:14px 0;border-top:1px solid rgba(236,231,215,.14)"><span style="width:108px;font-size:13px;color:#7E8A63;font-family:'Space Mono',monospace">{{ t.contact.emailL }}</span><span style="font-size:15.5px;font-weight:600;color:var(--accent,#B7D44B)">{{ contact.email }}</span></a>
+            <div style="display:flex;gap:14px;padding:14px 0;border-top:1px solid rgba(236,231,215,.14);border-bottom:1px solid rgba(236,231,215,.14)"><span style="width:108px;font-size:13px;color:#7E8A63;font-family:'Space Mono',monospace">{{ t.contact.hoursL }}</span><span style="font-size:15.5px;color:#C3C8AF">{{ t.contact.hours }}</span></div>
+          </div>
+        </div>
+        <div data-reveal="" style="background:linear-gradient(155deg,#1E2113,#191C11);border:1px solid rgba(236,231,215,.14);border-radius:18px;padding:34px;transition-delay:.08s">
+          <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;flex-direction:column;align-items:flex-start;gap:16px;padding:30px 0">
+              <div style="width:54px;height:54px;border-radius:50%;background:var(--accent,#B7D44B);color:#14160E;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:700">✓</div>
+              <h3 style="font-size:26px;font-weight:700;color:#ECE7D7">{{ t.contact.title }}</h3>
+              <p style="font-size:15px;color:#A7AE92;line-height:1.55">{{ t.contact.note }}</p>
+            </div>
+          </sc-if>
+          <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+            <form onSubmit="{{ onSubmit }}" style="display:flex;flex-direction:column;gap:15px">
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:15px">
+                <input required="" placeholder="{{ t.contact.name }}" style="background:#14160E;border:1px solid rgba(236,231,215,.18);border-radius:8px;padding:14px 15px;font-size:14.5px;color:#ECE7D7;outline:none">
+                <input placeholder="{{ t.contact.company }}" style="background:#14160E;border:1px solid rgba(236,231,215,.18);border-radius:8px;padding:14px 15px;font-size:14.5px;color:#ECE7D7;outline:none">
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:15px">
+                <input required="" type="email" placeholder="{{ t.contact.email }}" style="background:#14160E;border:1px solid rgba(236,231,215,.18);border-radius:8px;padding:14px 15px;font-size:14.5px;color:#ECE7D7;outline:none">
+                <input placeholder="{{ t.contact.phone }}" style="background:#14160E;border:1px solid rgba(236,231,215,.18);border-radius:8px;padding:14px 15px;font-size:14.5px;color:#ECE7D7;outline:none">
+              </div>
+              <textarea required="" rows="4" placeholder="{{ t.contact.message }}" style="background:#14160E;border:1px solid rgba(236,231,215,.18);border-radius:8px;padding:14px 15px;font-size:14.5px;color:#ECE7D7;outline:none;resize:vertical;font-family:inherit"></textarea>
+              <button class="aw-btn aw-btnp" type="submit" style="background:var(--accent,#B7D44B);color:#14160E;border:0;padding:16px 22px;border-radius:8px;font-weight:700;font-size:15.5px;cursor:pointer">{{ t.contact.submit }} →</button>
+              <p style="font-size:12.5px;color:#7E8A63;line-height:1.5">{{ t.contact.note }}</p>
+            </form>
+          </sc-if>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="background:#0F110A;color:#A7AE92;padding:66px 0 34px;border-top:1px solid rgba(236,231,215,.1)">
+    <div class="aw-pad" style="max-width:1280px;margin:0 auto;padding:0 32px">
+      <div class="aw-2col" style="display:grid;grid-template-columns:1.5fr 1fr 1fr 1.3fr;gap:40px;padding-bottom:46px;border-bottom:1px solid rgba(236,231,215,.1)">
+        <div>
+          <span style="background:#ECE7D7;display:inline-block;padding:11px 13px;border-radius:9px;margin-bottom:20px"><img src="assets/logo.webp" alt="Agro-Weld" style="height:42px;display:block"></span>
+          <p style="font-size:14.5px;line-height:1.6;max-width:300px;color:#7E8A63">{{ t.footer.tagline }}</p>
+        </div>
+        <div>
+          <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#5E6A47;margin-bottom:18px">{{ t.footer.col1 }}</div>
+          <div style="display:flex;flex-direction:column;gap:12px;font-size:14.5px">
+            <a class="aw-link" href="Oferta.dc.html">{{ t.nav.offer }}</a>
+            <a class="aw-link" href="#proces">{{ t.nav.process }}</a>
+            <a class="aw-link" href="#dlaczego">{{ t.nav.why }}</a>
+            <a class="aw-link" href="#linie">{{ t.nav.projects }}</a>
+            <a class="aw-link" href="#kontakt">{{ t.nav.contact }}</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#5E6A47;margin-bottom:18px">{{ t.footer.col2 }}</div>
+          <div style="display:flex;flex-direction:column;gap:12px;font-size:14.5px">
+            <sc-for list="{{ steps }}" as="s" hint-placeholder-count="7">
+              <a class="aw-link" href="Oferta.dc.html">{{ s.name }}</a>
+            </sc-for>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#5E6A47;margin-bottom:18px">{{ t.footer.col3 }}</div>
+          <div style="display:flex;flex-direction:column;gap:12px;font-size:14.5px">
+            <span style="color:#7E8A63">{{ contact.address }}</span>
+            <a class="aw-link" href="mailto:biuro@agro-weld.pl" style="color:#ECE7D7;font-weight:600">{{ contact.email }}</a>
+            <a class="aw-link" href="tel:+48725140257" style="color:#ECE7D7;font-weight:600">{{ contact.phone1 }}</a>
+            <a class="aw-link" href="tel:+48608230369" style="color:#ECE7D7;font-weight:600">{{ contact.phone2 }}</a>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;padding-top:26px;flex-wrap:wrap">
+        <span style="font-size:13px;color:#5E6A47">© {{ year }} {{ contact.company }}. {{ t.footer.rights }}</span>
+        <a class="aw-link" href="uploads/AgroWeld katalog 2026 20 01.pdf" style="font-family:'Space Mono',monospace;font-size:12.5px;color:#7E8A63;letter-spacing:.04em">↓ {{ t.cta.downloadCatalog }}</a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:900},&quot;accentName&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Limonka&quot;,&quot;Bursztyn&quot;,&quot;Stal&quot;,&quot;Trawiasta&quot;],&quot;default&quot;:&quot;Limonka&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;headlineFont&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Bricolage Grotesque&quot;,&quot;Space Grotesk&quot;,&quot;Archivo&quot;,&quot;Chakra Petch&quot;],&quot;default&quot;:&quot;Chakra Petch&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;tempo&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Spokojny&quot;,&quot;Standard&quot;,&quot;Dynamiczny&quot;],&quot;default&quot;:&quot;Standard&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { lang: 'pl', data: null, langOpen: false, mobileOpen: false, sent: false, active: 0, paused: false, heroIdx: 0 };
+
+  componentDidMount() {
+    try { const s = localStorage.getItem('aw-lang'); if (s) this.setState({ lang: s }); } catch (e) {}
+    import('./aw-data.js').then((m) => { this.setState({ data: m.default }); });
+    this._onDoc = (e) => {
+      if (this.state.langOpen && e.target && e.target.closest && !e.target.closest('[data-lang-switch]')) {
+        this.setState({ langOpen: false });
+      }
+    };
+    document.addEventListener('click', this._onDoc);
+    this._checkReveal = () => {
+      const h = window.innerHeight || 800;
+      document.querySelectorAll('[data-reveal]:not([data-in])').forEach((el) => {
+        if (el.getBoundingClientRect().top < h * 0.92) el.setAttribute('data-in', '');
+      });
+    };
+    this._onScroll = () => { this._checkReveal(); };
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    window.addEventListener('resize', this._onScroll, { passive: true });
+    this._revTimer = setInterval(this._checkReveal, 400);
+    this.applyTheme();
+  }
+
+  stepMs() {
+    const T = { 'Spokojny': 4800, 'Standard': 3400, 'Dynamiczny': 2100 };
+    return T[this.props.tempo] || T.Standard;
+  }
+
+  nSteps() { return (this.state.data && this.state.data.UI[this.state.lang].steps.length) || 7; }
+
+  stationLeft(i) {
+    // exact center of station i measured from the DOM (flex gaps make the
+    // arithmetic (i+0.5)/n slightly off); fall back to the formula pre-mount
+    const line = document.querySelector('.aw-line');
+    if (line) {
+      const btns = line.querySelectorAll('.aw-station');
+      if (btns[i]) {
+        const lr = line.getBoundingClientRect();
+        const br = btns[i].getBoundingClientRect();
+        if (lr.width > 0) return ((br.left + br.width / 2 - lr.left) / lr.width) * 100;
+      }
+    }
+    const n = this.nSteps();
+    return ((i + 0.5) / n) * 100;
+  }
+
+  moveTo(i, instant) {
+    const dot = document.getElementById('awDot');
+    const fill = document.getElementById('awFill');
+    const l = this.stationLeft(i).toFixed(2) + '%';
+    const dist = Math.max(1, Math.abs(i - this.state.active));
+    const ms = instant ? 0 : Math.min(950 + dist * 320, 2100);
+    const ease = 'cubic-bezier(.45,.05,.15,1)';
+    if (dot && fill) {
+      dot.style.opacity = '1';
+      dot.style.transition = instant ? 'none' : ('left ' + ms + 'ms ' + ease);
+      fill.style.transition = instant ? 'none' : ('width ' + ms + 'ms ' + ease);
+      dot.style.left = l;
+      fill.style.width = l;
+    }
+    if (i !== this.state.active) this.setState({ active: i });
+  }
+
+  startCycle() {
+    this.stopCycle();
+    this._lastTempo = this.props.tempo;
+    this.moveTo(this.state.active, true);
+    this._cycleTimer = setInterval(() => {
+      if (this.state.paused || !this.state.data) return;
+      const next = (this.state.active + 1) % this.nSteps();
+      if (next === 0) {
+        // wrap: fade out at last station, jump to first, fade back in
+        const dot = document.getElementById('awDot');
+        const fill = document.getElementById('awFill');
+        if (dot) { dot.style.transition = 'opacity .3s'; dot.style.opacity = '0'; }
+        setTimeout(() => {
+          const l = this.stationLeft(0).toFixed(2) + '%';
+          if (dot) { dot.style.transition = 'none'; dot.style.left = l; }
+          if (fill) { fill.style.transition = 'none'; fill.style.width = l; }
+          requestAnimationFrame(() => { if (dot) { dot.style.transition = 'opacity .45s'; dot.style.opacity = '1'; } });
+          this.setState({ active: 0 });
+        }, 320);
+      } else {
+        this.moveTo(next, false);
+      }
+    }, this.stepMs());
+  }
+
+  stopCycle() {
+    if (this._cycleTimer) { clearInterval(this._cycleTimer); this._cycleTimer = null; }
+  }
+
+  pickStep(i) {
+    this.setState({ paused: true });
+    this.moveTo(i, false);
+    clearTimeout(this._resumeT);
+    this._resumeT = setTimeout(() => this.setState({ paused: false }), 9000);
+  }
+
+  applyTheme() {
+    const ACCENTS = { 'Limonka': '#B7D44B', 'Bursztyn': '#E8A33A', 'Stal': '#6FA8DC', 'Trawiasta': '#8FBF3F' };
+    const FONTS = { 'Bricolage Grotesque': "'Bricolage Grotesque'", 'Space Grotesk': "'Space Grotesk'", 'Archivo': "'Archivo'", 'Chakra Petch': "'Chakra Petch'" };
+    const TEMPO = { 'Spokojny': ['18s', '64s'], 'Standard': ['11s', '38s'], 'Dynamiczny': ['6s', '22s'] };
+    const accent = ACCENTS[this.props.accentName] || ACCENTS.Limonka;
+    const df = FONTS[this.props.headlineFont] || FONTS['Bricolage Grotesque'];
+    const tempo = TEMPO[this.props.tempo] || TEMPO.Standard;
+    const root = document.documentElement.style;
+    root.setProperty('--accent', accent);
+    root.setProperty('--df', df);
+    root.setProperty('--lineDur', tempo[0]);
+    root.setProperty('--mqDur', tempo[1]);
+  }
+
+  componentDidUpdate() {
+    this.applyTheme();
+    if (this.state.data && !this._cycleInit) { this._cycleInit = true; this.startCycle(); }
+    if (this.state.data && !this._heroInit) {
+      this._heroInit = true;
+      this._heroN = ['kosz', 'czyszczarka', 'kalibrownik', 'przenosnik-poprzeczny', 'formator'].map((id) => this.state.data.MACHINES.find((m) => m.id === id)).filter((m) => m && m.img).length || 1;
+      this._heroTimer = setInterval(() => this.setState((s) => ({ heroIdx: (s.heroIdx + 1) % this._heroN })), 6800);
+    }
+    if (this.state.data && this._cycleTimer && this._lastTempo !== this.props.tempo) {
+      this._lastTempo = this.props.tempo; this.startCycle();
+    }
+    if (this.state.data && this._checkReveal) {
+      this._checkReveal();
+      setTimeout(this._checkReveal, 60);
+      setTimeout(this._checkReveal, 200);
+    }
+    const img = document.getElementById('awHeroImg');
+    if (img && this._heroSrc && img.getAttribute('src') !== this._heroSrc && img.dataset.swapping !== '1') {
+      const next = this._heroSrc;
+      img.dataset.swapping = '1';
+      img.style.opacity = '0';
+      img.style.transform = 'translateY(12px) scale(.985)';
+      setTimeout(() => {
+        const show = () => { img.style.opacity = '1'; img.style.transform = 'none'; img.dataset.swapping = '0'; img.onload = null; };
+        img.onload = show;
+        img.setAttribute('src', next);
+        if (img.complete && img.naturalWidth) show();
+      }, 760);
+    }
+  }
+
+  componentWillUnmount() {
+    if (this._onDoc) document.removeEventListener('click', this._onDoc);
+    if (this._onScroll) { window.removeEventListener('scroll', this._onScroll); window.removeEventListener('resize', this._onScroll); }
+    if (this._revTimer) clearInterval(this._revTimer);
+    if (this._heroTimer) clearInterval(this._heroTimer);
+    clearTimeout(this._resumeT);
+    this.stopCycle();
+  }
+
+  setLang(code) {
+    try { localStorage.setItem('aw-lang', code); } catch (e) {}
+    this.setState({ lang: code, langOpen: false });
+  }
+
+  renderVals() {
+    const D = this.state.data;
+    const lang = this.state.lang;
+    const RZIMG = ['assets/real-borowka.jpg', 'assets/real-cytrusy.webp', 'assets/real-inox.jpg', 'assets/real-raszlownica.jpg'];
+    const REAL = {
+      pl: { eyebrow: 'Realizacje', title: 'Wdrożone linie i maszyny u klientów', tag: 'Wdrożenia · Numery referencyjne', ctaEyebrow: 'Twoja realizacja', ctaTitle: 'Zaprojektujemy linię pod Twój produkt i halę.', ctaSub: 'Od pojedynczej maszyny po kompletny ciąg technologiczny — z montażem i uruchomieniem.', ctaBtn: 'Porozmawiajmy', items: [
+        { ref: '2025-014', cat: 'Selekcja', title: 'Linia sortująca do borówki', desc: 'Delikatna selekcja owoców miękkich na taśmie perforowanej — bez uszkodzeń, z odprowadzaniem zanieczyszczeń.' },
+        { ref: '2025-031', cat: 'Pakowanie', title: 'Linia licząco-pakująca do cytrusów', desc: 'Kompletna linia: transport, zliczanie sztuk i automatyczne pakowanie — zaprojektowana i uruchomiona pod klucz.' },
+        { ref: '2025-022', cat: 'Selekcja', title: 'Stół selekcyjny INOX', desc: 'Stanowisko kontroli jakości ze stali nierdzewnej — higieniczne, z zadaszeniem i regulacją prędkości.' },
+        { ref: '2025-008', cat: 'Czyszczenie', title: 'Raszlownica z modułem pakującym', desc: 'Oddzielanie owoców od szypułek i liści z bezpośrednim workowaniem — zwarta, mobilna konstrukcja.' } ] },
+      en: { eyebrow: 'Case studies', title: 'Lines and machines deployed at our clients', tag: 'Installations · Reference numbers', ctaEyebrow: 'Your project', ctaTitle: 'We design a line for your product and your hall.', ctaSub: 'From a single machine to a complete processing line — including assembly and commissioning.', ctaBtn: 'Let’s talk', items: [
+        { ref: '2025-014', cat: 'Selection', title: 'Blueberry sorting line', desc: 'Gentle selection of soft fruit on a perforated belt — no damage, with debris removal.' },
+        { ref: '2025-031', cat: 'Packing', title: 'Citrus counting & packing line', desc: 'Complete line: transport, unit counting and automatic packing — designed and commissioned turnkey.' },
+        { ref: '2025-022', cat: 'Selection', title: 'INOX selection table', desc: 'Stainless-steel quality-control station — hygienic, with a canopy and speed control.' },
+        { ref: '2025-008', cat: 'Cleaning', title: 'Destemmer with packing module', desc: 'Separating fruit from stalks and leaves with direct bagging — compact, mobile design.' } ] },
+      de: { eyebrow: 'Referenzen', title: 'Bei Kunden umgesetzte Linien und Maschinen', tag: 'Installationen · Referenznummern', ctaEyebrow: 'Ihr Projekt', ctaTitle: 'Wir planen die Linie für Ihr Produkt und Ihre Halle.', ctaSub: 'Von der einzelnen Maschine bis zur kompletten Linie — inklusive Montage und Inbetriebnahme.', ctaBtn: 'Sprechen wir', items: [
+        { ref: '2025-014', cat: 'Selektion', title: 'Sortierlinie für Heidelbeeren', desc: 'Schonende Selektion von Weichobst auf perforiertem Band — ohne Beschädigung, mit Schmutzabführung.' },
+        { ref: '2025-031', cat: 'Verpackung', title: 'Zähl- und Verpackungslinie für Zitrus', desc: 'Komplette Linie: Transport, Stückzählung und automatisches Verpacken — schlüsselfertig geplant.' },
+        { ref: '2025-022', cat: 'Selektion', title: 'INOX-Sortiertisch', desc: 'Qualitätskontrollplatz aus Edelstahl — hygienisch, mit Überdachung und Geschwindigkeitsregelung.' },
+        { ref: '2025-008', cat: 'Reinigung', title: 'Rebler mit Verpackungsmodul', desc: 'Trennen von Früchten, Stielen und Blättern mit direktem Absacken — kompakte, mobile Bauweise.' } ] },
+      ru: { eyebrow: 'Проекты', title: 'Линии и машины, внедрённые у клиентов', tag: 'Внедрения · Референсные номера', ctaEyebrow: 'Ваш проект', ctaTitle: 'Спроектируем линию под ваш продукт и цех.', ctaSub: 'От отдельной машины до полной технологической линии — с монтажом и пуско-наладкой.', ctaBtn: 'Обсудим', items: [
+        { ref: '2025-014', cat: 'Селекция', title: 'Линия сортировки голубики', desc: 'Бережная селекция мягких плодов на перфорированной ленте — без повреждений, с отводом примесей.' },
+        { ref: '2025-031', cat: 'Упаковка', title: 'Линия счёта и упаковки цитрусовых', desc: 'Полная линия: транспорт, подсчёт штук и автоматическая упаковка — под ключ.' },
+        { ref: '2025-022', cat: 'Селекция', title: 'Селекционный стол INOX', desc: 'Пост контроля качества из нержавеющей стали — гигиеничный, с навесом и регулировкой скорости.' },
+        { ref: '2025-008', cat: 'Очистка', title: 'Гребнеотделитель с упаковкой', desc: 'Отделение плодов от веточек и листьев с прямым затариванием — компактная мобильная конструкция.' } ] },
+      fr: { eyebrow: 'Réalisations', title: 'Lignes et machines déployées chez nos clients', tag: 'Installations · Numéros de référence', ctaEyebrow: 'Votre projet', ctaTitle: 'Nous concevons la ligne pour votre produit et votre atelier.', ctaSub: 'De la machine unique à la ligne complète — montage et mise en service inclus.', ctaBtn: 'Discutons', items: [
+        { ref: '2025-014', cat: 'Sélection', title: 'Ligne de tri pour myrtilles', desc: 'Sélection délicate des fruits fragiles sur bande perforée — sans dommage, avec évacuation des impuretés.' },
+        { ref: '2025-031', cat: 'Conditionnement', title: 'Ligne de comptage et conditionnement d’agrumes', desc: 'Ligne complète : transport, comptage et conditionnement automatique — clé en main.' },
+        { ref: '2025-022', cat: 'Sélection', title: 'Table de sélection INOX', desc: 'Poste de contrôle qualité en inox — hygiénique, avec auvent et réglage de vitesse.' },
+        { ref: '2025-008', cat: 'Nettoyage', title: 'Égrappoir avec module de conditionnement', desc: 'Séparation des fruits, tiges et feuilles avec ensachage direct — structure compacte et mobile.' } ] },
+    };
+    const realBase = REAL[lang] || REAL.pl;
+    const realItems = realBase.items.map((it, i) => ({ ref: it.ref, cat: it.cat, title: it.title, desc: it.desc, imgCss: 'url("' + RZIMG[i] + '")' }));
+    const year = new Date().getFullYear();
+    const PX = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
+    const phFeatured = Array.from({ length: 6 }, (_, i) => ({ idx: String(i + 1).padStart(2, '0'), id: 'ph' + i, img: PX, models: '', name: '', short: '', cat: '', href: '#' }));
+    const empty = { t: {}, langs: [], heroStats: [], steps: [], whyItems: [], featured: phFeatured, cats: [], linePoints: [],
+      contact: {}, curLabel: '', langOpen: false, sent: false, notSent: true, mobClass: '', year, active: 0, featuredCount: '06', machinesTotal: '',
+      real: realBase, realItems,
+      activeStep: { idx: '01', n: '01', name: '', desc: '' }, dotLeft: '7.14%', lineState: '▶', paused: false, marqueeA: '', marqueeB: '', heroCaption: '', heroSectors: [], heroImg: 'assets/kp5000.webp', heroCode: 'KP5000G', heroName: '', heroShow: [], heroCounter: '', heroBigNum: '01', linesCaption: '', lineTagline: '',
+      toggleLang: () => {}, toggleMobile: () => {}, closeMobile: () => {}, onSubmit: (e) => e && e.preventDefault() };
+    if (!D) return empty;
+
+    const t = D.UI[lang];
+    const pad = (i) => String(i + 1).padStart(2, '0');
+    const active = Math.min(this.state.active, t.steps.length - 1);
+
+    const nSteps = t.steps.length;
+    const steps = t.steps.map((s, i) => {
+      const on = i === active;
+      return { idx: pad(i), name: s.name, desc: s.desc, n: pad(i),
+        pick: () => this.pickStep(i),
+        dotBg: on ? 'var(--accent,#B7D44B)' : '#1E2113', dotBorder: on ? 'var(--accent,#B7D44B)' : '#41571F',
+        dotText: on ? '#14160E' : '#8FA862', labelColor: on ? '#ECE7D7' : '#7E8A63' };
+    });
+    const as = t.steps[active];
+    const activeStep = { idx: pad(active), n: pad(active), name: as.name, desc: as.desc };
+    const dotLeft = (((active + 0.5) / nSteps) * 100).toFixed(2) + '%';
+    const lineState = this.state.paused ? '❙❙' : '▶';
+
+    const whyItems = t.why.items.map((w, i) => ({ n: pad(i), title: w.title, desc: w.desc }));
+    const byId = (id) => D.MACHINES.find((m) => m.id === id);
+    const catName = (cid) => D.CATEGORIES.find((c) => c.id === cid).name[lang];
+    const featured = D.FEATURED.map((id, i) => {
+      const m = byId(id);
+      return { idx: pad(i), id: m.id, img: m.img, imgCss: m.img ? ('url("' + m.img + '")') : undefined, models: m.models, name: m.name[lang], short: m.short[lang],
+        cat: catName(m.cat), href: 'maszyny/' + m.slug + '/index.html' };
+    });
+    const CAT_ICONS = {
+      unload: 'M4 13h16v7H4z M8 16.5h2 M14 16.5h2 M12 10V3 M8.5 6.5 12 3l3.5 3.5',
+      reception: 'M4 4h16l-6 8v8h-4v-8z',
+      cleaning: 'M8 12a4 4 0 1 0 8 0a4 4 0 1 0 -8 0 M12 4v2 M12 18v2 M4 12h2 M18 12h2 M6.3 6.3l1.4 1.4 M16.3 16.3l1.4 1.4 M17.7 6.3l-1.4 1.4 M7.7 16.3l-1.4 1.4',
+      sorting: 'M3 20h18 M4.5 16.5a1.7 1.7 0 1 0 3.4 0a1.7 1.7 0 1 0 -3.4 0 M9.7 15.6a2.6 2.6 0 1 0 5.2 0a2.6 2.6 0 1 0 -5.2 0 M15.4 14.6a3.6 3.6 0 1 0 7.2 0a3.6 3.6 0 1 0 -7.2 0',
+      selection: 'M4 11a6.5 6.5 0 1 0 13 0a6.5 6.5 0 1 0 -13 0 M15.3 15.8 20 20.5 M7.8 11l2.1 2.1 3.8-3.8',
+      weighing: 'M9 8h6l2 10a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2z M9.5 8a2.5 2.5 0 0 1 5 0',
+      packing: 'M4 8l8-4 8 4v8l-8 4-8-4z M4 8l8 4 8-4 M12 12v8',
+      palletising: 'M3 18h18 M4 18v3 M12 18v3 M20 18v3 M6 12h5.2v6H6z M12.8 12H18v6h-5.2z M9.4 6h5.2v6H9.4z',
+      conveyors: 'M6.5 13h11a3 3 0 0 1 0 6h-11a3 3 0 0 1 0-6z M9 5h6v4H9z',
+      weeding: 'M12 21v-8 M12 13c0-4 3-6.5 7.5-6.5-.8 4.5-3.5 6.5-7.5 6.5z M12 13c0-4-3-6.5-7.5-6.5.8 4.5 3.5 6.5 7.5 6.5z',
+    };
+    const cats = D.CATEGORIES.map((c, i) => ({ idx: pad(i), name: c.name[lang], icon: CAT_ICONS[c.id] || CAT_ICONS.packing,
+      count: D.MACHINES.filter((m) => m.cat === c.id).length, href: 'maszyny/' + c.slug + '/index.html' }));
+    const heroStats = [
+      { n: t.hero.s1n, l: t.hero.s1l }, { n: t.hero.s2n, l: t.hero.s2l }, { n: t.hero.s3n, l: t.hero.s3l },
+    ];
+    const langs = D.LANGS.map((l) => ({ code: l.code, label: l.label, name: l.name, pick: () => this.setLang(l.code) }));
+    const cur = D.LANGS.find((l) => l.code === lang) || D.LANGS[0];
+    const linePoints = t.lines.points.map((p, i) => ({ i: i + 1, text: p }));
+
+    const heroShowRaw = ['kosz', 'czyszczarka', 'kalibrownik', 'przenosnik-poprzeczny', 'formator']
+      .map((id) => D.MACHINES.find((m) => m.id === id)).filter((m) => m && m.img)
+      .map((m) => { const parts = m.models.split(/[·–—]/).map((x) => x.trim()).filter(Boolean); return { img: m.img, code: (parts[parts.length - 1] || m.models).trim(), name: m.name[lang] }; });
+    const heroList = heroShowRaw.length ? heroShowRaw : [{ img: 'assets/kp5000.webp', code: 'KP5000G', name: '' }];
+    const hi = this.state.heroIdx % heroList.length;
+    const heroCur = heroList[hi];
+    this._heroSrc = heroCur.img;
+    const heroShow = heroList.map((s, i) => ({ w: i === hi ? '22px' : '6px', bg: i === hi ? '#8C3A43' : 'rgba(20,22,14,.25)', pick: () => this.setState({ heroIdx: i }) }));
+    const heroCounter = String(hi + 1).padStart(2, '0') + ' / ' + String(heroList.length).padStart(2, '0');
+    const heroBigNum = String(hi + 1).padStart(2, '0');
+
+    const marqueeItems = D.CATEGORIES.map((c) => c.name[lang]);
+    const mq = marqueeItems.map((x) => '◆ ' + x + '   ').join('');
+
+    return {
+      t, langs, heroStats, steps, whyItems, featured, featuredReady: featured, cats, linePoints,
+      featuredCount: String(featured.length).padStart(2, '0'),
+      machinesTotal: String(D.MACHINES.length).padStart(2, '0'),
+      real: realBase, realItems,
+      contact: D.CONTACT, curLabel: cur.label, langOpen: this.state.langOpen,
+      sent: this.state.sent, notSent: !this.state.sent, mobClass: this.state.mobileOpen ? 'is-open' : '', year, active,
+      activeStep, dotLeft, lineState, paused: this.state.paused, marqueeA: mq, marqueeB: mq,
+      heroImg: heroCur.img, heroCode: heroCur.code, heroName: heroCur.name, heroShow, heroCounter: heroCounter, heroBigNum,
+      heroCaption: ({ pl: 'Kosz przyjęciowy', en: 'Receiving hopper', de: 'Annahmebunker', ru: 'Приёмный бункер', fr: 'Trémie de réception' })[lang] || t.hero.s2l,
+      heroSectors: ({ pl: ['Rolnictwo', 'Przetwórstwo', 'Przemysł'], en: ['Agriculture', 'Food processing', 'Industry'], de: ['Landwirtschaft', 'Verarbeitung', 'Industrie'], ru: ['Агро', 'Переработка', 'Промышленность'], fr: ['Agriculture', 'Transformation', 'Industrie'] })[lang] || [],
+      linesCaption: t.lines.eyebrow, lineTagline: t.process.eyebrow,
+      toggleLang: () => this.setState({ langOpen: !this.state.langOpen }),
+      toggleMobile: () => this.setState({ mobileOpen: !this.state.mobileOpen }),
+      closeMobile: () => this.setState({ mobileOpen: false }),
+      onSubmit: (e) => { e.preventDefault(); this.setState({ sent: true }); },
+    };
+  }
+}
+</script>
+</body>
+</html>
