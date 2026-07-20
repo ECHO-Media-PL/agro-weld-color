@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: agro-weld
+    runtime: static
+    staticPublishPath: .
+    routes:
+      - type: rewrite
+        source: /
+        destination: /Strona-glowna.dc.html
+      - type: rewrite
+        source: /maszyny
+        destination: /Oferta.dc.html
+      - type: rewrite
+        source: /maszyny/
+        destination: /Oferta.dc.html
