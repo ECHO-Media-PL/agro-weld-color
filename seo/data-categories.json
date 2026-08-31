@@ -1,0 +1,122 @@
+[
+ {
+  "slug": "rozladunek-skrzyn",
+  "id": "unload",
+  "name": "Rozładunek skrzyń",
+  "old": "Rozładunek skrzyń",
+  "meta": "Wywrotnice skrzyniopalet do rozładunku warzyw i owoców. Udźwig do 2 t, bezpieczne siłowniki. Polski producent Agro-Weld — zapytaj o ofertę.",
+  "desc": [
+   "Rozładunek skrzyń i skrzyniopalet to pierwszy etap każdej linii technologicznej. Maszyny z tej kategorii przejmują plon zmagazynowany w skrzyniach i podają go na linię w sposób ciągły, równomierny i bezpieczny dla produktu — bez zrzucania towaru z wysokości i bez obtłuczeń.",
+   "Wywrotnice skrzyniopalet Agro-Weld obsługują skrzynie o masie do 2 ton, a bezpieczne siłowniki hydrauliczne pozwalają pracować z nimi jednej osobie. Konstrukcję dopasowujemy do wymiarów skrzyń stosowanych w gospodarstwie oraz wysokości podania na kolejną maszynę."
+  ],
+  "more": "Maszyny do rozładunku projektujemy pod ciężkie, sezonowe użytkowanie — z bezpiecznym sterowaniem i konstrukcją dostosowaną do skrzyń stosowanych w gospodarstwie."
+ },
+ {
+  "slug": "przyjecie-i-buforowanie",
+  "id": "reception",
+  "name": "Przyjęcie i buforowanie",
+  "old": "Przyjęcie i buforowanie",
+  "meta": "Kosze przyjęciowe i zasobniki buforowe 1–24 m³ do przyjęcia plonu i wyrównania przepływu na linii. Polski producent Agro-Weld.",
+  "desc": [
+   "Przyjęcie i buforowanie decyduje o płynności pracy całej linii. Kosze przyjęciowe odbierają plon bezpośrednio z przyczep i skrzyń, a zasobniki buforowe wyrównują jego przepływ — dzięki temu kolejne maszyny pracują bez przestojów i przeciążeń.",
+   "Oferujemy kosze przyjęciowe o pojemności od 1 do 5 m³ oraz zasobniki buforowe rozbudowywane nadstawkami do 24 m³. Prędkość podawania regulowana jest falownikiem, a wysokość i kierunek wyładunku dopasowujemy do układu linii."
+  ],
+  "more": "Urządzenia przyjęciowe budujemy pod konkretną wydajność linii — z regulacją prędkości podawania i geometrią wyładunku dopasowaną do kolejnych maszyn."
+ },
+ {
+  "slug": "oczyszczanie",
+  "id": "cleaning",
+  "name": "Oczyszczanie",
+  "old": "Oczyszczanie",
+  "meta": "Separatory ziemi i kamieni, czyszczarki szczotkowe i wanny płuczące do warzyw. Wydajność do 10 t/h. Producent Agro-Weld — zapytaj o ofertę.",
+  "desc": [
+   "Oczyszczanie usuwa z plonu ziemię, kamienie, natkę i resztki roślinne, zanim produkt trafi do sortowania i pakowania. Czysty towar to mniejsze zużycie kolejnych maszyn, dokładniejsza selekcja i lepsza prezentacja produktu końcowego.",
+   "W ofercie znajdują się separatory gwiaździste o wydajności do 10 t/h, czyszczarki szczotkowe ze szczotkami prostymi lub falowanymi do warzyw okrągłych i podłużnych, specjalistyczna czyszczarka do imbiru i chrzanu oraz wanny do wstępnego płukania warzyw korzeniowych."
+  ],
+  "more": "Dobór szczotek, wałków i intensywności czyszczenia dopasowujemy do rodzaju warzyw — tak, aby skutecznie usuwać zabrudzenia bez uszkadzania skórki."
+ },
+ {
+  "slug": "sortowanie",
+  "id": "sorting",
+  "name": "Sortowanie",
+  "old": "Sortowanie",
+  "meta": "Kalibrowniki i sortowniki do warzyw i owoców drobnych — sortowanie wg wielkości i jakości. Polski producent Agro-Weld.",
+  "desc": [
+   "Sortowanie dzieli towar według wielkości, co pozwala uzyskać powtarzalne, jednolite partie produktu i wyższą cenę sprzedaży. To także warunek dokładnego ważenia i estetycznego pakowania.",
+   "Kalibrowniki rozsuwane Agro-Weld umożliwiają zmianę rozstawu wałków korbką w kilka sekund — bez narzędzi i bez przezbrajania. Do owoców miękkich oferujemy sortowniki bębnowe o delikatnej pracy, w tym dwubębnowy sortownik z białą taśmą i oświetleniem LED."
+  ],
+  "more": "Sortowniki i kalibrowniki budujemy z myślą o delikatnym prowadzeniu produktu — frakcje, rozstawy i wydajność ustalamy pod plan produkcji klienta."
+ },
+ {
+  "slug": "selekcja",
+  "id": "selection",
+  "name": "Selekcja",
+  "old": "Selekcja",
+  "meta": "Stoły selekcyjne taśmowe i rolkowe do ręcznej kontroli jakości warzyw i owoców. Oświetlenie LED, wykonanie INOX. Producent Agro-Weld.",
+  "desc": [
+   "Selekcja to ręczna kontrola jakości — ostatni moment, w którym z linii można odrzucić towar uszkodzony lub niespełniający wymagań odbiorcy. Dobrze zaprojektowane stanowisko selekcyjne podnosi dokładność pracy i komfort obsługi.",
+   "Stoły selekcyjne taśmowe prowadzą produkt na taśmie PCV z konfigurowalnymi podzielnicami, a stoły rolkowe obracają towar na rolkach aluminiowych lub plastikowych, odsłaniając całą powierzchnię. Oba typy wyposażamy w oświetlenie LED, regulację prędkości i — na życzenie — wykonanie ze stali nierdzewnej."
+  ],
+  "more": "Stanowiska selekcyjne konfigurujemy pod liczbę osób obsługi, rodzaj produktu i wymagania higieniczne — łącznie z wykonaniem INOX i zadaszeniem."
+ },
+ {
+  "slug": "wazenie",
+  "id": "weighing",
+  "name": "Ważenie",
+  "old": "Ważenie",
+  "meta": "Liczarki owoców i wagi kontrolne — dokładne porcje i kontrola opakowań w ruchu. Polski producent Agro-Weld — zapytaj o ofertę.",
+  "desc": [
+   "Ważenie i liczenie zapewnia powtarzalność porcji i zgodność opakowań z deklarowaną masą. Dokładność na tym etapie przekłada się bezpośrednio na koszty — każda nadwyżka w opakowaniu to strata, każdy niedobór to reklamacja.",
+   "Liczarki Agro-Weld precyzyjnie liczą większe owoce na sztuki w wersji jedno- lub dwurzędowej. Wagi kontrolne ważą opakowania dynamicznie, w ruchu, i automatycznie odrzucają te poza tolerancją."
+  ],
+  "more": "Systemy ważące integrujemy z maszynami pakującymi tak, aby porcje były powtarzalne przy pełnej wydajności linii."
+ },
+ {
+  "slug": "pakowanie",
+  "id": "packing",
+  "name": "Pakowanie",
+  "old": "Pakowanie",
+  "meta": "Wagoworkownice, raszlownice i napełniacze — pakowanie warzyw do worków, big-bagów i skrzyń, 1–30 kg. Producent Agro-Weld.",
+  "desc": [
+   "Pakowanie zamyka proces obróbki — gotowy produkt trafia do worków, siatek, big-bagów lub skrzyń w formie gotowej do sprzedaży. Maszyny pakujące Agro-Weld obsługują opakowania od 1 do 30 kg oraz big-bagi i skrzyniopalety.",
+   "Wagoworkownice dozują i pakują z panelem dotykowym 7\", raszlownice współpracują z zaszywarkami Fischbein, Newlong i Yao Han, a napełniacze kaskadowe delikatnie ładują big-bagi i skrzynie. Stoły obrotowe i bufory do pakowania organizują pracę ręczną na końcu linii."
+  ],
+  "more": "Maszyny pakujące dobieramy pod format opakowania, wydajność i sposób zamykania — z integracją zaszywarek i systemów ważących."
+ },
+ {
+  "slug": "paletyzacja",
+  "id": "palletising",
+  "name": "Paletyzacja",
+  "old": "Paletyzacja",
+  "meta": "Paletyzatory Verbruggen i formatory palet — automatyczne układanie worków i opakowań na palecie. Producent Agro-Weld.",
+  "desc": [
+   "Paletyzacja przygotowuje gotowe opakowania do magazynowania i transportu. Automatyzacja tego etapu eliminuje najcięższą pracę fizyczną na linii i stabilizuje tempo wysyłek.",
+   "Jako partner Verbruggen dostarczamy automatyczne paletyzatory do worków, skrzynek i kartonów. Uzupełnieniem oferty są formatory palet własnej konstrukcji, które optymalizują ręczne układanie worków na palecie euro lub przemysłowej dzięki składanym ścianom."
+  ],
+  "more": "Rozwiązania paletyzujące dobieramy pod format opakowań, wysokość składowania i dostępne miejsce w hali."
+ },
+ {
+  "slug": "przenosniki-tasmowe",
+  "id": "conveyors",
+  "name": "Przenośniki taśmowe",
+  "old": "Przenośniki taśmowe",
+  "meta": "Przenośniki taśmowe, rolkowe i modularne — szer. 20–90 cm, dł. do 12 m, taśmy z atestem. Polski producent Agro-Weld.",
+  "desc": [
+   "Przenośniki spinają wszystkie maszyny w jedną, płynnie działającą linię. Od ich właściwego doboru zależy delikatność transportu, wysokości podań i logika całego układu technologicznego.",
+   "Produkujemy przenośniki taśmowe, rolkowe i modularne o szerokościach 20–90 cm i długościach od 1 do 12 m, z kątem wznosu do 50°. Stosujemy taśmy z atestem do kontaktu z żywnością. Przenośniki poprzeczne z amortyzującymi zabierakami podają odważone porcje bezpośrednio do maszyn pakujących."
+  ],
+  "more": "Każdy przenośnik wykonujemy na wymiar — z geometrią, taśmą i napędem dobranymi do produktu i układu hali."
+ },
+ {
+  "slug": "pielenie",
+  "id": "weeding",
+  "name": "Pielenie",
+  "old": "Pielenie",
+  "meta": "Pielniki do mechanicznego odchwaszczania międzyrzędzi i obróbki redlin. Sekcje na równoległoboku. Producent Agro-Weld.",
+  "desc": [
+   "Pielenie mechaniczne ogranicza użycie herbicydów i utrzymuje międzyrzędzia w czystości przez cały sezon. To kategoria maszyn polowych Agro-Weld, uzupełniająca ofertę linii do obróbki pozbiorczej.",
+   "Pielniki do obróbki redlin prowadzą sekcje robocze na równoległoboku, dzięki czemu wiernie kopiują teren i pracują blisko rzędu bez uszkadzania roślin. Maszyny formują redliny i odchwaszczają międzyrzędzia w jednym przejeździe."
+  ],
+  "more": "Pielniki konfigurujemy pod rozstaw rzędów, typ redlin i ciągnik, którym dysponuje gospodarstwo."
+ }
+]

@@ -1,18 +1,36 @@
 services:
   - type: web
+    name: agro-weld-cms
+    runtime: node
+    rootDir: cms
+    startCommand: node server.js
+    plan: starter
+    envVars:
+      - key: ADMIN_EMAIL
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: ADMIN_USERS
+        sync: false
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: GITHUB_TOKEN
+        sync: false
+      - key: GITHUB_REPO
+        value: ECHO-Media-PL/agro-weld-color
+      - key: GITHUB_BRANCH
+        value: main
+      - key: ANTHROPIC_API_KEY
+        sync: false
+  - type: web
     name: agro-weld
     runtime: static
+    buildCommand: node build.js
     staticPublishPath: .
     routes:
-      - type: rewrite
-        source: /
-        destination: /Strona-glowna.dc.html
-      - type: rewrite
-        source: /maszyny
-        destination: /Oferta.dc.html
-      - type: rewrite
-        source: /maszyny/
-        destination: /Oferta.dc.html
-      - type: rewrite
+      - type: redirect
         source: /maszyny/kosz-przyjeciowy
-        destination: /Kosz-przyjeciowy.dc.html
+        destination: /maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe
+      - type: redirect
+        source: /maszyny/kosz-przyjeciowy/
+        destination: /maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/

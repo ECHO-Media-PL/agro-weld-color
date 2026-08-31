@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agro-Weld CMS</title>
+<meta name="robots" content="noindex,nofollow">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Chakra+Petch:wght@600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Hanken Grotesk',sans-serif;background:#EFEDE4;color:#14160E;-webkit-font-smoothing:antialiased}
+button{font-family:inherit;cursor:pointer}
+input,textarea,select{font-family:inherit;font-size:14px}
+input:focus,textarea:focus,[contenteditable]:focus{outline:2px solid #B7D44B;outline-offset:-1px}
+.mono{font-family:'Space Mono',monospace}
+.card{background:#fff;border:1px solid #DDD9C9;border-radius:12px;padding:24px}
+.lbl{display:block;font-size:13px;font-weight:700;margin-bottom:6px}
+.inp{width:100%;padding:11px 13px;border-radius:8px;border:1px solid #C9C5B4;background:#FDFCF8;font-size:14.5px}
+textarea.inp{resize:vertical;line-height:1.5}
+.btn{padding:11px 20px;border-radius:8px;border:0;font-size:14px;font-weight:700}
+.btn-p{background:#B7D44B;color:#14160E}.btn-p:hover{background:#c8e45c}
+.btn-d{background:#14160E;color:#B7D44B}
+.btn-o{background:#fff;border:1px solid #C9C5B4;color:#14160E;font-weight:600}
+.btn:disabled{background:#EFEDE4;color:#B0AC9C;cursor:default}
+.cnt{font-family:'Space Mono',monospace;font-size:11.5px;font-weight:700}
+.bar{height:4px;background:#EFEDE4;border-radius:2px;margin-top:7px;overflow:hidden}
+.bar>div{height:100%;border-radius:2px;transition:width .2s}
+.navbtn{text-align:left;padding:10px 12px;border-radius:8px;border:0;font-size:14px;font-weight:600;background:none;color:#A7AE92;width:100%}
+.navbtn:hover{background:rgba(236,231,215,.07)}
+.navbtn.on{background:#B7D44B;color:#14160E}
+.pill{font-size:12px;font-weight:700;padding:5px 10px;border-radius:14px}
+.tabbtn{padding:8px 16px;border-radius:20px;font-size:13px;font-weight:600;border:1px solid #C9C5B4;background:#fff;color:#4A4D3E}
+.tabbtn.on{border-color:#14160E;background:#14160E;color:#B7D44B}
+.art[contenteditable]{min-height:320px;font-size:15.5px;line-height:1.7;color:#2A2C20;padding:4px 2px}
+.art h2{font-family:'Chakra Petch',sans-serif;font-size:21px;margin:18px 0 8px}
+.art h3{font-family:'Chakra Petch',sans-serif;font-size:17px;margin:14px 0 6px}
+.art ul,.art ol{padding-left:24px;margin:8px 0}
+.art p{margin:8px 0}
+.art img{max-width:100%;border:1px solid #DDD9C9;border-radius:8px;margin:8px 0}
+.art a{color:#41571F}
+.row{display:flex;gap:14px;align-items:center}
+.hidden{display:none!important}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+'use strict';
+// ============ stan ============
+const S = { view: 'login', files: {}, dirty: {}, bins: [], seoPage: 'index.html', txtGroup: 'hero', post: null, pub: 'idle', lastErr: null, machEdit: null, posts: [] };
+const LIM = { title: 60, desc: 160, alt: 125 };
+const GROUPS = [['hero','Hero (góra strony)'],['process','Proces linii'],['featured','Wybrane maszyny'],['why','Dlaczego my'],['catalog','Pełna oferta'],['lines','Linie produkcyjne'],['real','Realizacje'],['blogsec','Sekcja blog'],['verbruggen','Verbruggen'],['contact','Kontakt'],['footer','Stopka']];
+const LABELS = { 'titleA':'Nagłówek — linia 1','titleB':'Nagłówek — linia 2 (zielona)','sub':'Tekst pod nagłówkiem','h2':'Nagłówek sekcji','stat1n':'Statystyka 1 — liczba','stat1l':'Statystyka 1 — opis','stat2n':'Statystyka 2 — liczba','stat2l':'Statystyka 2 — opis','stat3n':'Statystyka 3 — liczba','stat3l':'Statystyka 3 — opis','p1':'Punkt 1','p2':'Punkt 2','p3':'Punkt 3','addr':'Adres','phones':'Telefony','email':'E-mail','hours':'Godziny pracy','tagline':'Opis firmy' };
+const CATS = [['Dobór maszyn','dobor'],['Oczyszczanie','oczyszczanie'],['Pakowanie','pakowanie'],['Paletyzacja','paletyzacja'],['Linie technologiczne','linie']];
+const PAGE_NAMES = { 'index.html':'Strona główna','maszyny/index.html':'Katalog maszyn','blog/index.html':'Blog — lista','maszyny/przyjecie-i-buforowanie/index.html':'Przyjęcie i buforowanie' };
+const $ = s => document.querySelector(s);
+const escH = s => String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const slugify = s => s.toLowerCase().replace(/[ąćęłńóśźż]/g, c=>({'ą':'a','ć':'c','ę':'e','ł':'l','ń':'n','ó':'o','ś':'s','ź':'z','ż':'z'}[c])).replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'').slice(0,70);
+async function api(p, opts) { const r = await fetch(p, Object.assign({credentials:'same-origin'}, opts)); const d = await r.json(); if (r.status===401 && S.view!=='login'){S.view='login';render();throw new Error('auth')} if (!r.ok) throw Object.assign(new Error(d.error||('HTTP '+r.status)), {details:d.details}); return d; }
+async function loadJSON(path) { if (S.files[path]) return S.files[path]; const r = await api('/api/file?path='+encodeURIComponent(path)); S.files[path] = JSON.parse(r.text); return S.files[path]; }
+function touch(path) { S.dirty[path] = true; S.pub='idle'; renderTop(); }
+const dirtyCount = () => Object.keys(S.dirty).length + S.bins.length;
+
+// ============ publikacja ============
+async function publish() {
+  if (S.pub==='run') return;
+  S.pub='run'; S.lastErr=null; renderTop();
+  try {
+    const files = Object.keys(S.dirty).map(p => ({ path: p, text: JSON.stringify(S.files[p], null, 1) }))
+      .concat(S.bins.map(b => ({ path: b.path, base64: b.base64 })));
+    await api('/api/publish', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ files, message: 'CMS: aktualizacja treści ('+files.length+' plików)' }) });
+    S.dirty={}; S.bins=[]; S.pub='done';
+  } catch(e) { S.pub='err'; S.lastErr = (e.message||'Błąd') + (e.details ? '\n• '+e.details.join('\n• ') : ''); }
+  renderTop();
+}
+
+// ============ widoki ============
+function render() {
+  const app = $('#app');
+  if (S.view==='login') { app.innerHTML = loginView(); return; }
+  app.innerHTML = `
+  <div style="display:grid;grid-template-columns:232px 1fr;min-height:100vh">
+    <aside style="background:#14160E;color:#ECE7D7;padding:22px 0;display:flex;flex-direction:column;position:sticky;top:0;height:100vh">
+      <div style="display:flex;align-items:center;gap:9px;padding:0 22px;margin-bottom:30px">
+        <span style="width:8px;height:8px;background:#B7D44B"></span>
+        <span style="font-family:'Chakra Petch',sans-serif;font-size:16px;font-weight:700">AGRO-WELD</span>
+        <span class="mono" style="font-size:10px;color:#7E8A63;letter-spacing:.14em">CMS</span>
+      </div>
+      <nav style="display:flex;flex-direction:column;gap:2px;padding:0 12px">
+        ${[['dash','◧ Pulpit'],['seo','⌕ SEO podstron'],['texts','¶ Teksty na stronie'],['machines','⚙ Maszyny'],['blog','✎ Blog']].map(([v,l]) =>
+          `<button class="navbtn ${S.view===v||S.view==='blogedit'&&v==='blog'?'on':''}" onclick="go('${v}')">${l}</button>`).join('')}
+      </nav>
+      <div style="margin-top:auto;padding:18px 22px;border-top:1px solid rgba(236,231,215,.1)">
+        <button class="navbtn" style="padding:4px 0;font-size:12px;color:#7E8A63" onclick="logout()">Wyloguj →</button>
+      </div>
+    </aside>
+    <main style="display:flex;flex-direction:column">
+      <header id="topbar" style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 32px;background:#fff;border-bottom:1px solid #DDD9C9;position:sticky;top:0;z-index:5"></header>
+      <div id="main" style="flex:1;padding:28px 32px"></div>
+    </main>
+  </div>`;
+  renderTop(); renderMain();
+}
+function renderTop() {
+  const t = $('#topbar'); if (!t) return;
+  const names = { dash:'Pulpit', seo:'SEO podstron', texts:'Teksty na stronie', machines:'Maszyny', blog:'Blog', blogedit:'Blog — edycja wpisu' };
+  const n = dirtyCount();
+  t.innerHTML = `<div style="font-family:'Chakra Petch',sans-serif;font-size:17px;font-weight:700">${names[S.view]||''}</div>
+  <div class="row">
+    ${S.pub==='run' ? `<span class="mono" style="font-size:12px;color:#41571F">⟳ Publikowanie…</span>` : ''}
+    ${S.pub==='done' ? `<span style="font-size:12.5px;color:#41571F;font-weight:600">✓ Opublikowano — zmiany na stronie za ~2 min</span>` : ''}
+    ${S.pub==='err' ? `<span style="font-size:12.5px;color:#8C3A43;font-weight:600;white-space:pre-line;max-width:480px">${escH(S.lastErr)}</span>` : ''}
+    ${n&&S.pub!=='run' ? `<span style="font-size:12.5px;color:#8C3A43;font-weight:600">● Niezapisane zmiany (${n})</span>` : ''}
+    <button class="btn ${n?'btn-p':''}" ${n&&S.pub!=='run'?'':'disabled'} onclick="publish()">${S.pub==='run'?'Publikuję…':'Opublikuj zmiany'}</button>
+  </div>`;
+}
+window.go = async v => { S.view=v; render(); };
+window.logout = async () => { await fetch('/api/logout',{credentials:'same-origin'}); S.view='login'; render(); };
+
+function loginView() {
+  return `<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:#14160E">
+  <form onsubmit="doLogin(event)" style="width:400px;background:#1E2113;border:1px solid rgba(236,231,215,.14);border-radius:14px;padding:40px 36px">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
+      <span style="width:9px;height:9px;background:#B7D44B"></span>
+      <span style="font-family:'Chakra Petch',sans-serif;font-size:20px;font-weight:700;color:#ECE7D7">AGRO-WELD</span>
+      <span class="mono" style="font-size:11px;color:#7E8A63;letter-spacing:.14em">CMS</span>
+    </div>
+    <p style="font-size:13.5px;color:#A7AE92;margin-bottom:28px">Panel zarządzania treścią agro-weld.pl</p>
+    <label style="display:block;font-size:12px;font-weight:600;color:#A7AE92;margin-bottom:6px">E-MAIL</label>
+    <input id="lgE" class="inp" style="background:#14160E;color:#ECE7D7;border-color:rgba(236,231,215,.18);margin-bottom:14px" autocomplete="username">
+    <label style="display:block;font-size:12px;font-weight:600;color:#A7AE92;margin-bottom:6px">HASŁO</label>
+    <input id="lgP" type="password" class="inp" style="background:#14160E;color:#ECE7D7;border-color:rgba(236,231,215,.18)" autocomplete="current-password">
+    <div id="lgErr" style="color:#E08894;font-size:13px;margin-top:10px"></div>
+    <button class="btn btn-p" style="width:100%;margin-top:18px;padding:13px">Zaloguj się</button>
+  </form></div>`;
+}
+window.doLogin = async e => {
+  e.preventDefault();
+  try { await api('/api/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:$('#lgE').value.trim(),password:$('#lgP').value})}); S.view='dash'; render(); }
+  catch(err){ $('#lgErr').textContent = err.message; }
+};
+
+async function renderMain() {
+  const m = $('#main'); if (!m) return;
+  m.innerHTML = '<p style="color:#6B6F5C">Wczytuję…</p>';
+  try {
+    if (S.view==='dash') return m.innerHTML = dashView();
+    if (S.view==='seo') { await loadJSON('content/seo.json'); return seoView(m); }
+    if (S.view==='texts') { await loadJSON('content/strona-glowna.json'); return textsView(m); }
+    if (S.view==='machines') { await loadJSON('content/maszyny.json'); return machinesView(m); }
+    if (S.view==='blog') { await loadPosts(); return blogView(m); }
+    if (S.view==='blogedit') return blogEditView(m);
+  } catch(e){ m.innerHTML = `<p style="color:#8C3A43;font-weight:600">Błąd: ${escH(e.message)}</p>`; }
+}
+function dashView() {
+  const cards = [['seo','⌕','SEO podstron','Tytuły i opisy widoczne w Google oraz opisy zdjęć (alty) — z twardymi limitami znaków.'],
+    ['texts','¶','Teksty na stronie','Nagłówki i opisy sekcji strony głównej oraz dane kontaktowe.'],
+    ['machines','⚙','Maszyny','Nazwy, opisy i modele maszyn — zmiana pojawia się wszędzie, gdzie maszyna występuje.'],
+    ['blog','✎','Blog','Nowe wpisy z edytorem wizualnym, zdjęciami i automatycznym SEO.']];
+  return `<div style="max-width:980px">
+    <p style="font-size:14.5px;color:#5E6A47;margin-bottom:24px">Wybierz, co chcesz edytować. Zmiany trafiają na stronę po kliknięciu „Opublikuj zmiany" (ok. 2 minuty).</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+    ${cards.map(([v,i,t,d])=>`<button class="card" style="text-align:left;display:flex;gap:16px;cursor:pointer" onclick="go('${v}')">
+      <span style="font-size:24px">${i}</span><span><span style="display:block;font-family:'Chakra Petch',sans-serif;font-size:16px;font-weight:700;margin-bottom:4px">${t}</span>
+      <span style="display:block;font-size:13.5px;color:#6B6F5C;line-height:1.5">${d}</span></span></button>`).join('')}
+    </div></div>`;
+}
+
+// ---------- SEO ----------
+function counterRow(id, val, max, warnAt) {
+  const len = (val||'').length, col = len>max?'#8C3A43':len>=warnAt?'#7BA829':'#D9A62E';
+  return { cnt: `<span class="cnt" style="color:${col}">${len} / ${max}</span>`, bar: `<div class="bar"><div style="width:${Math.min(100,len/max*100)}%;background:${col}"></div></div>` };
+}
+function seoView(m) {
+  const seo = S.files['content/seo.json'];
+  const pages = Object.keys(seo.pages);
+  if (!seo.pages[S.seoPage]) S.seoPage = pages[0];
+  const p = seo.pages[S.seoPage];
+  const t = counterRow('t', p.title, LIM.title, 40), d = counterRow('d', p.description, LIM.desc, 120);
+  m.innerHTML = `<div style="display:grid;grid-template-columns:250px 1fr;gap:24px;max-width:1100px;align-items:start">
+    <div style="background:#fff;border:1px solid #DDD9C9;border-radius:12px;overflow:hidden">
+      <div style="padding:12px 16px;font-size:11.5px;font-weight:700;letter-spacing:.08em;color:#6B6F5C;border-bottom:1px solid #EFEDE4">PODSTRONY</div>
+      ${pages.map(pg=>`<button onclick="S.seoPage='${pg}';renderMain()" style="width:100%;text-align:left;padding:11px 16px;border:0;border-bottom:1px solid #F5F3EA;font-size:13px;font-weight:600;background:${pg===S.seoPage?'#F3F6E4':'none'};color:#4A4D3E">${escH(PAGE_NAMES[pg]||pg.replace('/index.html','').replace('index.html','Strona główna'))}</button>`).join('')}
+    </div>
+    <div style="display:flex;flex-direction:column;gap:18px">
+      <div class="card">
+        <div class="row" style="justify-content:space-between;margin-bottom:8px"><label class="lbl" style="margin:0">Meta title <span style="font-weight:400;color:#6B6F5C">— tytuł w Google</span></label>${t.cnt}</div>
+        <input class="inp" maxlength="${LIM.title}" value="${escH(p.title)}" oninput="seoSet('title',this.value)">${t.bar}
+        <p style="font-size:12.5px;margin-top:6px;color:${(p.title||'').length>=40?'#41571F':'#9A7B1E'}">${(p.title||'').length>=40?'Dobra długość. Więcej niż '+LIM.title+' znaków nie da się wpisać.':'Trochę za krótki — dobre tytuły mają 40–60 znaków.'}</p>
+        <div class="row" style="justify-content:space-between;margin:20px 0 8px"><label class="lbl" style="margin:0">Meta description <span style="font-weight:400;color:#6B6F5C">— opis pod tytułem</span></label>${d.cnt}</div>
+        <textarea class="inp" rows="3" maxlength="${LIM.desc}" oninput="seoSet('description',this.value)">${escH(p.description)}</textarea>${d.bar}
+      </div>
+      <div class="card">
+        <div style="font-size:11.5px;font-weight:700;letter-spacing:.08em;color:#6B6F5C;margin-bottom:14px">TAK ZOBACZY TO GOOGLE</div>
+        <div style="border:1px solid #EFEDE4;border-radius:10px;padding:18px 20px">
+          <div class="row" style="gap:10px;margin-bottom:6px"><span style="width:26px;height:26px;border-radius:50%;background:#14160E;color:#B7D44B;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700">AW</span>
+          <span><span style="display:block;font-size:13px;color:#202124">Agro-Weld</span><span style="display:block;font-size:12px;color:#5f6368">https://www.agro-weld.pl/${S.seoPage.replace('index.html','')}</span></span></div>
+          <div style="font-size:19px;color:#1a0dab;line-height:1.3;margin-bottom:3px">${escH(p.title)}</div>
+          <div style="font-size:13.5px;color:#4d5156;line-height:1.55">${escH(p.description)}</div>
+        </div>
+      </div>
+      <div class="card">
+        <div style="font-size:11.5px;font-weight:700;letter-spacing:.08em;color:#6B6F5C;margin-bottom:4px">OPISY OBRAZKÓW (ALT)</div>
+        <p style="font-size:13px;color:#6B6F5C;margin-bottom:16px">Opisz, co widać na zdjęciu — czyta to Google i osoby niewidome. Max ${LIM.alt} znaków.</p>
+        <div style="display:flex;flex-direction:column;gap:12px">
+        ${Object.entries(p.alts||{}).map(([src,alt],i)=>{
+          const abs = 'https://www.agro-weld.pl/' + src.replace(/^(\.\.\/)+/, '').replace(/^\//,'');
+          const empty = !(alt||'').trim();
+          return `<div style="display:grid;grid-template-columns:64px 1fr 70px;gap:14px;align-items:center">
+            <img src="${escH(abs)}" alt="" style="width:64px;height:48px;object-fit:contain;border-radius:6px;background:#EFEDE4" onerror="this.style.opacity=.2">
+            <div><input class="inp" style="padding:9px 12px;font-size:13.5px;${empty?'border:2px solid #8C3A43;background:#FDF6F6':''}" maxlength="${LIM.alt}" placeholder="${empty?'Brak opisu! Wpisz, co widać na zdjęciu':''}" value="${escH(alt)}" oninput="altSet(${i},this.value)">
+            <div class="mono" style="font-size:10px;color:#B0AC9C;margin-top:3px">${escH(src)}</div></div>
+            <span class="cnt" style="color:${empty?'#8C3A43':'#6B6F5C'};text-align:right" id="altc${i}">${(alt||'').length}/${LIM.alt}</span>
+          </div>`;}).join('')}
+        </div>
+      </div>
+    </div></div>`;
+}
+window.seoSet = (k,v) => { S.files['content/seo.json'].pages[S.seoPage][k]=v; touch('content/seo.json');
+  clearTimeout(window.__seoT); window.__seoT=setTimeout(()=>{const el=document.activeElement;const pos=el&&el.selectionStart;seoView($('#main'));},700); };
+window.altSet = (i,v) => { const p=S.files['content/seo.json'].pages[S.seoPage]; const k=Object.keys(p.alts)[i]; p.alts[k]=v; touch('content/seo.json'); $('#altc'+i).textContent=v.length+'/'+LIM.alt; };
+
+// ---------- Teksty ----------
+function textsView(m) {
+  const sg = S.files['content/strona-glowna.json'];
+  const keys = Object.keys(sg).filter(k=>k.startsWith(S.txtGroup+'.'));
+  m.innerHTML = `<div style="max-width:860px;display:flex;flex-direction:column;gap:18px">
+    <div style="display:flex;gap:8px;flex-wrap:wrap">${GROUPS.map(([g,l])=>`<button class="tabbtn ${g===S.txtGroup?'on':''}" onclick="S.txtGroup='${g}';renderMain()">${l}</button>`).join('')}</div>
+    <div class="card"><div style="display:flex;flex-direction:column;gap:16px">
+    ${keys.map(k=>{
+      const suffix=k.split('.').slice(1).join('.');
+      const lbl = LABELS[suffix] || autoLabel(suffix);
+      const v = sg[k]; const long = v.length>70;
+      return `<div><label class="lbl">${escH(lbl)} <span class="mono" style="font-weight:400;color:#B0AC9C;font-size:10px">${escH(k)}</span></label>
+        ${long?`<textarea class="inp" rows="3" oninput="txtSet('${k}',this.value)">${escH(v)}</textarea>`
+              :`<input class="inp" value="${escH(v)}" oninput="txtSet('${k}',this.value)">`}</div>`;
+    }).join('')||'<p style="color:#6B6F5C">Brak pól w tej sekcji.</p>'}
+    </div></div>
+    <p style="font-size:12.5px;color:#6B6F5C">Zmiany dotyczą polskiej wersji strony. Wersje językowe (EN/DE/RU/FR) zostaną podpięte, gdy strona będzie miała podstrony językowe.</p></div>`;
+}
+function autoLabel(sfx){
+  const map={name:'Nazwa etapu',desc:'Opis etapu',title:'Tytuł',company:'Nazwa firmy'};
+  const mm=/^(step|i|c)(\d+)\.(\w+)$/.exec(sfx);
+  if(mm) return (mm[1]==='step'?'Etap ':mm[1]==='i'?'Punkt ':'Karta ')+mm[2]+' — '+(map[mm[3]]||mm[3]);
+  return map[sfx]||sfx;
+}
+window.txtSet = (k,v) => { S.files['content/strona-glowna.json'][k]=v; touch('content/strona-glowna.json'); };
+
+// ---------- Maszyny ----------
+function machinesView(m) {
+  const list = S.files['content/maszyny.json'];
+  m.innerHTML = `<div style="max-width:980px">
+    <p style="font-size:13.5px;color:#6B6F5C;margin-bottom:16px">Zmiana nazwy, opisu lub modeli pojawia się wszędzie, gdzie maszyna jest pokazana (m.in. karty na stronie głównej). Opisy zdjęć (alty) edytujesz w sekcji SEO.</p>
+    <div style="background:#fff;border:1px solid #DDD9C9;border-radius:12px;overflow:hidden">
+    ${list.map((x,i)=> S.machEdit===i ? `
+      <div style="padding:18px 20px;border-bottom:1px solid #F5F3EA;background:#FBFAF3;display:flex;flex-direction:column;gap:12px">
+        <div style="display:grid;grid-template-columns:1fr 260px;gap:12px">
+          <div><label class="lbl">Nazwa maszyny</label><input class="inp" value="${escH(x.name)}" oninput="machSet(${i},'name',this.value)"></div>
+          <div><label class="lbl">Modele</label><input class="inp" value="${escH(x.models)}" oninput="machSet(${i},'models',this.value)"></div>
+        </div>
+        <div><label class="lbl">Krótki opis (1–2 zdania)</label><textarea class="inp" rows="2" oninput="machSet(${i},'short',this.value)">${escH(x.short)}</textarea></div>
+        <div class="row"><button class="btn btn-d" onclick="S.machEdit=null;renderMain()">Gotowe</button></div>
+      </div>` : `
+      <div style="display:grid;grid-template-columns:1fr 180px 200px 90px;gap:14px;align-items:center;padding:12px 20px;border-bottom:1px solid #F5F3EA">
+        <span><span style="display:block;font-size:14.5px;font-weight:700">${escH(x.name)}</span><span style="display:block;font-size:12.5px;color:#6B6F5C">${escH(x.short)}</span></span>
+        <span class="mono" style="font-size:11px;color:#6B6F5C">${escH(x.models)}</span>
+        <span style="font-size:12.5px;color:#41571F">${escH(x.cat)}</span>
+        <button class="btn btn-o" style="padding:7px 14px;font-size:13px" onclick="S.machEdit=${i};renderMain()">Edytuj</button>
+      </div>`).join('')}
+    </div></div>`;
+}
+window.machSet = (i,k,v) => { S.files['content/maszyny.json'][i][k]=v; touch('content/maszyny.json'); };
+
+// ---------- Blog ----------
+async function loadPosts() {
+  const files = await api('/api/list?path=content/blog');
+  S.posts = [];
+  for (const f of files.filter(x=>x.name.endsWith('.json'))) S.posts.push(await loadJSON(f.path));
+  S.posts.sort((a,b)=>b.date.localeCompare(a.date));
+}
+function blogView(m) {
+  m.innerHTML = `<div style="max-width:980px">
+    <div style="display:flex;justify-content:flex-end;margin-bottom:16px"><button class="btn btn-d" onclick="newPost()">+ Nowy wpis</button></div>
+    <div style="background:#fff;border:1px solid #DDD9C9;border-radius:12px;overflow:hidden">
+    ${S.posts.map((p,i)=>`<div style="display:grid;grid-template-columns:1fr 160px 110px 130px;gap:14px;align-items:center;padding:16px 20px;border-bottom:1px solid #F5F3EA">
+      <span><span style="display:block;font-size:15px;font-weight:700">${escH(p.title)}</span><span style="display:block;font-size:12.5px;color:#6B6F5C">blog/${escH(p.slug)}/</span></span>
+      <span style="font-size:13px;color:#41571F">${escH(p.category)}</span>
+      <span class="mono" style="font-size:11.5px;color:#6B6F5C">${escH(p.date)}</span>
+      ${p.managed?`<button class="btn btn-o" style="padding:7px 14px;font-size:13px" onclick="editPost(${i})">Edytuj</button>`
+        :`<span class="pill" style="background:#EFEDE4;color:#6B6F5C" title="Wpis zbudowany ręcznie — meta edytujesz w SEO">ręczny</span>`}
+    </div>`).join('')}
+    </div></div>`;
+}
+window.newPost = () => { S.post = { slug:'', managed:true, title:'', category:CATS[0][0], catSlug:CATS[0][1], date:new Date().toISOString().slice(0,10), read:5, cover:null, coverAlt:'', coverPad:false, excerpt:'', metaTitle:'', metaDesc:'', lead:'', bodyHtml:'<p></p>', _new:true }; S.view='blogedit'; render(); };
+window.editPost = i => { S.post = S.posts[i]; S.view='blogedit'; render(); };
+
+function blogEditView(m) {
+  const p = S.post;
+  const mt = counterRow('mt', p.metaTitle, LIM.title, 40), md = counterRow('md', p.metaDesc, LIM.desc, 120);
+  m.innerHTML = `<div style="display:grid;grid-template-columns:1fr 300px;gap:24px;max-width:1160px;align-items:start">
+    <div class="card" style="padding:26px">
+      <button class="btn" style="background:none;color:#41571F;padding:0;margin-bottom:16px;font-size:13px" onclick="go('blog')">← Wróć do listy wpisów</button>
+      <input id="pTitle" value="${escH(p.title)}" placeholder="Tytuł wpisu…" oninput="postTitle(this.value)" style="width:100%;border:0;font-family:'Chakra Petch',sans-serif;font-size:26px;font-weight:700;padding:6px 0;background:none;border-bottom:2px solid #EFEDE4;margin-bottom:6px">
+      <div class="mono" style="font-size:11px;color:#6B6F5C;margin-bottom:18px">agro-weld.pl/blog/<span style="color:#41571F" id="pSlug">${escH(p.slug)||'…'}</span>/ <span style="color:#B0AC9C">(adres tworzy się sam)</span></div>
+      <div><label class="lbl">Zajawka (pod tytułem artykułu)</label>
+      <textarea class="inp" rows="2" oninput="pSet('lead',this.value)">${escH(p.lead)}</textarea></div>
+      <div style="display:flex;gap:4px;border:1px solid #DDD9C9;border-radius:9px;padding:6px;margin:16px 0;background:#FDFCF8;flex-wrap:wrap">
+        ${[['bold','B','Pogrubienie'],['italic','I','Kursywa'],['h2','H2','Nagłówek'],['h3','H3','Podnagłówek'],['ul','• Lista','Lista'],['link','🔗 Link','Wstaw link'],['img','🖼 Zdjęcie','Wstaw zdjęcie']].map(([c,l,t])=>
+          `<button type="button" title="${t}" onclick="tool('${c}')" style="border:0;background:none;border-radius:6px;padding:7px 11px;font-size:13.5px;${c==='bold'?'font-weight:700':''}${c==='italic'?'font-style:italic':''}">${l}</button>`).join('')}
+      </div>
+      <div id="pBody" class="art" contenteditable="true" oninput="pSet('bodyHtml',null)">${p.bodyHtml}</div>
+      <input id="imgInput" type="file" accept="image/*" class="hidden" onchange="insertImg(this)">
+    </div>
+    <div style="display:flex;flex-direction:column;gap:16px;position:sticky;top:76px">
+      <div class="card" style="padding:20px">
+        <div style="font-size:11.5px;font-weight:700;letter-spacing:.08em;color:#6B6F5C;margin-bottom:12px">WPIS</div>
+        <label class="lbl">Kategoria</label>
+        <select class="inp" style="margin-bottom:12px" onchange="pCat(this.value)">${CATS.map(([n,s])=>`<option ${n===p.category?'selected':''}>${n}</option>`).join('')}</select>
+        <label class="lbl">Data publikacji</label>
+        <input type="date" class="inp" value="${escH(p.date)}" oninput="pSet('date',this.value)" style="margin-bottom:12px">
+        <label class="lbl">Zdjęcie na liście wpisów</label>
+        ${p.cover?`<div class="mono" style="font-size:10.5px;color:#41571F;margin-bottom:6px">${escH(p.cover)}</div>`:''}
+        <button class="btn btn-o" style="width:100%" onclick="$('#coverInput').click()">${p.cover?'Zmień zdjęcie':'Wgraj zdjęcie'}</button>
+        <input id="coverInput" type="file" accept="image/*" class="hidden" onchange="setCover(this)">
+        <input class="inp" style="margin-top:8px" maxlength="${LIM.alt}" placeholder="Opis zdjęcia (alt)" value="${escH(p.coverAlt)}" oninput="pSet('coverAlt',this.value)">
+        <label class="lbl" style="margin-top:12px">Krótki opis na liście wpisów</label>
+        <textarea class="inp" rows="3" oninput="pSet('excerpt',this.value)">${escH(p.excerpt)}</textarea>
+      </div>
+      <div class="card" style="padding:20px">
+        <div style="font-size:11.5px;font-weight:700;letter-spacing:.08em;color:#6B6F5C;margin-bottom:6px">SEO WPISU</div>
+        <p style="font-size:12.5px;color:#6B6F5C;margin-bottom:12px">Wypełnia się samo z tytułu i zajawki. Możesz poprawić.</p>
+        <div class="row" style="justify-content:space-between;margin-bottom:5px"><label class="lbl" style="margin:0;font-size:12px">Meta title</label>${mt.cnt}</div>
+        <input class="inp" style="font-size:13px;margin-bottom:12px" maxlength="${LIM.title}" value="${escH(p.metaTitle)}" oninput="pSet('metaTitle',this.value)">
+        <div class="row" style="justify-content:space-between;margin-bottom:5px"><label class="lbl" style="margin:0;font-size:12px">Meta description</label>${md.cnt}</div>
+        <textarea class="inp" style="font-size:12.5px" rows="3" maxlength="${LIM.desc}" oninput="pSet('metaDesc',this.value)">${escH(p.metaDesc)}</textarea>
+      </div>
+      <div class="card" style="padding:20px">
+        <button class="btn btn-p" style="width:100%;margin-bottom:8px" onclick="savePost()">Zapisz wpis do publikacji</button>
+        <p style="font-size:12px;color:#6B6F5C">Wpis trafi na stronę po kliknięciu „Opublikuj zmiany" na górze.</p>
+      </div>
+    </div></div>`;
+}
+window.pSet = (k,v) => { if(k==='bodyHtml') S.post.bodyHtml = $('#pBody').innerHTML; else S.post[k]=v; };
+window.pCat = n => { const c = CATS.find(x=>x[0]===n); S.post.category=c[0]; S.post.catSlug=c[1]; };
+window.postTitle = v => { S.post.title=v; if (S.post._new){ S.post.slug=slugify(v); $('#pSlug').textContent=S.post.slug||'…'; }
+  if (S.post._new) { S.post.metaTitle=(v+' | Agro-Weld').slice(0,LIM.title); } };
+window.tool = c => {
+  $('#pBody').focus();
+  if (c==='bold') document.execCommand('bold');
+  else if (c==='italic') document.execCommand('italic');
+  else if (c==='h2'||c==='h3') document.execCommand('formatBlock',false,c);
+  else if (c==='ul') document.execCommand('insertUnorderedList');
+  else if (c==='link'){ const u=prompt('Adres linku (np. /maszyny/ albo https://…):'); if(u) document.execCommand('createLink',false,u); }
+  else if (c==='img') $('#imgInput').click();
+  S.post.bodyHtml = $('#pBody').innerHTML;
+};
+async function compressImg(file, maxW) {
+  const img = await new Promise((ok,er)=>{const i=new Image();i.onload=()=>ok(i);i.onerror=er;i.src=URL.createObjectURL(file);});
+  const sc = Math.min(1, maxW/img.width); const c=document.createElement('canvas');
+  c.width=Math.round(img.width*sc); c.height=Math.round(img.height*sc);
+  c.getContext('2d').drawImage(img,0,0,c.width,c.height);
+  const blob = await new Promise(ok=>c.toBlob(ok,'image/webp',.82));
+  const b64 = await new Promise(ok=>{const r=new FileReader();r.onload=()=>ok(r.result.split(',')[1]);r.readAsDataURL(blob);});
+  return b64;
+}
+window.insertImg = async inp => {
+  const f = inp.files[0]; if(!f) return; inp.value='';
+  const b64 = await compressImg(f, 1600);
+  const p = 'uploads/blog/' + (S.post.slug||'wpis') + '-' + Date.now().toString(36) + '.webp';
+  S.bins.push({ path: p, base64: b64 });
+  $('#pBody').focus();
+  document.execCommand('insertHTML', false, '<figure><img src="/'+p+'" alt=""><figcaption>Podpis zdjęcia (możesz zmienić lub usunąć)</figcaption></figure><p></p>');
+  S.post.bodyHtml = $('#pBody').innerHTML; renderTop();
+};
+window.setCover = async inp => {
+  const f = inp.files[0]; if(!f) return; inp.value='';
+  const b64 = await compressImg(f, 1200);
+  const p = 'uploads/blog/' + (S.post.slug||'wpis') + '-cover.webp';
+  S.bins = S.bins.filter(b=>b.path!==p); S.bins.push({ path: p, base64: b64 });
+  S.post.cover = p; renderMain(); renderTop();
+};
+function cleanBody(html) {
+  const d = document.createElement('div'); d.innerHTML = html;
+  d.querySelectorAll('*').forEach(el=>{
+    el.removeAttribute('style'); el.removeAttribute('class');
+    if (/^(SPAN|DIV|FONT)$/.test(el.tagName)) { while(el.firstChild) el.parentNode.insertBefore(el.firstChild, el); el.remove(); }
+  });
+  let n = 0;
+  d.querySelectorAll('h2').forEach(h=>{ if(!h.id) h.id = slugify(h.textContent)||('sekcja-'+(++n)); });
+  d.querySelectorAll('a').forEach(a=>{ a.className='inline'; });
+  return d.innerHTML;
+}
+window.savePost = () => {
+  const p = S.post;
+  p.bodyHtml = cleanBody($('#pBody') ? $('#pBody').innerHTML : p.bodyHtml);
+  if (!p.title.trim()) return alert('Wpisz tytuł wpisu.');
+  if (!p.slug) p.slug = slugify(p.title);
+  if (!p.metaTitle) p.metaTitle = (p.title+' | Agro-Weld').slice(0,LIM.title);
+  if (!p.metaDesc) p.metaDesc = (p.lead||p.excerpt||'').slice(0,LIM.desc);
+  if (!p.excerpt) p.excerpt = (p.lead||'').slice(0,140);
+  const words = (p.lead+' '+p.bodyHtml.replace(/<[^>]+>/g,' ')).split(/\s+/).filter(Boolean).length;
+  p.read = Math.max(2, Math.round(words/200));
+  delete p._new;
+  const path = 'content/blog/'+p.slug+'.json';
+  S.files[path] = p; touch(path);
+  if (!S.posts.includes(p)) S.posts.unshift(p);
+  go('blog');
+};
+
+// start: sprawdź sesję
+(async () => { try { await api('/api/list?path=content'); S.view='dash'; } catch(e) { S.view='login'; } render(); })();
+</script>
+</body>
+</html>

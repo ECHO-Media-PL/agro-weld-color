@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Chakra+Petch:wght@600;700&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Hanken Grotesk',sans-serif;background:#EFEDE4;color:#14160E;-webkit-font-smoothing:antialiased}
+a{color:#41571F;text-decoration:none}a:hover{color:#B7D44B}
+input,textarea,button,select{font-family:inherit}
+input:focus,textarea:focus{outline:2px solid #B7D44B;outline-offset:-1px}
+</style>
+</helmet>
+<div style="min-height:100vh">
+<sc-if value="{{ isLogin }}" hint-placeholder-val="{{ false }}">
+  <div style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:#14160E;background-image:radial-gradient(circle at 70% 20%,rgba(65,87,31,.35),transparent 55%)">
+    <div style="width:400px;background:#1E2113;border:1px solid rgba(236,231,215,.14);border-radius:14px;padding:40px 36px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
+        <span style="width:9px;height:9px;background:#B7D44B;display:inline-block"></span>
+        <span style="font-family:'Chakra Petch',sans-serif;font-size:20px;font-weight:700;color:#ECE7D7;letter-spacing:.02em">AGRO-WELD</span>
+        <span style="font-family:'Space Mono',monospace;font-size:11px;color:#7E8A63;letter-spacing:.14em">CMS</span>
+      </div>
+      <p style="font-size:13.5px;color:#A7AE92;margin-bottom:28px">Panel zarządzania treścią strony agro-weld.pl</p>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div><label style="display:block;font-size:12px;font-weight:600;color:#A7AE92;margin-bottom:6px;letter-spacing:.04em">E-MAIL</label>
+          <input type="text" value="agencja@echo-media.pl" style="width:100%;padding:11px 13px;border-radius:8px;border:1px solid rgba(236,231,215,.18);background:#14160E;color:#ECE7D7;font-size:14px"></div>
+        <div><label style="display:block;font-size:12px;font-weight:600;color:#A7AE92;margin-bottom:6px;letter-spacing:.04em">HASŁO</label>
+          <input type="password" value="••••••••••" style="width:100%;padding:11px 13px;border-radius:8px;border:1px solid rgba(236,231,215,.18);background:#14160E;color:#ECE7D7;font-size:14px"></div>
+        <button onClick="{{ doLogin }}" style="margin-top:8px;padding:13px;border-radius:8px;border:0;background:#B7D44B;color:#14160E;font-size:15px;font-weight:700;cursor:pointer" style-hover="background:#c8e45c">Zaloguj się</button>
+      </div>
+      <p style="font-family:'Space Mono',monospace;font-size:10.5px;color:#5E6A47;margin-top:22px;text-align:center">Dostęp tylko dla upoważnionych osób</p>
+    </div>
+  </div>
+</sc-if>
+<sc-if value="{{ isApp }}" hint-placeholder-val="{{ true }}">
+  <div style="display:grid;grid-template-columns:232px 1fr;min-height:100vh">
+    <aside style="background:#14160E;color:#ECE7D7;padding:22px 0;display:flex;flex-direction:column;position:sticky;top:0;height:100vh">
+      <div style="display:flex;align-items:center;gap:9px;padding:0 22px;margin-bottom:30px">
+        <span style="width:8px;height:8px;background:#B7D44B;display:inline-block"></span>
+        <span style="font-family:'Chakra Petch',sans-serif;font-size:16px;font-weight:700;letter-spacing:.02em">AGRO-WELD</span>
+        <span style="font-family:'Space Mono',monospace;font-size:10px;color:#7E8A63;letter-spacing:.14em">CMS</span>
+      </div>
+      <nav style="display:flex;flex-direction:column;gap:2px;padding:0 12px">
+        <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="5">
+          <button onClick="{{ n.go }}" style="{{ n.style }}" style-hover="background:rgba(236,231,215,.07)">{{ n.icon }}&nbsp;&nbsp;{{ n.label }}</button>
+        </sc-for>
+      </nav>
+      <div style="margin-top:auto;padding:18px 22px;border-top:1px solid rgba(236,231,215,.1)">
+        <div style="font-size:12.5px;font-weight:600">agencja@echo-media.pl</div>
+        <button onClick="{{ doLogout }}" style="background:none;border:0;color:#7E8A63;font-size:12px;cursor:pointer;padding:4px 0" style-hover="color:#B7D44B">Wyloguj →</button>
+      </div>
+    </aside>
+    <main style="display:flex;flex-direction:column">
+      <header style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 32px;background:#fff;border-bottom:1px solid #DDD9C9;position:sticky;top:0;z-index:5">
+        <div style="font-family:'Chakra Petch',sans-serif;font-size:17px;font-weight:700">{{ viewTitle }}</div>
+        <div style="display:flex;align-items:center;gap:14px">
+          <sc-if value="{{ isDirty }}" hint-placeholder-val="{{ false }}"><span style="font-size:12.5px;color:#8C3A43;font-weight:600">● Niezapisane zmiany</span></sc-if>
+          <sc-if value="{{ isPublishing }}" hint-placeholder-val="{{ false }}">
+            <span style="display:flex;align-items:center;gap:8px;font-family:'Space Mono',monospace;font-size:12px;color:#41571F"><span style="width:8px;height:8px;border-radius:50%;background:#B7D44B;display:inline-block;animation:pulse 1s infinite"></span>Publikowanie… ok. 2 min</span>
+          </sc-if>
+          <sc-if value="{{ isPublished }}" hint-placeholder-val="{{ false }}"><span style="font-size:12.5px;color:#41571F;font-weight:600">✓ Opublikowano na stronie</span></sc-if>
+          <button onClick="{{ doPublish }}" style="{{ publishBtnStyle }}">{{ publishBtnLabel }}</button>
+        </div>
+      </header>
+      <div style="flex:1;padding:28px 32px">
+
+      <sc-if value="{{ isDash }}" hint-placeholder-val="{{ true }}">
+        <div style="max-width:980px">
+          <p style="font-size:14.5px;color:#5E6A47;margin-bottom:24px">Wybierz, co chcesz edytować. Każda zmiana trafia na stronę po kliknięciu „Opublikuj" (ok. 2 minuty).</p>
+          <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px">
+            <sc-for list="{{ dashCards }}" as="c" hint-placeholder-count="4">
+              <button onClick="{{ c.go }}" style="text-align:left;background:#fff;border:1px solid #DDD9C9;border-radius:12px;padding:22px 24px;cursor:pointer;display:flex;gap:16px;align-items:flex-start" style-hover="border-color:#B7D44B;box-shadow:0 4px 16px rgba(20,22,14,.06)">
+                <span style="font-size:24px">{{ c.icon }}</span>
+                <span><span style="display:block;font-family:'Chakra Petch',sans-serif;font-size:16px;font-weight:700;margin-bottom:4px">{{ c.title }}</span>
+                <span style="display:block;font-size:13.5px;color:#6B6F5C;line-height:1.5">{{ c.desc }}</span></span>
+              </button>
+            </sc-for>
+          </div>
+          <div style="margin-top:28px;background:#1E2113;border-radius:12px;padding:20px 24px;color:#A7AE92;font-size:13.5px;display:flex;gap:14px;align-items:center">
+            <span style="font-family:'Space Mono',monospace;font-size:11px;color:#B7D44B;letter-spacing:.1em">OSTATNIA PUBLIKACJA</span>
+            <span>dziś 11:42 · Zmieniono meta description strony głównej · <span style="color:#ECE7D7">agencja@echo-media.pl</span></span>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isSeo }}" hint-placeholder-val="{{ false }}">
+        <div style="display:grid;grid-template-columns:250px 1fr;gap:24px;max-width:1100px;align-items:start">
+          <div style="background:#fff;border:1px solid #DDD9C9;border-radius:12px;overflow:hidden">
+            <div style="padding:12px 16px;font-size:11.5px;font-weight:700;letter-spacing:.08em;color:#6B6F5C;border-bottom:1px solid #EFEDE4">PODSTRONY</div>
+            <sc-for list="{{ seoPages }}" as="p" hint-placeholder-count="5">
+              <button onClick="{{ p.go }}" style="{{ p.style }}" style-hover="background:#F7F5EC">
+                <span>{{ p.name }}</span><span style="{{ p.dotStyle }}">●</span>
+              </button>
+            </sc-for>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:18px">
+            <div style="background:#fff;border:1px solid #DDD9C9;border-radius:12px;padding:24px">
+              <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px">
+                <label style="font-size:13px;font-weight:700">Meta title <span style="font-weight:400;color:#6B6F5C">— tytuł w Google</span></label>
+                <span style="{{ titleCountStyle }}">{{ titleCount }} / 60</span>
+              </div>
+              <input value="{{ seoTitle }}" onChange="{{ setSeoTitle }}" maxLength="60" style="width:100%;padding:12px 14px;border-radius:8px;border:1px solid #C9C5B4;font-size:15px;background:#FDFCF8">
+              <div style="height:4px;background:#EFEDE4;border-radius:2px;margin-top:8px;overflow:hidden"><div style="{{ titleBarStyle }}"></div></div>
+              <p style="{{ titleHintStyle }}">{{ titleHint }}</p>
+              <div style="display:flex;justify-content:space-between;align-items:baseline;margin:22px 0 8px">
+                <label style="font-size:13px;font-weight:700">Meta description <span style="font-weight:400;color:#6B6F5C">— opis pod tytułem</span></label>
+                <span style="{{ descCountStyle }}">{{ descCount }} / 160</span>
+              </div>
+              <textarea value="{{ seoDesc }}" onChange="{{ setSeoDesc }}" maxLength="160" rows="3" style="width:100%;padding:12px 14px;border-radius:8px;border:1px solid #C9C5B4;font-size:14px;background:#FDFCF8;resize:vertical;line-height:1.5"></textarea>
+              <div style="height:4px;background:#EFEDE4;border-radius:2px;margin-top:8px;overflow:hidden"><div style="{{ descBarStyle }}"></div></div>
+            </div>
+            <div style="background:#fff;border:1px solid #DDD9C9;border-radius:12px;padding:24px">
+              <div style="font-size:11.5px;font-weight:700;letter-spacing:.08em;color:#6B6F5C;margin-bottom:14px">TAK ZOBACZY TO GOOGLE</div>
+              <div style="border:1px solid #EFEDE4;border-radius:10px;padding:18px 20px;background:#fff">
+                <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
+                  <span style="width:26px;height:26px;border-radius:50%;background:#14160E;color:#B7D44B;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700">AW</span>
+                  <span><span style="display:block;font-size:13px;color:#202124">Agro-Weld</span>
+                  <span style="display:block;font-size:12px;color:#5f6368">https://agro-weld.pl</span></span>
+                </div>
+                <div style="font-size:19px;color:#1a0dab;line-height:1.3;margin-bottom:3px">{{ seoTitle }}</div>
+                <div style="font-size:13.5px;color:#4d5156;line-height:1.55">{{ seoDesc }}</div>
+              </div>
+            </div>
+            <div style="background:#fff;border:1px solid #DDD9C9;border-radius:12px;padding:24px">
+              <div style="font-size:11.5px;font-weight:700;letter-spacing:.08em;color:#6B6F5C;margin-bottom:4px">OPISY OBRAZKÓW (ALT)</div>
+              <p style="font-size:13px;color:#6B6F5C;margin-bottom:16px">Opisz, co widać na zdjęciu — czyta to Google i osoby niewidome. Max 125 znaków.</p>
+              <div style="display:flex;flex-direction:column;gap:12px">
+                <div style="display:grid;grid-template-columns:64px 1fr 70px;gap:14px;align-items:center">
+                  <img src="assets/kp5000.webp" alt="" style="width:64px;height:48px;object-fit:cover;border-radius:6px;background:#EFEDE4">
+                  <input value="Kosz przyjęciowy KP5000G — maszyna Agro-Weld" maxLength="125" style="width:100%;padding:9px 12px;border-radius:7px;border:1px solid #C9C5B4;font-size:13.5px;background:#FDFCF8">
+                  <span style="font-family:'Space Mono',monospace;font-size:11px;color:#6B6F5C;text-align:right">44/125</span>
+                </div>
+                <div style="display:grid;grid-template-columns:64px 1fr 70px;gap:14px;align-items:center">
+                  <img src="assets/kalibrownik.webp" alt="" style="width:64px;height:48px;object-fit:cover;border-radius:6px;background:#EFEDE4">
+                  <input value="Kalibrownik rozsuwany KA-780 do sortowania warzyw" maxLength="125" style="width:100%;padding:9px 12px;border-radius:7px;border:1px solid #C9C5B4;font-size:13.5px;background:#FDFCF8">
+                  <span style="font-family:'Space Mono',monospace;font-size:11px;color:#6B6F5C;text-align:right">49/125</span>
+                </div>
+                <div style="display:grid;grid-template-columns:64px 1fr 70px;gap:14px;align-items:center">
+                  <img src="assets/czyszczarka-docisk.webp" alt="" style="width:64px;height:48px;object-fit:cover;border-radius:6px;background:#EFEDE4">
+                  <input value="" placeholder="Brak opisu! Wpisz, co widać na zdjęciu" maxLength="125" style="width:100%;padding:9px 12px;border-radius:7px;border:2px solid #8C3A43;font-size:13.5px;background:#FDF6F6">
+                  <span style="font-family:'Space Mono',monospace;font-size:11px;color:#8C3A43;text-align:right">0/125</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isTexts }}" hint-placeholder-val="{{ false }}">
+        <div style="max-width:860px;display:flex;flex-direction:column;gap:18px">
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <sc-for list="{{ textSections }}" as="s" hint-placeholder-count="5">
+              <button onClick="{{ s.go }}" style="{{ s.style }}">{{ s.label }}</button>
+            </sc-for>
+          </div>
+          <div style="background:#fff;border:1px solid #DDD9C9;border-radius:12px;padding:24px">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px">
+              <div style="font-family:'Chakra Petch',sans-serif;font-size:16px;font-weight:700">Sekcja: Hero (góra strony głównej)</div>
+              <span style="font-family:'Space Mono',monospace;font-size:10.5px;background:#EFEDE4;padding:4px 10px;border-radius:20px;color:#5E6A47">EDYTUJESZ PO POLSKU</span>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:16px">
+              <div><label style="display:block;font-size:13px;font-weight:700;margin-bottom:6px">Nagłówek główny</label>
+                <input value="{{ heroTitle }}" onChange="{{ setHeroTitle }}" style="width:100%;padding:12px 14px;border-radius:8px;border:1px solid #C9C5B4;font-size:15px;background:#FDFCF8"></div>
+              <div><label style="display:block;font-size:13px;font-weight:700;margin-bottom:6px">Tekst pod nagłówkiem</label>
+                <textarea value="{{ heroSub }}" onChange="{{ setHeroSub }}" rows="3" style="width:100%;padding:12px 14px;border-radius:8px;border:1px solid #C9C5B4;font-size:14px;background:#FDFCF8;resize:vertical;line-height:1.5"></textarea></div>
+            </div>
+          </div>
+          <div style="background:#fff;border:1px solid #DDD9C9;border-radius:12px;padding:24px">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:6px">
+              <div>
+                <div style="font-family:'Chakra Petch',sans-serif;font-size:15px;font-weight:700">Wersje językowe</div>
+                <p style="font-size:13px;color:#6B6F5C">AI przetłumaczy polski tekst na 4 języki. Możesz potem każdy poprawić ręcznie.</p>
+              </div>
+              <button onClick="{{ doTranslate }}" style="{{ translateBtnStyle }}">{{ translateBtnLabel }}</button>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:0;margin-top:14px">
+              <sc-for list="{{ langRows }}" as="l" hint-placeholder-count="4">
+                <div style="display:grid;grid-template-columns:52px 1fr 110px;gap:14px;align-items:center;padding:12px 0;border-top:1px solid #EFEDE4">
+                  <span style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:#41571F">{{ l.code }}</span>
+                  <input value="{{ l.text }}" style="width:100%;padding:9px 12px;border-radius:7px;border:1px solid #DDD9C9;font-size:13.5px;background:#FDFCF8">
+                  <span style="{{ l.badgeStyle }}">{{ l.badge }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isMachines }}" hint-placeholder-val="{{ false }}">
+        <div style="max-width:980px">
+          <div style="background:#fff;border:1px solid #DDD9C9;border-radius:12px;overflow:hidden">
+            <div style="display:grid;grid-template-columns:70px 1fr 200px 130px 90px;gap:14px;padding:12px 20px;font-size:11.5px;font-weight:700;letter-spacing:.06em;color:#6B6F5C;border-bottom:1px solid #EFEDE4">
+              <span>ZDJĘCIE</span><span>MASZYNA</span><span>KATEGORIA</span><span>MODELE</span><span></span>
+            </div>
+            <div style="display:grid;grid-template-columns:70px 1fr 200px 130px 90px;gap:14px;align-items:center;padding:12px 20px;border-bottom:1px solid #F5F3EA">
+              <img src="assets/kp5000.webp" alt="" style="width:64px;height:44px;object-fit:cover;border-radius:6px;background:#EFEDE4">
+              <span><span style="display:block;font-size:14.5px;font-weight:700">Kosz przyjęciowy</span><span style="display:block;font-size:12.5px;color:#6B6F5C">Przyjmuje plon z przyczep i podaje go na linię</span></span>
+              <span style="font-size:13px;color:#41571F">Przyjęcie i buforowanie</span>
+              <span style="font-family:'Space Mono',monospace;font-size:11px;color:#6B6F5C">KP1000 – KP5000G</span>
+              <button style="padding:7px 14px;border-radius:7px;border:1px solid #C9C5B4;background:#fff;font-size:13px;font-weight:600;cursor:pointer" style-hover="border-color:#B7D44B;background:#F7F9EC">Edytuj</button>
+            </div>
+            <div style="display:grid;grid-template-columns:70px 1fr 200px 130px 90px;gap:14px;align-items:center;padding:12px 20px;border-bottom:1px solid #F5F3EA">
+              <img src="assets/czyszczarka-docisk.webp" alt="" style="width:64px;height:44px;object-fit:cover;border-radius:6px;background:#EFEDE4">
+              <span><span style="display:block;font-size:14.5px;font-weight:700">Czyszczarka szczotkowa</span><span style="display:block;font-size:12.5px;color:#6B6F5C">Szczotki proste lub falowane czyszczą warzywa</span></span>
+              <span style="font-size:13px;color:#41571F">Oczyszczanie</span>
+              <span style="font-family:'Space Mono',monospace;font-size:11px;color:#6B6F5C">CS1056 · CS1480</span>
+              <button style="padding:7px 14px;border-radius:7px;border:1px solid #C9C5B4;background:#fff;font-size:13px;font-weight:600;cursor:pointer" style-hover="border-color:#B7D44B;background:#F7F9EC">Edytuj</button>
+            </div>
+            <div style="display:grid;grid-template-columns:70px 1fr 200px 130px 90px;gap:14px;align-items:center;padding:12px 20px;border-bottom:1px solid #F5F3EA">
+              <img src="assets/kalibrownik.webp" alt="" style="width:64px;height:44px;object-fit:cover;border-radius:6px;background:#EFEDE4">
+              <span><span style="display:block;font-size:14.5px;font-weight:700">Kalibrownik rozsuwany</span><span style="display:block;font-size:12.5px;color:#6B6F5C">Sortuje warzywa wg wielkości</span></span>
+              <span style="font-size:13px;color:#41571F">Sortowanie</span>
+              <span style="font-family:'Space Mono',monospace;font-size:11px;color:#6B6F5C">KA-780 · KA-880</span>
+              <button style="padding:7px 14px;border-radius:7px;border:1px solid #C9C5B4;background:#fff;font-size:13px;font-weight:600;cursor:pointer" style-hover="border-color:#B7D44B;background:#F7F9EC">Edytuj</button>
+            </div>
+            <div style="display:grid;grid-template-columns:70px 1fr 200px 130px 90px;gap:14px;align-items:center;padding:12px 20px;border-bottom:1px solid #F5F3EA">
+              <img src="assets/real-borowka.jpg" alt="" style="width:64px;height:44px;object-fit:cover;border-radius:6px;background:#EFEDE4">
+              <span><span style="display:block;font-size:14.5px;font-weight:700">Sortownik do owoców drobnych</span><span style="display:block;font-size:12.5px;color:#6B6F5C">Delikatnie sortuje borówki i drobne owoce</span></span>
+              <span style="font-size:13px;color:#41571F">Sortowanie</span>
+              <span style="font-family:'Space Mono',monospace;font-size:11px;color:#6B6F5C">SOD-6010 · 6012</span>
+              <button style="padding:7px 14px;border-radius:7px;border:1px solid #C9C5B4;background:#fff;font-size:13px;font-weight:600;cursor:pointer" style-hover="border-color:#B7D44B;background:#F7F9EC">Edytuj</button>
+            </div>
+            <div style="display:grid;grid-template-columns:70px 1fr 200px 130px 90px;gap:14px;align-items:center;padding:12px 20px;border-bottom:1px solid #F5F3EA">
+              <img src="assets/real-inox.jpg" alt="" style="width:64px;height:44px;object-fit:cover;border-radius:6px;background:#EFEDE4">
+              <span><span style="display:block;font-size:14.5px;font-weight:700">Stół selekcyjny taśmowy</span><span style="display:block;font-size:12.5px;color:#6B6F5C">Ręczna selekcja na taśmie PCV</span></span>
+              <span style="font-size:13px;color:#41571F">Selekcja</span>
+              <span style="font-family:'Space Mono',monospace;font-size:11px;color:#6B6F5C">SST-2008 · 3510</span>
+              <button style="padding:7px 14px;border-radius:7px;border:1px solid #C9C5B4;background:#fff;font-size:13px;font-weight:600;cursor:pointer" style-hover="border-color:#B7D44B;background:#F7F9EC">Edytuj</button>
+            </div>
+            <div style="display:grid;grid-template-columns:70px 1fr 200px 130px 90px;gap:14px;align-items:center;padding:12px 20px;border-bottom:1px solid #F5F3EA">
+              <img src="assets/wanna.png" alt="" style="width:64px;height:44px;object-fit:cover;border-radius:6px;background:#EFEDE4">
+              <span><span style="display:block;font-size:14.5px;font-weight:700">Wanna do płukania</span><span style="display:block;font-size:12.5px;color:#6B6F5C">Wstępne płukanie warzyw korzeniowych</span></span>
+              <span style="font-size:13px;color:#41571F">Oczyszczanie</span>
+              <span style="font-family:'Space Mono',monospace;font-size:11px;color:#6B6F5C">RA-PP-00 · WP-800</span>
+              <button style="padding:7px 14px;border-radius:7px;border:1px solid #C9C5B4;background:#fff;font-size:13px;font-weight:600;cursor:pointer" style-hover="border-color:#B7D44B;background:#F7F9EC">Edytuj</button>
+            </div>
+          </div>
+          <p style="font-size:12.5px;color:#6B6F5C;margin-top:12px">Kliknięcie „Edytuj" otwiera formularz: nazwa, opis, modele, tabela danych technicznych, zdjęcia z altami — z tłumaczeniem AI jak w Tekstach.</p>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isBlog }}" hint-placeholder-val="{{ false }}">
+        <div style="max-width:980px">
+          <div style="display:flex;justify-content:flex-end;margin-bottom:16px">
+            <button onClick="{{ goBlogEdit }}" style="padding:11px 20px;border-radius:8px;border:0;background:#14160E;color:#B7D44B;font-size:14px;font-weight:700;cursor:pointer" style-hover="background:#1E2113">+ Nowy wpis</button>
+          </div>
+          <div style="background:#fff;border:1px solid #DDD9C9;border-radius:12px;overflow:hidden">
+            <sc-for list="{{ blogRows }}" as="b" hint-placeholder-count="3">
+              <button onClick="{{ goBlogEdit }}" style="width:100%;text-align:left;display:grid;grid-template-columns:1fr 160px 110px 100px;gap:14px;align-items:center;padding:16px 20px;border-bottom:1px solid #F5F3EA;background:none;border-left:0;border-right:0;border-top:0;cursor:pointer" style-hover="background:#F9F8F2">
+                <span><span style="display:block;font-size:15px;font-weight:700">{{ b.title }}</span><span style="display:block;font-size:12.5px;color:#6B6F5C">blog/{{ b.slug }}</span></span>
+                <span style="font-size:13px;color:#41571F">{{ b.cat }}</span>
+                <span style="font-family:'Space Mono',monospace;font-size:11.5px;color:#6B6F5C">{{ b.date }}</span>
+                <span style="{{ b.statusStyle }}">{{ b.status }}</span>
+              </button>
+            </sc-for>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isBlogEdit }}" hint-placeholder-val="{{ false }}">
+        <div style="display:grid;grid-template-columns:1fr 300px;gap:24px;max-width:1100px;align-items:start">
+          <div style="background:#fff;border:1px solid #DDD9C9;border-radius:12px;padding:26px">
+            <button onClick="{{ goBlog }}" style="background:none;border:0;color:#41571F;font-size:13px;font-weight:600;cursor:pointer;padding:0;margin-bottom:16px" style-hover="color:#B7D44B">← Wróć do listy wpisów</button>
+            <input value="Jak dobrać kosz przyjęciowy do skali produkcji" style="width:100%;border:0;font-family:'Chakra Petch',sans-serif;font-size:26px;font-weight:700;padding:6px 0;background:none;border-bottom:2px solid #EFEDE4;margin-bottom:6px">
+            <div style="font-family:'Space Mono',monospace;font-size:11px;color:#6B6F5C;margin-bottom:18px">agro-weld.pl/blog/<span style="color:#41571F">jak-dobrac-kosz-przyjeciowy</span> <span style="color:#B0AC9C">(adres tworzy się sam)</span></div>
+            <div style="display:flex;gap:4px;border:1px solid #DDD9C9;border-radius:9px;padding:6px;margin-bottom:16px;background:#FDFCF8">
+              <sc-for list="{{ toolbarBtns }}" as="t" hint-placeholder-count="7">
+                <button title="{{ t.tip }}" style="{{ t.style }}" style-hover="background:#EFEDE4">{{ t.label }}</button>
+              </sc-for>
+            </div>
+            <div style="font-size:15px;line-height:1.7;color:#2A2C20;display:flex;flex-direction:column;gap:14px">
+              <p>Dobór kosza przyjęciowego to pierwsza decyzja przy projektowaniu linii. Zbyt mały kosz zatrzymuje rozładunek, zbyt duży niepotrzebnie podnosi koszt inwestycji.</p>
+              <h2 style="font-family:'Chakra Petch',sans-serif;font-size:20px">Od czego zacząć?</h2>
+              <p>Punktem wyjścia jest <strong>dobowa wielkość przyjęcia</strong> oraz sposób dostawy — przyczepy, skrzyniopalety czy big-bagi…</p>
+              <div style="border:2px dashed #C9C5B4;border-radius:10px;padding:26px;text-align:center;color:#6B6F5C;font-size:13.5px;background:#FBFAF5">🖼 Przeciągnij zdjęcie tutaj albo kliknij, żeby wybrać z komputera<br><span style="font-size:12px;color:#B0AC9C">Zdjęcie zostanie automatycznie zmniejszone i skompresowane</span></div>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:16px;position:sticky;top:76px">
+            <div style="background:#fff;border:1px solid #DDD9C9;border-radius:12px;padding:20px">
+              <div style="font-size:11.5px;font-weight:700;letter-spacing:.08em;color:#6B6F5C;margin-bottom:12px">PUBLIKACJA</div>
+              <button style="width:100%;padding:12px;border-radius:8px;border:0;background:#B7D44B;color:#14160E;font-size:14px;font-weight:700;cursor:pointer;margin-bottom:8px" style-hover="background:#c8e45c">Opublikuj wpis</button>
+              <button style="width:100%;padding:11px;border-radius:8px;border:1px solid #C9C5B4;background:#fff;font-size:13.5px;font-weight:600;cursor:pointer" style-hover="background:#F7F5EC">Zapisz jako szkic</button>
+            </div>
+            <div style="background:#fff;border:1px solid #DDD9C9;border-radius:12px;padding:20px">
+              <div style="font-size:11.5px;font-weight:700;letter-spacing:.08em;color:#6B6F5C;margin-bottom:12px">KATEGORIA</div>
+              <div style="display:flex;flex-wrap:wrap;gap:6px">
+                <sc-for list="{{ blogCats }}" as="c" hint-placeholder-count="4">
+                  <span style="{{ c.style }}">{{ c.label }}</span>
+                </sc-for>
+              </div>
+            </div>
+            <div style="background:#fff;border:1px solid #DDD9C9;border-radius:12px;padding:20px">
+              <div style="font-size:11.5px;font-weight:700;letter-spacing:.08em;color:#6B6F5C;margin-bottom:6px">SEO WPISU</div>
+              <p style="font-size:12.5px;color:#6B6F5C;margin-bottom:12px">Wypełnia się samo z tytułu i treści. Możesz poprawić.</p>
+              <label style="display:block;font-size:12px;font-weight:700;margin-bottom:5px">Meta title <span style="font-family:'Space Mono',monospace;font-weight:400;color:#41571F">48/60</span></label>
+              <input value="Jak dobrać kosz przyjęciowy? Poradnik | Agro-Weld" maxLength="60" style="width:100%;padding:9px 11px;border-radius:7px;border:1px solid #C9C5B4;font-size:13px;background:#FDFCF8;margin-bottom:12px">
+              <label style="display:block;font-size:12px;font-weight:700;margin-bottom:5px">Meta description <span style="font-family:'Space Mono',monospace;font-weight:400;color:#41571F">126/160</span></label>
+              <textarea maxLength="160" rows="3" style="width:100%;padding:9px 11px;border-radius:7px;border:1px solid #C9C5B4;font-size:12.5px;background:#FDFCF8;resize:vertical;line-height:1.5">Pojemność, wysokość zasypu i taśma dozująca — praktyczny poradnik doboru kosza przyjęciowego do skali produkcji. Sprawdź, zanim kupisz.</textarea>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+
+      </div>
+    </main>
+  </div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1440, &quot;height&quot;: 900}}">
+class Component extends DCLogic {
+  state = {
+    view: 'dash', dirty: false, pubState: 'idle',
+    seoTitle: 'Maszyny rolnicze i linie technologiczne | Agro-Weld',
+    seoDesc: 'Polski producent maszyn do czyszczenia, sortowania i pakowania warzyw oraz kompletnych linii technologicznych. Od przyjęcia po paletyzację.',
+    heroTitle: 'Maszyny i linie technologiczne dla rolnictwa i przemysłu',
+    heroSub: 'Agro-Weld projektuje i produkuje maszyny do obróbki płodów rolnych oraz kompletne linie produkcyjne — od przyjęcia surowca po paletyzację.',
+    seoPage: 0, textSection: 0, transState: 'done',
+  };
+  go(view) { this.setState({ view }); }
+  renderVals() {
+    const S = this.state, set = (p) => this.setState(p);
+    const dirtySet = (p) => this.setState({ ...p, dirty: true, pubState: 'idle' });
+    const views = { dash: 'Pulpit', seo: 'SEO podstron', texts: 'Teksty na stronie', machines: 'Maszyny', blog: 'Blog', blogedit: 'Blog — edycja wpisu' };
+    const navDefs = [['dash','◧','Pulpit'],['seo','⌕','SEO podstron'],['texts','¶','Teksty na stronie'],['machines','⚙','Maszyny'],['blog','✎','Blog']];
+    const navItems = navDefs.map(([v, icon, label]) => ({
+      icon, label, go: () => this.go(v),
+      style: 'text-align:left;padding:10px 12px;border-radius:8px;border:0;cursor:pointer;font-size:14px;font-weight:600;' +
+        (S.view === v || (v==='blog' && S.view==='blogedit') ? 'background:#B7D44B;color:#14160E' : 'background:none;color:#A7AE92'),
+    }));
+    const dashCards = [
+      { icon: '⌕', title: 'SEO podstron', desc: 'Tytuły i opisy widoczne w Google oraz opisy zdjęć (alty) — z twardymi limitami znaków.', go: () => this.go('seo') },
+      { icon: '¶', title: 'Teksty na stronie', desc: 'Nagłówki i opisy sekcji strony głównej. Piszesz po polsku, AI tłumaczy na 4 języki.', go: () => this.go('texts') },
+      { icon: '⚙', title: 'Maszyny', desc: 'Nazwy, opisy, dane techniczne, modele i zdjęcia maszyn w katalogu.', go: () => this.go('machines') },
+      { icon: '✎', title: 'Blog', desc: 'Nowe wpisy z edytorem wizualnym, kategoriami i automatycznym SEO.', go: () => this.go('blog') },
+    ];
+    const tLen = S.seoTitle.length, dLen = S.seoDesc.length;
+    const tPct = Math.min(100, tLen / 60 * 100), dPct = Math.min(100, dLen / 160 * 100);
+    const barCol = (len, lo, hi) => len > hi ? '#8C3A43' : len >= lo ? '#7BA829' : '#D9A62E';
+    const tCol = barCol(tLen, 40, 60), dCol = barCol(dLen, 120, 160);
+    const mono = "font-family:'Space Mono',monospace;font-size:11.5px;font-weight:700;";
+    const seoPagesDef = ['Strona główna', 'Katalog maszyn', 'Kosz przyjęciowy', 'Kalibrownik', 'Czyszczarka szczotkowa', 'Blog'];
+    const seoPages = seoPagesDef.map((name, i) => ({
+      name, go: () => set({ seoPage: i }),
+      style: 'width:100%;display:flex;justify-content:space-between;align-items:center;text-align:left;padding:11px 16px;border:0;border-bottom:1px solid #F5F3EA;cursor:pointer;font-size:13.5px;font-weight:600;' + (S.seoPage === i ? 'background:#F3F6E4;color:#14160E' : 'background:none;color:#4A4D3E'),
+      dotStyle: 'font-size:9px;color:' + (i < 3 ? '#7BA829' : '#D9A62E'),
+    }));
+    const altRows = [
+      { img: 'assets/kp5000.webp', alt: 'Kosz przyjęciowy KP5000G — maszyna Agro-Weld', len: 44 },
+      { img: 'assets/kalibrownik.webp', alt: 'Kalibrownik rozsuwany KA-780 do sortowania warzyw', len: 49 },
+      { img: 'assets/czyszczarka-docisk.webp', alt: '', len: 0 },
+    ];
+    const sections = ['Hero (góra strony)', 'Proces linii', 'Dlaczego my', 'Linie produkcyjne', 'Kontakt', 'Stopka'];
+    const textSections = sections.map((label, i) => ({
+      label, go: () => set({ textSection: i }),
+      style: 'padding:8px 16px;border-radius:20px;font-size:13px;font-weight:600;cursor:pointer;border:1px solid ' + (S.textSection === i ? '#14160E;background:#14160E;color:#B7D44B' : '#C9C5B4;background:#fff;color:#4A4D3E'),
+    }));
+    const translating = S.transState === 'run';
+    const langData = [
+      ['EN', 'Machines and processing lines for agriculture and industry'],
+      ['DE', 'Maschinen und Prozesslinien für Landwirtschaft und Industrie'],
+      ['RU', 'Машины и технологические линии для сельского хозяйства'],
+      ['FR', 'Machines et lignes de process pour l’agriculture et l’industrie'],
+    ];
+    const langRows = langData.map(([code, text]) => ({
+      code, text: translating ? '' : text,
+      badge: translating ? '⟳ tłumaczę…' : (S.transState === 'fresh' ? '✓ nowe (AI)' : '✓ aktualne'),
+      badgeStyle: 'font-size:11.5px;font-weight:700;text-align:center;padding:5px 8px;border-radius:14px;' + (translating ? 'background:#FBF3D9;color:#9A7B1E' : S.transState === 'fresh' ? 'background:#E4F0C4;color:#41571F' : 'background:#EFEDE4;color:#6B6F5C'),
+    }));
+    const machineData = [
+      ['assets/kp5000.webp', 'Kosz przyjęciowy', 'Przyjmuje plon z przyczep i podaje go na linię', 'Przyjęcie i buforowanie', 'KP1000 – KP5000G'],
+      ['assets/czyszczarka-docisk.webp', 'Czyszczarka szczotkowa', 'Szczotki proste lub falowane czyszczą warzywa', 'Oczyszczanie', 'CS1056 · CS1480'],
+      ['assets/kalibrownik.webp', 'Kalibrownik rozsuwany', 'Sortuje warzywa wg wielkości', 'Sortowanie', 'KA-780 · KA-880'],
+      ['assets/real-borowka.jpg', 'Sortownik do owoców drobnych', 'Delikatnie sortuje borówki i drobne owoce', 'Sortowanie', 'SOD-6010 · 6012'],
+      ['assets/real-inox.jpg', 'Stół selekcyjny taśmowy', 'Ręczna selekcja na taśmie PCV', 'Selekcja', 'SST-2008 · 3510'],
+      ['assets/wanna.png', 'Wanna do płukania', 'Wstępne płukanie warzyw korzeniowych', 'Oczyszczanie', 'RA-PP-00 · WP-800'],
+    ];
+    const machineRows = machineData.map(([img, name, short, cat, models]) => ({ img, name, short, cat, models }));
+    const blogData = [
+      ['Jak dobrać kosz przyjęciowy do skali produkcji', 'jak-dobrac-kosz-przyjeciowy', 'Poradniki', '12.08.2026', 'Opublikowany'],
+      ['Czyszczenie warzyw: szczotki czy płukanie?', 'czyszczenie-warzyw-szczotki-czy-plukanie', 'Poradniki', '02.08.2026', 'Opublikowany'],
+      ['Paletyzacja w małym zakładzie — od czego zacząć', 'paletyzacja-w-malym-zakladzie', 'Technologie', '—', 'Szkic'],
+    ];
+    const blogRows = blogData.map(([title, slug, cat, date, status]) => ({
+      title, slug, cat, date, status,
+      statusStyle: 'font-size:12px;font-weight:700;text-align:center;padding:5px 10px;border-radius:14px;' + (status === 'Szkic' ? 'background:#FBF3D9;color:#9A7B1E' : 'background:#E4F0C4;color:#41571F'),
+    }));
+    const tb = "border:0;background:none;border-radius:6px;padding:7px 11px;font-size:13.5px;cursor:pointer;color:#2A2C20;";
+    const toolbarBtns = [
+      { label: 'B', tip: 'Pogrubienie', style: tb + 'font-weight:700' }, { label: 'I', tip: 'Kursywa', style: tb + 'font-style:italic' },
+      { label: 'H2', tip: 'Nagłówek', style: tb + mono }, { label: 'H3', tip: 'Podnagłówek', style: tb + mono },
+      { label: '• Lista', tip: 'Lista', style: tb }, { label: '🖼 Zdjęcie', tip: 'Wstaw zdjęcie', style: tb }, { label: '🔗 Link', tip: 'Link', style: tb },
+    ];
+    const blogCats = ['Poradniki', 'Technologie', 'Realizacje', 'Aktualności'].map((label, i) => ({
+      label, style: 'padding:6px 13px;border-radius:16px;font-size:12.5px;font-weight:600;cursor:pointer;border:1px solid ' + (i === 0 ? '#14160E;background:#14160E;color:#B7D44B' : '#C9C5B4;background:#fff;color:#4A4D3E'),
+    }));
+    const pub = S.pubState;
+    return {
+      isLogin: S.view === 'login', isApp: S.view !== 'login',
+      isDash: S.view === 'dash', isSeo: S.view === 'seo', isTexts: S.view === 'texts',
+      isMachines: S.view === 'machines', isBlog: S.view === 'blog', isBlogEdit: S.view === 'blogedit',
+      viewTitle: views[S.view] || '', navItems, dashCards,
+      doLogin: () => set({ view: 'dash' }), doLogout: () => set({ view: 'login' }),
+      goBlog: () => this.go('blog'), goBlogEdit: () => this.go('blogedit'),
+      isDirty: S.dirty && pub === 'idle', isPublishing: pub === 'run', isPublished: pub === 'done',
+      publishBtnLabel: pub === 'run' ? 'Publikuję…' : 'Opublikuj zmiany',
+      publishBtnStyle: 'padding:10px 20px;border-radius:8px;border:0;font-size:14px;font-weight:700;cursor:pointer;' + (pub === 'run' ? 'background:#EFEDE4;color:#B0AC9C' : S.dirty ? 'background:#B7D44B;color:#14160E' : 'background:#EFEDE4;color:#6B6F5C'),
+      doPublish: () => { if (pub === 'run') return; set({ pubState: 'run' }); setTimeout(() => this.setState({ pubState: 'done', dirty: false }), 2500); },
+      seoTitle: S.seoTitle, seoDesc: S.seoDesc,
+      setSeoTitle: (e) => dirtySet({ seoTitle: e.target.value }), setSeoDesc: (e) => dirtySet({ seoDesc: e.target.value }),
+      titleCount: tLen, descCount: dLen,
+      titleCountStyle: mono + 'color:' + tCol, descCountStyle: mono + 'color:' + dCol,
+      titleBarStyle: 'height:100%;border-radius:2px;width:' + tPct + '%;background:' + tCol,
+      descBarStyle: 'height:100%;border-radius:2px;width:' + dPct + '%;background:' + dCol,
+      titleHint: tLen > 60 ? 'Za długi — Google go utnie.' : tLen >= 40 ? 'Idealna długość. Więcej niż 60 znaków nie da się wpisać.' : 'Trochę za krótki — dobre tytuły mają 40–60 znaków.',
+      titleHintStyle: 'font-size:12.5px;margin-top:6px;color:' + (tLen >= 40 && tLen <= 60 ? '#41571F' : '#9A7B1E'),
+      seoPages, altRows, textSections,
+      heroTitle: S.heroTitle, heroSub: S.heroSub,
+      setHeroTitle: (e) => dirtySet({ heroTitle: e.target.value, transState: 'stale' }),
+      setHeroSub: (e) => dirtySet({ heroSub: e.target.value, transState: 'stale' }),
+      langRows,
+      translateBtnLabel: translating ? '⟳ Tłumaczę…' : 'Przetłumacz na 4 języki (AI)',
+      translateBtnStyle: 'padding:11px 18px;border-radius:8px;border:0;font-size:13.5px;font-weight:700;cursor:pointer;white-space:nowrap;' + (translating ? 'background:#EFEDE4;color:#B0AC9C' : 'background:#14160E;color:#B7D44B'),
+      doTranslate: () => { if (translating) return; set({ transState: 'run' }); setTimeout(() => this.setState({ transState: 'fresh', dirty: true }), 1800); },
+      machineRows, blogRows, toolbarBtns, blogCats,
+    };
+  }
+}
+</script>
+</body>
+</html>

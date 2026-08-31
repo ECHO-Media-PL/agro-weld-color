@@ -1,0 +1,69 @@
+{
+ "pages": {
+  "index.html": {
+   "title": "Agro-Weld — maszyny i linie technologiczne dla rolnictwa i przemysłu",
+   "description": "Agro-Weld projektuje i produkuje maszyny do obróbki warzyw i owoców oraz kompletne linie produkcyjne — od przyjęcia surowca po paletyzację. Polski producent, Środa Wlkp.",
+   "alts": {
+    "assets/logo.webp": "Agro-Weld — producent maszyn i linii technologicznych",
+    "assets/kp5000.webp": "Kosz przyjęciowy KP5000G — maszyna Agro-Weld",
+    "assets/verbruggen-vpm.png": "Paletyzator Verbruggen VPM-B — automatyczna paletyzacja worków",
+    "assets/czyszczarka-docisk.webp": "Czyszczarka szczotkowa CS1056–CS20110 — maszyna Agro-Weld",
+    "assets/kalibrownik.webp": "Kalibrownik rozsuwany KA-780 / KA-880 — maszyna Agro-Weld",
+    "assets/przenosnik-poprzeczny.png": "Przenośnik poprzeczny RA-PP-00 — maszyna Agro-Weld",
+    "assets/wanna.png": "Przenośniki taśmowe i rolkowe — maszyna Agro-Weld",
+    "assets/formator.png": "Formator palet FP-1280 / FP-1210 — maszyna Agro-Weld",
+    "assets/hala-linia.jpg": "Raszlownica produkcji Agro-Weld na hali produkcyjnej",
+    "assets/real-borowka.jpg": "Linia sortująca do borówki — realizacja Agro-Weld",
+    "assets/real-cytrusy.webp": "Linia licząco-pakująca do cytrusów — realizacja Agro-Weld",
+    "assets/real-inox.jpg": "Stół selekcyjny INOX — realizacja Agro-Weld",
+    "assets/real-raszlownica.jpg": "Raszlownica z modułem pakującym — realizacja Agro-Weld"
+   }
+  },
+  "maszyny/index.html": {
+   "title": "Katalog maszyn — oferta Agro-Weld | Maszyny do warzyw i owoców",
+   "description": "Pełen przegląd maszyn Agro-Weld pogrupowany według etapu linii technologicznej — przyjęcie, oczyszczanie, sortowanie, ważenie, pakowanie i paletyzacja.",
+   "alts": {
+    "../assets/logo.webp": "Agro-Weld — producent maszyn i linii technologicznych",
+    "../assets/kp5000.webp": "Kosz przyjęciowy KP1000–KP5000G — maszyna Agro-Weld"
+   }
+  },
+  "blog/index.html": {
+   "title": "Blog — wiedza o maszynach i liniach technologicznych | Agro-Weld",
+   "description": "Praktyczna wiedza od producenta: dobór maszyn do warzyw i owoców, projektowanie linii technologicznych, czyszczenie, sortowanie, pakowanie i paletyzacja.",
+   "alts": {
+    "../assets/logo.webp": "Agro-Weld — producent maszyn i linii technologicznych",
+    "../assets/kp5000.webp": "Kosz przyjęciowy KP5000G — maszyna Agro-Weld",
+    "../assets/czyszczarka-docisk.webp": "Czyszczarka szczotkowa Agro-Weld",
+    "../assets/verbruggen-vpm.png": "Paletyzator Verbruggen VPM",
+    "../assets/real-raszlownica.jpg": "Raszlownica z modułem pakującym Agro-Weld",
+    "../assets/hala-linia.jpg": "Linia technologiczna Agro-Weld na hali",
+    "../assets/real-inox.jpg": "Stół selekcyjny INOX — realizacja Agro-Weld"
+   }
+  },
+  "blog/jak-dobrac-kosz-przyjeciowy/index.html": {
+   "title": "Jak dobrać kosz przyjęciowy do linii technologicznej? | Blog Agro-Weld",
+   "description": "Pojemność zasypu, szerokość taśmy, materiał konstrukcji i integracja z linią — praktyczny poradnik doboru kosza przyjęciowego od konstruktorów Agro-Weld.",
+   "alts": {
+    "../../assets/logo.webp": "Agro-Weld — producent maszyn i linii technologicznych",
+    "../../assets/kp5000.webp": "Kosz przyjęciowy KP5000G"
+   }
+  },
+  "blog/czyszczenie-warzyw-szczotki-czy-plukanie/index.html": {
+   "title": "Czyszczenie warzyw: szczotki czy płukanie? | Blog Agro-Weld",
+   "description": "Czyszczarka szczotkowa czy wanna do płukania? Porównanie metod czyszczenia warzyw na sucho i mokro — kiedy która metoda się sprawdza i jak dobrać maszynę.",
+   "alts": {
+    "../../assets/logo.webp": "Agro-Weld — producent maszyn i linii technologicznych",
+    "../../assets/czyszczarka-docisk.webp": "Czyszczarka szczotkowa Agro-Weld",
+    "../../assets/wanna.png": "Wanna do płukania Agro-Weld"
+   }
+  },
+  "maszyny/przyjecie-i-buforowanie/index.html": {
+   "title": "Przyjęcie i buforowanie — kosze i zasobniki | Agro-Weld",
+   "description": "Kosze przyjęciowe i zasobniki buforowe Agro-Weld — pierwszy etap linii technologicznej. Równe podawanie surowca dla rolnictwa, przetwórstwa i przemysłu.",
+   "alts": {
+    "../../assets/logo.webp": "Agro-Weld",
+    "../../assets/kp5000.webp": "Kosz przyjęciowy KP5000"
+   }
+  }
+ }
+}

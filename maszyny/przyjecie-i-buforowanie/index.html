@@ -12,9 +12,10 @@
 <meta property="og:url" content="https://www.agro-weld.pl/maszyny/przyjecie-i-buforowanie/">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Start","item":"https://www.agro-weld.pl/"},{"@type":"ListItem","position":2,"name":"Maszyny","item":"https://www.agro-weld.pl/oferta/"},{"@type":"ListItem","position":3,"name":"Przyjęcie i buforowanie","item":"https://www.agro-weld.pl/maszyny/przyjecie-i-buforowanie/"}]},{"@type":"ItemList","name":"Przyjęcie i buforowanie — maszyny Agro-Weld","itemListElement":[{"@type":"ListItem","position":1,"name":"Kosz przyjęciowy","url":"https://www.agro-weld.pl/maszyny/kosz-przyjeciowy/"},{"@type":"ListItem","position":2,"name":"Zasobnik buforowy","url":"https://www.agro-weld.pl/maszyny/przyjecie-i-buforowanie/"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Start","item":"https://www.agro-weld.pl/"},{"@type":"ListItem","position":2,"name":"Maszyny","item":"https://www.agro-weld.pl/maszyny/"},{"@type":"ListItem","position":3,"name":"Przyjęcie i buforowanie","item":"https://www.agro-weld.pl/maszyny/przyjecie-i-buforowanie/"}]},{"@type":"ItemList","name":"Przyjęcie i buforowanie — maszyny Agro-Weld","itemListElement":[{"@type":"ListItem","position":1,"name":"Kosz przyjęciowy","url":"https://www.agro-weld.pl/maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/"}]}]}</script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
+ul,ol{list-style:none}
 html{scroll-behavior:smooth}
 body{font-family:'Hanken Grotesk',Arial,sans-serif;background:#ECE7D7;color:#14160E;-webkit-font-smoothing:antialiased}
 h1,h2,h3,h4{font-family:'Chakra Petch','Hanken Grotesk',sans-serif;letter-spacing:-.015em}
@@ -32,6 +33,13 @@ a{color:#41571F}a:hover{color:#8C3A43}
 .navlink{position:relative;color:#C3C8AF;text-decoration:none;transition:color .25s}
 .navlink::after{content:'';position:absolute;left:0;bottom:-6px;width:0;height:2px;background:#B7D44B;transition:width .3s}
 .navlink:hover{color:#fff}.navlink:hover::after{width:100%}
+.subwrap{position:relative;display:flex;align-items:center;height:78px}
+.submenu{display:none;position:absolute;top:64px;left:-16px;padding-top:12px;z-index:70}
+.subwrap:hover .submenu,.subwrap:focus-within .submenu{display:block}
+.submenu>div{background:#1E2113;border:1px solid rgba(236,231,215,.16);border-radius:10px;box-shadow:0 24px 50px -18px rgba(0,0,0,.7);padding:8px;min-width:480px}
+.subitem{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:11px 13px;border-radius:6px;font-size:14px;font-weight:600;color:#C3C8AF;transition:background .2s,color .2s;white-space:nowrap;text-decoration:none}
+.subitem:hover{background:#232719;color:#fff}
+.subitem .mono{font-size:10px;color:#7E8A63;letter-spacing:.08em}
 .awlink{color:#A7AE92;text-decoration:none;transition:color .25s}.awlink:hover{color:#B7D44B}
 .aw-mob{display:none}.aw-hamb{display:none}.aw-mob.is-open{display:block}
 .estep{transition:background .25s}.estep:hover{background:#EDE7D6}
@@ -58,11 +66,31 @@ a{color:#41571F}a:hover{color:#8C3A43}
 <header style="position:sticky;top:0;z-index:60;background:rgba(20,22,14,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(236,231,215,.12)">
   <div class="pad" style="max-width:1280px;margin:0 auto;padding:0 32px;height:78px;display:flex;align-items:center;justify-content:space-between;gap:24px">
     <a href="/" style="display:flex;align-items:center;gap:11px;flex-shrink:0"><span style="background:#ECE7D7;border-radius:8px;padding:7px 9px;display:flex"><img src="../../assets/logo.webp" alt="Agro-Weld" style="height:34px;width:auto;display:block"></span></a>
-    <nav class="hnav" style="display:flex;align-items:center;gap:34px;font-size:14.5px;font-weight:600;color:#C3C8AF">
-      <a class="navlink" href="/maszyny" style="color:#ECE7D7">Oferta</a>
+    <nav class="hnav" style="display:flex;align-items:center;gap:34px;font-size:14.5px;font-weight:600;color:#C3C8AF" aria-label="Menu główne">
+      <div class="subwrap">
+        <a class="navlink" href="/maszyny/" style="color:#ECE7D7">Oferta <span style="font-size:9px;opacity:.6">▾</span></a>
+        <div class="submenu">
+          <div>
+            <a class="subitem" href="/maszyny/" style="border-bottom:1px solid rgba(236,231,215,.12);border-radius:6px 6px 0 0;margin-bottom:6px">Wszystkie maszyny <span class="mono">KATALOG</span></a>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 8px">
+              <a class="subitem" href="/maszyny/rozladunek-skrzyn/">Rozładunek skrzyń <span class="mono">01</span></a>
+              <a class="subitem" href="/maszyny/przyjecie-i-buforowanie/">Przyjęcie i buforowanie <span class="mono">02</span></a>
+              <a class="subitem" href="/maszyny/oczyszczanie/">Oczyszczanie <span class="mono">03</span></a>
+              <a class="subitem" href="/maszyny/sortowanie/">Sortowanie <span class="mono">04</span></a>
+              <a class="subitem" href="/maszyny/selekcja/">Selekcja <span class="mono">05</span></a>
+              <a class="subitem" href="/maszyny/wazenie-i-liczenie/">Ważenie i liczenie <span class="mono">06</span></a>
+              <a class="subitem" href="/maszyny/pakowanie/">Pakowanie <span class="mono">07</span></a>
+              <a class="subitem" href="/maszyny/paletyzacja/">Paletyzacja <span class="mono">08</span></a>
+              <a class="subitem" href="/maszyny/przenosniki/">Przenośniki <span class="mono">09</span></a>
+              <a class="subitem" href="/maszyny/pielenie/">Pielenie <span class="mono">10</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
       <a class="navlink" href="/#proces">Proces</a>
       <a class="navlink" href="/#dlaczego">Dlaczego my</a>
       <a class="navlink" href="/#linie">Realizacje</a>
+      <a class="navlink" href="/blog/">Blog</a>
       <a class="navlink" href="/#kontakt">Kontakt</a>
     </nav>
     <div style="display:flex;align-items:center;gap:12px;flex-shrink:0">
@@ -73,10 +101,12 @@ a{color:#41571F}a:hover{color:#8C3A43}
   </div>
   <div id="awmob" class="aw-mob" style="border-top:1px solid rgba(236,231,215,.12);background:#1E2113;padding:12px 24px">
     <div style="display:flex;flex-direction:column;font-weight:600;color:#C3C8AF">
-      <a class="awlink" href="/maszyny" style="padding:13px 4px;border-bottom:1px solid rgba(236,231,215,.1)">Oferta</a>
+      <a class="awlink" href="/maszyny/" style="padding:13px 4px;border-bottom:1px solid rgba(236,231,215,.1)">Oferta</a>
+      <a class="awlink" href="/maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/" style="padding:13px 4px 13px 20px;border-bottom:1px solid rgba(236,231,215,.1);font-size:14px">Kosz przyjęciowy</a>
       <a class="awlink" href="/#proces" style="padding:13px 4px;border-bottom:1px solid rgba(236,231,215,.1)">Proces</a>
       <a class="awlink" href="/#dlaczego" style="padding:13px 4px;border-bottom:1px solid rgba(236,231,215,.1)">Dlaczego my</a>
       <a class="awlink" href="/#linie" style="padding:13px 4px;border-bottom:1px solid rgba(236,231,215,.1)">Realizacje</a>
+      <a class="awlink" href="/blog/" style="padding:13px 4px;border-bottom:1px solid rgba(236,231,215,.1)">Blog</a>
       <a class="awlink" href="/#kontakt" style="padding:13px 4px">Kontakt</a>
     </div>
   </div>
@@ -89,7 +119,7 @@ a{color:#41571F}a:hover{color:#8C3A43}
   <div class="pad" style="max-width:1280px;margin:0 auto;padding:0 32px;position:relative">
     <nav aria-label="breadcrumb" class="mono" data-reveal style="font-size:12px;color:#8A8163;padding:22px 0 0">
       <a href="/" style="color:#41571F;text-decoration:none">Start</a> <span style="color:#8C3A43">/</span>
-      <a href="/maszyny" style="color:#41571F;text-decoration:none">Maszyny</a> <span style="color:#8C3A43">/</span>
+      <a href="/maszyny/" style="color:#41571F;text-decoration:none">Maszyny</a> <span style="color:#8C3A43">/</span>
       <span style="color:#14160E;font-weight:700">Przyjęcie i buforowanie</span>
     </nav>
     <div data-reveal style="display:flex;align-items:center;justify-content:space-between;gap:20px;border-top:1px solid rgba(20,22,14,.18);border-bottom:1px solid rgba(20,22,14,.18);padding:13px 0;margin-top:20px;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase">
@@ -109,15 +139,15 @@ a{color:#41571F}a:hover{color:#8C3A43}
         <span aria-hidden="true" style="position:absolute;top:-1px;left:-1px;width:20px;height:20px;border-top:2px solid #8C3A43;border-left:2px solid #8C3A43"></span>
         <span aria-hidden="true" style="position:absolute;bottom:-1px;right:-1px;width:20px;height:20px;border-bottom:2px solid #8C3A43;border-right:2px solid #8C3A43"></span>
         <div class="mono" style="display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid rgba(20,22,14,.16);font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8C3A43">Etap w linii<span style="color:#8A8163">01–02 / 07</span></div>
-        <div style="padding:8px 18px 14px">
-          <div style="display:flex;align-items:center;gap:12px;padding:9px 0;border-bottom:1px solid rgba(20,22,14,.1)"><span style="width:8px;height:8px;background:#8C3A43;flex-shrink:0;border-radius:50%;animation:awPulse 2.6s infinite"></span><span class="mono" style="font-size:11px;font-weight:700;color:#8C3A43;width:16px">01</span><span style="font-size:14.5px;font-weight:700;color:#14160E">Przyjęcie</span></div>
-          <div style="display:flex;align-items:center;gap:12px;padding:9px 0;border-bottom:1px solid rgba(20,22,14,.1)"><span style="width:8px;height:8px;background:#8C3A43;flex-shrink:0;border-radius:50%;animation:awPulse 2.6s infinite"></span><span class="mono" style="font-size:11px;font-weight:700;color:#8C3A43;width:16px">02</span><span style="font-size:14.5px;font-weight:700;color:#14160E">Buforowanie</span></div>
-          <div style="display:flex;align-items:center;gap:12px;padding:9px 0;border-bottom:1px solid rgba(20,22,14,.1)"><span style="width:8px;height:8px;border:1px solid #B0A98C;flex-shrink:0"></span><span class="mono" style="font-size:11px;font-weight:700;color:#A29A7C;width:16px">03</span><span style="font-size:14.5px;font-weight:500;color:#8A8163">Oczyszczanie</span></div>
-          <div style="display:flex;align-items:center;gap:12px;padding:9px 0;border-bottom:1px solid rgba(20,22,14,.1)"><span style="width:8px;height:8px;border:1px solid #B0A98C;flex-shrink:0"></span><span class="mono" style="font-size:11px;font-weight:700;color:#A29A7C;width:16px">04</span><span style="font-size:14.5px;font-weight:500;color:#8A8163">Sortowanie</span></div>
-          <div style="display:flex;align-items:center;gap:12px;padding:9px 0;border-bottom:1px solid rgba(20,22,14,.1)"><span style="width:8px;height:8px;border:1px solid #B0A98C;flex-shrink:0"></span><span class="mono" style="font-size:11px;font-weight:700;color:#A29A7C;width:16px">05</span><span style="font-size:14.5px;font-weight:500;color:#8A8163">Ważenie</span></div>
-          <div style="display:flex;align-items:center;gap:12px;padding:9px 0;border-bottom:1px solid rgba(20,22,14,.1)"><span style="width:8px;height:8px;border:1px solid #B0A98C;flex-shrink:0"></span><span class="mono" style="font-size:11px;font-weight:700;color:#A29A7C;width:16px">06</span><span style="font-size:14.5px;font-weight:500;color:#8A8163">Pakowanie</span></div>
-          <div style="display:flex;align-items:center;gap:12px;padding:9px 0"><span style="width:8px;height:8px;border:1px solid #B0A98C;flex-shrink:0"></span><span class="mono" style="font-size:11px;font-weight:700;color:#A29A7C;width:16px">07</span><span style="font-size:14.5px;font-weight:500;color:#8A8163">Paletyzacja</span></div>
-        </div>
+        <ol style="padding:8px 18px 14px">
+          <li style="display:flex;align-items:center;gap:12px;padding:9px 0;border-bottom:1px solid rgba(20,22,14,.1)"><span style="width:8px;height:8px;background:#8C3A43;flex-shrink:0;border-radius:50%;animation:awPulse 2.6s infinite"></span><span class="mono" style="font-size:11px;font-weight:700;color:#8C3A43;width:16px">01</span><span style="font-size:14.5px;font-weight:700;color:#14160E">Przyjęcie</span></li>
+          <li style="display:flex;align-items:center;gap:12px;padding:9px 0;border-bottom:1px solid rgba(20,22,14,.1)"><span style="width:8px;height:8px;background:#8C3A43;flex-shrink:0;border-radius:50%;animation:awPulse 2.6s infinite"></span><span class="mono" style="font-size:11px;font-weight:700;color:#8C3A43;width:16px">02</span><span style="font-size:14.5px;font-weight:700;color:#14160E">Buforowanie</span></li>
+          <li style="display:flex;align-items:center;gap:12px;padding:9px 0;border-bottom:1px solid rgba(20,22,14,.1)"><span style="width:8px;height:8px;border:1px solid #B0A98C;flex-shrink:0"></span><span class="mono" style="font-size:11px;font-weight:700;color:#A29A7C;width:16px">03</span><span style="font-size:14.5px;font-weight:500;color:#8A8163">Oczyszczanie</span></li>
+          <li style="display:flex;align-items:center;gap:12px;padding:9px 0;border-bottom:1px solid rgba(20,22,14,.1)"><span style="width:8px;height:8px;border:1px solid #B0A98C;flex-shrink:0"></span><span class="mono" style="font-size:11px;font-weight:700;color:#A29A7C;width:16px">04</span><span style="font-size:14.5px;font-weight:500;color:#8A8163">Sortowanie</span></li>
+          <li style="display:flex;align-items:center;gap:12px;padding:9px 0;border-bottom:1px solid rgba(20,22,14,.1)"><span style="width:8px;height:8px;border:1px solid #B0A98C;flex-shrink:0"></span><span class="mono" style="font-size:11px;font-weight:700;color:#A29A7C;width:16px">05</span><span style="font-size:14.5px;font-weight:500;color:#8A8163">Ważenie</span></li>
+          <li style="display:flex;align-items:center;gap:12px;padding:9px 0;border-bottom:1px solid rgba(20,22,14,.1)"><span style="width:8px;height:8px;border:1px solid #B0A98C;flex-shrink:0"></span><span class="mono" style="font-size:11px;font-weight:700;color:#A29A7C;width:16px">06</span><span style="font-size:14.5px;font-weight:500;color:#8A8163">Pakowanie</span></li>
+          <li style="display:flex;align-items:center;gap:12px;padding:9px 0"><span style="width:8px;height:8px;border:1px solid #B0A98C;flex-shrink:0"></span><span class="mono" style="font-size:11px;font-weight:700;color:#A29A7C;width:16px">07</span><span style="font-size:14.5px;font-weight:500;color:#8A8163">Paletyzacja</span></li>
+        </ol>
       </div>
     </div>
   </div>
@@ -132,7 +162,7 @@ a{color:#41571F}a:hover{color:#8C3A43}
     </div>
     <h2 data-reveal style="font-size:40px;font-weight:700;line-height:1.05;margin-bottom:40px;max-width:640px;text-wrap:balance">Kosz przyjęciowy — serce tego etapu</h2>
     <div data-reveal style="border:1px solid #14160E;background:#14160E;display:grid;gap:1px">
-      <a class="prow" href="/maszyny/kosz-przyjeciowy" style="display:grid;grid-template-columns:150px 1fr auto;gap:26px;align-items:center;padding:20px 24px;background:#ECE7D7;text-decoration:none;color:#14160E">
+      <a class="prow" href="/maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/" style="display:grid;grid-template-columns:150px 1fr auto;gap:26px;align-items:center;padding:20px 24px;background:#ECE7D7;text-decoration:none;color:#14160E">
         <span style="width:150px;height:100px;flex-shrink:0;background-color:#F1ECDF;background-image:linear-gradient(rgba(20,22,14,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(20,22,14,.05) 1px,transparent 1px);background-size:20px 20px;border:1px solid rgba(20,22,14,.14);display:flex;align-items:center;justify-content:center;overflow:hidden">
           <img class="prowimg" src="../../assets/kp5000.webp" alt="Kosz przyjęciowy KP5000" loading="lazy" style="max-width:86%;max-height:86%;object-fit:contain;display:block">
         </span>
@@ -151,7 +181,7 @@ a{color:#41571F}a:hover{color:#8C3A43}
     </div>
     <div data-reveal style="border-top:1px solid rgba(20,22,14,.18);margin-top:18px;padding-top:18px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.02em;color:#8A8163">
       <span>↳ Każdą maszynę konfigurujemy pod surowiec i wydajność linii.</span>
-      <a href="/maszyny" style="color:#41571F;font-weight:700;white-space:nowrap;text-decoration:none">← Wszystkie kategorie</a>
+      <a href="/maszyny/" style="color:#41571F;font-weight:700;white-space:nowrap;text-decoration:none">← Wszystkie kategorie</a>
     </div>
   </div>
 </section>
@@ -168,12 +198,12 @@ a{color:#41571F}a:hover{color:#8C3A43}
       </div>
       <div data-reveal style="transition-delay:.08s">
         <div class="mono" style="font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8C3A43;margin-bottom:18px">/ W standardzie i opcjach</div>
-        <div style="display:flex;flex-direction:column">
-          <div style="display:flex;gap:16px;align-items:baseline;padding:15px 0;border-top:1px solid rgba(236,231,215,.14)"><span class="mono" style="font-size:11px;font-weight:700;color:#8C3A43">01</span><span style="font-size:15.5px;font-weight:600;color:#E4E6D6">Płynna regulacja podawania falownikiem</span></div>
-          <div style="display:flex;gap:16px;align-items:baseline;padding:15px 0;border-top:1px solid rgba(236,231,215,.14)"><span class="mono" style="font-size:11px;font-weight:700;color:#8C3A43">02</span><span style="font-size:15.5px;font-weight:600;color:#E4E6D6">Gumowe zabieraki chroniące plon</span></div>
-          <div style="display:flex;gap:16px;align-items:baseline;padding:15px 0;border-top:1px solid rgba(236,231,215,.14)"><span class="mono" style="font-size:11px;font-weight:700;color:#8C3A43">03</span><span style="font-size:15.5px;font-weight:600;color:#E4E6D6">Rozbudowa nadstawkami i wykonanie INOX</span></div>
-          <div style="display:flex;gap:16px;align-items:baseline;padding:15px 0;border-top:1px solid rgba(236,231,215,.14);border-bottom:1px solid rgba(236,231,215,.14)"><span class="mono" style="font-size:11px;font-weight:700;color:#8C3A43">04</span><span style="font-size:15.5px;font-weight:600;color:#E4E6D6">Integracja z pozostałymi maszynami linii</span></div>
-        </div>
+        <ul style="display:flex;flex-direction:column">
+          <li style="display:flex;gap:16px;align-items:baseline;padding:15px 0;border-top:1px solid rgba(236,231,215,.14)"><span class="mono" style="font-size:11px;font-weight:700;color:#8C3A43">01</span><span style="font-size:15.5px;font-weight:600;color:#E4E6D6">Płynna regulacja podawania falownikiem</span></li>
+          <li style="display:flex;gap:16px;align-items:baseline;padding:15px 0;border-top:1px solid rgba(236,231,215,.14)"><span class="mono" style="font-size:11px;font-weight:700;color:#8C3A43">02</span><span style="font-size:15.5px;font-weight:600;color:#E4E6D6">Gumowe zabieraki chroniące plon</span></li>
+          <li style="display:flex;gap:16px;align-items:baseline;padding:15px 0;border-top:1px solid rgba(236,231,215,.14)"><span class="mono" style="font-size:11px;font-weight:700;color:#8C3A43">03</span><span style="font-size:15.5px;font-weight:600;color:#E4E6D6">Rozbudowa nadstawkami i wykonanie INOX</span></li>
+          <li style="display:flex;gap:16px;align-items:baseline;padding:15px 0;border-top:1px solid rgba(236,231,215,.14);border-bottom:1px solid rgba(236,231,215,.14)"><span class="mono" style="font-size:11px;font-weight:700;color:#8C3A43">04</span><span style="font-size:15.5px;font-weight:600;color:#E4E6D6">Integracja z pozostałymi maszynami linii</span></li>
+        </ul>
       </div>
     </div>
   </div>
@@ -186,26 +216,26 @@ a{color:#41571F}a:hover{color:#8C3A43}
       <span style="color:#8C3A43">/ Zastosowania</span><span style="color:#8A8163">Rolnictwo · Przetwórstwo · Przemysł</span>
     </div>
     <h2 data-reveal style="font-size:40px;font-weight:700;line-height:1.05;margin-bottom:40px;max-width:680px;text-wrap:balance;color:#14160E">Ten sam start — od gospodarstwa po linię przemysłową</h2>
-    <div class="uses" data-reveal style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#14160E;border:1px solid #14160E">
-      <div class="usetile" style="padding:30px 28px">
+    <ul class="uses" data-reveal style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#14160E;border:1px solid #14160E">
+      <li class="usetile" style="padding:30px 28px">
         <span class="usei" style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(140,58,67,.4);color:#8C3A43;margin-bottom:20px"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21v-8 M12 13c0-4 3-6.5 7.5-6.5-.8 4.5-3.5 6.5-7.5 6.5z M12 13c0-4-3-6.5-7.5-6.5.8 4.5 3.5 6.5 7.5 6.5z"></path></svg></span>
         <div class="mono" style="font-size:11px;font-weight:700;letter-spacing:.12em;color:#8C3A43;margin-bottom:12px">A / ROLNICTWO</div>
         <h3 style="font-size:21px;font-weight:700;margin-bottom:10px;color:#14160E">Gospodarstwa i grupy producenckie</h3>
         <p style="font-size:14.5px;line-height:1.6;color:#56603F">Przyjęcie plonu prosto z pola i równe podanie na linię — pojedynczy kosz lub rozbudowywany bufor.</p>
-      </div>
-      <div class="usetile" style="padding:30px 28px">
+      </li>
+      <li class="usetile" style="padding:30px 28px">
         <span class="usei" style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(140,58,67,.4);color:#8C3A43;margin-bottom:20px"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 12a4 4 0 1 0 8 0a4 4 0 1 0 -8 0 M12 3v2 M12 19v2 M3 12h2 M19 12h2"></path></svg></span>
         <div class="mono" style="font-size:11px;font-weight:700;letter-spacing:.12em;color:#8C3A43;margin-bottom:12px">B / PRZETWÓRSTWO</div>
         <h3 style="font-size:21px;font-weight:700;margin-bottom:10px;color:#14160E">Zakłady przetwórcze i pakownie</h3>
         <p style="font-size:14.5px;line-height:1.6;color:#56603F">Higieniczne wykonanie INOX i bufor rozdzielający dostawy od ciągłej pracy linii.</p>
-      </div>
-      <div class="usetile" style="padding:30px 28px">
+      </li>
+      <li class="usetile" style="padding:30px 28px">
         <span class="usei" style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(140,58,67,.4);color:#8C3A43;margin-bottom:20px"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8l8-4 8 4v8l-8 4-8-4z M4 8l8 4 8-4 M12 12v8"></path></svg></span>
         <div class="mono" style="font-size:11px;font-weight:700;letter-spacing:.12em;color:#8C3A43;margin-bottom:12px">C / PRZEMYSŁ</div>
         <h3 style="font-size:21px;font-weight:700;margin-bottom:10px;color:#14160E">Linie produkcyjne pod klucz</h3>
         <p style="font-size:14.5px;line-height:1.6;color:#56603F">Duże zasobniki buforowe i przyjęcie jako moduł kompletnego ciągu technologicznego z automatyką.</p>
-      </div>
-    </div>
+      </li>
+    </ul>
   </div>
 </section>
 
@@ -231,38 +261,47 @@ a{color:#41571F}a:hover{color:#8C3A43}
         <span style="background:#ECE7D7;display:inline-block;padding:11px 13px;border-radius:9px;margin-bottom:20px"><img src="../../assets/logo.webp" alt="Agro-Weld" style="height:42px;display:block"></span>
         <p style="font-size:14.5px;line-height:1.6;max-width:300px;color:#7E8A63">Polski producent maszyn i linii technologicznych do czyszczenia, sortowania, obróbki i pakowania — dla rolnictwa, przetwórstwa i przemysłu.</p>
       </div>
-      <div>
+      <nav aria-label="Nawigacja — stopka">
         <div class="mono" style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#5E6A47;margin-bottom:18px">Nawigacja</div>
-        <div style="display:flex;flex-direction:column;gap:12px;font-size:14.5px">
-          <a class="awlink" href="/maszyny">Oferta</a>
-          <a class="awlink" href="/#proces">Proces</a>
-          <a class="awlink" href="/#dlaczego">Dlaczego my</a>
-          <a class="awlink" href="/#linie">Realizacje</a>
-          <a class="awlink" href="/#kontakt">Kontakt</a>
-        </div>
-      </div>
-      <div>
+        <ul style="display:flex;flex-direction:column;gap:12px;font-size:14.5px">
+          <li><a class="awlink" href="/maszyny/">Oferta</a></li>
+          <li><a class="awlink" href="/realizacje/">Realizacje</a></li>
+          <li><a class="awlink" href="/blog/">Blog</a></li>
+          <li><a class="awlink" href="/linie-produkcyjne/">Linie produkcyjne</a></li>
+          <li><a class="awlink" href="/rozwiazania-specjalne/">Rozwiązania specjalne</a></li>
+          <li><a class="awlink" href="/o-firmie/">O firmie</a></li>
+          <li><a class="awlink" href="/do-pobrania/">Do pobrania</a></li>
+          <li><a class="awlink" href="/kontakt/">Kontakt</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Kategorie maszyn — stopka">
         <div class="mono" style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#5E6A47;margin-bottom:18px">Etapy linii</div>
-        <div style="display:flex;flex-direction:column;gap:12px;font-size:14.5px">
-          <a class="awlink" href="/maszyny">Przyjęcie i buforowanie</a>
-          <a class="awlink" href="/maszyny">Oczyszczanie</a>
-          <a class="awlink" href="/maszyny">Sortowanie</a>
-          <a class="awlink" href="/maszyny">Pakowanie</a>
-          <a class="awlink" href="/maszyny">Paletyzacja</a>
-        </div>
-      </div>
+        <ul style="display:flex;flex-direction:column;gap:12px;font-size:14.5px">
+          <li><a class="awlink" href="/maszyny/rozladunek-skrzyn/">Rozładunek skrzyń</a></li>
+          <li><a class="awlink" href="/maszyny/przyjecie-i-buforowanie/">Przyjęcie i buforowanie</a></li>
+          <li><a class="awlink" href="/maszyny/oczyszczanie/">Oczyszczanie</a></li>
+          <li><a class="awlink" href="/maszyny/sortowanie/">Sortowanie</a></li>
+          <li><a class="awlink" href="/maszyny/selekcja/">Selekcja</a></li>
+          <li><a class="awlink" href="/maszyny/wazenie-i-liczenie/">Ważenie i liczenie</a></li>
+          <li><a class="awlink" href="/maszyny/pakowanie/">Pakowanie</a></li>
+          <li><a class="awlink" href="/maszyny/paletyzacja/">Paletyzacja</a></li>
+          <li><a class="awlink" href="/maszyny/przenosniki/">Przenośniki</a></li>
+          <li><a class="awlink" href="/maszyny/pielenie/">Pielenie</a></li>
+        </ul>
+      </nav>
       <div>
         <div class="mono" style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#5E6A47;margin-bottom:18px">Kontakt</div>
-        <div style="display:flex;flex-direction:column;gap:12px;font-size:14.5px">
-          <span style="color:#7E8A63">ul. Prądzyńskiego 16, Środa Wlkp.</span>
-          <a class="awlink" href="mailto:biuro@agro-weld.pl" style="color:#ECE7D7;font-weight:600">biuro@agro-weld.pl</a>
-          <a class="awlink" href="tel:+48725140257" style="color:#ECE7D7;font-weight:600">+48 725 140 257</a>
-          <a class="awlink" href="tel:+48608230369" style="color:#ECE7D7;font-weight:600">+48 608 230 369</a>
-        </div>
+        <ul style="display:flex;flex-direction:column;gap:12px;font-size:14.5px">
+          <li><span style="color:#7E8A63">ul. Prądzyńskiego 16, Środa Wlkp.</span></li>
+          <li><a class="awlink" href="mailto:biuro@agro-weld.pl" style="color:#ECE7D7;font-weight:600">biuro@agro-weld.pl</a></li>
+          <li><a class="awlink" href="tel:+48725140257" style="color:#ECE7D7;font-weight:600">+48 725 140 257</a></li>
+          <li><a class="awlink" href="tel:+48608230369" style="color:#ECE7D7;font-weight:600">+48 608 230 369</a></li>
+        </ul>
       </div>
     </div>
     <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;padding-top:26px;flex-wrap:wrap">
       <span style="font-size:13px;color:#5E6A47">© 2026 Agro-Weld Spółka z ograniczoną odpowiedzialnością. Wszelkie prawa zastrzeżone.</span>
+      <a class="awlink" href="/polityka-prywatnosci/" style="font-size:13px;color:#5E6A47">Polityka prywatności</a>
       <a class="awlink mono" href="../../uploads/AgroWeld katalog 2026 20 01.pdf" style="font-size:12.5px;color:#7E8A63;letter-spacing:.04em">↓ Pobierz katalog (PDF)</a>
     </div>
   </div>

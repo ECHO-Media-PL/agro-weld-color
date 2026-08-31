@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /Strona-glowna.dc.html
+Disallow: /Oferta.dc.html
+Disallow: /Kosz-przyjeciowy.dc.html
+Disallow: /support.js
+
+Sitemap: https://www.agro-weld.pl/sitemap.xml
