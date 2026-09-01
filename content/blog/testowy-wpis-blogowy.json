@@ -1,0 +1,17 @@
+{
+ "slug": "testowy-wpis-blogowy",
+ "managed": true,
+ "title": "Testowy wpis blogowy",
+ "category": "Dobór maszyn",
+ "catSlug": "dobor",
+ "date": "2026-09-01",
+ "read": 2,
+ "cover": "uploads/blog/testowy-wpis-blogowy-cover.webp",
+ "coverAlt": "",
+ "coverPad": false,
+ "excerpt": "Krótki opis na liście wpisów",
+ "metaTitle": "Testowy wpis blogowy | Agro-Weld",
+ "metaDesc": "zajawkaaaaaaaaa",
+ "lead": "zajawkaaaaaaaaa",
+ "bodyHtml": "<h2 id=\"ile-maszyn-h2\">ILE MASZYN? H2</h2><h3>ZA ILE? H3</h3><b>PO CO? B</b><br><i>a yaka powierzchnia robocza? I</i><ul><li><i>Lista punktowana&nbsp;</i></li><li><i>tralalalejo tralala</i></li></ul><i><a href=\"https://agrowylda.com.pl\" class=\"inline\">agrowylda</a></i><figure><img src=\"/uploads/blog/testowy-wpis-blogowy-mtipq6fr.webp\" alt=\"\"><figcaption>Podpis zdjęcia (możesz zmienić lub usunąć)</figcaption></figure><p></p><p></p>"
+}
