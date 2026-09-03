@@ -33,13 +33,29 @@ async function gh(method, p, obj) {
 }
 const R = '/repos/' + REPO;
 
-// Jeden atomowy commit wielu plików (Git Data API) → jeden deploy na publikację
-async function commitFiles(files, message, author) {
+// Jeden atomowy commit wielu plików (Git Data API) → jeden deploy na publikację.
+// Kolejka: równoległe publikacje wykonują się jedna po drugiej (bez wyścigu o ref),
+// a konflikt refa (ktoś pchnął w międzyczasie) jest ponawiany raz na świeżym stanie.
+let commitChain = Promise.resolve();
+function commitFiles(files, message, author) {
+  const run = async () => {
+    try { return await commitOnce(files, message, author); }
+    catch (e) {
+      if (/fast forward|does not match|409|422/i.test(String(e.message))) { await new Promise(r => setTimeout(r, 1200)); return commitOnce(files, message, author); }
+      throw e;
+    }
+  };
+  const p = commitChain.then(run, run);
+  commitChain = p.catch(() => {});
+  return p;
+}
+async function commitOnce(files, message, author) {
   const ref = await gh('GET', R + '/git/ref/heads/' + BRANCH);
   const parent = ref.object.sha;
   const base = (await gh('GET', R + '/git/commits/' + parent)).tree.sha;
   const tree = [];
   for (const f of files) {
+    if (f.delete) { tree.push({ path: f.path, mode: '100644', type: 'blob', sha: null }); continue; }
     const blob = await gh('POST', R + '/git/blobs', f.base64 ? { content: f.base64, encoding: 'base64' } : { content: f.text, encoding: 'utf-8' });
     tree.push({ path: f.path, mode: '100644', type: 'blob', sha: blob.sha });
   }
@@ -54,6 +70,8 @@ const LIMITS = { title: 60, description: 160, alt: 125, metaTitle: 60, metaDesc:
 function validate(files) {
   const errs = [];
   for (const f of files) {
+    if (f.delete) continue;
+    if (f.base64) { if (f.base64.length > 9e6) errs.push(f.path + ': zdjęcie za duże po kompresji (max ~6 MB)'); continue; }
     if (!f.text) continue;
     let data; try { data = JSON.parse(f.text); } catch (e) { if (f.path.endsWith('.json')) errs.push(f.path + ': niepoprawny JSON'); continue; }
     if (f.path === 'content/seo.json') {
@@ -67,6 +85,9 @@ function validate(files) {
       if ((data.metaTitle || '').length > LIMITS.metaTitle) errs.push(f.path + ': meta title > ' + LIMITS.metaTitle);
       if ((data.metaDesc || '').length > LIMITS.metaDesc) errs.push(f.path + ': meta description > ' + LIMITS.metaDesc);
       if (!data.slug || !/^[a-z0-9-]+$/.test(data.slug)) errs.push(f.path + ': niepoprawny adres (slug)');
+      if ((data.coverAlt || '').length > LIMITS.alt) errs.push(f.path + ': opis zdjęcia (alt) > ' + LIMITS.alt + ' znaków');
+      if (/<script|<iframe|<object|<embed|\son\w+\s*=|javascript:/i.test(data.bodyHtml || '')) errs.push(f.path + ': niedozwolony kod HTML we wpisie');
+      if (/src="data:/i.test(data.bodyHtml || '')) errs.push(f.path + ': wpis zawiera niezapisane zdjęcie — wgraj je ponownie');
     }
     if (f.path.startsWith('content/') && !f.path.startsWith('content/blog/') && f.path !== 'content/seo.json') {
       // teksty i maszyny: bez limitów twardych, ale bez HTML w polach tekstowych
@@ -138,8 +159,21 @@ http.createServer(async (req, res) => {
         return json(res, 200, { ok: true, commit: sha });
       }
       if (req.method === 'POST' && url.pathname === '/api/translate') {
-        if (!ENV.ANTHROPIC_API_KEY) return json(res, 501, { error: 'Tłumaczenia nie są jeszcze skonfigurowane (brak klucza API).' });
         const { texts, langs } = JSON.parse(await readBody(req));
+        // DeepL (darmowy do 500k znaków/mies.) ma pierwszeństwo, potem Anthropic
+        if (ENV.DEEPL_API_KEY) {
+          const host = ENV.DEEPL_API_KEY.endsWith(':fx') ? 'api-free.deepl.com' : 'api.deepl.com';
+          const out = {};
+          for (const lang of langs) {
+            const body = JSON.stringify({ text: texts, source_lang: 'PL', target_lang: lang.toUpperCase() === 'EN' ? 'EN-GB' : lang.toUpperCase() });
+            const r = await request(host, 'POST', '/v2/translate', { 'Authorization': 'DeepL-Auth-Key ' + ENV.DEEPL_API_KEY, 'Content-Type': 'application/json', 'Content-Length': Buffer.byteLength(body) }, body);
+            const data = JSON.parse(r.body);
+            if (r.status >= 400) return json(res, 502, { error: 'DeepL: ' + (data.message || r.status) });
+            out[lang] = data.translations.map(t => t.text);
+          }
+          return json(res, 200, { translations: out });
+        }
+        if (!ENV.ANTHROPIC_API_KEY) return json(res, 501, { error: 'Tłumaczenia nie są jeszcze skonfigurowane (brak klucza DEEPL_API_KEY lub ANTHROPIC_API_KEY).' });
         const prompt = 'Przetłumacz poniższe teksty ze strony producenta maszyn rolniczych z polskiego na języki: ' + langs.join(', ') +
           '. Zachowaj ton techniczno-handlowy. Odpowiedz WYŁĄCZNIE JSON-em w formacie {"<lang>": ["tekst1", ...]} bez komentarzy.\n\nTeksty:\n' + JSON.stringify(texts);
         const body = JSON.stringify({ model: ENV.ANTHROPIC_MODEL || 'claude-3-5-haiku-latest', max_tokens: 4000, messages: [{ role: 'user', content: prompt }] });

@@ -16,10 +16,11 @@ Nie masz gita? Wejdź na github.com → repo → "Add file → Upload files" i p
 3. Permissions → Repository permissions → **Contents: Read and write**. Reszta bez zmian.
 4. Wygeneruj i SKOPIUJ token (pokazuje się raz).
 
-## Krok 3 — klucz Anthropic (tłumaczenia AI — opcjonalnie, można dodać później)
-1. console.anthropic.com → utwórz konto → API Keys → Create key.
-2. Doładuj minimalnie 5 USD (tłumaczenia kosztują grosze — model Haiku).
-Bez klucza panel działa normalnie, tylko przycisk tłumaczeń zwróci komunikat o braku konfiguracji.
+## Krok 3 — klucz do tłumaczeń (opcjonalnie, można dodać później)
+Opcja darmowa (polecana): **DeepL API Free** — 500 000 znaków/mies. za darmo.
+1. deepl.com/pro-api → plan „DeepL API Free" → załóż konto → skopiuj klucz → wklej jako `DEEPL_API_KEY`.
+Alternatywa płatna: klucz Anthropic (console.anthropic.com, model Haiku, grosze) jako `ANTHROPIC_API_KEY`.
+Bez żadnego klucza panel działa normalnie — tylko tłumaczenia zgłoszą brak konfiguracji.
 
 ## Krok 4 — usługa CMS na Render
 `render.yaml` w repo definiuje już obie usługi. Po pushu z kroku 1:

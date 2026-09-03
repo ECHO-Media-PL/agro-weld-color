@@ -69,7 +69,7 @@ function relatedCards(self) {
 }
 let generated = 0;
 for (const p of posts) {
-  if (!p.managed || !tpl) continue;
+  if (!p.managed || p.draft || !tpl) continue;
   const jsonld = JSON.stringify({
     '@context': 'https://schema.org', '@type': 'BlogPosting',
     headline: p.title, description: p.metaDesc, datePublished: p.date,
@@ -90,7 +90,7 @@ for (const p of posts) {
 }
 
 // ---------- blog: listing + sitemap ----------
-const managed = posts.filter(p => p.managed);
+const managed = posts.filter(p => p.managed && !p.draft);
 if (fs.existsSync('blog/index.html')) {
   const cards = managed.map(p => {
     const cover = p.cover ? '../' + p.cover : '../assets/maszyna-placeholder.png';

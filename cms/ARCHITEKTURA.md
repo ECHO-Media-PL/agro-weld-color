@@ -21,13 +21,17 @@ budżet ≤100 zł/mies., treści muszą być w statycznym HTML (czytelne dla bo
   metaTitle, metaDesc, lead, bodyHtml, managed.
   `managed:true` → build generuje `blog/<slug>/index.html` z templates/blog-post.html
   (spis treści auto z `<h2 id>`), wstawia kartę w regionie `<!--CMS:POSTS-->` w blog/index.html
-  i URL w regionie `<!--CMS:BLOG-->` w sitemap.xml.
+  i URL w regionie `<!--CMS:BLOG-->` w sitemap.xml. `draft:true` → wpis pomijany (szkic).
+  Usunięcie wpisu = usunięcie JSON-a commitem (panel wysyła {path, delete:true}).
   `managed:false` → strona wpisu ręczna, build podmienia tylko meta/alty.
 
 ## Zasady
 - Markery `data-cms` zostają w HTML na stałe — build podmienia innerHTML oznaczonych elementów.
 - Wartości w JSON to czysty tekst (build robi escaping). bodyHtml wpisu to zaufany HTML z edytora panelu.
-- Panel waliduje twarde limity: meta title ≤60, description ≤160, alt ≤125 znaków.
+- Panel waliduje twarde limity: meta title ≤60, description ≤160, alt ≤125 znaków; bodyHtml
+  jest czyszczony w panelu (bez script/on*/javascript:) i odrzucany serwerowo, gdy zawiera taki kod.
+- Publikacje są kolejkowane serwerowo (jeden commit na raz, retry przy konflikcie refa) —
+  kilka „Opublikuj" pod rząd = kolejne commity, Render sam łączy/kolejkuje deploye.
 - Tłumaczenia (EN/DE/RU/FR) — pola per język w JSON, wypełniane przez AI w panelu; strona
   publikuje na razie tylko PL (wersje językowe nie są jeszcze wdrożone na żywej stronie).
 
