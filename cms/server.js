@@ -88,6 +88,8 @@ function validate(files) {
       if ((data.coverAlt || '').length > LIMITS.alt) errs.push(f.path + ': opis zdjęcia (alt) > ' + LIMITS.alt + ' znaków');
       if (/<script|<iframe|<object|<embed|\son\w+\s*=|javascript:/i.test(data.bodyHtml || '')) errs.push(f.path + ': niedozwolony kod HTML we wpisie');
       if (/src="data:/i.test(data.bodyHtml || '')) errs.push(f.path + ': wpis zawiera niezapisane zdjęcie — wgraj je ponownie');
+      if (data.machines && (!Array.isArray(data.machines) || data.machines.some(k => !/^(cat|m):[a-z0-9-]+$/.test(k)))) errs.push(f.path + ': niepoprawna lista maszyn z artykułu');
+      if (data.featured && data.draft) errs.push(f.path + ': szkic nie może być wyróżniony na stronie głównej');
     }
     if (f.path.startsWith('content/') && !f.path.startsWith('content/blog/') && f.path !== 'content/seo.json') {
       // teksty i maszyny: bez limitów twardych, ale bez HTML w polach tekstowych

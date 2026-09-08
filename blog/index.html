@@ -38,9 +38,24 @@ ul,ol{list-style:none}
 .subitem:hover{background:#232719;color:#fff}
 .subitem .mono{font-size:10px;color:#7E8A63;letter-spacing:.08em}
 .awlink{color:#A7AE92;transition:color .25s}.awlink:hover{color:#B7D44B}
-.btn{transition:transform .25s,background .3s,color .3s,border-color .3s,box-shadow .3s;display:inline-block}
+.btn{transition:transform .25s,background .3s,color .3s,border-color .3s,box-shadow .3s;display:inline-block;text-decoration:none;cursor:pointer}
 .btn:hover{transform:translateY(-2px)}
-.btnp:hover{box-shadow:0 12px 30px -10px rgba(183,212,75,.5)}
+.btnp{box-shadow:0 0 0 0 rgba(183,212,75,.4)}
+.btnp:hover{box-shadow:0 12px 30px -10px rgba(183,212,75,.55)}
+.btno:hover{background:#ECE7D7;color:#14160E;border-color:#ECE7D7}
+.btn .ar,.btn .aru{display:inline-block;transition:transform .3s cubic-bezier(.2,.7,.2,1)}
+.btn:hover .ar{transform:translateX(5px)}
+.btn:hover .aru{transform:translate(3px,-3px)}
+.btnd:hover{background:#3B5115;color:#F4EFE2}
+.btnb:hover{background:#14160E;color:#ECE7D7;border-color:#14160E}
+.btng:hover{background:#4E6A26;box-shadow:0 12px 30px -10px rgba(65,87,31,.55)}
+.btnc{position:relative;transition:background .35s,color .35s,border-color .35s}
+.btnc::before,.btnc::after{content:'';position:absolute;width:0;height:0;border:0 solid #B7D44B;opacity:0;transition:width .3s cubic-bezier(.2,.7,.2,1),height .3s cubic-bezier(.2,.7,.2,1),opacity .2s}
+.btnc::before{top:-6px;left:-6px;border-top-width:2px;border-left-width:2px}
+.btnc::after{bottom:-6px;right:-6px;border-bottom-width:2px;border-right-width:2px}
+.btnc:hover{transform:none;background:#F7F3E8!important;border-color:#F7F3E8!important}
+.btnc:hover::before,.btnc:hover::after{width:18px;height:18px;opacity:1}
+.btnc:hover .ar{transform:translateX(5px)}
 .chip{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:10px 15px;border:1px solid rgba(20,22,14,.32);background:transparent;color:#56603F;cursor:pointer;transition:border-color .25s,color .25s,background .25s;display:inline-flex;align-items:center;gap:9px}
 .chip:hover{border-color:#14160E;color:#14160E}
 .chip.is-on{background:#14160E;color:#B7D44B;border-color:#14160E}
@@ -80,9 +95,9 @@ a.bcard:hover .bmore span{transform:translateX(3px)}
 <header style="position:sticky;top:0;z-index:60;background:rgba(20,22,14,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(236,231,215,.12)">
   <div class="pad" style="max-width:1280px;margin:0 auto;padding:0 32px;height:78px;display:flex;align-items:center;justify-content:space-between;gap:24px">
     <a href="/" style="display:flex;align-items:center;gap:11px;flex-shrink:0" aria-label="Agro-Weld — strona główna"><span style="background:#ECE7D7;border-radius:8px;padding:7px 9px;display:flex"><img src="../assets/logo.webp" alt="Agro-Weld — producent maszyn i linii technologicznych" style="height:34px;width:auto;display:block"></span></a>
-    <nav class="hnav" style="display:flex;align-items:center;gap:34px;font-size:14.5px;font-weight:600;color:#C3C8AF" aria-label="Menu główne">
+    <nav class="hnav" style="display:flex;align-items:center;gap:28px;font-size:14.5px;font-weight:600;color:#C3C8AF" aria-label="Menu główne">
       <div class="subwrap">
-        <a class="navlink" href="/maszyny/">Oferta <span style="font-size:9px;opacity:.6">▾</span></a>
+        <a class="navlink" href="/maszyny/" style="color:#ECE7D7">Oferta <span style="font-size:9px;opacity:.6">▾</span></a>
         <div class="submenu">
           <div>
             <a class="subitem" href="/maszyny/" style="border-bottom:1px solid rgba(236,231,215,.12);border-radius:6px 6px 0 0;margin-bottom:6px">Wszystkie maszyny <span class="mono">KATALOG</span></a>
@@ -101,24 +116,26 @@ a.bcard:hover .bmore span{transform:translateX(3px)}
           </div>
         </div>
       </div>
-      <a class="navlink" href="/#proces">Proces</a>
-      <a class="navlink" href="/#dlaczego">Dlaczego my</a>
-      <a class="navlink" href="/#linie">Realizacje</a>
+      <a class="navlink" href="/linie-produkcyjne/">Linie produkcyjne</a>
+      <a class="navlink" href="/realizacje/">Realizacje</a>
+      <a class="navlink" href="/o-firmie/">O firmie</a>
       <a class="navlink" href="/blog/" style="color:#B7D44B">Blog</a>
-      <a class="navlink" href="/#kontakt">Kontakt</a>
+      <a class="navlink" href="/kontakt/">Kontakt</a>
     </nav>
     <div style="display:flex;align-items:center;gap:12px;flex-shrink:0">
       <span class="mono hnav" style="display:flex;align-items:center;gap:7px;border:1px solid rgba(236,231,215,.22);color:#ECE7D7;padding:8px 12px;border-radius:6px;font-size:13px;font-weight:700;letter-spacing:.04em"><span style="width:6px;height:6px;border-radius:50%;background:#B7D44B;display:inline-block"></span>PL</span>
       <a class="btn btnp hnav" href="/#kontakt" style="background:#B7D44B;color:#14160E;padding:11px 18px;border-radius:6px;font-weight:700;font-size:14px">Zapytaj o ofertę</a>
-      <button onclick="document.getElementById('awmob').classList.toggle('is-open')" class="hamb btn" aria-label="Menu" style="background:transparent;border:1px solid rgba(236,231,215,.22);border-radius:6px;width:44px;height:40px;align-items:center;justify-content:center;cursor:pointer;font-size:18px;color:#ECE7D7">≡</button>
+      <button onclick="document.getElementById('awmob').classList.toggle('is-open')" class="hamb btn btno" aria-label="Menu" style="background:transparent;border:1px solid rgba(236,231,215,.22);border-radius:6px;width:44px;height:40px;align-items:center;justify-content:center;cursor:pointer;font-size:18px;color:#ECE7D7">≡</button>
     </div>
   </div>
   <div id="awmob" class="aw-mob" style="border-top:1px solid rgba(236,231,215,.12);background:#1E2113;padding:12px 24px">
     <div style="display:flex;flex-direction:column;font-weight:600;color:#C3C8AF">
-      <a class="awlink" href="/" style="padding:13px 4px;border-bottom:1px solid rgba(236,231,215,.1)">Start</a>
       <a class="awlink" href="/maszyny/" style="padding:13px 4px;border-bottom:1px solid rgba(236,231,215,.1)">Oferta</a>
+      <a class="awlink" href="/linie-produkcyjne/" style="padding:13px 4px;border-bottom:1px solid rgba(236,231,215,.1)">Linie produkcyjne</a>
+      <a class="awlink" href="/realizacje/" style="padding:13px 4px;border-bottom:1px solid rgba(236,231,215,.1)">Realizacje</a>
+      <a class="awlink" href="/o-firmie/" style="padding:13px 4px;border-bottom:1px solid rgba(236,231,215,.1)">O firmie</a>
       <a class="awlink" href="/blog/" style="padding:13px 4px;border-bottom:1px solid rgba(236,231,215,.1)">Blog</a>
-      <a class="awlink" href="/#kontakt" style="padding:13px 4px">Kontakt</a>
+      <a class="awlink" href="/kontakt/" style="padding:13px 4px">Kontakt</a>
     </div>
   </div>
 </header>
@@ -207,7 +224,7 @@ a.bcard:hover .bmore span{transform:translateX(3px)}
         <h2 style="font-size:26px;line-height:1.08;color:#fff;margin-bottom:8px;text-wrap:balance">Masz pytanie o dobór maszyny?</h2>
         <p style="font-size:15px;line-height:1.6;color:#A7AE92;max-width:520px;text-wrap:pretty">Opisz swój produkt i skalę produkcji — doradzimy konkretne rozwiązanie.</p>
       </div>
-      <a class="btn btnp" href="/#kontakt" style="background:#B7D44B;color:#14160E;padding:15px 26px;border-radius:7px;font-weight:700;font-size:15px;white-space:nowrap">Zapytaj o ofertę →</a>
+      <a class="btn btnp" href="/#kontakt" style="background:#B7D44B;color:#14160E;padding:15px 26px;border-radius:7px;font-weight:700;font-size:15px;white-space:nowrap">Zapytaj o ofertę <span class="ar">→</span></a>
     </div>
   </div>
 </section>

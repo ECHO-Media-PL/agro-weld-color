@@ -51,6 +51,24 @@ function region(html, name, inner) {
 }
 
 // ---------- blog: generowanie wpisów ----------
+const MCATS = { 'rozladunek-skrzyn':'Rozładunek skrzyń', 'przyjecie-i-buforowanie':'Przyjęcie i buforowanie', 'oczyszczanie':'Oczyszczanie', 'sortowanie':'Sortowanie', 'selekcja':'Selekcja', 'wazenie-i-liczenie':'Ważenie i liczenie', 'pakowanie':'Pakowanie', 'paletyzacja':'Paletyzacja', 'przenosniki':'Przenośniki', 'pielenie':'Pielenie' };
+const ICON = '<span style="width:56px;height:44px;display:flex;align-items:center;justify-content:center;color:#8C3A43;flex:none"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 13h11a3 3 0 0 1 0 6h-11a3 3 0 0 1 0-6z M9 5h6v4H9z"></path></svg></span>';
+function relMachines(p) {
+  const items = (p.machines || []).map(key => {
+    const [t, id] = key.split(':');
+    if (t === 'cat') { const n = MCATS[id]; return n ? { href: '/maszyny/' + id + '/', img: null, name: n, sub: 'Kategoria maszyn' } : null; }
+    const m = machines.find(x => x.id === id); if (!m) return null;
+    return { href: m.url || '/maszyny/#' + m.id, img: m.img ? '../../assets/' + m.img : null, name: m.name, sub: m.models || '' };
+  }).filter(Boolean);
+  if (!items.length) return '';
+  return '<div data-reveal style="margin-top:20px;border:1px solid rgba(20,22,14,.2);padding:20px 22px">\n' +
+    '        <div class="mono" style="font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#41571F;margin-bottom:14px">Maszyny z artykułu</div>\n' +
+    '        <div style="display:flex;flex-direction:column;gap:10px">\n' +
+    items.map(it => '          <a class="relm" href="' + escA(it.href) + '">' +
+      (it.img ? '<img src="' + escA(it.img) + '" alt="' + escA(it.name) + '" style="width:56px;height:44px;object-fit:contain;flex:none">' : ICON) +
+      '<span style="flex:1;font-size:14px;font-weight:700">' + esc(it.name) + '<br><span class="mono" style="font-size:10px;font-weight:400;color:#8A8163">' + esc(it.sub) + '</span></span><span class="rarr" style="color:#8C3A43;font-weight:700">↗</span></a>').join('\n') +
+    '\n        </div>\n      </div>';
+}
 const tpl = fs.existsSync('templates/blog-post.html') ? read('templates/blog-post.html') : null;
 function tocFromBody(body) {
   const items = []; const re = /<h2[^>]*\bid="([^"]+)"[^>]*>([\s\S]*?)<\/h2>/g; let m;
@@ -81,7 +99,7 @@ for (const p of posts) {
     JSONLD: jsonld, CRUMB: esc(p.title.length > 44 ? p.title.slice(0, 42).trim() + '…' : p.title),
     CATEGORY: esc(p.category), DATE: fmtDate(p.date), READ: p.read || 5,
     TITLE: esc(p.title), LEAD: esc(p.lead || ''), TOC: tocFromBody(p.bodyHtml || ''),
-    BODY: p.bodyHtml || '', RELATED: relatedCards(p),
+    BODY: p.bodyHtml || '', RELATED: relatedCards(p), RELM: relMachines(p),
   };
   let html = tpl;
   for (const [k, v] of Object.entries(fill)) html = html.split('{{' + k + '}}').join(v);
@@ -104,10 +122,66 @@ if (fs.existsSync('blog/index.html')) {
   }).join('\n      ');
   write('blog/index.html', region(read('blog/index.html'), 'POSTS', '      ' + cards));
 }
+// ---------- strona główna: wyróżniony wpis + najnowszy ----------
+const visible = posts.filter(p => !p.draft);
+const feat = visible.find(p => p.featured) || visible[0];
+const mini = visible.find(p => p !== feat);
+if (feat && fs.existsSync('index.html') && read('index.html').includes('<!--CMS:HOMEBLOG-->')) {
+  const cover = p => p.cover || 'assets/maszyna-placeholder.png';
+  const featHtml = '<a class="bfeat" href="/blog/' + feat.slug + '/" style="background:#ECE7D7;display:grid;grid-template-columns:1fr 1fr">\n' +
+    '        <span class="bfimg" style="overflow:hidden;display:block;background:#E3DCC8;min-height:300px"><img src="' + escA(cover(feat)) + '" alt="' + escA(feat.coverAlt || feat.title) + '" loading="lazy" style="width:100%;height:100%;object-fit:' + (feat.coverPad ? 'contain;padding:26px' : 'cover') + ';display:block"></span>\n' +
+    '        <span style="padding:32px 34px;display:flex;flex-direction:column;justify-content:center">\n' +
+    '          <span class="mono" style="display:flex;align-items:center;gap:12px;margin-bottom:16px;font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase"><span style="color:#8C3A43">Wyróżniony</span><span style="color:#C6BEA4">·</span><span style="color:#8A8163">' + esc(feat.category) + '</span></span>\n' +
+    '          <h3 class="btitle" style="font-size:28px;line-height:1.1;margin-bottom:12px;text-wrap:balance">' + esc(feat.title) + '</h3>\n' +
+    '          <p style="font-size:15px;line-height:1.6;color:#56603F;text-wrap:pretty;margin-bottom:22px">' + esc(feat.excerpt || '') + '</p>\n' +
+    '          <span class="mono bmore" style="font-size:11px;font-weight:700;color:#41571F;display:inline-flex;align-items:center;gap:8px">Czytaj artykuł<span>→</span><span style="color:#A8A084;font-weight:400;margin-left:4px">· ' + (feat.read || 5) + ' min</span></span>\n' +
+    '        </span>\n      </a>';
+  const miniHtml = mini ? '<a class="bmini" href="/blog/' + mini.slug + '/" style="background:#ECE7D7;padding:26px 28px;display:flex;flex-direction:column;justify-content:center">\n' +
+    '          <span class="mono" style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase"><span style="color:#8C3A43">' + esc(mini.category) + '</span><span style="color:#8A8163">' + fmtDate(mini.date) + '</span></span>\n' +
+    '          <h3 class="btitle" style="font-size:21px;line-height:1.14;margin-bottom:9px;text-wrap:balance">' + esc(mini.title) + '</h3>\n' +
+    '          <p style="font-size:14px;line-height:1.55;color:#56603F;text-wrap:pretty">' + esc(mini.excerpt || '') + '</p>\n        </a>' : '';
+  let home = read('index.html');
+  home = region(home, 'HOMEBLOG', '      ' + featHtml);
+  if (home.includes('<!--CMS:HOMEMINI-->')) home = region(home, 'HOMEMINI', '        ' + miniHtml);
+  write('index.html', home);
+}
+
 if (fs.existsSync('sitemap.xml')) {
   const urls = managed.map(p =>
     '  <url><loc>https://www.agro-weld.pl/blog/' + p.slug + '/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>').join('\n');
   write('sitemap.xml', region(read('sitemap.xml'), 'BLOG', urls));
+}
+
+// ---------- strony kategorii maszyn (content/kategorie.json + templates/kategoria.html) ----------
+let catsBuilt = 0, prodsBuilt = 0;
+if (fs.existsSync('content/kategorie.json') && fs.existsSync('templates/kategoria.html')) {
+  const KR = require('./templates/kategoria.render.js');
+  const ktpl = read('templates/kategoria.html');
+  for (const cat of J('content/kategorie.json')) {
+    write('maszyny/' + cat.slug + '/index.html', KR.render(cat, machines, ktpl));
+    catsBuilt++;
+  }
+}
+// ---------- karty produktów (content/produkty.json + templates/produkt.html) ----------
+if (fs.existsSync('content/produkty.json') && fs.existsSync('templates/produkt.html')) {
+  const PR = require('./templates/produkt.render.js');
+  const ptpl = read('templates/produkt.html');
+  const prods = J('content/produkty.json');
+  for (const p of prods) { write('maszyny/' + p.cat + '/' + p.slug + '/index.html', PR.render(p, prods, machines, ptpl)); prodsBuilt++; }
+}
+// ---------- listing /maszyny/ ----------
+if (fs.existsSync('maszyny/index.html') && read('maszyny/index.html').includes('<!--CMS:GROUPS-->')) {
+  const LR = require('./templates/listing.render.js');
+  write('maszyny/index.html', region(read('maszyny/index.html'), 'GROUPS', LR.render(machines)));
+}
+
+// ---------- realizacje (content/realizacje.json) ----------
+if (fs.existsSync('content/realizacje.json') && fs.existsSync('templates/strony.render.js')) {
+  const SR = require('./templates/strony.render.js');
+  const ktpl2 = read('templates/kategoria.html');
+  const reals = J('content/realizacje.json');
+  write('realizacje/index.html', SR.renderRealizacje(reals, ktpl2));
+  for (const r of reals) write('realizacje/' + r.slug + '/index.html', SR.renderCase(r, reals, machines, ktpl2));
 }
 
 // ---------- strony z markerami / SEO ----------
@@ -117,4 +191,4 @@ for (const page of Object.keys(seo.pages)) {
 }
 // legacy sync — katalog produktów używany przez generatory
 write('seo/data-products.json', JSON.stringify(machines, null, 1));
-console.log('Build OK: ' + Object.keys(seo.pages).length + ' stron, ' + generated + ' wygenerowanych wpisów, ' + managed.length + ' wpisów CMS na listingu.');
+console.log('Build OK: ' + Object.keys(seo.pages).length + ' stron, ' + catsBuilt + ' kategorii, ' + prodsBuilt + ' kart produktów, ' + generated + ' wygenerowanych wpisów, ' + managed.length + ' wpisów CMS na listingu.');

@@ -24,6 +24,10 @@ budżet ≤100 zł/mies., treści muszą być w statycznym HTML (czytelne dla bo
   i URL w regionie `<!--CMS:BLOG-->` w sitemap.xml. `draft:true` → wpis pomijany (szkic).
   Usunięcie wpisu = usunięcie JSON-a commitem (panel wysyła {path, delete:true}).
   `managed:false` → strona wpisu ręczna, build podmienia tylko meta/alty.
+  Pola dodatkowe: `featured:true` (jeden wpis → duża karta w sekcji Blog na stronie głównej, regiony
+  `<!--CMS:HOMEBLOG-->` i `<!--CMS:HOMEMINI-->` w index.html; bez flagi — najnowszy wpis),
+  `machines:["m:<id>","cat:<slug-kategorii>"]` → blok „Maszyny z artykułu” obok spisu treści ({{RELM}}
+  w szablonie; link maszyny = `url` z maszyny.json albo `/maszyny/#<id>`).
 
 ## Zasady
 - Markery `data-cms` zostają w HTML na stałe — build podmienia innerHTML oznaczonych elementów.

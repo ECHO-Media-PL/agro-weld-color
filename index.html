@@ -57,7 +57,13 @@ input,textarea,button{font-family:inherit}
 .btnd:hover{background:#3B5115;color:#F4EFE2}
 .btnb:hover{background:#14160E;color:#ECE7D7;border-color:#14160E}
 .btng:hover{background:#4E6A26;box-shadow:0 12px 30px -10px rgba(65,87,31,.55)}
-.btnc:hover{background:#B7D44B;border-color:#B7D44B}
+.btnc{position:relative;transition:background .35s,color .35s,border-color .35s}
+.btnc::before,.btnc::after{content:'';position:absolute;width:0;height:0;border:0 solid #B7D44B;opacity:0;transition:width .3s cubic-bezier(.2,.7,.2,1),height .3s cubic-bezier(.2,.7,.2,1),opacity .2s}
+.btnc::before{top:-6px;left:-6px;border-top-width:2px;border-left-width:2px}
+.btnc::after{bottom:-6px;right:-6px;border-bottom-width:2px;border-right-width:2px}
+.btnc:hover{transform:none;background:#F7F3E8!important;border-color:#F7F3E8!important}
+.btnc:hover::before,.btnc:hover::after{width:18px;height:18px;opacity:1}
+.btnc:hover .ar{transform:translateX(5px)}
 .bfeat,.bmini{transition:background .3s}
 .bfeat:hover,.bmini:hover{background:#F4EFE2;color:#14160E}
 .bfeat:hover .btitle,.bmini:hover .btitle{color:#8C3A43}
@@ -131,9 +137,9 @@ a.tile:hover .tarr{color:#B7D44B;transform:translateX(3px)}
 <header style="position:sticky;top:0;z-index:60;background:rgba(20,22,14,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(236,231,215,.12)">
   <div class="pad" style="max-width:1280px;margin:0 auto;padding:0 32px;height:78px;display:flex;align-items:center;justify-content:space-between;gap:24px">
     <a href="/" style="display:flex;align-items:center;gap:11px;flex-shrink:0" aria-label="Agro-Weld — strona główna"><span style="background:#ECE7D7;border-radius:8px;padding:7px 9px;display:flex"><img src="assets/logo.webp" alt="Agro-Weld — producent maszyn i linii technologicznych" style="height:34px;width:auto;display:block"></span></a>
-    <nav class="hnav" style="display:flex;align-items:center;gap:34px;font-size:14.5px;font-weight:600;color:#C3C8AF" aria-label="Menu główne">
+    <nav class="hnav" style="display:flex;align-items:center;gap:28px;font-size:14.5px;font-weight:600;color:#C3C8AF" aria-label="Menu główne">
       <div class="subwrap">
-        <a class="navlink" href="/maszyny/">Oferta <span style="font-size:9px;opacity:.6">▾</span></a>
+        <a class="navlink" href="/maszyny/" style="color:#ECE7D7">Oferta <span style="font-size:9px;opacity:.6">▾</span></a>
         <div class="submenu">
           <div>
             <a class="subitem" href="/maszyny/" style="border-bottom:1px solid rgba(236,231,215,.12);border-radius:6px 6px 0 0;margin-bottom:6px">Wszystkie maszyny <span class="mono">KATALOG</span></a>
@@ -152,27 +158,26 @@ a.tile:hover .tarr{color:#B7D44B;transform:translateX(3px)}
           </div>
         </div>
       </div>
-      <a class="navlink" href="#proces">Proces</a>
-      <a class="navlink" href="#dlaczego">Dlaczego my</a>
-      <a class="navlink" href="#linie">Realizacje</a>
-      <a class="navlink" href="#blog">Blog</a>
-      <a class="navlink" href="#kontakt">Kontakt</a>
+      <a class="navlink" href="/linie-produkcyjne/">Linie produkcyjne</a>
+      <a class="navlink" href="/realizacje/">Realizacje</a>
+      <a class="navlink" href="/o-firmie/">O firmie</a>
+      <a class="navlink" href="/blog/">Blog</a>
+      <a class="navlink" href="/kontakt/">Kontakt</a>
     </nav>
     <div style="display:flex;align-items:center;gap:12px;flex-shrink:0">
       <span class="mono hnav" style="display:flex;align-items:center;gap:7px;border:1px solid rgba(236,231,215,.22);color:#ECE7D7;padding:8px 12px;border-radius:6px;font-size:13px;font-weight:700;letter-spacing:.04em"><span style="width:6px;height:6px;border-radius:50%;background:#B7D44B;display:inline-block"></span>PL</span>
-      <a class="btn btnp hnav" href="#kontakt" style="background:#B7D44B;color:#14160E;padding:11px 18px;border-radius:6px;font-weight:700;font-size:14px">Zapytaj o ofertę</a>
+      <a class="btn btnp hnav" href="/kontakt/" style="background:#B7D44B;color:#14160E;padding:11px 18px;border-radius:6px;font-weight:700;font-size:14px">Zapytaj o ofertę</a>
       <button onclick="document.getElementById('awmob').classList.toggle('is-open')" class="hamb btn" aria-label="Menu" style="background:transparent;border:1px solid rgba(236,231,215,.22);border-radius:6px;width:44px;height:40px;align-items:center;justify-content:center;cursor:pointer;font-size:18px;color:#ECE7D7">≡</button>
     </div>
   </div>
   <div id="awmob" class="aw-mob" style="border-top:1px solid rgba(236,231,215,.12);background:#1E2113;padding:12px 24px">
     <div style="display:flex;flex-direction:column;font-weight:600;color:#C3C8AF">
       <a class="awlink" href="/maszyny/" style="padding:13px 4px;border-bottom:1px solid rgba(236,231,215,.1)">Oferta</a>
-      <a class="awlink" href="/maszyny/przyjecie-i-buforowanie/" style="padding:13px 4px 13px 20px;border-bottom:1px solid rgba(236,231,215,.1);font-size:14px">Przyjęcie i buforowanie</a>
-      <a class="awlink" href="#proces" style="padding:13px 4px;border-bottom:1px solid rgba(236,231,215,.1)">Proces</a>
-      <a class="awlink" href="#dlaczego" style="padding:13px 4px;border-bottom:1px solid rgba(236,231,215,.1)">Dlaczego my</a>
-      <a class="awlink" href="#linie" style="padding:13px 4px;border-bottom:1px solid rgba(236,231,215,.1)">Realizacje</a>
+      <a class="awlink" href="/linie-produkcyjne/" style="padding:13px 4px;border-bottom:1px solid rgba(236,231,215,.1)">Linie produkcyjne</a>
+      <a class="awlink" href="/realizacje/" style="padding:13px 4px;border-bottom:1px solid rgba(236,231,215,.1)">Realizacje</a>
+      <a class="awlink" href="/o-firmie/" style="padding:13px 4px;border-bottom:1px solid rgba(236,231,215,.1)">O firmie</a>
       <a class="awlink" href="/blog/" style="padding:13px 4px;border-bottom:1px solid rgba(236,231,215,.1)">Blog</a>
-      <a class="awlink" href="#kontakt" style="padding:13px 4px">Kontakt</a>
+      <a class="awlink" href="/kontakt/" style="padding:13px 4px">Kontakt</a>
     </div>
   </div>
 </header>
@@ -493,7 +498,7 @@ a.tile:hover .tarr{color:#B7D44B;transform:translateX(3px)}
     </div>
     <div data-reveal style="border:1px solid #14160E">
       <div class="rzgrid" style="display:grid;grid-template-columns:1fr 1fr 1.05fr;gap:1px;background:#14160E">
-        <a class="rz" href="#kontakt">
+        <a class="rz" href="/realizacje/linia-do-sortowania-borowki/">
           <span style="height:210px;overflow:hidden;border-bottom:1px solid #14160E;display:block"><img class="rzimg" src="assets/real-borowka.jpg" alt="Linia sortująca do borówki — realizacja Agro-Weld" loading="lazy"></span>
           <span style="padding:18px 20px 20px;flex:1;display:flex;flex-direction:column">
             <span class="mono" style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:11px;font-size:11px;letter-spacing:.05em"><span style="color:#8C3A43;font-weight:700">REF. 2025-014</span><span style="color:#8A8163;text-transform:uppercase;letter-spacing:.1em">Selekcja</span></span>
@@ -501,7 +506,7 @@ a.tile:hover .tarr{color:#B7D44B;transform:translateX(3px)}
             <p style="font-size:14px;line-height:1.5;color:#56603F;text-wrap:pretty" data-cms="real.c1.desc">Delikatna selekcja owoców miękkich na taśmie perforowanej — bez uszkodzeń, z odprowadzaniem zanieczyszczeń.</p>
           </span>
         </a>
-        <a class="rz" href="#kontakt">
+        <a class="rz" href="/realizacje/linia-do-cytrusow/">
           <span style="height:210px;overflow:hidden;border-bottom:1px solid #14160E;display:block"><img class="rzimg" src="assets/real-cytrusy.webp" alt="Linia licząco-pakująca do cytrusów — realizacja Agro-Weld" loading="lazy"></span>
           <span style="padding:18px 20px 20px;flex:1;display:flex;flex-direction:column">
             <span class="mono" style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:11px;font-size:11px;letter-spacing:.05em"><span style="color:#8C3A43;font-weight:700">REF. 2025-031</span><span style="color:#8A8163;text-transform:uppercase;letter-spacing:.1em">Pakowanie</span></span>
@@ -509,7 +514,7 @@ a.tile:hover .tarr{color:#B7D44B;transform:translateX(3px)}
             <p style="font-size:14px;line-height:1.5;color:#56603F;text-wrap:pretty" data-cms="real.c2.desc">Kompletna linia: transport, zliczanie sztuk i automatyczne pakowanie — zaprojektowana i uruchomiona pod klucz.</p>
           </span>
         </a>
-        <a class="rz" href="#kontakt">
+        <a class="rz" href="/realizacje/stol-selekcyjny-inox/">
           <span style="height:210px;overflow:hidden;border-bottom:1px solid #14160E;display:block"><img class="rzimg" src="assets/real-inox.jpg" alt="Stół selekcyjny INOX — realizacja Agro-Weld" loading="lazy"></span>
           <span style="padding:18px 20px 20px;flex:1;display:flex;flex-direction:column">
             <span class="mono" style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:11px;font-size:11px;letter-spacing:.05em"><span style="color:#8C3A43;font-weight:700">REF. 2025-022</span><span style="color:#8A8163;text-transform:uppercase;letter-spacing:.1em">Selekcja</span></span>
@@ -517,7 +522,7 @@ a.tile:hover .tarr{color:#B7D44B;transform:translateX(3px)}
             <p style="font-size:14px;line-height:1.5;color:#56603F;text-wrap:pretty" data-cms="real.c3.desc">Stanowisko kontroli jakości ze stali nierdzewnej — higieniczne, z zadaszeniem i regulacją prędkości.</p>
           </span>
         </a>
-        <a class="rz" href="#kontakt">
+        <a class="rz" href="/realizacje/raszlownica-z-modulem-pakujacym/">
           <span style="height:210px;overflow:hidden;border-bottom:1px solid #14160E;display:block"><img class="rzimg" src="assets/real-raszlownica.jpg" alt="Raszlownica z modułem pakującym — realizacja Agro-Weld" loading="lazy"></span>
           <span style="padding:18px 20px 20px;flex:1;display:flex;flex-direction:column">
             <span class="mono" style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:11px;font-size:11px;letter-spacing:.05em"><span style="color:#8C3A43;font-weight:700">REF. 2025-008</span><span style="color:#8A8163;text-transform:uppercase;letter-spacing:.1em">Czyszczenie</span></span>
@@ -551,6 +556,7 @@ a.tile:hover .tarr{color:#B7D44B;transform:translateX(3px)}
       <a class="btn btnd" data-reveal href="/blog/" style="background:#14160E;color:#ECE7D7;padding:14px 22px;border-radius:7px;font-weight:700;font-size:14.5px;white-space:nowrap">Wszystkie wpisy <span class="ar">→</span></a>
     </div>
     <div data-reveal class="blogrow" style="display:grid;grid-template-columns:1.35fr 1fr;gap:1px;background:#14160E;border:1px solid #14160E">
+      <!--CMS:HOMEBLOG-->
       <a class="bfeat" href="/blog/jak-dobrac-kosz-przyjeciowy/" style="background:#ECE7D7;display:grid;grid-template-columns:1fr 1fr">
         <span class="bfimg" style="overflow:hidden;display:block;background:#E3DCC8;min-height:300px"><img src="assets/kp5000.webp" alt="Kosz przyjęciowy KP5000G — maszyna Agro-Weld" loading="lazy" style="width:100%;height:100%;object-fit:contain;padding:26px;display:block"></span>
         <span style="padding:32px 34px;display:flex;flex-direction:column;justify-content:center">
@@ -560,12 +566,15 @@ a.tile:hover .tarr{color:#B7D44B;transform:translateX(3px)}
           <span class="mono bmore" style="font-size:11px;font-weight:700;color:#41571F;display:inline-flex;align-items:center;gap:8px">Czytaj artykuł<span>→</span><span style="color:#A8A084;font-weight:400;margin-left:4px">· 6 min</span></span>
         </span>
       </a>
+      <!--/CMS:HOMEBLOG-->
       <div style="display:grid;grid-template-rows:1fr 1fr;gap:1px;background:#14160E">
+        <!--CMS:HOMEMINI-->
         <a class="bmini" href="/blog/czyszczenie-warzyw-szczotki-czy-plukanie/" style="background:#ECE7D7;padding:26px 28px;display:flex;flex-direction:column;justify-content:center">
           <span class="mono" style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase"><span style="color:#8C3A43">Oczyszczanie</span><span style="color:#8A8163">06.08.2026</span></span>
           <h3 class="btitle" style="font-size:21px;line-height:1.14;margin-bottom:9px;text-wrap:balance">Czyszczenie warzyw: szczotki czy płukanie?</h3>
           <p style="font-size:14px;line-height:1.55;color:#56603F;text-wrap:pretty">Porównanie metod czyszczenia na sucho i mokro — kiedy która się sprawdza.</p>
         </a>
+        <!--/CMS:HOMEMINI-->
         <div style="background:linear-gradient(165deg,#243015,#1A2110);padding:26px 28px;display:flex;flex-direction:column;justify-content:center">
           <div class="mono" style="font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#8FA862;margin-bottom:12px">Kolejne wpisy</div>
           <p style="font-size:15px;line-height:1.55;color:#C3C8AF;margin-bottom:18px;text-wrap:pretty">Paletyzacja, pakowanie i projektowanie linii — nowe poradniki w przygotowaniu.</p>

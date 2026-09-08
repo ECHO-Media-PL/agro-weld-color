@@ -1,8 +1,8 @@
 {
  "pages": {
   "index.html": {
-   "title": "Agro-Weld  Polski producent, Środa Wlkp.",
-   "description": "Agro-Weld projektuje i produkuje maszyny do obróbki warzyw i owoców oraz kompletne linie produkcyjne — od przyjęcia surowca po paletyzację szreks.pl",
+   "title": "Agro-Weld — maszyny i linie technologiczne dla rolnictwa i przemysłu",
+   "description": "Agro-Weld projektuje i produkuje maszyny do obróbki warzyw i owoców oraz kompletne linie produkcyjne — od przyjęcia surowca po paletyzację. Polski producent, Środa Wlkp.",
    "alts": {
     "assets/logo.webp": "Agro-Weld — producent maszyn i linii technologicznych",
     "assets/kp5000.webp": "Kosz przyjęciowy KP5000G — maszyna Agro-Weld",
@@ -20,7 +20,7 @@
    }
   },
   "maszyny/index.html": {
-   "title": "Katalog maszyn — oferta Maszyn do warzyw i owoców",
+   "title": "Katalog maszyn — oferta Agro-Weld | Maszyny do warzyw i owoców",
    "description": "Pełen przegląd maszyn Agro-Weld pogrupowany według etapu linii technologicznej — przyjęcie, oczyszczanie, sortowanie, ważenie, pakowanie i paletyzacja.",
    "alts": {
     "../assets/logo.webp": "Agro-Weld — producent maszyn i linii technologicznych",
@@ -28,7 +28,7 @@
    }
   },
   "blog/index.html": {
-   "title": "Blog — wiedza o maszynach i liniach technologicznych",
+   "title": "Blog — wiedza o maszynach i liniach technologicznych | Agro-Weld",
    "description": "Praktyczna wiedza od producenta: dobór maszyn do warzyw i owoców, projektowanie linii technologicznych, czyszczenie, sortowanie, pakowanie i paletyzacja.",
    "alts": {
     "../assets/logo.webp": "Agro-Weld — producent maszyn i linii technologicznych",
@@ -41,7 +41,7 @@
    }
   },
   "blog/jak-dobrac-kosz-przyjeciowy/index.html": {
-   "title": "Jak dobrać kosz przyjęciowy do linii technologicznej? ",
+   "title": "Jak dobrać kosz przyjęciowy do linii technologicznej? | Blog Agro-Weld",
    "description": "Pojemność zasypu, szerokość taśmy, materiał konstrukcji i integracja z linią — praktyczny poradnik doboru kosza przyjęciowego od konstruktorów Agro-Weld.",
    "alts": {
     "../../assets/logo.webp": "Agro-Weld — producent maszyn i linii technologicznych",
@@ -58,8 +58,8 @@
    }
   },
   "maszyny/przyjecie-i-buforowanie/index.html": {
-   "title": "Przyjęcie i buforowanie — kosze i zasobniki | Agro-Weld",
-   "description": "Kosze przyjęciowe i zasobniki buforowe Agro-Weld — pierwszy etap linii technologicznej. Równe podawanie surowca dla rolnictwa, przetwórstwa i przemysłu.",
+   "title": "Kosze przyjęciowe do warzyw – maszyny przyjęcia surowca – Agro-Weld",
+   "description": "Kosze przyjęciowe KP1000-KP5000G (1-5 m³) i zasobniki buforowe do warzyw. Rozdzielenie na frakcje, wersje INOX. Wycena gratis – Agro-Weld.",
    "alts": {
     "../../assets/logo.webp": "Agro-Weld",
     "../../assets/kp5000.webp": "Kosz przyjęciowy KP5000"

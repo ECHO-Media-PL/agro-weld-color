@@ -47,17 +47,20 @@ textarea.inp{resize:vertical;line-height:1.5}
 <script>
 'use strict';
 // ============ stan ============
-const S = { view: 'login', files: {}, dirty: {}, bins: [], deletes: [], seoPage: 'index.html', txtGroup: 'hero', post: null, pub: 'idle', lastErr: null, machEdit: null, posts: [] };
+const S = { view: 'login', files: {}, orig: {}, dirty: {}, bins: [], deletes: [], seoPage: 'index.html', txtGroup: 'hero', post: null, pub: 'idle', lastErr: null, machEdit: null, posts: [], chgOpen: false };
 const LIM = { title: 60, desc: 160, alt: 125 };
 const GROUPS = [['hero','Hero (góra strony)'],['process','Proces linii'],['featured','Wybrane maszyny'],['why','Dlaczego my'],['catalog','Pełna oferta'],['lines','Linie produkcyjne'],['real','Realizacje'],['blogsec','Sekcja blog'],['verbruggen','Verbruggen'],['contact','Kontakt'],['footer','Stopka']];
 const LABELS = { 'titleA':'Nagłówek — linia 1','titleB':'Nagłówek — linia 2 (zielona)','sub':'Tekst pod nagłówkiem','h2':'Nagłówek sekcji','stat1n':'Statystyka 1 — liczba','stat1l':'Statystyka 1 — opis','stat2n':'Statystyka 2 — liczba','stat2l':'Statystyka 2 — opis','stat3n':'Statystyka 3 — liczba','stat3l':'Statystyka 3 — opis','p1':'Punkt 1','p2':'Punkt 2','p3':'Punkt 3','addr':'Adres','phones':'Telefony','email':'E-mail','hours':'Godziny pracy','tagline':'Opis firmy' };
 const CATS = [['Dobór maszyn','dobor'],['Oczyszczanie','oczyszczanie'],['Pakowanie','pakowanie'],['Paletyzacja','paletyzacja'],['Linie technologiczne','linie']];
 const PAGE_NAMES = { 'index.html':'Strona główna','maszyny/index.html':'Katalog maszyn','blog/index.html':'Blog — lista','maszyny/przyjecie-i-buforowanie/index.html':'Przyjęcie i buforowanie' };
+// kategorie maszyn (adresy podstron katalogu) — do podlinkowania we wpisie
+const MCATS = [['rozladunek-skrzyn','Rozładunek skrzyń'],['przyjecie-i-buforowanie','Przyjęcie i buforowanie'],['oczyszczanie','Oczyszczanie'],['sortowanie','Sortowanie'],['selekcja','Selekcja'],['wazenie-i-liczenie','Ważenie i liczenie'],['pakowanie','Pakowanie'],['paletyzacja','Paletyzacja'],['przenosniki','Przenośniki'],['pielenie','Pielenie']];
+const POST_FIELDS = { title:'tytuł', lead:'zajawka', bodyHtml:'treść artykułu', cover:'zdjęcie miniatury', coverAlt:'opis zdjęcia (alt)', coverPad:'kadrowanie miniatury', excerpt:'krótki opis', metaTitle:'meta title', metaDesc:'meta description', category:'kategoria', date:'data', draft:'status (szkic / publikacja)', featured:'wyróżnienie na stronie głównej', machines:'maszyny z artykułu', slug:'adres' };
 const $ = s => document.querySelector(s);
 const escH = s => String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 const slugify = s => s.toLowerCase().replace(/[ąćęłńóśźż]/g, c=>({'ą':'a','ć':'c','ę':'e','ł':'l','ń':'n','ó':'o','ś':'s','ź':'z','ż':'z'}[c])).replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'').slice(0,70);
 async function api(p, opts) { const r = await fetch(p, Object.assign({credentials:'same-origin'}, opts)); const d = await r.json(); if (r.status===401 && S.view!=='login'){S.view='login';render();throw new Error('auth')} if (!r.ok) throw Object.assign(new Error(d.error||('HTTP '+r.status)), {details:d.details}); return d; }
-async function loadJSON(path) { if (S.files[path]) return S.files[path]; const r = await api('/api/file?path='+encodeURIComponent(path)); S.files[path] = JSON.parse(r.text); return S.files[path]; }
+async function loadJSON(path) { if (S.files[path]) return S.files[path]; const r = await api('/api/file?path='+encodeURIComponent(path)); S.files[path] = JSON.parse(r.text); S.orig[path] = JSON.parse(r.text); return S.files[path]; }
 function touch(path) { S.dirty[path] = true; S.pub='idle'; renderTop(); }
 const dirtyCount = () => Object.keys(S.dirty).length + S.bins.length + S.deletes.length;
 
@@ -75,10 +78,48 @@ async function publish() {
       .concat(S.bins.map(b => ({ path: b.path, base64: b.base64 })))
       .concat(S.deletes.map(p => ({ path: p, delete: true })));
     await api('/api/publish', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ files, message: 'CMS: aktualizacja treści ('+files.length+' plików)' }) });
-    S.dirty={}; S.bins=[]; S.deletes=[]; S.pub='done';
+    for (const p of Object.keys(S.dirty)) S.orig[p] = JSON.parse(JSON.stringify(S.files[p]));
+    S.dirty={}; S.bins=[]; S.deletes=[]; S.pub='done'; S.chgOpen=false;
   } catch(e) { S.pub='err'; S.lastErr = (e.message||'Błąd') + (e.details ? '\n• '+e.details.join('\n• ') : ''); }
   renderTop();
 }
+
+// ============ lista zmian (co, gdzie) ============
+function changeList() {
+  const out = [];
+  const same = (a,b) => JSON.stringify(a)===JSON.stringify(b);
+  for (const path of Object.keys(S.dirty)) {
+    const cur = S.files[path], old = S.orig[path];
+    if (path==='content/seo.json') {
+      for (const [pg,p] of Object.entries(cur.pages||{})) {
+        const o = old && old.pages && old.pages[pg] || {}; const w = [];
+        if (p.title!==o.title) w.push('meta title');
+        if (p.description!==o.description) w.push('meta description');
+        const alts = Object.entries(p.alts||{}).filter(([s,a])=>(o.alts||{})[s]!==a).map(([s])=>s.split('/').pop());
+        if (alts.length) w.push('alt: '+alts.join(', '));
+        if (w.length) out.push({ sec:'SEO', where: PAGE_NAMES[pg]||pg, what: w.join(' · ') });
+      }
+    } else if (path==='content/strona-glowna.json') {
+      const byGroup = {};
+      for (const k of Object.keys(cur)) if (cur[k]!==(old||{})[k]) { const g=k.split('.')[0]; (byGroup[g]=byGroup[g]||[]).push(LABELS[k.split('.').slice(1).join('.')]||autoLabel(k.split('.').slice(1).join('.'))); }
+      for (const [g,f] of Object.entries(byGroup)) out.push({ sec:'Teksty', where: (GROUPS.find(x=>x[0]===g)||[g,g])[1], what: f.join(' · ') });
+    } else if (path==='content/maszyny.json') {
+      cur.forEach((m,i)=>{ const o=(old||[]).find(x=>x.id===m.id)||{}; const w=[];
+        if (m.name!==o.name) w.push('nazwa'); if (m.models!==o.models) w.push('modele'); if (m.short!==o.short) w.push('opis');
+        if (w.length) out.push({ sec:'Maszyny', where: o.name||m.name, what: w.join(' · ') }); });
+    } else if (path.startsWith('content/blog/')) {
+      const t = '„'+(cur.title||cur.slug)+'”';
+      if (!old) out.push({ sec:'Blog', where: 'Nowy wpis '+t, what: (cur.draft?'zapisany jako szkic (nie pokaże się na stronie)':'zostanie opublikowany pod /blog/'+cur.slug+'/') + (cur.featured?' · wyróżniony na stronie głównej':'') });
+      else { const w = Object.keys(POST_FIELDS).filter(k=>!same(cur[k],old[k])).map(k=>POST_FIELDS[k]);
+        if (w.length) out.push({ sec:'Blog', where: 'Wpis '+t, what: w.join(' · ') }); }
+    }
+  }
+  for (const p of S.deletes) out.push({ sec:'Blog', where: 'Usunięcie wpisu', what: p.replace('content/blog/','').replace('.json','') + ' — strona /blog/…/ zniknie, adres przestanie działać' });
+  const imgs = S.bins.filter(b=>b.path.startsWith('uploads/'));
+  if (imgs.length) out.push({ sec:'Zdjęcia', where: imgs.length+' now'+(imgs.length===1?'e zdjęcie':'e zdjęcia'), what: imgs.map(b=>b.path.split('/').pop()).join(', ') });
+  return out;
+}
+window.toggleChg = () => { S.chgOpen=!S.chgOpen; renderTop(); };
 
 // ============ widoki ============
 function render() {
@@ -116,8 +157,20 @@ function renderTop() {
     ${S.pub==='run' ? `<span class="mono" style="font-size:12px;color:#41571F">⟳ Publikowanie…</span>` : ''}
     ${S.pub==='done' ? `<span style="font-size:12.5px;color:#41571F;font-weight:600">✓ Opublikowano — zmiany na stronie za ~2 min</span>` : ''}
     ${S.pub==='err' ? `<span style="font-size:12.5px;color:#8C3A43;font-weight:600;white-space:pre-line;max-width:480px">${escH(S.lastErr)}</span>` : ''}
-    ${n&&S.pub!=='run' ? `<span style="font-size:12.5px;color:#8C3A43;font-weight:600">● Niezapisane zmiany (${n})</span>` : ''}
+    ${n&&S.pub!=='run' ? `<button onclick="toggleChg()" style="border:1px solid ${S.chgOpen?'#8C3A43':'#E8D5D7'};background:${S.chgOpen?'#FDF6F6':'#fff'};border-radius:8px;padding:8px 12px;font-size:12.5px;color:#8C3A43;font-weight:600">● Nieopublikowane zmiany (${n}) <span style="font-size:10px">${S.chgOpen?'▲':'▼'}</span></button>` : ''}
     <button class="btn ${n?'btn-p':''}" ${n&&S.pub!=='run'?'':'disabled'} onclick="publish()">${S.pub==='run'?'Publikuję…':'Opublikuj zmiany'}</button>
+  </div>
+  ${n&&S.chgOpen&&S.pub!=='run' ? chgPanel() : ''}`;
+}
+function chgPanel() {
+  const list = changeList();
+  const secs = [...new Set(list.map(x=>x.sec))];
+  return `<div style="position:absolute;right:32px;top:100%;width:520px;max-height:70vh;overflow:auto;background:#fff;border:1px solid #DDD9C9;border-radius:12px;box-shadow:0 24px 50px -20px rgba(20,22,14,.35);padding:18px 20px;z-index:6">
+    <div style="font-family:'Chakra Petch',sans-serif;font-size:15px;font-weight:700;margin-bottom:4px">Co trafi na stronę po publikacji</div>
+    <p style="font-size:12.5px;color:#6B6F5C;margin-bottom:14px">${list.length} ${list.length===1?'zmiana':list.length<5?'zmiany':'zmian'} · po kliknięciu „Opublikuj zmiany” strona przebuduje się w ok. 2 minuty.</p>
+    ${secs.map(s=>`<div style="margin-bottom:12px"><div class="mono" style="font-size:10.5px;font-weight:700;letter-spacing:.1em;color:#41571F;margin-bottom:6px">${escH(s.toUpperCase())}</div>
+      ${list.filter(x=>x.sec===s).map(x=>`<div style="display:grid;grid-template-columns:170px 1fr;gap:12px;padding:8px 0;border-top:1px solid #F5F3EA;font-size:13px"><span style="font-weight:700">${escH(x.where)}</span><span style="color:#4A4D3E;line-height:1.45">${escH(x.what)}</span></div>`).join('')}</div>`).join('')}
+    ${!list.length?'<p style="font-size:13px;color:#6B6F5C">Brak zmian treści (tylko pliki pomocnicze).</p>':''}
   </div>`;
 }
 window.go = async v => { S.view=v; render(); };
@@ -155,7 +208,7 @@ async function renderMain() {
     if (S.view==='texts') { await loadJSON('content/strona-glowna.json'); return textsView(m); }
     if (S.view==='machines') { await loadJSON('content/maszyny.json'); return machinesView(m); }
     if (S.view==='blog') { await loadPosts(); return blogView(m); }
-    if (S.view==='blogedit') return blogEditView(m);
+    if (S.view==='blogedit') { await loadJSON('content/maszyny.json'); return blogEditView(m); }
   } catch(e){ m.innerHTML = `<p style="color:#8C3A43;font-weight:600">Błąd: ${escH(e.message)}</p>`; }
 }
 function dashView() {
@@ -301,16 +354,28 @@ function blogView(m) {
   m.innerHTML = `<div style="max-width:980px">
     <div style="display:flex;justify-content:flex-end;margin-bottom:16px"><button class="btn btn-d" onclick="newPost()">+ Nowy wpis</button></div>
     <div style="background:#fff;border:1px solid #DDD9C9;border-radius:12px;overflow:hidden">
-    ${S.posts.map((p,i)=>`<div style="display:grid;grid-template-columns:1fr 160px 110px 130px;gap:14px;align-items:center;padding:16px 20px;border-bottom:1px solid #F5F3EA">
-      <span><span style="font-size:15px;font-weight:700">${escH(p.title)}${p.draft?' <span class="pill" style="background:#FBF3D9;color:#9A7B1E;font-size:11px">Szkic — nie na stronie</span>':''}</span><span style="display:block;font-size:12.5px;color:#6B6F5C">blog/${escH(p.slug)}/</span></span>
+    ${S.posts.map((p,i)=>`<div style="display:grid;grid-template-columns:1fr 150px 100px 44px 130px;gap:14px;align-items:center;padding:16px 20px;border-bottom:1px solid #F5F3EA">
+      <span><span style="font-size:15px;font-weight:700">${escH(p.title)}${p.draft?' <span class="pill" style="background:#FBF3D9;color:#9A7B1E;font-size:11px">Szkic — nie na stronie</span>':''}${p.featured?' <span class="pill" style="background:#F3F6E4;color:#41571F;font-size:11px">★ Na stronie głównej</span>':''}</span><span style="display:block;font-size:12.5px;color:#6B6F5C">blog/${escH(p.slug)}/</span></span>
       <span style="font-size:13px;color:#41571F">${escH(p.category)}</span>
       <span class="mono" style="font-size:11.5px;color:#6B6F5C">${escH(p.date)}</span>
+      <button title="${p.featured?'Wyróżniony na stronie głównej':'Wyróżnij na stronie głównej'}" onclick="featurePost(${i})" style="border:1px solid ${p.featured?'#41571F':'#DDD9C9'};background:${p.featured?'#41571F':'#fff'};color:${p.featured?'#B7D44B':'#B0AC9C'};border-radius:8px;width:36px;height:34px;font-size:16px">★</button>
       ${p.managed?`<button class="btn btn-o" style="padding:7px 14px;font-size:13px" onclick="editPost(${i})">Edytuj</button>`
         :`<span class="pill" style="background:#EFEDE4;color:#6B6F5C" title="Wpis zbudowany ręcznie — meta edytujesz w SEO">ręczny</span>`}
     </div>`).join('')}
     </div></div>`;
 }
-window.newPost = () => { S.post = { slug:'', managed:true, draft:false, title:'', category:CATS[0][0], catSlug:CATS[0][1], date:new Date().toISOString().slice(0,10), read:5, cover:null, coverAlt:'', coverPad:false, excerpt:'', metaTitle:'', metaDesc:'', lead:'', bodyHtml:'<p></p>', _new:true }; S.view='blogedit'; render(); };
+window.newPost = () => { S.post = { slug:'', managed:true, draft:false, featured:false, machines:[], title:'', category:CATS[0][0], catSlug:CATS[0][1], date:new Date().toISOString().slice(0,10), read:5, cover:null, coverAlt:'', coverPad:false, excerpt:'', metaTitle:'', metaDesc:'', lead:'', bodyHtml:'<p></p>', _new:true }; S.view='blogedit'; render(); };
+// jeden wyróżniony wpis: ustawienie na jednym zdejmuje z pozostałych
+function setFeatured(slug) {
+  for (const p of S.posts) { const want = p.slug===slug; if (!!p.featured!==want) { p.featured = want; if (!want) delete p.featured; const path='content/blog/'+p.slug+'.json'; S.files[path]=p; touch(path); } }
+}
+window.featurePost = i => {
+  const p = S.posts[i];
+  if (p.draft) return alert('Szkic nie może być wyróżniony — najpierw zapisz wpis do publikacji.');
+  if (p.featured) { delete p.featured; const path='content/blog/'+p.slug+'.json'; S.files[path]=p; touch(path); }
+  else setFeatured(p.slug);
+  renderMain();
+};
 window.editPost = i => { const o = S.posts[i]; S.post = JSON.parse(JSON.stringify(o)); S.post._orig = o.slug; S.view='blogedit'; render(); };
 
 function blogEditView(m) {
@@ -337,13 +402,30 @@ function blogEditView(m) {
         <select class="inp" style="margin-bottom:12px" onchange="pCat(this.value)">${CATS.map(([n,s])=>`<option ${n===p.category?'selected':''}>${n}</option>`).join('')}</select>
         <label class="lbl">Data publikacji</label>
         <input type="date" class="inp" value="${escH(p.date)}" oninput="pSet('date',this.value)" style="margin-bottom:12px">
-        <label class="lbl">Zdjęcie na liście wpisów</label>
-        ${p.cover?coverThumb(p.cover):''}
+        <label class="lbl">Zdjęcie miniatury (lista wpisów i strona główna)</label>
+        ${p.cover?coverThumb(p.cover, p.coverPad):''}
         <button class="btn btn-o" style="width:100%" onclick="$('#coverInput').click()">${p.cover?'Zmień zdjęcie':'Wgraj zdjęcie'}</button>
         <input id="coverInput" type="file" accept="image/*" class="hidden" onchange="setCover(this)">
-        <input class="inp" style="margin-top:8px" maxlength="${LIM.alt}" placeholder="Opis zdjęcia (alt)" value="${escH(p.coverAlt)}" oninput="pSet('coverAlt',this.value)">
+        <div style="font-size:12px;color:#6B6F5C;line-height:1.5;margin-top:8px;background:#F7F5EC;border-radius:8px;padding:9px 11px">
+          <b>Wymiary:</b> poziome, proporcje 3:2, min. 1200×800 px (najlepiej 1600×1067). Zapisujemy w WebP, szerokość do 1200 px.<br>
+          <b>Kadr:</b> na liście wpisów 168 px wysokości, na stronie głównej ok. 300 px — zdjęcie jest przycinane do środka, więc temat trzymaj centralnie.
+          <span id="coverDim" class="mono" style="display:block;margin-top:4px;color:${p._coverW?(p._coverW<1200?'#9A7B1E':'#41571F'):'#B0AC9C'}">${p._coverW?'Wgrane: '+p._coverW+'×'+p._coverH+' px'+(p._coverW<1200?' — trochę mało, może być rozmyte':''):''}</span>
+        </div>
+        <label style="display:flex;align-items:center;gap:8px;font-size:13px;margin-top:8px;cursor:pointer"><input type="checkbox" ${p.coverPad?'checked':''} onchange="pSet('coverPad',this.checked);renderMain()"> Render maszyny na jasnym tle (pokaż całość, bez przycinania)</label>
+        <input class="inp" style="margin-top:8px" maxlength="${LIM.alt}" placeholder="Opis zdjęcia (alt) — co widać" value="${escH(p.coverAlt)}" oninput="pSet('coverAlt',this.value)">
+        <label style="display:flex;align-items:center;gap:8px;font-size:13px;margin-top:14px;cursor:pointer;padding:10px 12px;border:1px solid ${p.featured?'#41571F':'#DDD9C9'};border-radius:8px;background:${p.featured?'#F3F6E4':'#fff'}"><input type="checkbox" ${p.featured?'checked':''} onchange="pSet('featured',this.checked);renderMain()"> <span><b>★ Wyróżnij na stronie głównej</b><span style="display:block;font-size:12px;color:#6B6F5C">Duża karta w sekcji Blog. Tylko jeden wpis — zastąpi obecny.</span></span></label>
         <label class="lbl" style="margin-top:12px">Krótki opis na liście wpisów</label>
         <textarea class="inp" rows="3" oninput="pSet('excerpt',this.value)">${escH(p.excerpt)}</textarea>
+      </div>
+      <div class="card" style="padding:20px">
+        <div style="font-size:11.5px;font-weight:700;letter-spacing:.08em;color:#6B6F5C;margin-bottom:6px">MASZYNY Z ARTYKUŁU</div>
+        <p style="font-size:12.5px;color:#6B6F5C;margin-bottom:10px">Zaznacz maszyny lub kategorie, o których jest artykuł — pokażą się jako linki obok treści.</p>
+        <div id="pMach" style="display:flex;flex-direction:column;gap:6px;margin-bottom:10px">${(p.machines||[]).map(k=>machChip(k)).join('')||'<span style="font-size:12.5px;color:#B0AC9C">Nic nie wybrano</span>'}</div>
+        <select class="inp" style="font-size:13px" onchange="addMach(this.value);this.value=''">
+          <option value="">+ Dodaj maszynę lub kategorię…</option>
+          <optgroup label="Kategorie">${MCATS.map(([s,n])=>`<option value="cat:${s}">${escH(n)}</option>`).join('')}</optgroup>
+          <optgroup label="Maszyny">${(S.files['content/maszyny.json']||[]).map(x=>`<option value="m:${x.id}">${escH(x.name)} — ${escH(x.models)}</option>`).join('')}</optgroup>
+        </select>
       </div>
       <div class="card" style="padding:20px">
         <div style="font-size:11.5px;font-weight:700;letter-spacing:.08em;color:#6B6F5C;margin-bottom:6px">SEO WPISU</div>
@@ -362,6 +444,14 @@ function blogEditView(m) {
     </div></div>`;
 }
 window.pSet = (k,v) => { if(k==='bodyHtml') S.post.bodyHtml = $('#pBody').innerHTML; else S.post[k]=v; };
+function machChip(key) {
+  const [t,id] = key.split(':'); let name='?', sub='';
+  if (t==='cat') { const c=MCATS.find(x=>x[0]===id); name=c?c[1]:id; sub='Kategoria maszyn'; }
+  else { const mm=(S.files['content/maszyny.json']||[]).find(x=>x.id===id); name=mm?mm.name:id; sub=mm?mm.models:''; }
+  return `<div style="display:flex;align-items:center;gap:10px;border:1px solid #DDD9C9;border-radius:8px;padding:8px 10px;font-size:13px"><span style="flex:1"><b>${escH(name)}</b><span class="mono" style="display:block;font-size:10px;color:#8A8163">${escH(sub)}</span></span><button onclick="rmMach('${key}')" style="border:0;background:none;color:#8C3A43;font-size:16px" title="Usuń">×</button></div>`;
+}
+window.addMach = k => { if(!k) return; S.post.machines = S.post.machines||[]; if (!S.post.machines.includes(k)) S.post.machines.push(k); renderMain(); };
+window.rmMach = k => { S.post.machines = (S.post.machines||[]).filter(x=>x!==k); renderMain(); };
 window.pCat = n => { const c = CATS.find(x=>x[0]===n); S.post.category=c[0]; S.post.catSlug=c[1]; };
 window.postTitle = v => { S.post.title=v; if (S.post._new){ S.post.slug=slugify(v); $('#pSlug').textContent=S.post.slug||'…'; }
   if (S.post._new) { S.post.metaTitle=(v+' | Agro-Weld').slice(0,LIM.title); } };
@@ -413,14 +503,17 @@ window.insertImg = inp => { const f = inp.files[0]; inp.value=''; addImage(f); }
 window.pastePic = e => { const f = [...(e.clipboardData&&e.clipboardData.files||[])].find(x=>/^image\//.test(x.type)); if (f) { e.preventDefault(); addImage(f); } };
 window.dropPic = e => { const f = [...(e.dataTransfer&&e.dataTransfer.files||[])].find(x=>/^image\//.test(x.type)); if (f) { e.preventDefault(); addImage(f); } };
 window.imgAlt = e => { if (e.target.tagName!=='IMG') return; const a = prompt('Opis zdjęcia (alt) — co widać na zdjęciu:', e.target.alt||''); if (a!==null) { e.target.alt = a; S.post.bodyHtml = $('#pBody').innerHTML; } };
-function coverThumb(path) {
+function coverThumb(path, pad) {
   const b = S.bins.find(x=>x.path===path);
   const src = b ? 'data:image/webp;base64,'+b.base64 : 'https://www.agro-weld.pl/'+path;
-  return `<img src="${src}" alt="" style="width:100%;height:110px;object-fit:cover;border-radius:8px;border:1px solid #DDD9C9;margin-bottom:8px">`;
+  return `<div style="position:relative;margin-bottom:8px"><img src="${src}" alt="" style="width:100%;height:110px;object-fit:${pad?'contain':'cover'};${pad?'padding:8px;':''}border-radius:8px;border:1px solid #DDD9C9;background:#E3DCC8;display:block"><span class="mono" style="position:absolute;right:6px;bottom:6px;font-size:9.5px;background:rgba(20,22,14,.7);color:#ECE7D7;padding:2px 6px;border-radius:4px">podgląd kadru z listy</span></div>`;
 }
 window.setCover = async inp => {
   const f = inp.files[0]; if(!f) return; inp.value='';
   if (!/^image\//.test(f.type)) return alert('To nie jest plik ze zdjęciem.');
+  const dim = await new Promise(ok=>{const i=new Image();const u=URL.createObjectURL(f);i.onload=()=>{ok([i.width,i.height]);URL.revokeObjectURL(u)};i.onerror=()=>ok([0,0]);i.src=u;});
+  if (dim[0] && dim[0] < 800) { if (!confirm('Zdjęcie ma tylko '+dim[0]+'×'+dim[1]+' px — na stronie będzie rozmyte. Wgrać mimo to?')) return; }
+  S.post._coverW = dim[0]; S.post._coverH = dim[1];
   const b64 = await compressImg(f, 1200);
   S.bins = S.bins.filter(b=>b.path!==S.post.cover); // poprzednia, niewysłana okładka nie leci do repo
   const path = 'uploads/blog/' + (S.post.slug||slugify(S.post.title)||'wpis') + '-c' + Date.now().toString(36) + '.webp';
@@ -460,7 +553,11 @@ window.savePost = (draft) => {
   if (!p.excerpt) p.excerpt = (p.lead||'').slice(0,140);
   const words = (p.lead+' '+p.bodyHtml.replace(/<[^>]+>/g,' ')).split(/\s+/).filter(Boolean).length;
   p.read = Math.max(2, Math.round(words/200));
-  delete p._new;
+  if (p.draft && p.featured) { p.featured = false; }
+  if (!(p.machines||[]).length) delete p.machines;
+  delete p._new; delete p._coverW; delete p._coverH;
+  if (p.featured) for (const x of S.posts) if (x.featured && x.slug!==p.slug && x.slug!==p._orig) { delete x.featured; const xp='content/blog/'+x.slug+'.json'; S.files[xp]=x; touch(xp); } // jeden wyróżniony
+  if (!p.featured) delete p.featured;
   const path = 'content/blog/'+p.slug+'.json';
   S.files[path] = p; touch(path);
   const ix = S.posts.findIndex(x=>x.slug===p.slug); if (ix>=0) S.posts[ix]=p; else S.posts.unshift(p);

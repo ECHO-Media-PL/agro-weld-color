@@ -39,9 +39,24 @@ ul,ol{list-style:none}
 .subitem:hover{background:#232719;color:#fff}
 .subitem .mono{font-size:10px;color:#7E8A63;letter-spacing:.08em}
 .awlink{color:#A7AE92;transition:color .25s}.awlink:hover{color:#B7D44B}
-.btn{transition:transform .25s,background .3s,color .3s,border-color .3s,box-shadow .3s;display:inline-block}
+.btn{transition:transform .25s,background .3s,color .3s,border-color .3s,box-shadow .3s;display:inline-block;text-decoration:none;cursor:pointer}
 .btn:hover{transform:translateY(-2px)}
-.btnp:hover{box-shadow:0 12px 30px -10px rgba(183,212,75,.5)}
+.btnp{box-shadow:0 0 0 0 rgba(183,212,75,.4)}
+.btnp:hover{box-shadow:0 12px 30px -10px rgba(183,212,75,.55)}
+.btno:hover{background:#ECE7D7;color:#14160E;border-color:#ECE7D7}
+.btn .ar,.btn .aru{display:inline-block;transition:transform .3s cubic-bezier(.2,.7,.2,1)}
+.btn:hover .ar{transform:translateX(5px)}
+.btn:hover .aru{transform:translate(3px,-3px)}
+.btnd:hover{background:#3B5115;color:#F4EFE2}
+.btnb:hover{background:#14160E;color:#ECE7D7;border-color:#14160E}
+.btng:hover{background:#4E6A26;box-shadow:0 12px 30px -10px rgba(65,87,31,.55)}
+.btnc{position:relative;transition:background .35s,color .35s,border-color .35s}
+.btnc::before,.btnc::after{content:'';position:absolute;width:0;height:0;border:0 solid #B7D44B;opacity:0;transition:width .3s cubic-bezier(.2,.7,.2,1),height .3s cubic-bezier(.2,.7,.2,1),opacity .2s}
+.btnc::before{top:-6px;left:-6px;border-top-width:2px;border-left-width:2px}
+.btnc::after{bottom:-6px;right:-6px;border-bottom-width:2px;border-right-width:2px}
+.btnc:hover{transform:none;background:#F7F3E8!important;border-color:#F7F3E8!important}
+.btnc:hover::before,.btnc:hover::after{width:18px;height:18px;opacity:1}
+.btnc:hover .ar{transform:translateX(5px)}
 .idxwrap{position:relative;overflow:hidden}
 .idxscan{position:absolute;top:0;bottom:0;width:26%;background:linear-gradient(90deg,transparent,rgba(183,212,75,.12),transparent);animation:awScanX 7s cubic-bezier(.55,0,.45,1) infinite;pointer-events:none;z-index:2}
 .idx{position:relative;background:#14160E;transition:background .3s;overflow:hidden;flex:1 1 auto;min-width:215px;display:flex;align-items:center;gap:14px;padding:16px 18px}
@@ -76,7 +91,7 @@ a.idx:hover svg{transform:rotate(-8deg) scale(1.08)}
 <header style="position:sticky;top:0;z-index:60;background:rgba(20,22,14,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(236,231,215,.12)">
   <div class="pad" style="max-width:1280px;margin:0 auto;padding:0 32px;height:78px;display:flex;align-items:center;justify-content:space-between;gap:24px">
     <a href="/" style="display:flex;align-items:center;gap:11px;flex-shrink:0" aria-label="Agro-Weld — strona główna"><span style="background:#ECE7D7;border-radius:8px;padding:7px 9px;display:flex"><img src="../assets/logo.webp" alt="Agro-Weld — producent maszyn i linii technologicznych" style="height:34px;width:auto;display:block"></span></a>
-    <nav class="hnav" style="display:flex;align-items:center;gap:34px;font-size:14.5px;font-weight:600;color:#C3C8AF" aria-label="Menu główne">
+    <nav class="hnav" style="display:flex;align-items:center;gap:28px;font-size:14.5px;font-weight:600;color:#C3C8AF" aria-label="Menu główne">
       <div class="subwrap">
         <a class="navlink" href="/maszyny/" style="color:#B7D44B">Oferta <span style="font-size:9px;opacity:.6">▾</span></a>
         <div class="submenu">
@@ -97,26 +112,25 @@ a.idx:hover svg{transform:rotate(-8deg) scale(1.08)}
           </div>
         </div>
       </div>
-      <a class="navlink" href="/#proces">Proces</a>
-      <a class="navlink" href="/#dlaczego">Dlaczego my</a>
-      <a class="navlink" href="/#linie">Realizacje</a>
+      <a class="navlink" href="/linie-produkcyjne/">Linie produkcyjne</a>
+      <a class="navlink" href="/realizacje/">Realizacje</a>
+      <a class="navlink" href="/o-firmie/">O firmie</a>
       <a class="navlink" href="/blog/">Blog</a>
-      <a class="navlink" href="/#kontakt">Kontakt</a>
+      <a class="navlink" href="/kontakt/">Kontakt</a>
     </nav>
     <div style="display:flex;align-items:center;gap:12px;flex-shrink:0">
       <span class="mono hnav" style="display:flex;align-items:center;gap:7px;border:1px solid rgba(236,231,215,.22);color:#ECE7D7;padding:8px 12px;border-radius:6px;font-size:13px;font-weight:700;letter-spacing:.04em"><span style="width:6px;height:6px;border-radius:50%;background:#B7D44B;display:inline-block"></span>PL</span>
       <a class="btn btnp hnav" href="/#kontakt" style="background:#B7D44B;color:#14160E;padding:11px 18px;border-radius:6px;font-weight:700;font-size:14px">Zapytaj o ofertę</a>
-      <button onclick="document.getElementById('awmob').classList.toggle('is-open')" class="hamb btn" aria-label="Menu" style="background:transparent;border:1px solid rgba(236,231,215,.22);border-radius:6px;width:44px;height:40px;align-items:center;justify-content:center;cursor:pointer;font-size:18px;color:#ECE7D7">≡</button>
+      <button onclick="document.getElementById('awmob').classList.toggle('is-open')" class="hamb btn btno" aria-label="Menu" style="background:transparent;border:1px solid rgba(236,231,215,.22);border-radius:6px;width:44px;height:40px;align-items:center;justify-content:center;cursor:pointer;font-size:18px;color:#ECE7D7">≡</button>
     </div>
   </div>
   <div id="awmob" class="aw-mob" style="border-top:1px solid rgba(236,231,215,.12);background:#1E2113;padding:12px 24px">
     <div style="display:flex;flex-direction:column;font-weight:600;color:#C3C8AF">
-      <a class="awlink" href="/" style="padding:13px 4px;border-bottom:1px solid rgba(236,231,215,.1)">Start</a>
-      <a class="awlink" href="/maszyny/przyjecie-i-buforowanie/" style="padding:13px 4px 13px 20px;border-bottom:1px solid rgba(236,231,215,.1);font-size:14px">Przyjęcie i buforowanie</a>
-      <a class="awlink" href="/#proces" style="padding:13px 4px;border-bottom:1px solid rgba(236,231,215,.1)">Proces</a>
-      <a class="awlink" href="/#dlaczego" style="padding:13px 4px;border-bottom:1px solid rgba(236,231,215,.1)">Dlaczego my</a>
+      <a class="awlink" href="/linie-produkcyjne/" style="padding:13px 4px;border-bottom:1px solid rgba(236,231,215,.1)">Linie produkcyjne</a>
+      <a class="awlink" href="/realizacje/" style="padding:13px 4px;border-bottom:1px solid rgba(236,231,215,.1)">Realizacje</a>
+      <a class="awlink" href="/o-firmie/" style="padding:13px 4px;border-bottom:1px solid rgba(236,231,215,.1)">O firmie</a>
       <a class="awlink" href="/blog/" style="padding:13px 4px;border-bottom:1px solid rgba(236,231,215,.1)">Blog</a>
-      <a class="awlink" href="/#kontakt" style="padding:13px 4px">Kontakt</a>
+      <a class="awlink" href="/kontakt/" style="padding:13px 4px">Kontakt</a>
     </div>
   </div>
 </header>
@@ -162,32 +176,282 @@ a.idx:hover svg{transform:rotate(-8deg) scale(1.08)}
 <main>
 <section style="background:#ECE7D7;color:#14160E;padding:78px 0 84px">
   <div class="pad" style="max-width:1280px;margin:0 auto;padding:0 32px;display:flex;flex-direction:column;gap:56px">
-    <div id="reception" style="scroll-margin-top:96px">
-      <div data-reveal style="display:flex;align-items:center;gap:16px;margin-bottom:20px">
-        <span class="mono" style="font-size:12px;font-weight:700;letter-spacing:.1em;color:#8C3A43">02</span>
-        <h2 style="font-size:28px;letter-spacing:-.01em"><a href="/maszyny/przyjecie-i-buforowanie/" style="color:#14160E">Przyjęcie i buforowanie</a></h2>
-        <span style="flex:1;height:1px;background:rgba(20,22,14,.2)"></span>
-        <a class="mono linkd" href="/maszyny/przyjecie-i-buforowanie/" style="font-size:11px;font-weight:700;letter-spacing:.06em;white-space:nowrap">Strona kategorii ↗</a>
-      </div>
+    <!--CMS:GROUPS-->
+    <div id="rozladunek-skrzyn" style="scroll-margin-top:96px">
+      <div data-reveal style="display:flex;align-items:center;gap:16px;margin-bottom:20px"><span class="mono" style="font-size:12px;font-weight:700;letter-spacing:.1em;color:#8C3A43">01</span><h2 style="font-size:28px;letter-spacing:-.01em"><a href="/maszyny/rozladunek-skrzyn/" style="color:#14160E">Rozładunek skrzyń</a></h2><span style="flex:1;height:1px;background:rgba(20,22,14,.2)"></span><a class="mono linkd" href="/maszyny/rozladunek-skrzyn/" style="font-size:11px;font-weight:700;letter-spacing:.06em;white-space:nowrap">Strona kategorii ↗</a></div>
       <div data-reveal style="border:1px solid #14160E;background:#14160E;display:grid;gap:1px">
-        <a class="prow" id="kosz" href="/maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/" style="scroll-margin-top:96px">
-          <span class="pimg" style="height:250px;border-right:1px solid #14160E;background-color:#F1ECDF;background-image:linear-gradient(rgba(20,22,14,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(20,22,14,.05) 1px,transparent 1px);background-size:24px 24px;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:20px">
-            <img class="rowimg" src="../assets/kp5000.webp" alt="Kosz przyjęciowy KP1000–KP5000G — maszyna Agro-Weld" loading="lazy" style="max-width:100%;max-height:100%;object-fit:contain;display:block">
-          </span>
-          <span style="padding:26px 30px;display:flex;flex-direction:column;justify-content:center">
-            <span class="mono" style="display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:12px;font-size:11.5px;letter-spacing:.05em">
-              <span style="color:#8C3A43;font-weight:700">KP1000 – KP5000G</span>
-              <span class="rowarrow" style="font-size:19px;color:#8C3A43;font-weight:700">↗</span>
-            </span>
-            <span style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
-              <h3 style="font-size:27px;letter-spacing:-.01em;line-height:1.1">Kosz przyjęciowy</h3>
-              <span class="mono" style="font-size:10px;font-weight:700;color:#14160E;background:#B7D44B;padding:4px 9px;border-radius:4px;letter-spacing:.03em">Karta produktu →</span>
-            </span>
-            <p style="font-size:15px;line-height:1.6;color:#56603F;max-width:620px;text-wrap:pretty">Przyjmuje plon z przyczep i podaje go na linię; pojemność od 1 do 5 m³. Regulowana taśma wynosząca, łagodne kąty chroniące produkt i opcja wykonania INOX.</p>
+        <a class="prow" id="wywrotnica" href="/maszyny/rozladunek-skrzyn/wywrotnica-skrzyniopalet/" style="scroll-margin-top:96px">
+          <span class="pimg" style="height:210px;border-right:1px solid #14160E;background-color:#F1ECDF;background-image:linear-gradient(rgba(20,22,14,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(20,22,14,.05) 1px,transparent 1px);background-size:24px 24px;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:20px"><img class="rowimg" src="../assets/maszyna-placeholder.png" alt="Wywrotnica skrzyniopalet — maszyna Agro-Weld" loading="lazy" style="max-width:100%;max-height:100%;object-fit:contain;display:block"></span>
+          <span style="padding:24px 30px;display:flex;flex-direction:column;justify-content:center">
+            <span class="mono" style="display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:10px;font-size:11.5px;letter-spacing:.05em"><span style="color:#8C3A43;font-weight:700">WS-1420 · WS-1620 · WS-1820</span><span class="rowarrow" style="font-size:19px;color:#8C3A43;font-weight:700">↗</span></span>
+            <span style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px"><h3 style="font-size:25px;letter-spacing:-.01em;line-height:1.1">Wywrotnica skrzyniopalet</h3><span class="mono" style="font-size:10px;font-weight:700;color:#14160E;background:#B7D44B;padding:4px 9px;border-radius:4px;letter-spacing:.03em">Karta produktu →</span></span>
+            <p style="font-size:15px;line-height:1.6;color:#56603F;max-width:620px;text-wrap:pretty">Rozładowuje towar ze skrzyń do koszy; udźwig do 2 ton i bezpieczne siłowniki.</p>
           </span>
         </a>
       </div>
     </div>
+    <div id="przyjecie-i-buforowanie" style="scroll-margin-top:96px">
+      <div data-reveal style="display:flex;align-items:center;gap:16px;margin-bottom:20px"><span class="mono" style="font-size:12px;font-weight:700;letter-spacing:.1em;color:#8C3A43">02</span><h2 style="font-size:28px;letter-spacing:-.01em"><a href="/maszyny/przyjecie-i-buforowanie/" style="color:#14160E">Przyjęcie i buforowanie</a></h2><span style="flex:1;height:1px;background:rgba(20,22,14,.2)"></span><a class="mono linkd" href="/maszyny/przyjecie-i-buforowanie/" style="font-size:11px;font-weight:700;letter-spacing:.06em;white-space:nowrap">Strona kategorii ↗</a></div>
+      <div data-reveal style="border:1px solid #14160E;background:#14160E;display:grid;gap:1px">
+        <a class="prow" id="kosz" href="/maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/" style="scroll-margin-top:96px">
+          <span class="pimg" style="height:210px;border-right:1px solid #14160E;background-color:#F1ECDF;background-image:linear-gradient(rgba(20,22,14,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(20,22,14,.05) 1px,transparent 1px);background-size:24px 24px;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:20px"><img class="rowimg" src="../assets/kp5000.webp" alt="Kosze przyjęciowe — maszyna Agro-Weld" loading="lazy" style="max-width:100%;max-height:100%;object-fit:contain;display:block"></span>
+          <span style="padding:24px 30px;display:flex;flex-direction:column;justify-content:center">
+            <span class="mono" style="display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:10px;font-size:11.5px;letter-spacing:.05em"><span style="color:#8C3A43;font-weight:700">KP1000 · KP1500 · KP2000 · KP3000 · KPS3000G · KP5000G</span><span class="rowarrow" style="font-size:19px;color:#8C3A43;font-weight:700">↗</span></span>
+            <span style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px"><h3 style="font-size:25px;letter-spacing:-.01em;line-height:1.1">Kosze przyjęciowe</h3><span class="mono" style="font-size:10px;font-weight:700;color:#14160E;background:#B7D44B;padding:4px 9px;border-radius:4px;letter-spacing:.03em">Karta produktu →</span></span>
+            <p style="font-size:15px;line-height:1.6;color:#56603F;max-width:620px;text-wrap:pretty">Przyjmuje plon z przyczep i podaje go na linię; pojemność od 1 do 5 m³.</p>
+          </span>
+        </a>
+        <a class="prow" id="zasobnik" href="/maszyny/przyjecie-i-buforowanie/zasobnik-buforowy/" style="scroll-margin-top:96px">
+          <span class="pimg" style="height:210px;border-right:1px solid #14160E;background-color:#F1ECDF;background-image:linear-gradient(rgba(20,22,14,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(20,22,14,.05) 1px,transparent 1px);background-size:24px 24px;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:20px"><img class="rowimg" src="../assets/maszyna-placeholder.png" alt="Zasobnik buforowy — maszyna Agro-Weld" loading="lazy" style="max-width:100%;max-height:100%;object-fit:contain;display:block"></span>
+          <span style="padding:24px 30px;display:flex;flex-direction:column;justify-content:center">
+            <span class="mono" style="display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:10px;font-size:11.5px;letter-spacing:.05em"><span style="color:#8C3A43;font-weight:700">na wymiar</span><span class="rowarrow" style="font-size:19px;color:#8C3A43;font-weight:700">↗</span></span>
+            <span style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px"><h3 style="font-size:25px;letter-spacing:-.01em;line-height:1.1">Zasobnik buforowy</h3><span class="mono" style="font-size:10px;font-weight:700;color:#14160E;background:#B7D44B;padding:4px 9px;border-radius:4px;letter-spacing:.03em">Karta produktu →</span></span>
+            <p style="font-size:15px;line-height:1.6;color:#56603F;max-width:620px;text-wrap:pretty">Utrzymuje równy przepływ towaru; rozbudowywany nadstawkami, montaż do podłoża.</p>
+          </span>
+        </a>
+      </div>
+    </div>
+    <div id="oczyszczanie" style="scroll-margin-top:96px">
+      <div data-reveal style="display:flex;align-items:center;gap:16px;margin-bottom:20px"><span class="mono" style="font-size:12px;font-weight:700;letter-spacing:.1em;color:#8C3A43">03</span><h2 style="font-size:28px;letter-spacing:-.01em"><a href="/maszyny/oczyszczanie/" style="color:#14160E">Oczyszczanie</a></h2><span style="flex:1;height:1px;background:rgba(20,22,14,.2)"></span><a class="mono linkd" href="/maszyny/oczyszczanie/" style="font-size:11px;font-weight:700;letter-spacing:.06em;white-space:nowrap">Strona kategorii ↗</a></div>
+      <div data-reveal style="border:1px solid #14160E;background:#14160E;display:grid;gap:1px">
+        <a class="prow" id="separator" href="/maszyny/oczyszczanie/separator-ziemi-i-kamieni/" style="scroll-margin-top:96px">
+          <span class="pimg" style="height:210px;border-right:1px solid #14160E;background-color:#F1ECDF;background-image:linear-gradient(rgba(20,22,14,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(20,22,14,.05) 1px,transparent 1px);background-size:24px 24px;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:20px"><img class="rowimg" src="../assets/maszyna-placeholder.png" alt="Separator ziemi i kamieni — maszyna Agro-Weld" loading="lazy" style="max-width:100%;max-height:100%;object-fit:contain;display:block"></span>
+          <span style="padding:24px 30px;display:flex;flex-direction:column;justify-content:center">
+            <span class="mono" style="display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:10px;font-size:11.5px;letter-spacing:.05em"><span style="color:#8C3A43;font-weight:700">SE-560 · SE-880 · SE-1080</span><span class="rowarrow" style="font-size:19px;color:#8C3A43;font-weight:700">↗</span></span>
+            <span style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px"><h3 style="font-size:25px;letter-spacing:-.01em;line-height:1.1">Separator ziemi i kamieni</h3><span class="mono" style="font-size:10px;font-weight:700;color:#14160E;background:#B7D44B;padding:4px 9px;border-radius:4px;letter-spacing:.03em">Karta produktu →</span></span>
+            <p style="font-size:15px;line-height:1.6;color:#56603F;max-width:620px;text-wrap:pretty">Usuwa ziemię, kamienie i natkę gwiaździstymi wałkami; wydajność do 10 t/h.</p>
+          </span>
+        </a>
+        <a class="prow" id="czyszczarka" href="/maszyny/oczyszczanie/czyszczarka-szczotkowa/" style="scroll-margin-top:96px">
+          <span class="pimg" style="height:210px;border-right:1px solid #14160E;background-color:#F1ECDF;background-image:linear-gradient(rgba(20,22,14,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(20,22,14,.05) 1px,transparent 1px);background-size:24px 24px;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:20px"><img class="rowimg" src="../assets/czyszczarka-docisk.webp" alt="Czyszczarka szczotkowa — maszyna Agro-Weld" loading="lazy" style="max-width:100%;max-height:100%;object-fit:contain;display:block"></span>
+          <span style="padding:24px 30px;display:flex;flex-direction:column;justify-content:center">
+            <span class="mono" style="display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:10px;font-size:11.5px;letter-spacing:.05em"><span style="color:#8C3A43;font-weight:700">CS1056 · CS1480 · CS20110</span><span class="rowarrow" style="font-size:19px;color:#8C3A43;font-weight:700">↗</span></span>
+            <span style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px"><h3 style="font-size:25px;letter-spacing:-.01em;line-height:1.1">Czyszczarka szczotkowa</h3><span class="mono" style="font-size:10px;font-weight:700;color:#14160E;background:#B7D44B;padding:4px 9px;border-radius:4px;letter-spacing:.03em">Karta produktu →</span></span>
+            <p style="font-size:15px;line-height:1.6;color:#56603F;max-width:620px;text-wrap:pretty">Szczotki proste lub falowane czyszczą warzywa okrągłe i podłużne.</p>
+          </span>
+        </a>
+        <a class="prow" id="czyszczarka-imbir" href="/maszyny/oczyszczanie/czyszczarka-do-imbiru-i-chrzanu/" style="scroll-margin-top:96px">
+          <span class="pimg" style="height:210px;border-right:1px solid #14160E;background-color:#F1ECDF;background-image:linear-gradient(rgba(20,22,14,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(20,22,14,.05) 1px,transparent 1px);background-size:24px 24px;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:20px"><img class="rowimg" src="../assets/maszyna-placeholder.png" alt="Czyszczarka do imbiru i chrzanu — maszyna Agro-Weld" loading="lazy" style="max-width:100%;max-height:100%;object-fit:contain;display:block"></span>
+          <span style="padding:24px 30px;display:flex;flex-direction:column;justify-content:center">
+            <span class="mono" style="display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:10px;font-size:11.5px;letter-spacing:.05em"><span style="color:#8C3A43;font-weight:700">CI-00</span><span class="rowarrow" style="font-size:19px;color:#8C3A43;font-weight:700">↗</span></span>
+            <span style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px"><h3 style="font-size:25px;letter-spacing:-.01em;line-height:1.1">Czyszczarka do imbiru i chrzanu</h3><span class="mono" style="font-size:10px;font-weight:700;color:#14160E;background:#B7D44B;padding:4px 9px;border-radius:4px;letter-spacing:.03em">Karta produktu →</span></span>
+            <p style="font-size:15px;line-height:1.6;color:#56603F;max-width:620px;text-wrap:pretty">Delikatnie oczyszcza kłącza i warzywa korzeniowe; wydajność 100 kg/h.</p>
+          </span>
+        </a>
+        <a class="prow" id="wanna" href="/maszyny/oczyszczanie/wanna-do-plukania/" style="scroll-margin-top:96px">
+          <span class="pimg" style="height:210px;border-right:1px solid #14160E;background-color:#F1ECDF;background-image:linear-gradient(rgba(20,22,14,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(20,22,14,.05) 1px,transparent 1px);background-size:24px 24px;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:20px"><img class="rowimg" src="../assets/maszyna-placeholder.png" alt="Wanna do płukania — maszyna Agro-Weld" loading="lazy" style="max-width:100%;max-height:100%;object-fit:contain;display:block"></span>
+          <span style="padding:24px 30px;display:flex;flex-direction:column;justify-content:center">
+            <span class="mono" style="display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:10px;font-size:11.5px;letter-spacing:.05em"><span style="color:#8C3A43;font-weight:700">WP-600 · WP-800 · WP-900</span><span class="rowarrow" style="font-size:19px;color:#8C3A43;font-weight:700">↗</span></span>
+            <span style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px"><h3 style="font-size:25px;letter-spacing:-.01em;line-height:1.1">Wanna do płukania</h3><span class="mono" style="font-size:10px;font-weight:700;color:#14160E;background:#B7D44B;padding:4px 9px;border-radius:4px;letter-spacing:.03em">Karta produktu →</span></span>
+            <p style="font-size:15px;line-height:1.6;color:#56603F;max-width:620px;text-wrap:pretty">Wstępne płukanie warzyw korzeniowych; perforowana taśma modułowa, wanna 400–890 l.</p>
+          </span>
+        </a>
+      </div>
+    </div>
+    <div id="sortowanie" style="scroll-margin-top:96px">
+      <div data-reveal style="display:flex;align-items:center;gap:16px;margin-bottom:20px"><span class="mono" style="font-size:12px;font-weight:700;letter-spacing:.1em;color:#8C3A43">04</span><h2 style="font-size:28px;letter-spacing:-.01em"><a href="/maszyny/sortowanie/" style="color:#14160E">Sortowanie</a></h2><span style="flex:1;height:1px;background:rgba(20,22,14,.2)"></span><a class="mono linkd" href="/maszyny/sortowanie/" style="font-size:11px;font-weight:700;letter-spacing:.06em;white-space:nowrap">Strona kategorii ↗</a></div>
+      <div data-reveal style="border:1px solid #14160E;background:#14160E;display:grid;gap:1px">
+        <a class="prow" id="kalibrownik" href="/maszyny/sortowanie/kalibrownik-rozsuwany/" style="scroll-margin-top:96px">
+          <span class="pimg" style="height:210px;border-right:1px solid #14160E;background-color:#F1ECDF;background-image:linear-gradient(rgba(20,22,14,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(20,22,14,.05) 1px,transparent 1px);background-size:24px 24px;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:20px"><img class="rowimg" src="../assets/kalibrownik.webp" alt="Kalibrownik rozsuwany — maszyna Agro-Weld" loading="lazy" style="max-width:100%;max-height:100%;object-fit:contain;display:block"></span>
+          <span style="padding:24px 30px;display:flex;flex-direction:column;justify-content:center">
+            <span class="mono" style="display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:10px;font-size:11.5px;letter-spacing:.05em"><span style="color:#8C3A43;font-weight:700">KA-780 · KA-880</span><span class="rowarrow" style="font-size:19px;color:#8C3A43;font-weight:700">↗</span></span>
+            <span style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px"><h3 style="font-size:25px;letter-spacing:-.01em;line-height:1.1">Kalibrownik rozsuwany</h3><span class="mono" style="font-size:10px;font-weight:700;color:#14160E;background:#B7D44B;padding:4px 9px;border-radius:4px;letter-spacing:.03em">Karta produktu →</span></span>
+            <p style="font-size:15px;line-height:1.6;color:#56603F;max-width:620px;text-wrap:pretty">Sortuje warzywa wg wielkości; rozstaw wałków regulowany korbką w kilka sekund.</p>
+          </span>
+        </a>
+        <a class="prow" id="sortownik-sod" href="/maszyny/sortowanie/sortownik-do-owocow-drobnych/" style="scroll-margin-top:96px">
+          <span class="pimg" style="height:210px;border-right:1px solid #14160E;background-color:#F1ECDF;background-image:linear-gradient(rgba(20,22,14,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(20,22,14,.05) 1px,transparent 1px);background-size:24px 24px;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:0"><img class="rowimg" src="../assets/real-borowka.jpg" alt="Sortownik do owoców drobnych — maszyna Agro-Weld" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></span>
+          <span style="padding:24px 30px;display:flex;flex-direction:column;justify-content:center">
+            <span class="mono" style="display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:10px;font-size:11.5px;letter-spacing:.05em"><span style="color:#8C3A43;font-weight:700">SOD-6010 · SOD-6012 · SOD-6014</span><span class="rowarrow" style="font-size:19px;color:#8C3A43;font-weight:700">↗</span></span>
+            <span style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px"><h3 style="font-size:25px;letter-spacing:-.01em;line-height:1.1">Sortownik do owoców drobnych</h3><span class="mono" style="font-size:10px;font-weight:700;color:#14160E;background:#B7D44B;padding:4px 9px;border-radius:4px;letter-spacing:.03em">Karta produktu →</span></span>
+            <p style="font-size:15px;line-height:1.6;color:#56603F;max-width:620px;text-wrap:pretty">Delikatnie sortuje borówki i drobne owoce; boczna platforma na skrzynkę.</p>
+          </span>
+        </a>
+        <a class="prow" id="sortownik-2b" href="/maszyny/sortowanie/dwubebnowy-sortownik-do-owocow-drobnych/" style="scroll-margin-top:96px">
+          <span class="pimg" style="height:210px;border-right:1px solid #14160E;background-color:#F1ECDF;background-image:linear-gradient(rgba(20,22,14,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(20,22,14,.05) 1px,transparent 1px);background-size:24px 24px;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:20px"><img class="rowimg" src="../assets/maszyna-placeholder.png" alt="Dwubębnowy sortownik do owoców drobnych — maszyna Agro-Weld" loading="lazy" style="max-width:100%;max-height:100%;object-fit:contain;display:block"></span>
+          <span style="padding:24px 30px;display:flex;flex-direction:column;justify-content:center">
+            <span class="mono" style="display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:10px;font-size:11.5px;letter-spacing:.05em"><span style="color:#8C3A43;font-weight:700">SO2B-601012</span><span class="rowarrow" style="font-size:19px;color:#8C3A43;font-weight:700">↗</span></span>
+            <span style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px"><h3 style="font-size:25px;letter-spacing:-.01em;line-height:1.1">Dwubębnowy sortownik do owoców drobnych</h3><span class="mono" style="font-size:10px;font-weight:700;color:#14160E;background:#B7D44B;padding:4px 9px;border-radius:4px;letter-spacing:.03em">Karta produktu →</span></span>
+            <p style="font-size:15px;line-height:1.6;color:#56603F;max-width:620px;text-wrap:pretty">Precyzyjne sortowanie drobnych owoców; biała taśma i oświetlenie LED.</p>
+          </span>
+        </a>
+      </div>
+    </div>
+    <div id="selekcja" style="scroll-margin-top:96px">
+      <div data-reveal style="display:flex;align-items:center;gap:16px;margin-bottom:20px"><span class="mono" style="font-size:12px;font-weight:700;letter-spacing:.1em;color:#8C3A43">05</span><h2 style="font-size:28px;letter-spacing:-.01em"><a href="/maszyny/selekcja/" style="color:#14160E">Selekcja</a></h2><span style="flex:1;height:1px;background:rgba(20,22,14,.2)"></span><a class="mono linkd" href="/maszyny/selekcja/" style="font-size:11px;font-weight:700;letter-spacing:.06em;white-space:nowrap">Strona kategorii ↗</a></div>
+      <div data-reveal style="border:1px solid #14160E;background:#14160E;display:grid;gap:1px">
+        <a class="prow" id="stol-tasmowy" href="/maszyny/selekcja/stoly-selekcyjne-tasmowe/" style="scroll-margin-top:96px">
+          <span class="pimg" style="height:210px;border-right:1px solid #14160E;background-color:#F1ECDF;background-image:linear-gradient(rgba(20,22,14,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(20,22,14,.05) 1px,transparent 1px);background-size:24px 24px;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:0"><img class="rowimg" src="../assets/real-inox.jpg" alt="Stoły selekcyjne taśmowe — maszyna Agro-Weld" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></span>
+          <span style="padding:24px 30px;display:flex;flex-direction:column;justify-content:center">
+            <span class="mono" style="display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:10px;font-size:11.5px;letter-spacing:.05em"><span style="color:#8C3A43;font-weight:700">SST-2008 · SST-3510 · SST-5012</span><span class="rowarrow" style="font-size:19px;color:#8C3A43;font-weight:700">↗</span></span>
+            <span style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px"><h3 style="font-size:25px;letter-spacing:-.01em;line-height:1.1">Stoły selekcyjne taśmowe</h3><span class="mono" style="font-size:10px;font-weight:700;color:#14160E;background:#B7D44B;padding:4px 9px;border-radius:4px;letter-spacing:.03em">Karta produktu →</span></span>
+            <p style="font-size:15px;line-height:1.6;color:#56603F;max-width:620px;text-wrap:pretty">Ręczna selekcja na taśmie PCV; konfigurowalne podzielnice i oświetlenie LED.</p>
+          </span>
+        </a>
+        <a class="prow" id="stol-rolkowy" href="/maszyny/selekcja/stoly-selekcyjne-rolkowe/" style="scroll-margin-top:96px">
+          <span class="pimg" style="height:210px;border-right:1px solid #14160E;background-color:#F1ECDF;background-image:linear-gradient(rgba(20,22,14,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(20,22,14,.05) 1px,transparent 1px);background-size:24px 24px;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:20px"><img class="rowimg" src="../assets/maszyna-placeholder.png" alt="Stoły selekcyjne rolkowe — maszyna Agro-Weld" loading="lazy" style="max-width:100%;max-height:100%;object-fit:contain;display:block"></span>
+          <span style="padding:24px 30px;display:flex;flex-direction:column;justify-content:center">
+            <span class="mono" style="display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:10px;font-size:11.5px;letter-spacing:.05em"><span style="color:#8C3A43;font-weight:700">SSR-2508 · SSR-3010 · SSR-4012</span><span class="rowarrow" style="font-size:19px;color:#8C3A43;font-weight:700">↗</span></span>
+            <span style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px"><h3 style="font-size:25px;letter-spacing:-.01em;line-height:1.1">Stoły selekcyjne rolkowe</h3><span class="mono" style="font-size:10px;font-weight:700;color:#14160E;background:#B7D44B;padding:4px 9px;border-radius:4px;letter-spacing:.03em">Karta produktu →</span></span>
+            <p style="font-size:15px;line-height:1.6;color:#56603F;max-width:620px;text-wrap:pretty">Selekcja na rolkach z aluminium lub plastiku; otwarta rolka nie zapycha się.</p>
+          </span>
+        </a>
+      </div>
+    </div>
+    <div id="wazenie-i-liczenie" style="scroll-margin-top:96px">
+      <div data-reveal style="display:flex;align-items:center;gap:16px;margin-bottom:20px"><span class="mono" style="font-size:12px;font-weight:700;letter-spacing:.1em;color:#8C3A43">06</span><h2 style="font-size:28px;letter-spacing:-.01em"><a href="/maszyny/wazenie-i-liczenie/" style="color:#14160E">Ważenie i liczenie</a></h2><span style="flex:1;height:1px;background:rgba(20,22,14,.2)"></span><a class="mono linkd" href="/maszyny/wazenie-i-liczenie/" style="font-size:11px;font-weight:700;letter-spacing:.06em;white-space:nowrap">Strona kategorii ↗</a></div>
+      <div data-reveal style="border:1px solid #14160E;background:#14160E;display:grid;gap:1px">
+        <a class="prow" id="liczarka" href="/maszyny/wazenie-i-liczenie/liczarka/" style="scroll-margin-top:96px">
+          <span class="pimg" style="height:210px;border-right:1px solid #14160E;background-color:#F1ECDF;background-image:linear-gradient(rgba(20,22,14,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(20,22,14,.05) 1px,transparent 1px);background-size:24px 24px;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:20px"><img class="rowimg" src="../assets/maszyna-placeholder.png" alt="Liczarka do owoców — maszyna Agro-Weld" loading="lazy" style="max-width:100%;max-height:100%;object-fit:contain;display:block"></span>
+          <span style="padding:24px 30px;display:flex;flex-direction:column;justify-content:center">
+            <span class="mono" style="display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:10px;font-size:11.5px;letter-spacing:.05em"><span style="color:#8C3A43;font-weight:700">LO1.90 · LO2.90</span><span class="rowarrow" style="font-size:19px;color:#8C3A43;font-weight:700">↗</span></span>
+            <span style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px"><h3 style="font-size:25px;letter-spacing:-.01em;line-height:1.1">Liczarka do owoców</h3><span class="mono" style="font-size:10px;font-weight:700;color:#14160E;background:#B7D44B;padding:4px 9px;border-radius:4px;letter-spacing:.03em">Karta produktu →</span></span>
+            <p style="font-size:15px;line-height:1.6;color:#56603F;max-width:620px;text-wrap:pretty">Precyzyjnie liczy większe owoce na sztuki; wersja jedno- lub dwurzędowa.</p>
+          </span>
+        </a>
+        <a class="prow" id="waga" href="/maszyny/wazenie-i-liczenie/waga-kontrolna/" style="scroll-margin-top:96px">
+          <span class="pimg" style="height:210px;border-right:1px solid #14160E;background-color:#F1ECDF;background-image:linear-gradient(rgba(20,22,14,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(20,22,14,.05) 1px,transparent 1px);background-size:24px 24px;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:20px"><img class="rowimg" src="../assets/maszyna-placeholder.png" alt="Waga kontrolna — maszyna Agro-Weld" loading="lazy" style="max-width:100%;max-height:100%;object-fit:contain;display:block"></span>
+          <span style="padding:24px 30px;display:flex;flex-direction:column;justify-content:center">
+            <span class="mono" style="display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:10px;font-size:11.5px;letter-spacing:.05em"><span style="color:#8C3A43;font-weight:700">WKO</span><span class="rowarrow" style="font-size:19px;color:#8C3A43;font-weight:700">↗</span></span>
+            <span style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px"><h3 style="font-size:25px;letter-spacing:-.01em;line-height:1.1">Waga kontrolna</h3><span class="mono" style="font-size:10px;font-weight:700;color:#14160E;background:#B7D44B;padding:4px 9px;border-radius:4px;letter-spacing:.03em">Karta produktu →</span></span>
+            <p style="font-size:15px;line-height:1.6;color:#56603F;max-width:620px;text-wrap:pretty">Dynamicznie waży opakowania w ruchu i odrzuca te poza tolerancją.</p>
+          </span>
+        </a>
+      </div>
+    </div>
+    <div id="pakowanie" style="scroll-margin-top:96px">
+      <div data-reveal style="display:flex;align-items:center;gap:16px;margin-bottom:20px"><span class="mono" style="font-size:12px;font-weight:700;letter-spacing:.1em;color:#8C3A43">07</span><h2 style="font-size:28px;letter-spacing:-.01em"><a href="/maszyny/pakowanie/" style="color:#14160E">Pakowanie</a></h2><span style="flex:1;height:1px;background:rgba(20,22,14,.2)"></span><a class="mono linkd" href="/maszyny/pakowanie/" style="font-size:11px;font-weight:700;letter-spacing:.06em;white-space:nowrap">Strona kategorii ↗</a></div>
+      <div data-reveal style="border:1px solid #14160E;background:#14160E;display:grid;gap:1px">
+        <a class="prow" id="wagoworkownica" href="/maszyny/pakowanie/wagoworkownica/" style="scroll-margin-top:96px">
+          <span class="pimg" style="height:210px;border-right:1px solid #14160E;background-color:#F1ECDF;background-image:linear-gradient(rgba(20,22,14,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(20,22,14,.05) 1px,transparent 1px);background-size:24px 24px;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:20px"><img class="rowimg" src="../assets/maszyna-placeholder.png" alt="Wagoworkownica — maszyna Agro-Weld" loading="lazy" style="max-width:100%;max-height:100%;object-fit:contain;display:block"></span>
+          <span style="padding:24px 30px;display:flex;flex-direction:column;justify-content:center">
+            <span class="mono" style="display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:10px;font-size:11.5px;letter-spacing:.05em"><span style="color:#8C3A43;font-weight:700">WW-302 · WW-302 Compact · WW-151 Smart</span><span class="rowarrow" style="font-size:19px;color:#8C3A43;font-weight:700">↗</span></span>
+            <span style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px"><h3 style="font-size:25px;letter-spacing:-.01em;line-height:1.1">Wagoworkownica</h3><span class="mono" style="font-size:10px;font-weight:700;color:#14160E;background:#B7D44B;padding:4px 9px;border-radius:4px;letter-spacing:.03em">Karta produktu →</span></span>
+            <p style="font-size:15px;line-height:1.6;color:#56603F;max-width:620px;text-wrap:pretty">Dozuje i pakuje warzywa do worków; panel dotykowy 7", zakres 1–30 kg.</p>
+          </span>
+        </a>
+        <a class="prow" id="raszlownica" href="/maszyny/pakowanie/raszlownica/" style="scroll-margin-top:96px">
+          <span class="pimg" style="height:210px;border-right:1px solid #14160E;background-color:#F1ECDF;background-image:linear-gradient(rgba(20,22,14,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(20,22,14,.05) 1px,transparent 1px);background-size:24px 24px;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:0"><img class="rowimg" src="../assets/real-raszlownica.jpg" alt="Raszlownica — maszyna Agro-Weld" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></span>
+          <span style="padding:24px 30px;display:flex;flex-direction:column;justify-content:center">
+            <span class="mono" style="display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:10px;font-size:11.5px;letter-spacing:.05em"><span style="color:#8C3A43;font-weight:700">RA1 · RA2</span><span class="rowarrow" style="font-size:19px;color:#8C3A43;font-weight:700">↗</span></span>
+            <span style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px"><h3 style="font-size:25px;letter-spacing:-.01em;line-height:1.1">Raszlownica</h3><span class="mono" style="font-size:10px;font-weight:700;color:#14160E;background:#B7D44B;padding:4px 9px;border-radius:4px;letter-spacing:.03em">Karta produktu →</span></span>
+            <p style="font-size:15px;line-height:1.6;color:#56603F;max-width:620px;text-wrap:pretty">Pakuje worki 2,5–25 kg; zaszywarki Fischbein / Newlong / Yao Han, panel 7".</p>
+          </span>
+        </a>
+        <a class="prow" id="napelniacz" href="/maszyny/pakowanie/napelniacz-kaskadowy/" style="scroll-margin-top:96px">
+          <span class="pimg" style="height:210px;border-right:1px solid #14160E;background-color:#F1ECDF;background-image:linear-gradient(rgba(20,22,14,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(20,22,14,.05) 1px,transparent 1px);background-size:24px 24px;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:20px"><img class="rowimg" src="../assets/maszyna-placeholder.png" alt="Napełniacz kaskadowy — maszyna Agro-Weld" loading="lazy" style="max-width:100%;max-height:100%;object-fit:contain;display:block"></span>
+          <span style="padding:24px 30px;display:flex;flex-direction:column;justify-content:center">
+            <span class="mono" style="display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:10px;font-size:11.5px;letter-spacing:.05em"><span style="color:#8C3A43;font-weight:700">NK-1 · NK-2</span><span class="rowarrow" style="font-size:19px;color:#8C3A43;font-weight:700">↗</span></span>
+            <span style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px"><h3 style="font-size:25px;letter-spacing:-.01em;line-height:1.1">Napełniacz kaskadowy</h3><span class="mono" style="font-size:10px;font-weight:700;color:#14160E;background:#B7D44B;padding:4px 9px;border-radius:4px;letter-spacing:.03em">Karta produktu →</span></span>
+            <p style="font-size:15px;line-height:1.6;color:#56603F;max-width:620px;text-wrap:pretty">Załadunek big-bagów i skrzyniopalet; kaskada z 9 żaglami, opcja wagi.</p>
+          </span>
+        </a>
+        <a class="prow" id="stol-obrotowy" href="/maszyny/pakowanie/stoly-obrotowe/" style="scroll-margin-top:96px">
+          <span class="pimg" style="height:210px;border-right:1px solid #14160E;background-color:#F1ECDF;background-image:linear-gradient(rgba(20,22,14,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(20,22,14,.05) 1px,transparent 1px);background-size:24px 24px;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:20px"><img class="rowimg" src="../assets/maszyna-placeholder.png" alt="Stoły obrotowe — maszyna Agro-Weld" loading="lazy" style="max-width:100%;max-height:100%;object-fit:contain;display:block"></span>
+          <span style="padding:24px 30px;display:flex;flex-direction:column;justify-content:center">
+            <span class="mono" style="display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:10px;font-size:11.5px;letter-spacing:.05em"><span style="color:#8C3A43;font-weight:700">SO-150</span><span class="rowarrow" style="font-size:19px;color:#8C3A43;font-weight:700">↗</span></span>
+            <span style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px"><h3 style="font-size:25px;letter-spacing:-.01em;line-height:1.1">Stoły obrotowe</h3><span class="mono" style="font-size:10px;font-weight:700;color:#14160E;background:#B7D44B;padding:4px 9px;border-radius:4px;letter-spacing:.03em">Karta produktu →</span></span>
+            <p style="font-size:15px;line-height:1.6;color:#56603F;max-width:620px;text-wrap:pretty">Buforuje i kompletuje produkt na końcu linii; rewers i regulacja prędkości.</p>
+          </span>
+        </a>
+        <a class="prow" id="bufor" href="/maszyny/pakowanie/bufor-do-pakowania/" style="scroll-margin-top:96px">
+          <span class="pimg" style="height:210px;border-right:1px solid #14160E;background-color:#F1ECDF;background-image:linear-gradient(rgba(20,22,14,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(20,22,14,.05) 1px,transparent 1px);background-size:24px 24px;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:20px"><img class="rowimg" src="../assets/maszyna-placeholder.png" alt="Bufor do pakowania — maszyna Agro-Weld" loading="lazy" style="max-width:100%;max-height:100%;object-fit:contain;display:block"></span>
+          <span style="padding:24px 30px;display:flex;flex-direction:column;justify-content:center">
+            <span class="mono" style="display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:10px;font-size:11.5px;letter-spacing:.05em"><span style="color:#8C3A43;font-weight:700">BU-12 · BU-20</span><span class="rowarrow" style="font-size:19px;color:#8C3A43;font-weight:700">↗</span></span>
+            <span style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px"><h3 style="font-size:25px;letter-spacing:-.01em;line-height:1.1">Bufor do pakowania</h3><span class="mono" style="font-size:10px;font-weight:700;color:#14160E;background:#B7D44B;padding:4px 9px;border-radius:4px;letter-spacing:.03em">Karta produktu →</span></span>
+            <p style="font-size:15px;line-height:1.6;color:#56603F;max-width:620px;text-wrap:pretty">Ręczna selekcja i pakowanie do skrzyń; podest z opcją wagi, 1–2 stanowiska.</p>
+          </span>
+        </a>
+        <a class="prow" id="przenosnik-poprzeczny" href="/maszyny/pakowanie/przenosnik-poprzeczny-do-raszlownicy/" style="scroll-margin-top:96px">
+          <span class="pimg" style="height:210px;border-right:1px solid #14160E;background-color:#F1ECDF;background-image:linear-gradient(rgba(20,22,14,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(20,22,14,.05) 1px,transparent 1px);background-size:24px 24px;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:20px"><img class="rowimg" src="../assets/przenosnik-poprzeczny.png" alt="Przenośnik poprzeczny do raszlownicy — maszyna Agro-Weld" loading="lazy" style="max-width:100%;max-height:100%;object-fit:contain;display:block"></span>
+          <span style="padding:24px 30px;display:flex;flex-direction:column;justify-content:center">
+            <span class="mono" style="display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:10px;font-size:11.5px;letter-spacing:.05em"><span style="color:#8C3A43;font-weight:700">RA-PP-00</span><span class="rowarrow" style="font-size:19px;color:#8C3A43;font-weight:700">↗</span></span>
+            <span style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px"><h3 style="font-size:25px;letter-spacing:-.01em;line-height:1.1">Przenośnik poprzeczny do raszlownicy</h3><span class="mono" style="font-size:10px;font-weight:700;color:#14160E;background:#B7D44B;padding:4px 9px;border-radius:4px;letter-spacing:.03em">Karta produktu →</span></span>
+            <p style="font-size:15px;line-height:1.6;color:#56603F;max-width:620px;text-wrap:pretty">Podaje porcje warzyw do raszlownicy; taśma z amortyzującymi zabierakami.</p>
+          </span>
+        </a>
+      </div>
+    </div>
+    <div id="paletyzacja" style="scroll-margin-top:96px">
+      <div data-reveal style="display:flex;align-items:center;gap:16px;margin-bottom:20px"><span class="mono" style="font-size:12px;font-weight:700;letter-spacing:.1em;color:#8C3A43">08</span><h2 style="font-size:28px;letter-spacing:-.01em"><a href="/maszyny/paletyzacja/" style="color:#14160E">Paletyzacja</a></h2><span style="flex:1;height:1px;background:rgba(20,22,14,.2)"></span><a class="mono linkd" href="/maszyny/paletyzacja/" style="font-size:11px;font-weight:700;letter-spacing:.06em;white-space:nowrap">Strona kategorii ↗</a></div>
+      <div data-reveal style="border:1px solid #14160E;background:#14160E;display:grid;gap:1px">
+        <a class="prow" id="paletyzator" href="/maszyny/paletyzacja/" style="scroll-margin-top:96px">
+          <span class="pimg" style="height:210px;border-right:1px solid #14160E;background-color:#F1ECDF;background-image:linear-gradient(rgba(20,22,14,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(20,22,14,.05) 1px,transparent 1px);background-size:24px 24px;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:20px"><img class="rowimg" src="../assets/maszyna-placeholder.png" alt="Paletyzatory Verbruggen — maszyna Agro-Weld" loading="lazy" style="max-width:100%;max-height:100%;object-fit:contain;display:block"></span>
+          <span style="padding:24px 30px;display:flex;flex-direction:column;justify-content:center">
+            <span class="mono" style="display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:10px;font-size:11.5px;letter-spacing:.05em"><span style="color:#8C3A43;font-weight:700">Verbruggen VPM</span><span class="rowarrow" style="font-size:19px;color:#8C3A43;font-weight:700">↗</span></span>
+            <span style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px"><h3 style="font-size:25px;letter-spacing:-.01em;line-height:1.1">Paletyzatory Verbruggen</h3><span class="mono" style="font-size:10px;font-weight:700;color:#ECE7D7;background:#8C3A43;padding:4px 9px;border-radius:4px;letter-spacing:.03em">Dystrybucja</span></span>
+            <p style="font-size:15px;line-height:1.6;color:#56603F;max-width:620px;text-wrap:pretty">Automatyczne układanie worków, skrzynek i kartonów na palecie.</p>
+          </span>
+        </a>
+        <a class="prow" id="formator" href="/maszyny/paletyzacja/formatory-palet/" style="scroll-margin-top:96px">
+          <span class="pimg" style="height:210px;border-right:1px solid #14160E;background-color:#F1ECDF;background-image:linear-gradient(rgba(20,22,14,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(20,22,14,.05) 1px,transparent 1px);background-size:24px 24px;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:20px"><img class="rowimg" src="../assets/formator.png" alt="Formatory palet — maszyna Agro-Weld" loading="lazy" style="max-width:100%;max-height:100%;object-fit:contain;display:block"></span>
+          <span style="padding:24px 30px;display:flex;flex-direction:column;justify-content:center">
+            <span class="mono" style="display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:10px;font-size:11.5px;letter-spacing:.05em"><span style="color:#8C3A43;font-weight:700">FP-1280 · FP-1210</span><span class="rowarrow" style="font-size:19px;color:#8C3A43;font-weight:700">↗</span></span>
+            <span style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px"><h3 style="font-size:25px;letter-spacing:-.01em;line-height:1.1">Formatory palet</h3><span class="mono" style="font-size:10px;font-weight:700;color:#14160E;background:#B7D44B;padding:4px 9px;border-radius:4px;letter-spacing:.03em">Karta produktu →</span></span>
+            <p style="font-size:15px;line-height:1.6;color:#56603F;max-width:620px;text-wrap:pretty">Optymalizuje układanie worków na palecie euro lub przemysłowej; składane ściany.</p>
+          </span>
+        </a>
+      </div>
+    </div>
+    <div id="przenosniki" style="scroll-margin-top:96px">
+      <div data-reveal style="display:flex;align-items:center;gap:16px;margin-bottom:20px"><span class="mono" style="font-size:12px;font-weight:700;letter-spacing:.1em;color:#8C3A43">09</span><h2 style="font-size:28px;letter-spacing:-.01em"><a href="/maszyny/przenosniki/" style="color:#14160E">Przenośniki</a></h2><span style="flex:1;height:1px;background:rgba(20,22,14,.2)"></span><a class="mono linkd" href="/maszyny/przenosniki/" style="font-size:11px;font-weight:700;letter-spacing:.06em;white-space:nowrap">Strona kategorii ↗</a></div>
+      <div data-reveal style="border:1px solid #14160E;background:#14160E;display:grid;gap:1px">
+        <a class="prow" id="przenosnik-tasmowe-poziome" href="/maszyny/przenosniki/przenosniki-tasmowe-poziome/" style="scroll-margin-top:96px">
+          <span class="pimg" style="height:210px;border-right:1px solid #14160E;background-color:#F1ECDF;background-image:linear-gradient(rgba(20,22,14,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(20,22,14,.05) 1px,transparent 1px);background-size:24px 24px;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:20px"><img class="rowimg" src="../assets/wanna.png" alt="Przenośniki taśmowe poziome — maszyna Agro-Weld" loading="lazy" style="max-width:100%;max-height:100%;object-fit:contain;display:block"></span>
+          <span style="padding:24px 30px;display:flex;flex-direction:column;justify-content:center">
+            <span class="mono" style="display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:10px;font-size:11.5px;letter-spacing:.05em"><span style="color:#8C3A43;font-weight:700">na wymiar</span><span class="rowarrow" style="font-size:19px;color:#8C3A43;font-weight:700">↗</span></span>
+            <span style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px"><h3 style="font-size:25px;letter-spacing:-.01em;line-height:1.1">Przenośniki taśmowe poziome</h3><span class="mono" style="font-size:10px;font-weight:700;color:#14160E;background:#B7D44B;padding:4px 9px;border-radius:4px;letter-spacing:.03em">Karta produktu →</span></span>
+            <p style="font-size:15px;line-height:1.6;color:#56603F;max-width:620px;text-wrap:pretty">Przenośniki taśmowe poziome Agro-Weld to proste i uniwersalne rozwiązanie do transportu produktu na jednym poziomie między kolejnymi maszynami linii.</p>
+          </span>
+        </a>
+        <a class="prow" id="przenosnik-tasmowe-wznoszace" href="/maszyny/przenosniki/przenosniki-tasmowe-wznoszace/" style="scroll-margin-top:96px">
+          <span class="pimg" style="height:210px;border-right:1px solid #14160E;background-color:#F1ECDF;background-image:linear-gradient(rgba(20,22,14,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(20,22,14,.05) 1px,transparent 1px);background-size:24px 24px;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:20px"><img class="rowimg" src="../assets/maszyna-placeholder.png" alt="Przenośniki taśmowe wznoszące i łamane — maszyna Agro-Weld" loading="lazy" style="max-width:100%;max-height:100%;object-fit:contain;display:block"></span>
+          <span style="padding:24px 30px;display:flex;flex-direction:column;justify-content:center">
+            <span class="mono" style="display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:10px;font-size:11.5px;letter-spacing:.05em"><span style="color:#8C3A43;font-weight:700">na wymiar</span><span class="rowarrow" style="font-size:19px;color:#8C3A43;font-weight:700">↗</span></span>
+            <span style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px"><h3 style="font-size:25px;letter-spacing:-.01em;line-height:1.1">Przenośniki taśmowe wznoszące i łamane</h3><span class="mono" style="font-size:10px;font-weight:700;color:#14160E;background:#B7D44B;padding:4px 9px;border-radius:4px;letter-spacing:.03em">Karta produktu →</span></span>
+            <p style="font-size:15px;line-height:1.6;color:#56603F;max-width:620px;text-wrap:pretty">Przenośniki taśmowe wznoszące, w tym łamane, to efektywne rozwiązanie do transportu towarów na liniach z różnicami poziomów.</p>
+          </span>
+        </a>
+        <a class="prow" id="przenosnik-odpadowy" href="/maszyny/przenosniki/przenosnik-odpadowy/" style="scroll-margin-top:96px">
+          <span class="pimg" style="height:210px;border-right:1px solid #14160E;background-color:#F1ECDF;background-image:linear-gradient(rgba(20,22,14,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(20,22,14,.05) 1px,transparent 1px);background-size:24px 24px;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:20px"><img class="rowimg" src="../assets/maszyna-placeholder.png" alt="Przenośnik odpadowy — maszyna Agro-Weld" loading="lazy" style="max-width:100%;max-height:100%;object-fit:contain;display:block"></span>
+          <span style="padding:24px 30px;display:flex;flex-direction:column;justify-content:center">
+            <span class="mono" style="display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:10px;font-size:11.5px;letter-spacing:.05em"><span style="color:#8C3A43;font-weight:700">na wymiar</span><span class="rowarrow" style="font-size:19px;color:#8C3A43;font-weight:700">↗</span></span>
+            <span style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px"><h3 style="font-size:25px;letter-spacing:-.01em;line-height:1.1">Przenośnik odpadowy</h3><span class="mono" style="font-size:10px;font-weight:700;color:#14160E;background:#B7D44B;padding:4px 9px;border-radius:4px;letter-spacing:.03em">Karta produktu →</span></span>
+            <p style="font-size:15px;line-height:1.6;color:#56603F;max-width:620px;text-wrap:pretty">Przenośnik taśmowy z poziomymi zabierakami przeznaczony do transportu odpadu i odsortu.</p>
+          </span>
+        </a>
+        <a class="prow" id="przenosnik-do-materialow-sypkich" href="/maszyny/przenosniki/przenosnik-do-materialow-sypkich/" style="scroll-margin-top:96px">
+          <span class="pimg" style="height:210px;border-right:1px solid #14160E;background-color:#F1ECDF;background-image:linear-gradient(rgba(20,22,14,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(20,22,14,.05) 1px,transparent 1px);background-size:24px 24px;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:20px"><img class="rowimg" src="../assets/maszyna-placeholder.png" alt="Przenośnik do materiałów sypkich — maszyna Agro-Weld" loading="lazy" style="max-width:100%;max-height:100%;object-fit:contain;display:block"></span>
+          <span style="padding:24px 30px;display:flex;flex-direction:column;justify-content:center">
+            <span class="mono" style="display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:10px;font-size:11.5px;letter-spacing:.05em"><span style="color:#8C3A43;font-weight:700">na wymiar</span><span class="rowarrow" style="font-size:19px;color:#8C3A43;font-weight:700">↗</span></span>
+            <span style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px"><h3 style="font-size:25px;letter-spacing:-.01em;line-height:1.1">Przenośnik do materiałów sypkich</h3><span class="mono" style="font-size:10px;font-weight:700;color:#14160E;background:#B7D44B;padding:4px 9px;border-radius:4px;letter-spacing:.03em">Karta produktu →</span></span>
+            <p style="font-size:15px;line-height:1.6;color:#56603F;max-width:620px;text-wrap:pretty">Przenośnik przeznaczony do transportu i załadunku do worków towarów sypkich, takich jak węgiel czy pellet.</p>
+          </span>
+        </a>
+        <a class="prow" id="przenosnik-rolkowe" href="/maszyny/przenosniki/przenosniki-rolkowe/" style="scroll-margin-top:96px">
+          <span class="pimg" style="height:210px;border-right:1px solid #14160E;background-color:#F1ECDF;background-image:linear-gradient(rgba(20,22,14,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(20,22,14,.05) 1px,transparent 1px);background-size:24px 24px;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:20px"><img class="rowimg" src="../assets/maszyna-placeholder.png" alt="Przenośniki rolkowe — maszyna Agro-Weld" loading="lazy" style="max-width:100%;max-height:100%;object-fit:contain;display:block"></span>
+          <span style="padding:24px 30px;display:flex;flex-direction:column;justify-content:center">
+            <span class="mono" style="display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:10px;font-size:11.5px;letter-spacing:.05em"><span style="color:#8C3A43;font-weight:700">na wymiar</span><span class="rowarrow" style="font-size:19px;color:#8C3A43;font-weight:700">↗</span></span>
+            <span style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px"><h3 style="font-size:25px;letter-spacing:-.01em;line-height:1.1">Przenośniki rolkowe</h3><span class="mono" style="font-size:10px;font-weight:700;color:#14160E;background:#B7D44B;padding:4px 9px;border-radius:4px;letter-spacing:.03em">Karta produktu →</span></span>
+            <p style="font-size:15px;line-height:1.6;color:#56603F;max-width:620px;text-wrap:pretty">Przenośniki rolkowe służą do transportu gotowych opakowań — kartonów, skrzynek i palet.</p>
+          </span>
+        </a>
+      </div>
+    </div>
+    <div id="pielenie" style="scroll-margin-top:96px">
+      <div data-reveal style="display:flex;align-items:center;gap:16px;margin-bottom:20px"><span class="mono" style="font-size:12px;font-weight:700;letter-spacing:.1em;color:#8C3A43">10</span><h2 style="font-size:28px;letter-spacing:-.01em"><a href="/maszyny/pielenie/" style="color:#14160E">Pielenie</a></h2><span style="flex:1;height:1px;background:rgba(20,22,14,.2)"></span><a class="mono linkd" href="/maszyny/pielenie/" style="font-size:11px;font-weight:700;letter-spacing:.06em;white-space:nowrap">Strona kategorii ↗</a></div>
+      <div data-reveal style="border:1px solid #14160E;background:#14160E;display:grid;gap:1px">
+        <a class="prow" id="pielnik" href="/maszyny/pielenie/pielnik-do-obrobki-redlin/" style="scroll-margin-top:96px">
+          <span class="pimg" style="height:210px;border-right:1px solid #14160E;background-color:#F1ECDF;background-image:linear-gradient(rgba(20,22,14,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(20,22,14,.05) 1px,transparent 1px);background-size:24px 24px;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:20px"><img class="rowimg" src="../assets/maszyna-placeholder.png" alt="Pielnik do obróbki redlin — maszyna Agro-Weld" loading="lazy" style="max-width:100%;max-height:100%;object-fit:contain;display:block"></span>
+          <span style="padding:24px 30px;display:flex;flex-direction:column;justify-content:center">
+            <span class="mono" style="display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:10px;font-size:11.5px;letter-spacing:.05em"><span style="color:#8C3A43;font-weight:700">Pip-4 · Pia-4</span><span class="rowarrow" style="font-size:19px;color:#8C3A43;font-weight:700">↗</span></span>
+            <span style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px"><h3 style="font-size:25px;letter-spacing:-.01em;line-height:1.1">Pielnik do obróbki redlin</h3><span class="mono" style="font-size:10px;font-weight:700;color:#14160E;background:#B7D44B;padding:4px 9px;border-radius:4px;letter-spacing:.03em">Karta produktu →</span></span>
+            <p style="font-size:15px;line-height:1.6;color:#56603F;max-width:620px;text-wrap:pretty">Mechaniczne odchwaszczanie międzyrzędzi i formowanie redlin; sekcje na równoległoboku.</p>
+          </span>
+        </a>
+      </div>
+    </div>
+    <!--/CMS:GROUPS-->
     <div data-reveal style="border-top:1px solid rgba(20,22,14,.2);padding-top:18px;display:flex;align-items:center;justify-content:flex-end;gap:14px;flex-wrap:wrap;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.02em;color:#8A8163">
       <a class="linkd" href="/uploads/AgroWeld katalog 2026 20 01.pdf" style="font-weight:700;white-space:nowrap">↓ Pobierz katalog (PDF)</a>
     </div>
@@ -203,8 +467,8 @@ a.idx:hover svg{transform:rotate(-8deg) scale(1.08)}
         <p style="font-size:15.5px;line-height:1.6;color:#A7AE92;max-width:540px;text-wrap:pretty">Opisz, co chcesz przetwarzać i w jakiej skali — przygotujemy propozycję maszyny lub całej linii.</p>
       </div>
       <div style="display:flex;gap:12px;flex-wrap:wrap">
-        <a class="btn" href="/#kontakt" style="background:#ECE7D7;color:#14160E;padding:16px 26px;font-weight:700;font-size:15.5px">Zapytaj o ofertę →</a>
-        <a class="btn" href="/uploads/AgroWeld katalog 2026 20 01.pdf" style="background:transparent;color:#ECE7D7;border:1.5px solid rgba(236,231,215,.4);padding:15px 24px;font-weight:600;font-size:15.5px">↓ Pobierz katalog (PDF)</a>
+        <a class="btn btnc" href="/kontakt/" style="background:#ECE7D7;color:#14160E;padding:16px 26px;font-weight:700;font-size:15.5px">Zapytaj o ofertę <span class="ar">→</span></a>
+        <a class="btn btno" href="/uploads/AgroWeld katalog 2026 20 01.pdf" style="background:transparent;color:#ECE7D7;border:1.5px solid rgba(236,231,215,.4);padding:15px 24px;font-weight:600;font-size:15.5px">↓ Pobierz katalog (PDF)</a>
       </div>
     </div>
   </div>
