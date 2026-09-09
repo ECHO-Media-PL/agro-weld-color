@@ -86,7 +86,7 @@
   "name": "Sortownik do owoców drobnych",
   "short": "Delikatnie sortuje borówki i drobne owoce; boczna platforma na skrzynkę.",
   "models": "SOD-6010 · 6012 · 6014",
-  "img": "real-borowka.jpg",
+  "img": "real-borowka.webp",
   "imgType": "photo"
  },
  {
@@ -106,7 +106,7 @@
   "name": "Stół selekcyjny taśmowy",
   "short": "Ręczna selekcja na taśmie PCV; konfigurowalne podzielnice i oświetlenie LED.",
   "models": "SST-2008 · 3510 · 5012",
-  "img": "real-inox.jpg",
+  "img": "real-inox.webp",
   "imgType": "photo"
  },
  {
@@ -156,7 +156,7 @@
   "name": "Raszlownica",
   "short": "Pakuje worki 2,5–25 kg; zaszywarki Fischbein / Newlong / Yao Han, panel 7\".",
   "models": "RA1 · RA2",
-  "img": "real-raszlownica.jpg",
+  "img": "real-raszlownica.webp",
   "imgType": "photo"
  },
  {
@@ -206,7 +206,7 @@
   "name": "Formator palet",
   "short": "Optymalizuje układanie worków na palecie euro lub przemysłowej; składane ściany.",
   "models": "FP-1280 · FP-1210",
-  "img": "formator.png",
+  "img": "formator.webp",
   "imgType": "render"
  },
  {
@@ -216,7 +216,7 @@
   "name": "Przenośniki taśmowe i rolkowe",
   "short": "Taśmowe, rolkowe i modularne; kąt wznosu do 50°, taśmy z atestem.",
   "models": "szer. 20–90 cm · dł. 1–12 m",
-  "img": "wanna.png",
+  "img": "wanna.webp",
   "imgType": "render"
  },
  {
@@ -226,7 +226,7 @@
   "name": "Przenośnik poprzeczny",
   "short": "Podaje porcje warzyw do raszlownicy; taśma z amortyzującymi zabierakami.",
   "models": "RA-PP-00",
-  "img": "przenosnik-poprzeczny.png",
+  "img": "przenosnik-poprzeczny.webp",
   "imgType": "render"
  },
  {

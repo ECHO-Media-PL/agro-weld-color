@@ -80,7 +80,7 @@
   "uses":"Owoce i warzywa korzeniowe wymagające kalibracji według wielkości w zakresie 10–100 mm.",
   "metaTitle":"Kalibrownik rozsuwany KA-780 / KA-880 – sortowanie wg wielkości – Agro-Weld","metaDesc":"Kalibrownik rozsuwany do warzyw i owoców, rozstaw wałków 10–100 mm regulowany korbką w kilka sekund. Wałki poliuretanowe, podwieszany pod kosz. Producent Agro-Weld."},
 
- {"slug":"sortownik-do-owocow-drobnych","cat":"sortowanie","mid":"sortownik-sod","name":"Sortownik do owoców drobnych","models":["SOD-6010","SOD-6012","SOD-6014"],"img":"real-borowka.jpg","imgPhoto":true,
+ {"slug":"sortownik-do-owocow-drobnych","cat":"sortowanie","mid":"sortownik-sod","name":"Sortownik do owoców drobnych","models":["SOD-6010","SOD-6012","SOD-6014"],"img":"real-borowka.webp","imgPhoto":true,
   "lead":"Sortownik do małych owoców umożliwia pracę z delikatnym produktem — borówkami, malinami, porzeczkami — bez ryzyka uszkodzenia. Rozstaw pasków jest stały, dobierany przy zamówieniu w zakresie 4–25 mm.",
   "desc":"Boczna platforma na skrzynkę ułatwia ręczne sortowanie owoców. Konstrukcja umożliwia płynną regulację wysokości podstawy, dzięki czemu maszynę można dostosować do istniejącej linii produkcyjnej.",
   "features":[["Delikatna praca","Zabezpiecza miękkie owoce przed uszkodzeniem podczas sortowania."],["Regulowana wysokość","Płynna regulacja wysokości podstawy pozwala dopasować sortownik do istniejącej linii."],["Platforma boczna","Umieszczenie skrzynki na wysokości sortownika ułatwia pracę."]],
@@ -99,7 +99,7 @@
   "uses":"Borówka amerykańska i inne drobne owoce — sortowanie na 3 sorty.",
   "metaTitle":"Dwubębnowy sortownik do owoców drobnych SO2B-601012 – Agro-Weld","metaDesc":"Dwubębnowy sortownik do borówek: 3 sorty, kaliber 8–25 mm, biała taśma z atestem, oświetlenie LED, falownik. Producent Agro-Weld."},
 
- {"slug":"stoly-selekcyjne-tasmowe","cat":"selekcja","mid":"stol-tasmowy","name":"Stoły selekcyjne taśmowe","models":["SST-2008","SST-3510","SST-5012"],"img":"real-inox.jpg","imgPhoto":true,
+ {"slug":"stoly-selekcyjne-tasmowe","cat":"selekcja","mid":"stol-tasmowy","name":"Stoły selekcyjne taśmowe","models":["SST-2008","SST-3510","SST-5012"],"img":"real-inox.webp","imgPhoto":true,
   "lead":"Stoły selekcyjne taśmowe umożliwiają ręczne sortowanie warzyw na linii produkcyjnej. Duża gama rozmiarów oraz dowolna konfiguracja podzielnic i wysypów pozwalają w pełni dostosować stół do potrzeb klienta.",
   "desc":"Każdy stół wyposażony jest w oświetlenie LED oraz skrzynkę z falownikiem do regulacji prędkości pracy. Obrotowe koła z hamulcem pozwalają łatwo przestawić stół i zmienić układ linii. W zależności od potrzeb stoły można wyposażyć w długi zasobnik lub kieszenie z taśmociągiem przeznaczone do odpadów i odsortu. Przy stole długości 2–2,5 m pracują maksymalnie 4 osoby, przy 2,5–3 m — 6 osób.",
   "features":[["Dodatkowe zsypy","Każda podzielnica ma osobny zsyp kierujący towar na właściwe taśmociągi."],["Podzielnice","W pełni konfigurowalne — w tym montaż taśmociągu odpadowego."],["Oświetlenie LED","Jasne oświetlenie zapewnia wygodę pracy w różnych warunkach w hali."]],
@@ -150,7 +150,7 @@
   "uses":"Warzywa korzeniowe i cebulowe pakowane do worków, skrzynek i innych opakowań w porcjach 1–30 kg.",
   "metaTitle":"Wagoworkownica WW-302 / Compact / WW-151 Smart – Agro-Weld","metaDesc":"Automatyczna wagoworkownica do warzyw: porcje 1–30 kg, do 6 t/h, panel dotykowy 7\", taśma doważająca, podłączenie pod raszlownicę. Producent Agro-Weld."},
 
- {"slug":"raszlownica","cat":"pakowanie","mid":"raszlownica","name":"Raszlownica","models":["RA1","RA2"],"img":"real-raszlownica.jpg","imgPhoto":true,
+ {"slug":"raszlownica","cat":"pakowanie","mid":"raszlownica","name":"Raszlownica","models":["RA1","RA2"],"img":"real-raszlownica.webp","imgPhoto":true,
   "lead":"Raszlownica Agro-Weld pakuje worki raszlowe (siatkowe) o masie od 2,5 do 25 kg. Dwa silniki wibracyjne — na leju i przenośniku — wspomagają równomierny przepływ produktu, a zaszywarka jedno- lub dwuigłowa zamyka opakowanie.",
   "desc":"Konstrukcja ma dwa kominy odprowadzające dym ze zgrzewania worków oraz przezroczyste drzwi do monitorowania procesu. Maszyna może być wyposażona w zaszywarki marki Fischbein, Newlong lub Yao Han. Obsługa odbywa się intuicyjnym panelem dotykowym 7\". Szereg czujników zapewnia niezawodność i bezpieczne działanie w każdych warunkach produkcyjnych.",
   "features":[["Czytelny wyświetlacz","Intuicyjny, duży ekran dotykowy o przekątnej 7 cali."],["Łatwe połączenie","Wsyp raszlownicy zapewnia stabilne połączenie z wagoworkownicą lub wagą kanałową."],["Przezroczyste drzwi","Bieżąca kontrola procesu pakowania, który odbywa się wewnątrz maszyny."]],
@@ -160,7 +160,7 @@
   "uses":"Warzywa korzeniowe i cebulowe pakowane w worki raszlowe — od 2,5 kg detalicznych po 25 kg hurtowych.",
   "metaTitle":"Raszlownica RA1 / RA2 – pakowanie w worki raszlowe 2,5–25 kg – Agro-Weld","metaDesc":"Raszlownica do worków siatkowych 2,5–25 kg, zaszywarka Fischbein / Newlong / Yao Han, panel 7\", do 13 porcji/min. Polski producent Agro-Weld."},
 
- {"slug":"przenosnik-poprzeczny-do-raszlownicy","cat":"pakowanie","mid":"przenosnik-poprzeczny","name":"Przenośnik poprzeczny do raszlownicy","models":["RA-PP-00"],"img":"przenosnik-poprzeczny.png",
+ {"slug":"przenosnik-poprzeczny-do-raszlownicy","cat":"pakowanie","mid":"przenosnik-poprzeczny","name":"Przenośnik poprzeczny do raszlownicy","models":["RA-PP-00"],"img":"przenosnik-poprzeczny.webp",
   "lead":"Przenośnik przejmuje porcje warzyw z linii i poprzecznie podaje je do lejka raszlownicy, zapewniając stały, delikatny strumień produktu. Pozwala ustawić raszlownicę i wagoworkownicę równolegle do linii i pracować w obu kierunkach.",
   "desc":"Taśma z zabierakami stabilizuje transport, a mobilna rama na kołach z hamulcem ułatwia podjazd i szybkie dopięcie do stanowiska pakowania. Konstrukcja przewidziana do pracy w strefie pakowania — łatwa w myciu, z wygodnym dostępem serwisowym.",
   "features":[["Taśma z amortyzatorami upadku","Zabieraki w kształcie poduszek amortyzują upadek towaru podczas ważenia i pakowania."],["Lej zasypowy i podest","Profilowany lejek kieruje produkt do worka lub kartonu; podest pod wylotem z możliwością montażu wagi."],["Mobilna rama i regulacje","4 koła skrętne z hamulcami, regulacja wysokości i wylotu — szybkie ustawienie pod różne raszlownice."]],
@@ -197,7 +197,7 @@
   "uses":"Ręczne pakowanie do skrzynek i kartonów na jedno- lub dwustanowiskowej platformie.",
   "metaTitle":"Bufor do pakowania BU-12 / BU-20 – Agro-Weld","metaDesc":"Bufor do ręcznego sortowania i pakowania do skrzynek: 1 lub 2 stanowiska, zapadki, podest z opcją wagi, 4 koła. Producent Agro-Weld."},
 
- {"slug":"formatory-palet","cat":"paletyzacja","mid":"formator","name":"Formatory palet","models":["FP-1280","FP-1210"],"img":"formator.png",
+ {"slug":"formatory-palet","cat":"paletyzacja","mid":"formator","name":"Formatory palet","models":["FP-1280","FP-1210"],"img":"formator.webp",
   "lead":"Formatory palet Agro-Weld to proste i funkcjonalne urządzenia optymalizujące układanie worków na palecie — mechaniczna alternatywa dla zakładów, dla których pełna automatyzacja jest jeszcze zbyt dużą inwestycją.",
   "desc":"Konstrukcja składa się z trzech ścianek bocznych ograniczających worki oraz obniżonej ściany przedniej, która — zależnie od głębokości montażu — wyznacza rozmiar palety euro (1,2 × 0,8 m) lub przemysłowej (1,2 × 1,0 m). Wyjmowanie palety odbywa się bez szkody dla stosu: najpierw demontowana jest ściana przednia, a pozostałe trzy ściany na zawiasach rozsuwają się na kółkach w układzie „C”, nie stykając się z ułożonymi workami.",
   "features":[["Prosty i szybki montaż","Przemyślana konstrukcja jest łatwa i szybka w montażu."],["Koła","4 koła umożliwiają łatwy transport w inne miejsce."],["Solidna konstrukcja","Stal malowana proszkowo, blachy osłonowe galwanizowane."]],
@@ -206,7 +206,7 @@
   "uses":"Mniejsze zakłady i gospodarstwa układające worki na paletach euro lub przemysłowych.",
   "metaTitle":"Formatory palet FP-1280 / FP-1210 – Agro-Weld","metaDesc":"Formator palet do równego układania worków na palecie euro lub przemysłowej. Składane ściany na kółkach, wysokość 2200 mm. Producent Agro-Weld."},
 
- {"slug":"przenosniki-tasmowe-poziome","cat":"przenosniki","mid":"przenosnik","name":"Przenośniki taśmowe poziome","models":["Konfiguracja indywidualna"],"img":"wanna.png",
+ {"slug":"przenosniki-tasmowe-poziome","cat":"przenosniki","mid":"przenosnik","name":"Przenośniki taśmowe poziome","models":["Konfiguracja indywidualna"],"img":"wanna.webp",
   "lead":"Przenośniki taśmowe poziome Agro-Weld to proste i uniwersalne rozwiązanie do transportu produktu na jednym poziomie między kolejnymi maszynami linii. Nieskomplikowana konstrukcja ułatwia obsługę i minimalizuje konserwację.",
   "desc":"Dodatkowe opcje — regulowane burty i zabieraki — umożliwiają transport produktów o różnym kształcie i wielkości. Wariant z przegrodami pozwala sortować towar i kontrolować napełnianie buforów; wyloty wyposażone są w kaskady zapobiegające obijaniu. Liczbę wylotów i przegród oraz wysokość taśmociągu dopasowujemy do potrzeb klienta. Już w standardzie burty wykonane są ze stali nierdzewnej.",
   "features":[["Modułowa budowa","Szerokości 20–90 cm i długości 1–12 m; większe na specjalne zamówienie."],["Dowolna taśma","PCV z atestem lub bez, guma, poliuretan, taśma modularna PP/PE/POM, łańcuchy acetalowe."],["Przegrody i kaskady","Wariant z przegrodami do sortowania i kontroli napełniania buforów."]],

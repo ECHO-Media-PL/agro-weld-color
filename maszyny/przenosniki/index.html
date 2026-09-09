@@ -73,6 +73,33 @@ a{color:#41571F}a:hover{color:#8C3A43}
 .faqmark{transition:transform .3s;display:inline-block}
 @media(max-width:980px){.hero2{grid-template-columns:1fr!important;gap:38px!important}.art2{grid-template-columns:1fr!important;gap:36px!important}.toc{position:static!important}.prow{grid-template-columns:1fr!important}.hnav{display:none!important}.hamb{display:inline-flex!important}.fgrid{grid-template-columns:1fr 1fr!important}}
 @media(max-width:680px){.pad{padding-left:20px!important;padding-right:20px!important}.fgrid{grid-template-columns:1fr!important}}
+/*aw-resp*/
+[style*="display:grid"]>*{min-width:0}
+@media(max-width:1140px){.hnav{display:none!important}.hamb{display:inline-flex!important}}
+@media(max-width:1100px){.tilegrid{grid-template-columns:1fr!important}}
+@media(max-width:980px){
+.art2,.specgrid,.agrid,.c2,.col2,.phero,.hero2,.herogrid,.verbgrid,.kn2,.blogrow{grid-template-columns:minmax(0,1fr)!important}
+div[style*="position:sticky"],aside[style*="position:sticky"]{position:static!important}
+}
+@media(max-width:680px){
+.pad{padding-left:20px!important;padding-right:20px!important}
+[style*="grid-template-columns:1fr 1fr"],[style*="grid-template-columns:repeat(3,1fr)"],[style*="grid-template-columns:repeat(2,1fr)"],[style*="grid-template-columns:1.6fr 1fr 1fr"],.person,.awPanel{grid-template-columns:minmax(0,1fr)!important}
+[style*="grid-template-columns:repeat(4,1fr)"]{grid-template-columns:1fr 1fr!important;row-gap:18px!important}
+.awPanel{gap:16px!important}
+#awPanelWrap{padding:26px 22px!important}
+h1{font-size:min(40px,10.5vw)!important;line-height:1.02!important}
+h2[style*="font-size:48px"],h2[style*="font-size:44px"],h2[style*="font-size:42px"],h2[style*="font-size:40px"],h2[style*="font-size:38px"]{font-size:32px!important}
+h2[style*="font-size:36px"],h2[style*="font-size:34px"],h2[style*="font-size:32px"],h2[style*="font-size:30px"]{font-size:27px!important}
+h3[style*="font-size:30px"],h3[style*="font-size:28px"]{font-size:24px!important}
+section[style*="padding:112px 0"],section[style*="padding:104px 0"]:not([style*="padding:104px 0 0"]),section[style*="padding:88px 0"],section[style*="padding:84px 0"],section[style*="padding:80px 0"],section[style*="padding:72px 0"]{padding-top:56px!important;padding-bottom:56px!important}
+section[style*="padding:104px 0 0"]{padding-top:56px!important}
+[style*="padding:46px 44px"],[style*="padding:44px 40px"],[style*="padding:38px 40px"],[style*="padding:40px 44px"]{padding:28px 22px!important}
+[style*="padding:32px 34px"],[style*="padding:34px"],[style*="padding:30px 34px"]{padding:24px 20px!important}
+.btn{white-space:normal!important}
+.crow{flex-wrap:wrap}.crow>.mono{width:100%!important}
+table{font-size:13px}
+footer>div>div:last-child{flex-direction:column;align-items:flex-start!important;gap:10px!important}
+}
 </style>
 </head>
 <body>
@@ -178,7 +205,7 @@ a{color:#41571F}a:hover{color:#8C3A43}
     </div>
     <div data-reveal style="border:1px solid #14160E;background:#14160E;display:grid;gap:1px">
       <a class="prow" id="przenosnik-tasmowe-poziome" href="/maszyny/przenosniki/przenosniki-tasmowe-poziome/" style="display:grid;grid-template-columns:150px 1fr auto;gap:26px;align-items:center;padding:20px 24px;background:#ECE7D7;text-decoration:none;color:#14160E;scroll-margin-top:96px">
-        <span style="width:150px;height:100px;flex-shrink:0;background-color:#F1ECDF;background-image:linear-gradient(rgba(20,22,14,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(20,22,14,.05) 1px,transparent 1px);background-size:20px 20px;border:1px solid rgba(20,22,14,.14);display:flex;align-items:center;justify-content:center;overflow:hidden"><img class="prowimg" src="../../assets/wanna.png" alt="Przenośniki taśmowe poziome na wymiar" loading="lazy" style="max-width:86%;max-height:86%;object-fit:contain;display:block"></span>
+        <span style="width:150px;height:100px;flex-shrink:0;background-color:#F1ECDF;background-image:linear-gradient(rgba(20,22,14,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(20,22,14,.05) 1px,transparent 1px);background-size:20px 20px;border:1px solid rgba(20,22,14,.14);display:flex;align-items:center;justify-content:center;overflow:hidden"><img class="prowimg" src="../../assets/wanna.webp" alt="Przenośniki taśmowe poziome na wymiar" loading="lazy" style="max-width:86%;max-height:86%;object-fit:contain;display:block"></span>
         <div style="min-width:0"><div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:6px"><h3 style="font-size:23px;font-weight:700;letter-spacing:-.01em;line-height:1.1">Przenośniki taśmowe poziome</h3><span class="mono" style="font-size:11px;font-weight:700;color:#8C3A43;letter-spacing:.03em">na wymiar</span></div>
           <p style="font-size:14px;line-height:1.5;color:#56603F;text-wrap:pretty">Przenośniki taśmowe poziome Agro-Weld to proste i uniwersalne rozwiązanie do transportu produktu na jednym poziomie między kolejnymi maszynami linii.</p></div>
         <span style="display:flex;align-items:center;gap:8px;font-family:'Space Mono',monospace;font-size:11.5px;font-weight:700;letter-spacing:.04em;color:#8C3A43;white-space:nowrap">Karta produktu <span class="prowarr" style="font-size:17px">↗</span></span>

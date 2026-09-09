@@ -94,7 +94,7 @@
   "name": "Sortownik do owoców drobnych",
   "short": "Delikatnie sortuje borówki i drobne owoce; boczna platforma na skrzynkę.",
   "models": "SOD-6010 · SOD-6012 · SOD-6014",
-  "img": "real-borowka.jpg",
+  "img": "real-borowka.webp",
   "imgType": "photo",
   "url": "/maszyny/sortowanie/sortownik-do-owocow-drobnych/"
  },
@@ -116,7 +116,7 @@
   "name": "Stoły selekcyjne taśmowe",
   "short": "Ręczna selekcja na taśmie PCV; konfigurowalne podzielnice i oświetlenie LED.",
   "models": "SST-2008 · SST-3510 · SST-5012",
-  "img": "real-inox.jpg",
+  "img": "real-inox.webp",
   "imgType": "photo",
   "url": "/maszyny/selekcja/stoly-selekcyjne-tasmowe/"
  },
@@ -171,7 +171,7 @@
   "name": "Raszlownica",
   "short": "Pakuje worki 2,5–25 kg; zaszywarki Fischbein / Newlong / Yao Han, panel 7\".",
   "models": "RA1 · RA2",
-  "img": "real-raszlownica.jpg",
+  "img": "real-raszlownica.webp",
   "imgType": "photo",
   "url": "/maszyny/pakowanie/raszlownica/"
  },
@@ -226,7 +226,7 @@
   "name": "Formatory palet",
   "short": "Optymalizuje układanie worków na palecie euro lub przemysłowej; składane ściany.",
   "models": "FP-1280 · FP-1210",
-  "img": "formator.png",
+  "img": "formator.webp",
   "imgType": "render",
   "url": "/maszyny/paletyzacja/formatory-palet/"
  },
@@ -237,7 +237,7 @@
   "name": "Przenośniki taśmowe poziome",
   "short": "Przenośniki taśmowe poziome Agro-Weld to proste i uniwersalne rozwiązanie do transportu produktu na jednym poziomie między kolejnymi maszynami linii.",
   "models": "na wymiar",
-  "img": "wanna.png",
+  "img": "wanna.webp",
   "imgType": "render",
   "url": "/maszyny/przenosniki/przenosniki-tasmowe-poziome/"
  },
@@ -292,7 +292,7 @@
   "name": "Przenośnik poprzeczny do raszlownicy",
   "short": "Podaje porcje warzyw do raszlownicy; taśma z amortyzującymi zabierakami.",
   "models": "RA-PP-00",
-  "img": "przenosnik-poprzeczny.png",
+  "img": "przenosnik-poprzeczny.webp",
   "imgType": "render",
   "url": "/maszyny/pakowanie/przenosnik-poprzeczny-do-raszlownicy/"
  },

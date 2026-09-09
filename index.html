@@ -129,6 +129,33 @@ a.tile:hover .tarr{color:#B7D44B;transform:translateX(3px)}
 .cardgrid,.tilegrid{grid-template-columns:1fr}
 .fgrid{grid-template-columns:1fr!important}
 }
+/*aw-resp*/
+[style*="display:grid"]>*{min-width:0}
+@media(max-width:1140px){.hnav{display:none!important}.hamb{display:inline-flex!important}}
+@media(max-width:1100px){.tilegrid{grid-template-columns:1fr!important}}
+@media(max-width:980px){
+.art2,.specgrid,.agrid,.c2,.col2,.phero,.hero2,.herogrid,.verbgrid,.kn2,.blogrow{grid-template-columns:minmax(0,1fr)!important}
+div[style*="position:sticky"],aside[style*="position:sticky"]{position:static!important}
+}
+@media(max-width:680px){
+.pad{padding-left:20px!important;padding-right:20px!important}
+[style*="grid-template-columns:1fr 1fr"],[style*="grid-template-columns:repeat(3,1fr)"],[style*="grid-template-columns:repeat(2,1fr)"],[style*="grid-template-columns:1.6fr 1fr 1fr"],.person,.awPanel{grid-template-columns:minmax(0,1fr)!important}
+[style*="grid-template-columns:repeat(4,1fr)"]{grid-template-columns:1fr 1fr!important;row-gap:18px!important}
+.awPanel{gap:16px!important}
+#awPanelWrap{padding:26px 22px!important}
+h1{font-size:min(40px,10.5vw)!important;line-height:1.02!important}
+h2[style*="font-size:48px"],h2[style*="font-size:44px"],h2[style*="font-size:42px"],h2[style*="font-size:40px"],h2[style*="font-size:38px"]{font-size:32px!important}
+h2[style*="font-size:36px"],h2[style*="font-size:34px"],h2[style*="font-size:32px"],h2[style*="font-size:30px"]{font-size:27px!important}
+h3[style*="font-size:30px"],h3[style*="font-size:28px"]{font-size:24px!important}
+section[style*="padding:112px 0"],section[style*="padding:104px 0"]:not([style*="padding:104px 0 0"]),section[style*="padding:88px 0"],section[style*="padding:84px 0"],section[style*="padding:80px 0"],section[style*="padding:72px 0"]{padding-top:56px!important;padding-bottom:56px!important}
+section[style*="padding:104px 0 0"]{padding-top:56px!important}
+[style*="padding:46px 44px"],[style*="padding:44px 40px"],[style*="padding:38px 40px"],[style*="padding:40px 44px"]{padding:28px 22px!important}
+[style*="padding:32px 34px"],[style*="padding:34px"],[style*="padding:30px 34px"]{padding:24px 20px!important}
+.btn{white-space:normal!important}
+.crow{flex-wrap:wrap}.crow>.mono{width:100%!important}
+table{font-size:13px}
+footer>div>div:last-child{flex-direction:column;align-items:flex-start!important;gap:10px!important}
+}
 </style>
 </head>
 <body>
@@ -324,7 +351,7 @@ a.tile:hover .tarr{color:#B7D44B;transform:translateX(3px)}
             <span style="font-size:13px;font-weight:700;color:#ECE7D7">VPM-B</span>
             <span style="font-size:10px;color:#7B87AE">Wersja wysokiej wydajności</span>
           </div>
-          <img src="assets/verbruggen-vpm.png" alt="Paletyzator Verbruggen VPM-B — automatyczna paletyzacja worków" style="position:relative;z-index:2;width:100%;max-width:520px;height:auto;display:block;margin:0 auto;filter:drop-shadow(0 20px 26px rgba(0,0,0,.45))">
+          <img src="assets/verbruggen-vpm.webp" alt="Paletyzator Verbruggen VPM-B — automatyczna paletyzacja worków" style="position:relative;z-index:2;width:100%;max-width:520px;height:auto;display:block;margin:0 auto;filter:drop-shadow(0 20px 26px rgba(0,0,0,.45))">
           <div class="mono" style="position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:8px;padding:16px 28px 16px 2px;border-top:1px solid rgba(236,231,215,.12);font-size:11px;color:#7E8A63;letter-spacing:.04em">
             <span style="display:flex;align-items:center;gap:8px;color:#F2C230;font-weight:700"><span style="width:6px;height:6px;border-radius:50%;background:#F2C230;display:inline-block"></span>Automatyczna paletyzacja</span>
             <span>Worki 2,5–75 kg · do 70/min</span>
@@ -375,7 +402,7 @@ a.tile:hover .tarr{color:#B7D44B;transform:translateX(3px)}
         </span>
       </a></li>
       <li style="display:contents"><a class="card" href="/maszyny/pakowanie/">
-        <span style="height:200px;background-color:#F1ECDF;background-image:linear-gradient(rgba(20,22,14,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(20,22,14,.05) 1px,transparent 1px);background-size:24px 24px;border-bottom:1px solid #14160E;display:flex;align-items:center;justify-content:center;overflow:hidden"><img class="cardimg" src="assets/przenosnik-poprzeczny.png" alt="Przenośnik poprzeczny RA-PP-00 — maszyna Agro-Weld" loading="lazy" style="max-width:74%;max-height:74%;object-fit:contain"></span>
+        <span style="height:200px;background-color:#F1ECDF;background-image:linear-gradient(rgba(20,22,14,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(20,22,14,.05) 1px,transparent 1px);background-size:24px 24px;border-bottom:1px solid #14160E;display:flex;align-items:center;justify-content:center;overflow:hidden"><img class="cardimg" src="assets/przenosnik-poprzeczny.webp" alt="Przenośnik poprzeczny RA-PP-00 — maszyna Agro-Weld" loading="lazy" style="max-width:74%;max-height:74%;object-fit:contain"></span>
         <span style="padding:18px 20px 20px;flex:1;display:flex;flex-direction:column">
           <span class="mono" style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:11px;font-size:11px;letter-spacing:.05em"><span style="color:#8C3A43;font-weight:700;white-space:nowrap" data-cms="m:przenosnik-poprzeczny.models">RA-PP-00</span><span style="color:#8A8163;text-transform:uppercase;letter-spacing:.1em;white-space:nowrap">Przenośniki</span></span>
           <h3 style="font-size:22px;letter-spacing:-.01em;line-height:1.12;margin-bottom:10px;text-wrap:balance" data-cms="m:przenosnik-poprzeczny.name">Przenośnik poprzeczny</h3>
@@ -383,7 +410,7 @@ a.tile:hover .tarr{color:#B7D44B;transform:translateX(3px)}
         </span>
       </a></li>
       <li style="display:contents"><a class="card" href="/maszyny/przenosniki/">
-        <span style="height:200px;background-color:#F1ECDF;background-image:linear-gradient(rgba(20,22,14,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(20,22,14,.05) 1px,transparent 1px);background-size:24px 24px;border-bottom:1px solid #14160E;display:flex;align-items:center;justify-content:center;overflow:hidden"><img class="cardimg" src="assets/wanna.png" alt="Przenośniki taśmowe i rolkowe — maszyna Agro-Weld" loading="lazy" style="max-width:74%;max-height:74%;object-fit:contain"></span>
+        <span style="height:200px;background-color:#F1ECDF;background-image:linear-gradient(rgba(20,22,14,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(20,22,14,.05) 1px,transparent 1px);background-size:24px 24px;border-bottom:1px solid #14160E;display:flex;align-items:center;justify-content:center;overflow:hidden"><img class="cardimg" src="assets/wanna.webp" alt="Przenośniki taśmowe i rolkowe — maszyna Agro-Weld" loading="lazy" style="max-width:74%;max-height:74%;object-fit:contain"></span>
         <span style="padding:18px 20px 20px;flex:1;display:flex;flex-direction:column">
           <span class="mono" style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:11px;font-size:11px;letter-spacing:.05em"><span style="color:#8C3A43;font-weight:700;white-space:nowrap" data-cms="m:przenosnik.models">szer. 20–90 cm · dł. 1–12 m</span><span style="color:#8A8163;text-transform:uppercase;letter-spacing:.1em;white-space:nowrap">Przenośniki</span></span>
           <h3 style="font-size:22px;letter-spacing:-.01em;line-height:1.12;margin-bottom:10px;text-wrap:balance" data-cms="m:przenosnik.name">Przenośniki taśmowe i rolkowe</h3>
@@ -391,7 +418,7 @@ a.tile:hover .tarr{color:#B7D44B;transform:translateX(3px)}
         </span>
       </a></li>
       <li style="display:contents"><a class="card" href="/maszyny/paletyzacja/">
-        <span style="height:200px;background-color:#F1ECDF;background-image:linear-gradient(rgba(20,22,14,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(20,22,14,.05) 1px,transparent 1px);background-size:24px 24px;border-bottom:1px solid #14160E;display:flex;align-items:center;justify-content:center;overflow:hidden"><img class="cardimg" src="assets/formator.png" alt="Formator palet FP-1280 / FP-1210 — maszyna Agro-Weld" loading="lazy" style="max-width:74%;max-height:74%;object-fit:contain"></span>
+        <span style="height:200px;background-color:#F1ECDF;background-image:linear-gradient(rgba(20,22,14,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(20,22,14,.05) 1px,transparent 1px);background-size:24px 24px;border-bottom:1px solid #14160E;display:flex;align-items:center;justify-content:center;overflow:hidden"><img class="cardimg" src="assets/formator.webp" alt="Formator palet FP-1280 / FP-1210 — maszyna Agro-Weld" loading="lazy" style="max-width:74%;max-height:74%;object-fit:contain"></span>
         <span style="padding:18px 20px 20px;flex:1;display:flex;flex-direction:column">
           <span class="mono" style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:11px;font-size:11px;letter-spacing:.05em"><span style="color:#8C3A43;font-weight:700;white-space:nowrap" data-cms="m:formator.models">FP-1280 · FP-1210</span><span style="color:#8A8163;text-transform:uppercase;letter-spacing:.1em;white-space:nowrap">Paletyzacja</span></span>
           <h3 style="font-size:22px;letter-spacing:-.01em;line-height:1.12;margin-bottom:10px;text-wrap:balance" data-cms="m:formator.name">Formator palet</h3>
@@ -463,7 +490,7 @@ a.tile:hover .tarr{color:#B7D44B;transform:translateX(3px)}
     </div>
   </div>
   <div data-reveal style="position:relative;overflow:hidden">
-    <img src="assets/hala-linia.jpg" alt="Raszlownica produkcji Agro-Weld na hali produkcyjnej" style="width:100%;height:min(80vh,720px);min-height:560px;object-fit:cover;object-position:center;display:block">
+    <img src="assets/hala-linia.webp" alt="Raszlownica produkcji Agro-Weld na hali produkcyjnej" style="width:100%;height:min(80vh,720px);min-height:560px;object-fit:cover;object-position:center;display:block">
     <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,#14160E 0%,rgba(20,22,14,0) 24%),linear-gradient(0deg,rgba(15,17,10,.94) 0%,rgba(15,17,10,.55) 44%,rgba(15,17,10,.04) 76%)"></div>
     <div class="pad" style="position:absolute;inset:0;max-width:1280px;margin:0 auto;padding:28px 32px 56px;display:flex;flex-direction:column;justify-content:space-between;align-items:stretch">
       <div class="mono" style="display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#D9DCC9">
@@ -499,7 +526,7 @@ a.tile:hover .tarr{color:#B7D44B;transform:translateX(3px)}
     <div data-reveal style="border:1px solid #14160E">
       <div class="rzgrid" style="display:grid;grid-template-columns:1fr 1fr 1.05fr;gap:1px;background:#14160E">
         <a class="rz" href="/realizacje/linia-do-sortowania-borowki/">
-          <span style="height:210px;overflow:hidden;border-bottom:1px solid #14160E;display:block"><img class="rzimg" src="assets/real-borowka.jpg" alt="Linia sortująca do borówki — realizacja Agro-Weld" loading="lazy"></span>
+          <span style="height:210px;overflow:hidden;border-bottom:1px solid #14160E;display:block"><img class="rzimg" src="assets/real-borowka.webp" alt="Linia sortująca do borówki — realizacja Agro-Weld" loading="lazy"></span>
           <span style="padding:18px 20px 20px;flex:1;display:flex;flex-direction:column">
             <span class="mono" style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:11px;font-size:11px;letter-spacing:.05em"><span style="color:#8C3A43;font-weight:700">REF. 2025-014</span><span style="color:#8A8163;text-transform:uppercase;letter-spacing:.1em">Selekcja</span></span>
             <h3 style="font-size:22px;letter-spacing:-.01em;line-height:1.12;margin-bottom:10px;text-wrap:balance" data-cms="real.c1.title">Linia sortująca do borówki</h3>
@@ -515,7 +542,7 @@ a.tile:hover .tarr{color:#B7D44B;transform:translateX(3px)}
           </span>
         </a>
         <a class="rz" href="/realizacje/stol-selekcyjny-inox/">
-          <span style="height:210px;overflow:hidden;border-bottom:1px solid #14160E;display:block"><img class="rzimg" src="assets/real-inox.jpg" alt="Stół selekcyjny INOX — realizacja Agro-Weld" loading="lazy"></span>
+          <span style="height:210px;overflow:hidden;border-bottom:1px solid #14160E;display:block"><img class="rzimg" src="assets/real-inox.webp" alt="Stół selekcyjny INOX — realizacja Agro-Weld" loading="lazy"></span>
           <span style="padding:18px 20px 20px;flex:1;display:flex;flex-direction:column">
             <span class="mono" style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:11px;font-size:11px;letter-spacing:.05em"><span style="color:#8C3A43;font-weight:700">REF. 2025-022</span><span style="color:#8A8163;text-transform:uppercase;letter-spacing:.1em">Selekcja</span></span>
             <h3 style="font-size:22px;letter-spacing:-.01em;line-height:1.12;margin-bottom:10px;text-wrap:balance" data-cms="real.c3.title">Stół selekcyjny INOX</h3>
@@ -523,7 +550,7 @@ a.tile:hover .tarr{color:#B7D44B;transform:translateX(3px)}
           </span>
         </a>
         <a class="rz" href="/realizacje/raszlownica-z-modulem-pakujacym/">
-          <span style="height:210px;overflow:hidden;border-bottom:1px solid #14160E;display:block"><img class="rzimg" src="assets/real-raszlownica.jpg" alt="Raszlownica z modułem pakującym — realizacja Agro-Weld" loading="lazy"></span>
+          <span style="height:210px;overflow:hidden;border-bottom:1px solid #14160E;display:block"><img class="rzimg" src="assets/real-raszlownica.webp" alt="Raszlownica z modułem pakującym — realizacja Agro-Weld" loading="lazy"></span>
           <span style="padding:18px 20px 20px;flex:1;display:flex;flex-direction:column">
             <span class="mono" style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:11px;font-size:11px;letter-spacing:.05em"><span style="color:#8C3A43;font-weight:700">REF. 2025-008</span><span style="color:#8A8163;text-transform:uppercase;letter-spacing:.1em">Czyszczenie</span></span>
             <h3 style="font-size:22px;letter-spacing:-.01em;line-height:1.12;margin-bottom:10px;text-wrap:balance" data-cms="real.c4.title">Raszlownica z modułem pakującym</h3>
@@ -598,10 +625,10 @@ a.tile:hover .tarr{color:#B7D44B;transform:translateX(3px)}
         <div data-reveal>
           <div class="mono" style="font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:#7E8A63;margin-bottom:16px">Dane kontaktowe</div>
           <div style="font-size:17px;font-weight:700;color:#ECE7D7;margin-bottom:8px">Agro-Weld Spółka z ograniczoną odpowiedzialnością</div>
-          <div style="display:flex;gap:14px;padding:14px 0;border-top:1px solid rgba(236,231,215,.14)"><span class="mono" style="width:108px;font-size:13px;color:#7E8A63">Adres</span><span style="font-size:15.5px;color:#C3C8AF" data-cms="contact.addr">ul. Prądzyńskiego 16, Środa Wlkp.</span></div>
-          <a class="awlink" href="tel:+48725140257" style="display:flex;gap:14px;padding:14px 0;border-top:1px solid rgba(236,231,215,.14)"><span class="mono" style="width:108px;font-size:13px;color:#7E8A63">Telefon</span><span style="font-size:15.5px;font-weight:600;color:#B7D44B" data-cms="contact.phones">+48 725 140 257 · +48 608 230 369</span></a>
-          <a class="awlink" href="mailto:biuro@agro-weld.pl" style="display:flex;gap:14px;padding:14px 0;border-top:1px solid rgba(236,231,215,.14)"><span class="mono" style="width:108px;font-size:13px;color:#7E8A63">E-mail</span><span style="font-size:15.5px;font-weight:600;color:#B7D44B" data-cms="contact.email">biuro@agro-weld.pl</span></a>
-          <div style="display:flex;gap:14px;padding:14px 0;border-top:1px solid rgba(236,231,215,.14);border-bottom:1px solid rgba(236,231,215,.14)"><span class="mono" style="width:108px;font-size:13px;color:#7E8A63">Godziny pracy</span><span style="font-size:15.5px;color:#C3C8AF" data-cms="contact.hours">Pon.–Pt. 7:00–16:00</span></div>
+          <div class="crow" style="display:flex;gap:14px;padding:14px 0;border-top:1px solid rgba(236,231,215,.14)"><span class="mono" style="width:108px;font-size:13px;color:#7E8A63">Adres</span><span style="font-size:15.5px;color:#C3C8AF" data-cms="contact.addr">ul. Prądzyńskiego 16, Środa Wlkp.</span></div>
+          <a class="awlink crow" href="tel:+48725140257" style="display:flex;gap:14px;padding:14px 0;border-top:1px solid rgba(236,231,215,.14)"><span class="mono" style="width:108px;font-size:13px;color:#7E8A63">Telefon</span><span style="font-size:15.5px;font-weight:600;color:#B7D44B" data-cms="contact.phones">+48 725 140 257 · +48 608 230 369</span></a>
+          <a class="awlink crow" href="mailto:biuro@agro-weld.pl" style="display:flex;gap:14px;padding:14px 0;border-top:1px solid rgba(236,231,215,.14)"><span class="mono" style="width:108px;font-size:13px;color:#7E8A63">E-mail</span><span style="font-size:15.5px;font-weight:600;color:#B7D44B" data-cms="contact.email">biuro@agro-weld.pl</span></a>
+          <div class="crow" style="display:flex;gap:14px;padding:14px 0;border-top:1px solid rgba(236,231,215,.14);border-bottom:1px solid rgba(236,231,215,.14)"><span class="mono" style="width:108px;font-size:13px;color:#7E8A63">Godziny pracy</span><span style="font-size:15.5px;color:#C3C8AF" data-cms="contact.hours">Pon.–Pt. 7:00–16:00</span></div>
         </div>
       </div>
       <div data-reveal style="background:linear-gradient(155deg,#1E2113,#191C11);border:1px solid rgba(236,231,215,.14);border-radius:18px;padding:34px">
@@ -694,8 +721,8 @@ a.tile:hover .tarr{color:#B7D44B;transform:translateX(3px)}
     {img:'assets/kp5000.webp',code:'KP5000G',name:'Kosz przyjęciowy',alt:'Kosz przyjęciowy KP5000G — maszyna Agro-Weld'},
     {img:'assets/czyszczarka-docisk.webp',code:'CS20110',name:'Czyszczarka szczotkowa',alt:'Czyszczarka szczotkowa CS20110 — maszyna Agro-Weld'},
     {img:'assets/kalibrownik.webp',code:'KA-880',name:'Kalibrownik rozsuwany',alt:'Kalibrownik rozsuwany KA-880 — maszyna Agro-Weld'},
-    {img:'assets/przenosnik-poprzeczny.png',code:'RA-PP-00',name:'Przenośnik poprzeczny',alt:'Przenośnik poprzeczny RA-PP-00 — maszyna Agro-Weld'},
-    {img:'assets/formator.png',code:'FP-1210',name:'Formator palet',alt:'Formator palet FP-1210 — maszyna Agro-Weld'}
+    {img:'assets/przenosnik-poprzeczny.webp',code:'RA-PP-00',name:'Przenośnik poprzeczny',alt:'Przenośnik poprzeczny RA-PP-00 — maszyna Agro-Weld'},
+    {img:'assets/formator.webp',code:'FP-1210',name:'Formator palet',alt:'Formator palet FP-1210 — maszyna Agro-Weld'}
   ];
   var hi=0,img=document.getElementById('awHeroImg'),code=document.getElementById('awHeroCode'),nm=document.getElementById('awHeroName'),cnt=document.getElementById('awHeroCounter'),ghost=document.getElementById('awGhost'),dots=document.getElementById('awHeroDots');
   function pad(n){return String(n+1).padStart(2,'0');}

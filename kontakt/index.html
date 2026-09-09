@@ -86,6 +86,33 @@ a{color:#41571F}a:hover{color:#8C3A43}
 .mapwrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(.35) contrast(1.05) sepia(.12)}
 @media(max-width:980px){.c2{grid-template-columns:1fr!important;gap:40px!important}.mapwrap{height:360px!important}.hero2{grid-template-columns:1fr!important;gap:38px!important}.art2{grid-template-columns:1fr!important;gap:36px!important}.toc{position:static!important}.prow{grid-template-columns:1fr!important}.hnav{display:none!important}.hamb{display:inline-flex!important}.fgrid{grid-template-columns:1fr 1fr!important}}
 @media(max-width:680px){.pad{padding-left:20px!important;padding-right:20px!important}.fgrid{grid-template-columns:1fr!important}}
+/*aw-resp*/
+[style*="display:grid"]>*{min-width:0}
+@media(max-width:1140px){.hnav{display:none!important}.hamb{display:inline-flex!important}}
+@media(max-width:1100px){.tilegrid{grid-template-columns:1fr!important}}
+@media(max-width:980px){
+.art2,.specgrid,.agrid,.c2,.col2,.phero,.hero2,.herogrid,.verbgrid,.kn2,.blogrow{grid-template-columns:minmax(0,1fr)!important}
+div[style*="position:sticky"],aside[style*="position:sticky"]{position:static!important}
+}
+@media(max-width:680px){
+.pad{padding-left:20px!important;padding-right:20px!important}
+[style*="grid-template-columns:1fr 1fr"],[style*="grid-template-columns:repeat(3,1fr)"],[style*="grid-template-columns:repeat(2,1fr)"],[style*="grid-template-columns:1.6fr 1fr 1fr"],.person,.awPanel{grid-template-columns:minmax(0,1fr)!important}
+[style*="grid-template-columns:repeat(4,1fr)"]{grid-template-columns:1fr 1fr!important;row-gap:18px!important}
+.awPanel{gap:16px!important}
+#awPanelWrap{padding:26px 22px!important}
+h1{font-size:min(40px,10.5vw)!important;line-height:1.02!important}
+h2[style*="font-size:48px"],h2[style*="font-size:44px"],h2[style*="font-size:42px"],h2[style*="font-size:40px"],h2[style*="font-size:38px"]{font-size:32px!important}
+h2[style*="font-size:36px"],h2[style*="font-size:34px"],h2[style*="font-size:32px"],h2[style*="font-size:30px"]{font-size:27px!important}
+h3[style*="font-size:30px"],h3[style*="font-size:28px"]{font-size:24px!important}
+section[style*="padding:112px 0"],section[style*="padding:104px 0"]:not([style*="padding:104px 0 0"]),section[style*="padding:88px 0"],section[style*="padding:84px 0"],section[style*="padding:80px 0"],section[style*="padding:72px 0"]{padding-top:56px!important;padding-bottom:56px!important}
+section[style*="padding:104px 0 0"]{padding-top:56px!important}
+[style*="padding:46px 44px"],[style*="padding:44px 40px"],[style*="padding:38px 40px"],[style*="padding:40px 44px"]{padding:28px 22px!important}
+[style*="padding:32px 34px"],[style*="padding:34px"],[style*="padding:30px 34px"]{padding:24px 20px!important}
+.btn{white-space:normal!important}
+.crow{flex-wrap:wrap}.crow>.mono{width:100%!important}
+table{font-size:13px}
+footer>div>div:last-child{flex-direction:column;align-items:flex-start!important;gap:10px!important}
+}
 </style>
 </head>
 <body>
@@ -176,8 +203,8 @@ a{color:#41571F}a:hover{color:#8C3A43}
           <span class="tptint" aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,22,14,0) 55%,rgba(20,22,14,.6));pointer-events:none"></span>
           <span class="tpgrid" aria-hidden="true" style="position:absolute;inset:0;background-image:linear-gradient(rgba(236,231,215,.14) 1px,transparent 1px),linear-gradient(90deg,rgba(236,231,215,.14) 1px,transparent 1px);background-size:44px 44px;pointer-events:none"></span>
           <figcaption class="tpcap" style="position:absolute;left:20px;right:20px;bottom:18px;display:flex;align-items:flex-end;justify-content:space-between;gap:14px;color:#ECE7D7">
-            <span style="font-family:'Chakra Petch',sans-serif;font-size:17px;font-weight:700;line-height:1.2;text-shadow:0 1px 12px rgba(0,0,0,.4);max-width:340px;text-wrap:balance">Poznajmy się osobiście — na targach lub w zakładzie</span>
-            <span class="mono tparr" style="font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#B7D44B;white-space:nowrap;border-bottom:1px solid rgba(183,212,75,.5);padding-bottom:3px">Środa Wlkp.</span>
+            <span style="font-family:'Chakra Petch',sans-serif;font-size:17px;font-weight:700;line-height:1.2;text-shadow:0 1px 12px rgba(0,0,0,.4);max-width:340px;text-wrap:balance">Rozmowa przy maszynie daje więcej niż katalog</span>
+            <span class="mono tparr" style="font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#B7D44B;white-space:nowrap;border-bottom:1px solid rgba(183,212,75,.5);padding-bottom:3px">Agro-Show Bednary '25</span>
           </figcaption>
         </div>
       </figure>
@@ -247,7 +274,7 @@ a{color:#41571F}a:hover{color:#8C3A43}
     <div class="c2" data-reveal style="display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start">
       <div>
         <div style="font-size:17px;font-weight:700;color:#14160E;margin-bottom:6px">Agro-Weld Spółka z ograniczoną odpowiedzialnością</div>
-        <p style="font-size:15px;line-height:1.6;color:#56603F;text-wrap:pretty">ul. Ignacego Prądzyńskiego 16, 63-000 Środa Wielkopolska, Polska. NIP i KRS podajemy w ofercie oraz na fakturze.</p>
+        <p style="font-size:15px;line-height:1.6;color:#56603F;text-wrap:pretty;margin-bottom:12px">ul. Ignacego Prądzyńskiego 16, 63-000 Środa Wielkopolska, Polska</p><dl class="mono" style="display:flex;flex-wrap:wrap;gap:8px 28px;font-size:12.5px;color:#56603F"><div style="display:flex;gap:8px"><dt style="color:#8A8163">KRS</dt><dd style="font-weight:700;color:#14160E">0001160875</dd></div><div style="display:flex;gap:8px"><dt style="color:#8A8163">NIP</dt><dd style="font-weight:700;color:#14160E">7861735563</dd></div><div style="display:flex;gap:8px"><dt style="color:#8A8163">REGON</dt><dd style="font-weight:700;color:#14160E">541140558</dd></div></dl>
       </div>
       <div style="background:linear-gradient(165deg,#243015,#1A2110);padding:30px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap">
         <div>
