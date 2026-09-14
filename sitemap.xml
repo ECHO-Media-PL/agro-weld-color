@@ -8,7 +8,9 @@
   <url><loc>https://www.agro-weld.pl/blog/jak-dobrac-kosz-przyjeciowy/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.agro-weld.pl/blog/czyszczenie-warzyw-szczotki-czy-plukanie/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <!--CMS:BLOG-->
-  <!--/CMS:BLOG-->
+  <url><loc>https://www.agro-weld.pl/blog/myjka-do-warzyw-przemyslowa/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.agro-weld.pl/blog/separator-kamieni-i-ziemi/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+<!--/CMS:BLOG-->
   <url><loc>https://www.agro-weld.pl/kontakt/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://www.agro-weld.pl/maszyny/rozladunek-skrzyn/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://www.agro-weld.pl/maszyny/oczyszczanie/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -48,7 +50,7 @@
   <url><loc>https://www.agro-weld.pl/maszyny/pakowanie/napelniacz-kaskadowy/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.agro-weld.pl/maszyny/pakowanie/stoly-obrotowe/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.agro-weld.pl/maszyny/pakowanie/bufor-do-pakowania/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.agro-weld.pl/maszyny/paletyzacja/formatory-palet/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.agro-weld.pl/maszyny/pakowanie/formatory-palet/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.agro-weld.pl/maszyny/przenosniki/przenosniki-tasmowe-poziome/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.agro-weld.pl/maszyny/przenosniki/przenosniki-tasmowe-wznoszace/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.agro-weld.pl/maszyny/przenosniki/przenosnik-odpadowy/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>

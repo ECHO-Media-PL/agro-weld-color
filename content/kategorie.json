@@ -234,7 +234,7 @@
         [
          "KP5000G",
          "5 m³",
-         "110 cm",
+         "100 cm",
          "410 cm",
          "guma typu Chevron"
         ]
@@ -754,7 +754,7 @@
   "metaDesc": "Maszyny do pakowania warzyw: raszlownica do 6 t/h, wagoworkownica automatyczna, napełniacz kaskadowy do big-bagów. Polski producent Agro-Weld.",
   "h1": "Maszyny do pakowania warzyw – raszlownice, wagoworkownice i napełniacze",
   "intro": [
-   "Wagoworkownica to maszyna, która automatycznie odważa i pakuje warzywa do worków lub innych opakowań, według zadanej masy porcji – w Agro-Weld dostępna jest w trzech wariantach, dopasowanych do różnej skali produkcji. Kategoria Pakowanie obejmuje sześć rodzin maszyn tworzących razem kompletne stanowisko: od dozowania, przez zaszywanie worków raszlowych, po napełnianie big-bagów i buforowanie gotowych porcji."
+   "Wagoworkownica to maszyna, która automatycznie odważa i pakuje warzywa do worków lub innych opakowań, według zadanej masy porcji – w Agro-Weld dostępna jest w trzech wariantach, dopasowanych do różnej skali produkcji. Kategoria Pakowanie obejmuje siedem rodzin maszyn tworzących razem kompletne stanowisko: od dozowania, przez zaszywanie worków raszlowych i napełnianie big-bagów, po buforowanie gotowych porcji i formowanie palety."
   ],
   "sections": [
    {
@@ -923,7 +923,7 @@
      },
      {
       "ul": [
-       "<a href=\"/maszyny/paletyzacja/formatory-palet/\">Formatory palet</a> (FP-1280/FP-1210) to mechaniczna, prostsza alternatywa dla mniejszych zakładów, dla których pełna automatyzacja jest na obecnym etapie zbyt dużą inwestycją."
+       "<a href=\"/maszyny/pakowanie/formatory-palet/\">Formatory palet</a> (FP-1280/FP-1210) to mechaniczna, prostsza alternatywa dla mniejszych zakładów, dla których pełna automatyzacja jest na obecnym etapie zbyt dużą inwestycją."
       ]
      }
     ]

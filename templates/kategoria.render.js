@@ -14,7 +14,7 @@
   var stripTags = function (s) { return String(s).replace(/<[^>]+>/g, ''); };
 
   function machinesFor(slug, machines) {
-    return machines.filter(function (m) { return (CATALIAS[m.cat] || m.cat) === slug; });
+    return machines.filter(function (m) { return m.listing !== false && (CATALIAS[m.cat] || m.cat) === slug; });
   }
 
   function renderStages(slug) {
@@ -45,13 +45,13 @@
   }
 
   function renderTable(t) {
-    var head = '<tr>' + t.head.map(function (h, i) { return '<th style="text-align:left;padding:12px 14px;font-family:\'Space Mono\',monospace;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#ECE7D7;background:#14160E;white-space:nowrap' + (i ? '' : ';color:#B7D44B') + '">' + esc(h) + '</th>'; }).join('') + '</tr>';
+    var head = '<tr>' + t.head.map(function (h, i) { return '<th style="text-align:left;padding:12px 14px;font-family:\'Space Mono\',monospace;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#ECE7D7;background:#14160E' + (i ? '' : ';color:#B7D44B') + '">' + esc(h) + '</th>'; }).join('') + '</tr>';
     var rows = t.rows.map(function (r, ri) {
       return '<tr>' + r.map(function (cell, i) {
-        return '<td style="padding:11px 14px;font-size:14px;line-height:1.45;vertical-align:top;border-bottom:1px solid rgba(20,22,14,.12);background:' + (ri % 2 ? '#F4EFE2' : '#ECE7D7') + (i ? ';color:#3B4230' : ';font-weight:700;color:#14160E;white-space:nowrap') + '">' + cell + '</td>';
+        return '<td style="padding:11px 14px;font-size:14px;line-height:1.45;vertical-align:top;border-bottom:1px solid rgba(20,22,14,.12);background:' + (ri % 2 ? '#F4EFE2' : '#ECE7D7') + (i ? ';color:#3B4230' : ';font-weight:700;color:#14160E') + '">' + cell + '</td>';
       }).join('') + '</tr>';
     }).join('\n');
-    return '<div style="overflow-x:auto;margin:22px 0 26px;border:1px solid #14160E"><table style="width:100%;border-collapse:collapse;min-width:520px"><thead>' + head + '</thead><tbody>' + rows + '</tbody></table></div>';
+    return '<div style="margin:22px 0 26px;border:1px solid #14160E"><table style="width:100%;border-collapse:collapse"><thead>' + head + '</thead><tbody>' + rows + '</tbody></table></div>';
   }
 
   function renderSections(sections) {

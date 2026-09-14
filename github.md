@@ -13,7 +13,6 @@ date: 2026-08-31T13:07:13Z
 | Ekran w projekcie | Pliki w repo |
 |---|---|
 | Strona-glowna.dc.html / index.html | index.html, aw-data.js, support.js |
-| Oferta.dc.html | Oferta.dc.html |
 | Kosz-przyjeciowy.dc.html | Kosz-przyjeciowy.dc.html |
 | maszyny/index.html | maszyny/ (repo ma starszą strukturę) |
 | blog/ | brak w repo (nowsze niż repo) |

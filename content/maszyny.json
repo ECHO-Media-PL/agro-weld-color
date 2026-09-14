@@ -6,8 +6,8 @@
   "name": "Wywrotnica skrzyniopalet",
   "short": "Rozładowuje towar ze skrzyń do koszy; udźwig do 2 ton i bezpieczne siłowniki.",
   "models": "WS-1420 · WS-1620 · WS-1820",
-  "img": null,
-  "imgType": null,
+  "img": "maszyny/wywrotnica-1.webp",
+  "imgType": "render",
   "url": "/maszyny/rozladunek-skrzyn/wywrotnica-skrzyniopalet/"
  },
  {
@@ -18,8 +18,75 @@
   "name": "Kosze przyjęciowe",
   "short": "Przyjmuje plon z przyczep i podaje go na linię; pojemność od 1 do 5 m³.",
   "models": "KP1000 · KP1500 · KP2000 · KP3000 · KPS3000G · KP5000G",
+  "img": "maszyny/kosz-kp2000.webp",
+  "imgType": "render",
+  "listing": false
+ },
+ {
+  "id": "kosz-kp1000",
+  "slug": "kosze-przyjeciowe",
+  "cat": "przyjecie-i-buforowanie",
+  "name": "Kosz przyjęciowy KP1000",
+  "short": "Kosz przyjęciowy KP1000 o pojemności 1 m³ to kompaktowe urządzenie przeznaczone do efektywnego rozładunku towaru w małych i średnich gospodarstwach. Wyposażony w taśmę o szerokości 50 cm i długości 200 cm, zapewnia precyzyjne i płynne dozowanie materiałów.",
+  "models": "KP1000 · 1 m³",
+  "img": "maszyny/kosz-przenosnik-wznoszacy.webp",
+  "imgType": "render",
+  "url": "/maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/#kp1000"
+ },
+ {
+  "id": "kosz-kp1500",
+  "slug": "kosze-przyjeciowe",
+  "cat": "przyjecie-i-buforowanie",
+  "name": "Kosz przyjęciowy KP1500",
+  "short": "KP1500 to uniwersalny kosz przyjęciowy o pojemności 1,5 m³, idealny do średniej wielkości gospodarstw i zakładów przetwórczych. Taśma o szerokości 50 cm i długości 260 cm umożliwia efektywny transport materiału, który może być rozdzielany na trzy frakcje.",
+  "models": "KP1500 · 1,5 m³",
+  "img": "maszyny/kosz-kp1500-zt-separator.webp",
+  "imgType": "render",
+  "url": "/maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/#kp1500"
+ },
+ {
+  "id": "kosz-kp2000",
+  "slug": "kosze-przyjeciowe",
+  "cat": "przyjecie-i-buforowanie",
+  "name": "Kosz przyjęciowy KP2000",
+  "short": "Kosz przyjęciowy KP2000 to urządzenie o pojemności 2 m³, stworzone do intensywnej pracy w gospodarstwach i zakładach przetwórczych. Wyposażony w taśmę o szerokości 50 cm i długości 260 cm oraz szerokość zasypu 190 cm, umożliwia sprawną obsługę większych ilości materiałów.",
+  "models": "KP2000 · 2 m³",
+  "img": "maszyny/kosz-kp2000.webp",
+  "imgType": "render",
+  "url": "/maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/#kp2000"
+ },
+ {
+  "id": "kosz-kp3000",
+  "slug": "kosze-przyjeciowe",
+  "cat": "przyjecie-i-buforowanie",
+  "name": "Kosz przyjęciowy KP3000",
+  "short": "KP3000 to zaawansowany kosz przyjęciowy o pojemności 3 m³, który doskonale sprawdzi się w większych gospodarstwach oraz zakładach przetwórczych. Wyposażony w taśmę transportową o szerokości 60 cm i długości 300 cm, zapewnia szybki i precyzyjny transport towaru.",
+  "models": "KP3000 · 3 m³",
+  "img": "maszyny/kosz-kp3000-separator.webp",
+  "imgType": "render",
+  "url": "/maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/#kp3000"
+ },
+ {
+  "id": "kosz-kps3000g",
+  "slug": "kosze-przyjeciowe",
+  "cat": "przyjecie-i-buforowanie",
+  "name": "Kosz przyjęciowy KPS3000G",
+  "short": "KPS3000G to wersja kosza o pojemności 3 m³, wyposażona w możliwość sortowania na trzy frakcje i składane boki. Taśma z gumy Chevron o szerokości 80 cm gwarantuje odporność na zużycie i niezawodność w wymagających warunkach pracy.",
+  "models": "KPS3000G · 3 m³",
+  "img": "maszyny/kosz-kp5000-kalibrownik.webp",
+  "imgType": "render",
+  "url": "/maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/#kps3000g"
+ },
+ {
+  "id": "kosz-kp5000g",
+  "slug": "kosze-przyjeciowe",
+  "cat": "przyjecie-i-buforowanie",
+  "name": "Kosz przyjęciowy KP5000G",
+  "short": "KP5000G to największy model w serii koszy przyjęciowych, o pojemności 5 m³. Wyposażony w taśmę typu Chevron o szerokości 100 cm oraz regulowaną wysokość wysypu (do 220 cm).",
+  "models": "KP5000G · 5 m³",
   "img": "kp5000.webp",
-  "imgType": "render"
+  "imgType": "render",
+  "url": "/maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/#kp5000g"
  },
  {
   "id": "zasobnik",
@@ -28,8 +95,8 @@
   "name": "Zasobnik buforowy",
   "short": "Utrzymuje równy przepływ towaru; rozbudowywany nadstawkami, montaż do podłoża.",
   "models": "na wymiar",
-  "img": null,
-  "imgType": null,
+  "img": "maszyny/zasobnik-buforowy.webp",
+  "imgType": "render",
   "url": "/maszyny/przyjecie-i-buforowanie/zasobnik-buforowy/"
  },
  {
@@ -39,8 +106,8 @@
   "name": "Separator ziemi i kamieni",
   "short": "Usuwa ziemię, kamienie i natkę gwiaździstymi wałkami; wydajność do 10 t/h.",
   "models": "SE-560 · SE-880 · SE-1080",
-  "img": null,
-  "imgType": null,
+  "img": "maszyny/separator-a.webp",
+  "imgType": "render",
   "url": "/maszyny/oczyszczanie/separator-ziemi-i-kamieni/"
  },
  {
@@ -61,8 +128,8 @@
   "name": "Czyszczarka do imbiru i chrzanu",
   "short": "Delikatnie oczyszcza kłącza i warzywa korzeniowe; wydajność 100 kg/h.",
   "models": "CI-00",
-  "img": null,
-  "imgType": null,
+  "img": "maszyny/czyszczarka-imbir.webp",
+  "imgType": "render",
   "url": "/maszyny/oczyszczanie/czyszczarka-do-imbiru-i-chrzanu/"
  },
  {
@@ -72,8 +139,8 @@
   "name": "Wanna do płukania",
   "short": "Wstępne płukanie warzyw korzeniowych; perforowana taśma modułowa, wanna 400–890 l.",
   "models": "WP-600 · WP-800 · WP-900",
-  "img": null,
-  "imgType": null,
+  "img": "maszyny/wanna-wp800-b.webp",
+  "imgType": "render",
   "url": "/maszyny/oczyszczanie/wanna-do-plukania/"
  },
  {
@@ -94,8 +161,8 @@
   "name": "Sortownik do owoców drobnych",
   "short": "Delikatnie sortuje borówki i drobne owoce; boczna platforma na skrzynkę.",
   "models": "SOD-6010 · SOD-6012 · SOD-6014",
-  "img": "real-borowka.webp",
-  "imgType": "photo",
+  "img": "maszyny/sortownik-sod-1.webp",
+  "imgType": "render",
   "url": "/maszyny/sortowanie/sortownik-do-owocow-drobnych/"
  },
  {
@@ -105,8 +172,8 @@
   "name": "Dwubębnowy sortownik do owoców drobnych",
   "short": "Precyzyjne sortowanie drobnych owoców; biała taśma i oświetlenie LED.",
   "models": "SO2B-601012",
-  "img": null,
-  "imgType": null,
+  "img": "maszyny/sortownik-dwubebnowy-1.webp",
+  "imgType": "render",
   "url": "/maszyny/sortowanie/dwubebnowy-sortownik-do-owocow-drobnych/"
  },
  {
@@ -116,8 +183,8 @@
   "name": "Stoły selekcyjne taśmowe",
   "short": "Ręczna selekcja na taśmie PCV; konfigurowalne podzielnice i oświetlenie LED.",
   "models": "SST-2008 · SST-3510 · SST-5012",
-  "img": "real-inox.webp",
-  "imgType": "photo",
+  "img": "maszyny/stol-tasmowy-1.webp",
+  "imgType": "render",
   "url": "/maszyny/selekcja/stoly-selekcyjne-tasmowe/"
  },
  {
@@ -127,8 +194,8 @@
   "name": "Stoły selekcyjne rolkowe",
   "short": "Selekcja na rolkach z aluminium lub plastiku; otwarta rolka nie zapycha się.",
   "models": "SSR-2508 · SSR-3010 · SSR-4012",
-  "img": null,
-  "imgType": null,
+  "img": "maszyny/stol-rolkowy-1.webp",
+  "imgType": "render",
   "url": "/maszyny/selekcja/stoly-selekcyjne-rolkowe/"
  },
  {
@@ -138,8 +205,8 @@
   "name": "Liczarka do owoców",
   "short": "Precyzyjnie liczy większe owoce na sztuki; wersja jedno- lub dwurzędowa.",
   "models": "LO1.90 · LO2.90",
-  "img": null,
-  "imgType": null,
+  "img": "maszyny/liczarka-1.webp",
+  "imgType": "render",
   "url": "/maszyny/wazenie-i-liczenie/liczarka/"
  },
  {
@@ -149,8 +216,8 @@
   "name": "Waga kontrolna",
   "short": "Dynamicznie waży opakowania w ruchu i odrzuca te poza tolerancją.",
   "models": "WKO",
-  "img": null,
-  "imgType": null,
+  "img": "maszyny/waga-kontrolna-calosc.webp",
+  "imgType": "render",
   "url": "/maszyny/wazenie-i-liczenie/waga-kontrolna/"
  },
  {
@@ -160,8 +227,8 @@
   "name": "Wagoworkownica",
   "short": "Dozuje i pakuje warzywa do worków; panel dotykowy 7\", zakres 1–30 kg.",
   "models": "WW-302 · WW-302 Compact · WW-151 Smart",
-  "img": null,
-  "imgType": null,
+  "img": "maszyny/wagoworkownica-1.webp",
+  "imgType": "render",
   "url": "/maszyny/pakowanie/wagoworkownica/"
  },
  {
@@ -171,8 +238,8 @@
   "name": "Raszlownica",
   "short": "Pakuje worki 2,5–25 kg; zaszywarki Fischbein / Newlong / Yao Han, panel 7\".",
   "models": "RA1 · RA2",
-  "img": "real-raszlownica.webp",
-  "imgType": "photo",
+  "img": "maszyny/raszlownica-1.webp",
+  "imgType": "render",
   "url": "/maszyny/pakowanie/raszlownica/"
  },
  {
@@ -182,8 +249,8 @@
   "name": "Napełniacz kaskadowy",
   "short": "Załadunek big-bagów i skrzyniopalet; kaskada z 9 żaglami, opcja wagi.",
   "models": "NK-1 · NK-2",
-  "img": null,
-  "imgType": null,
+  "img": "maszyny/napelniacz-kaskadowy-1.webp",
+  "imgType": "render",
   "url": "/maszyny/pakowanie/napelniacz-kaskadowy/"
  },
  {
@@ -193,8 +260,8 @@
   "name": "Stoły obrotowe",
   "short": "Buforuje i kompletuje produkt na końcu linii; rewers i regulacja prędkości.",
   "models": "SO-150",
-  "img": null,
-  "imgType": null,
+  "img": "maszyny/stol-obrotowy-1.webp",
+  "imgType": "render",
   "url": "/maszyny/pakowanie/stoly-obrotowe/"
  },
  {
@@ -204,8 +271,8 @@
   "name": "Bufor do pakowania",
   "short": "Ręczna selekcja i pakowanie do skrzyń; podest z opcją wagi, 1–2 stanowiska.",
   "models": "BU-12 · BU-20",
-  "img": null,
-  "imgType": null,
+  "img": "maszyny/bufor-pakowania-1.webp",
+  "imgType": "render",
   "url": "/maszyny/pakowanie/bufor-do-pakowania/"
  },
  {
@@ -226,9 +293,9 @@
   "name": "Formatory palet",
   "short": "Optymalizuje układanie worków na palecie euro lub przemysłowej; składane ściany.",
   "models": "FP-1280 · FP-1210",
-  "img": "formator.webp",
+  "img": "maszyny/formator-palet-1.webp",
   "imgType": "render",
-  "url": "/maszyny/paletyzacja/formatory-palet/"
+  "url": "/maszyny/pakowanie/formatory-palet/"
  },
  {
   "id": "przenosnik-tasmowe-poziome",
@@ -237,7 +304,7 @@
   "name": "Przenośniki taśmowe poziome",
   "short": "Przenośniki taśmowe poziome Agro-Weld to proste i uniwersalne rozwiązanie do transportu produktu na jednym poziomie między kolejnymi maszynami linii.",
   "models": "na wymiar",
-  "img": "wanna.webp",
+  "img": "maszyny/przenosnik-tasmowy-poziomy-1.webp",
   "imgType": "render",
   "url": "/maszyny/przenosniki/przenosniki-tasmowe-poziome/"
  },
@@ -248,8 +315,8 @@
   "name": "Przenośniki taśmowe wznoszące i łamane",
   "short": "Przenośniki taśmowe wznoszące, w tym łamane, to efektywne rozwiązanie do transportu towarów na liniach z różnicami poziomów.",
   "models": "na wymiar",
-  "img": null,
-  "imgType": null,
+  "img": "maszyny/przenosnik-lamany-1.webp",
+  "imgType": "render",
   "url": "/maszyny/przenosniki/przenosniki-tasmowe-wznoszace/"
  },
  {
@@ -259,8 +326,8 @@
   "name": "Przenośnik odpadowy",
   "short": "Przenośnik taśmowy z poziomymi zabierakami przeznaczony do transportu odpadu i odsortu.",
   "models": "na wymiar",
-  "img": null,
-  "imgType": null,
+  "img": "maszyny/przenosnik-odpadowy.webp",
+  "imgType": "render",
   "url": "/maszyny/przenosniki/przenosnik-odpadowy/"
  },
  {
@@ -270,8 +337,8 @@
   "name": "Przenośnik do materiałów sypkich",
   "short": "Przenośnik przeznaczony do transportu i załadunku do worków towarów sypkich, takich jak węgiel czy pellet.",
   "models": "na wymiar",
-  "img": null,
-  "imgType": null,
+  "img": "maszyny/przenosnik-sypkie-1.webp",
+  "imgType": "render",
   "url": "/maszyny/przenosniki/przenosnik-do-materialow-sypkich/"
  },
  {
@@ -281,8 +348,8 @@
   "name": "Przenośniki rolkowe",
   "short": "Przenośniki rolkowe służą do transportu gotowych opakowań — kartonów, skrzynek i palet.",
   "models": "na wymiar",
-  "img": null,
-  "imgType": null,
+  "img": "maszyny/przenosnik-rolkowy-1.webp",
+  "imgType": "photo",
   "url": "/maszyny/przenosniki/przenosniki-rolkowe/"
  },
  {
@@ -303,8 +370,8 @@
   "name": "Pielnik do obróbki redlin",
   "short": "Mechaniczne odchwaszczanie międzyrzędzi i formowanie redlin; sekcje na równoległoboku.",
   "models": "Pip-4 · Pia-4",
-  "img": null,
-  "imgType": null,
+  "img": "maszyny/pielnik-1.webp",
+  "imgType": "render",
   "url": "/maszyny/pielenie/pielnik-do-obrobki-redlin/"
  }
 ]

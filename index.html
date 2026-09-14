@@ -5,11 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Agro-Weld — maszyny i linie technologiczne dla rolnictwa i przemysłu</title>
 <meta name="description" content="Agro-Weld projektuje i produkuje maszyny do obróbki warzyw i owoców oraz kompletne linie produkcyjne — od przyjęcia surowca po paletyzację. Polski producent, Środa Wlkp.">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
 <link rel="canonical" href="https://www.agro-weld.pl/">
 <meta property="og:title" content="Agro-Weld — maszyny i linie technologiczne dla rolnictwa i przemysłu">
 <meta property="og:description" content="Maszyny do obróbki warzyw i owoców oraz kompletne linie produkcyjne — od przyjęcia surowca po paletyzację.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.agro-weld.pl/">
+<meta property="og:image" content="https://www.agro-weld.pl/assets/kp5000.webp">
+<meta property="og:site_name" content="Agro-Weld">
+<meta property="og:locale" content="pl_PL">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.agro-weld.pl/assets/kp5000.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.agro-weld.pl/#organization","name":"Agro-Weld","legalName":"Agro-Weld Spółka z ograniczoną odpowiedzialnością","url":"https://www.agro-weld.pl/","logo":"https://www.agro-weld.pl/assets/logo.webp","email":"biuro@agro-weld.pl","telephone":"+48 725 140 257","address":{"@type":"PostalAddress","streetAddress":"ul. Prądzyńskiego 16","addressLocality":"Środa Wielkopolska","addressCountry":"PL"},"description":"Polski producent maszyn i linii technologicznych do czyszczenia, sortowania, obróbki i pakowania warzyw i owoców — dla rolnictwa, przetwórstwa i przemysłu."},{"@type":"WebSite","@id":"https://www.agro-weld.pl/#website","url":"https://www.agro-weld.pl/","name":"Agro-Weld","publisher":{"@id":"https://www.agro-weld.pl/#organization"},"inLanguage":"pl-PL"}]}</script>
@@ -108,15 +114,23 @@ a.tile:hover .tarr{color:#B7D44B;transform:translateX(3px)}
 .verbgrid{grid-template-columns:1fr!important;gap:38px!important}
 .herogrid{grid-template-columns:1fr!important;gap:30px!important}
 .ghost{display:none!important}
-.herostage{min-height:340px!important;order:-1}
+.herostage{min-height:0!important;order:-1;padding:24px 0 30px!important}
+.herostage img{max-height:300px!important}
+.herogrid{align-items:start!important}
 .col2{grid-template-columns:1fr!important;gap:40px!important}
 .h1{font-size:54px!important}
-.travel{display:none!important}
-.line{flex-wrap:wrap!important;gap:22px!important}
-.station{flex:0 0 calc(50% - 11px)!important}
+.line{flex-direction:column!important;align-items:stretch!important;gap:0!important;padding-left:6px}
+.line .travel{top:0!important;bottom:0!important;left:17px!important;width:2px!important;height:auto!important}
+#awFill{width:2px!important}
+#awDot{top:auto!important;bottom:auto!important;left:17px!important;width:24px!important;height:24px!important;transform:translate(-50%,-50%)!important}
+.station{flex:0 0 auto!important;flex-direction:row!important;align-items:center!important;gap:16px!important;text-align:left!important;padding:11px 0!important}
+.station:hover{transform:none!important}
+.stdot{flex:0 0 24px;position:relative;z-index:2}
+.stname{font-size:15px!important}
+.station.is-on .stname{transform:translateX(4px);transition:transform .4s,color .3s}
 .rzgrid{grid-template-columns:1fr!important}.rzcta{grid-column:auto!important;grid-row:auto!important}
 }
-@media(max-width:900px){.cardgrid{grid-template-columns:1fr 1fr}}
+@media(max-width:900px){.cardgrid{grid-template-columns:1fr 1fr!important}}
 @media(max-width:1000px){.blogrow{grid-template-columns:1fr!important}}
 @media(max-width:680px){.bfeat{grid-template-columns:1fr!important}.bfimg{min-height:200px!important}}
 @media(max-width:680px){
@@ -125,9 +139,33 @@ a.tile:hover .tarr{color:#B7D44B;transform:translateX(3px)}
 .pad{padding-left:20px!important;padding-right:20px!important}
 .bignum{font-size:60px!important}
 .lpts{grid-template-columns:1fr!important}
-.station{flex:0 0 100%!important}
-.cardgrid,.tilegrid{grid-template-columns:1fr}
+.featwrap{display:grid!important}
+.featwrap>.feathead{display:contents!important}
+.featwrap .feattxt{order:1;margin-bottom:26px}
+.featwrap>.cardgrid{order:2}
+.featwrap .btn{order:3;margin-top:28px;justify-content:center;text-align:center}
+.herostage{padding:14px 0 22px!important}
+.herostage img{max-height:210px!important}
+.herohead{padding-top:18px!important}
+.herohead .h1{margin-bottom:12px!important}
+.herohead p{font-size:15.5px!important;margin-bottom:18px!important}
+.cardgrid,.tilegrid{grid-template-columns:minmax(0,1fr)!important}
 .fgrid{grid-template-columns:1fr!important}
+.h1{font-size:min(40px,10.5vw)!important;line-height:1.02!important;overflow-wrap:anywhere}
+.herostage{min-height:0!important;padding:26px 0 30px!important;margin:0 -4px}
+.herostage img{max-height:230px!important}
+#awHeroName{bottom:5%!important;max-width:70%!important}
+.herogrid{gap:14px!important}
+.card .cardimg{max-width:70%!important;max-height:70%!important}
+.card>span:first-child{height:170px!important}
+.card .mono{flex-wrap:wrap;row-gap:4px}
+.card .mono>span{white-space:normal!important}
+.verbstats{grid-template-columns:1fr 1fr!important;row-gap:20px!important}
+.verbstats li:nth-child(odd){border-left:none!important;padding-left:0!important}
+.verbcard{padding:20px 16px 0!important}
+.verbcard>.mono{padding-right:0!important;flex-wrap:wrap}
+.verbcard>.mono:last-child{flex-direction:column;align-items:flex-start!important;gap:6px!important}
+.verbgrid{gap:36px!important}
 }
 /*aw-resp*/
 [style*="display:grid"]>*{min-width:0}
@@ -216,13 +254,12 @@ footer>div>div:last-child{flex-direction:column;align-items:flex-start!important
   <div class="pad" style="max-width:1280px;margin:0 auto;padding:0 32px;position:relative">
     <div data-reveal style="display:flex;flex-wrap:wrap;border-top:1px solid rgba(20,22,14,.18);border-bottom:1px solid rgba(20,22,14,.18);font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.11em;text-transform:uppercase;color:#7E7A5E">
       <div style="flex:1.6;min-width:230px;padding:9px 0;display:flex;align-items:center;gap:9px"><span style="width:7px;height:7px;background:#8C3A43;display:inline-block"></span>Projektowanie · Produkcja · Serwis</div>
-      <div style="flex:1;min-width:200px;padding:9px 18px;border-left:1px solid rgba(20,22,14,.18);display:flex;align-items:center">Rolnictwo · Przetwórstwo · Przemysł</div>
       <a href="/uploads/AgroWeld katalog 2026 20 01.pdf" target="_blank" rel="noopener" style="padding:9px 0 9px 18px;border-left:1px solid rgba(20,22,14,.18);display:flex;align-items:center;justify-content:flex-end;color:#41571F;font-weight:700">Katalog 2026 ↗</a>
     </div>
     <div style="position:relative;min-height:calc(100vh - 214px);padding:10px 0 20px">
       <div aria-hidden="true" class="ghost" id="awGhost" style="position:absolute;top:50%;right:6%;transform:translateY(-53%);font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:clamp(300px,42vw,600px);line-height:.66;letter-spacing:-.05em;color:transparent;-webkit-text-stroke:1.5px rgba(20,22,14,.09);z-index:0;pointer-events:none;animation:awGhostIn 1.1s cubic-bezier(.2,.7,.2,1) both">01</div>
       <div class="herogrid" style="position:relative;z-index:2;display:grid;grid-template-columns:1fr 1.08fr;gap:36px;align-items:center;min-height:inherit">
-        <div>
+        <div class="herohead">
           <div data-reveal style="display:flex;align-items:center;gap:13px;margin-bottom:14px;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#41571F">
             <span style="width:30px;height:1px;background:#8C3A43;display:inline-block;transform-origin:left;animation:awDrawLine 1s cubic-bezier(.2,.7,.2,1) .3s both"></span>Rolnictwo · Przetwórstwo · Przemysł
           </div>
@@ -324,7 +361,7 @@ footer>div>div:last-child{flex-direction:column;align-items:flex-start!important
         </div>
         <h2 class="h2" style="font-size:44px;line-height:1.05;margin-bottom:20px;color:#ECE7D7;text-wrap:balance">Automatyczna paletyzacja <span style="color:#F2C230">klasy światowej</span></h2>
         <p style="font-size:17px;line-height:1.65;color:#A7AE92;max-width:540px;margin-bottom:36px;text-wrap:pretty" data-cms="verbruggen.sub">Agro-Weld jest oficjalnym dystrybutorem Verbruggen w Polsce — holenderskiej firmy rodzinnej, która od ponad 30 lat buduje jedne z najbardziej wytrzymałych paletyzatorów na świecie. Systemy VPM automatycznie układają worki, kartony i skrzynki z precyzją i tempem niedostępnym w konwencjonalnych liniach.</p>
-        <ul style="display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid rgba(236,231,215,.16);border-bottom:1px solid rgba(236,231,215,.16);padding:22px 0;margin-bottom:32px">
+        <ul class="verbstats" style="display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid rgba(236,231,215,.16);border-bottom:1px solid rgba(236,231,215,.16);padding:22px 0;margin-bottom:32px">
           <li style="border-left:1px solid rgba(236,231,215,.16);padding-left:16px"><div style="font-family:'Chakra Petch',sans-serif;font-size:30px;font-weight:700;color:#ECE7D7;line-height:1">30+</div><div class="mono" style="font-size:10px;letter-spacing:.04em;text-transform:uppercase;color:#7E8A63;margin-top:6px;line-height:1.3">lat doświadczenia</div></li>
           <li style="border-left:1px solid rgba(236,231,215,.16);padding-left:16px"><div style="font-family:'Chakra Petch',sans-serif;font-size:30px;font-weight:700;color:#ECE7D7;line-height:1">70</div><div class="mono" style="font-size:10px;letter-spacing:.04em;text-transform:uppercase;color:#7E8A63;margin-top:6px;line-height:1.3">worków / min (HS)</div></li>
           <li style="border-left:1px solid rgba(236,231,215,.16);padding-left:16px"><div style="font-family:'Chakra Petch',sans-serif;font-size:30px;font-weight:700;color:#ECE7D7;line-height:1">2,5–75</div><div class="mono" style="font-size:10px;letter-spacing:.04em;text-transform:uppercase;color:#7E8A63;margin-top:6px;line-height:1.3">kg na worek</div></li>
@@ -341,14 +378,14 @@ footer>div>div:last-child{flex-direction:column;align-items:flex-start!important
         </div>
       </div>
       <div data-reveal style="position:relative">
-        <div style="position:relative;border-radius:18px;overflow:hidden;border:1px solid rgba(236,231,215,.14);background:linear-gradient(155deg,#161B2E,#0E1120);box-shadow:0 60px 120px -55px rgba(0,0,0,.9);padding:28px 26px 0">
+        <div class="verbcard" style="position:relative;border-radius:18px;overflow:hidden;border:1px solid rgba(236,231,215,.14);background:linear-gradient(155deg,#161B2E,#0E1120);box-shadow:0 60px 120px -55px rgba(0,0,0,.9);padding:28px 26px 0">
           <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(ellipse 62% 46% at 50% 0%,rgba(37,71,166,.38),transparent 72%);pointer-events:none;animation:awHeroGlow 7s ease-in-out infinite"></div>
           <span aria-hidden="true" style="position:absolute;top:14px;left:14px;width:24px;height:24px;border-top:2px solid #F2C230;border-left:2px solid #F2C230;z-index:3"></span>
           <span aria-hidden="true" style="position:absolute;top:14px;right:14px;width:24px;height:24px;border-top:2px solid #F2C230;border-right:2px solid #F2C230;z-index:3"></span>
           <span aria-hidden="true" style="position:absolute;bottom:14px;left:14px;width:24px;height:24px;border-bottom:2px solid #F2C230;border-left:2px solid #F2C230;z-index:3"></span>
           <span aria-hidden="true" style="position:absolute;bottom:14px;right:14px;width:24px;height:24px;border-bottom:2px solid #F2C230;border-right:2px solid #F2C230;z-index:3"></span>
           <div class="mono" style="position:relative;z-index:2;display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:0 26px 16px 2px;letter-spacing:.1em;text-transform:uppercase">
-            <span style="font-size:13px;font-weight:700;color:#ECE7D7">VPM-B</span>
+            <span style="font-size:13px;font-weight:700;color:#ECE7D7;white-space:nowrap">VPM-B</span>
             <span style="font-size:10px;color:#7B87AE">Wersja wysokiej wydajności</span>
           </div>
           <img src="assets/verbruggen-vpm.webp" alt="Paletyzator Verbruggen VPM-B — automatyczna paletyzacja worków" style="position:relative;z-index:2;width:100%;max-width:520px;height:auto;display:block;margin:0 auto;filter:drop-shadow(0 20px 26px rgba(0,0,0,.45))">
@@ -364,13 +401,13 @@ footer>div>div:last-child{flex-direction:column;align-items:flex-start!important
 
 <!-- FEATURED -->
 <section id="maszyny" class="secpad" style="background:#ECE7D7;color:#14160E;padding:104px 0">
-  <div class="pad" style="max-width:1280px;margin:0 auto;padding:0 32px">
+  <div class="pad featwrap" style="max-width:1280px;margin:0 auto;padding:0 32px">
     <div data-reveal class="mono" style="display:flex;align-items:center;justify-content:space-between;gap:20px;border-top:1px solid rgba(20,22,14,.18);padding-top:14px;margin-bottom:42px;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase">
       <span style="color:#8C3A43">/ Wybrane maszyny</span>
       <span style="color:#8A8163">06 ×</span>
     </div>
-    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:30px;flex-wrap:wrap;margin-bottom:40px">
-      <div style="max-width:640px">
+    <div class="feathead" style="display:flex;align-items:flex-end;justify-content:space-between;gap:30px;flex-wrap:wrap;margin-bottom:40px">
+      <div class="feattxt" style="max-width:640px">
         <h2 class="h2" data-reveal style="font-size:44px;line-height:1.03;margin-bottom:16px;text-wrap:balance" data-cms="featured.h2">Sprawdzone konstrukcje z naszej oferty</h2>
         <p data-reveal style="font-size:17px;line-height:1.6;color:#56603F" data-cms="featured.sub">Najczęściej wybierane maszyny do czyszczenia, sortowania i pakowania.</p>
       </div>
@@ -585,26 +622,26 @@ footer>div>div:last-child{flex-direction:column;align-items:flex-start!important
     <div data-reveal class="blogrow" style="display:grid;grid-template-columns:1.35fr 1fr;gap:1px;background:#14160E;border:1px solid #14160E">
       <!--CMS:HOMEBLOG-->
       <a class="bfeat" href="/blog/jak-dobrac-kosz-przyjeciowy/" style="background:#ECE7D7;display:grid;grid-template-columns:1fr 1fr">
-        <span class="bfimg" style="overflow:hidden;display:block;background:#E3DCC8;min-height:300px"><img src="assets/kp5000.webp" alt="Kosz przyjęciowy KP5000G — maszyna Agro-Weld" loading="lazy" style="width:100%;height:100%;object-fit:contain;padding:26px;display:block"></span>
+        <span class="bfimg" style="overflow:hidden;display:block;background:#E3DCC8;min-height:300px"><img src="assets/blog-kosz-przyjeciowy.webp" alt="Kosz przyjęciowy Agro-Weld z przenośnikiem wznoszącym na hali produkcyjnej" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></span>
         <span style="padding:32px 34px;display:flex;flex-direction:column;justify-content:center">
           <span class="mono" style="display:flex;align-items:center;gap:12px;margin-bottom:16px;font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase"><span style="color:#8C3A43">Wyróżniony</span><span style="color:#C6BEA4">·</span><span style="color:#8A8163">Dobór maszyn</span></span>
-          <h3 class="btitle" style="font-size:28px;line-height:1.1;margin-bottom:12px;text-wrap:balance">Jak dobrać kosz przyjęciowy do linii technologicznej?</h3>
-          <p style="font-size:15px;line-height:1.6;color:#56603F;text-wrap:pretty;margin-bottom:22px">Pojemność zasypu, szerokość taśmy, materiał konstrukcji i integracja z linią — cztery decyzje, które przesądzają o wydajności całej produkcji.</p>
-          <span class="mono bmore" style="font-size:11px;font-weight:700;color:#41571F;display:inline-flex;align-items:center;gap:8px">Czytaj artykuł<span>→</span><span style="color:#A8A084;font-weight:400;margin-left:4px">· 6 min</span></span>
+          <h3 class="btitle" style="font-size:28px;line-height:1.1;margin-bottom:12px;text-wrap:balance">Jak wybrać kosz przyjęciowy do linii produkcyjnej? Poradnik krok po kroku</h3>
+          <p style="font-size:15px;line-height:1.6;color:#56603F;text-wrap:pretty;margin-bottom:22px">Pojemność, taśma, separator i miejsce w linii — jak dobrać kosz KP1500, KP3000, KPS 3001G lub KP5000G do skali produkcji.</p>
+          <span class="mono bmore" style="font-size:11px;font-weight:700;color:#41571F;display:inline-flex;align-items:center;gap:8px">Czytaj artykuł<span>→</span><span style="color:#A8A084;font-weight:400;margin-left:4px">· 8 min</span></span>
         </span>
       </a>
-      <!--/CMS:HOMEBLOG-->
+<!--/CMS:HOMEBLOG-->
       <div style="display:grid;grid-template-rows:1fr 1fr;gap:1px;background:#14160E">
         <!--CMS:HOMEMINI-->
         <a class="bmini" href="/blog/czyszczenie-warzyw-szczotki-czy-plukanie/" style="background:#ECE7D7;padding:26px 28px;display:flex;flex-direction:column;justify-content:center">
           <span class="mono" style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase"><span style="color:#8C3A43">Oczyszczanie</span><span style="color:#8A8163">06.08.2026</span></span>
           <h3 class="btitle" style="font-size:21px;line-height:1.14;margin-bottom:9px;text-wrap:balance">Czyszczenie warzyw: szczotki czy płukanie?</h3>
-          <p style="font-size:14px;line-height:1.55;color:#56603F;text-wrap:pretty">Porównanie metod czyszczenia na sucho i mokro — kiedy która się sprawdza.</p>
+          <p style="font-size:14px;line-height:1.55;color:#56603F;text-wrap:pretty">Porównanie metod czyszczenia na sucho i mokro — kiedy która się sprawdza i jak dobrać maszynę.</p>
         </a>
-        <!--/CMS:HOMEMINI-->
+<!--/CMS:HOMEMINI-->
         <div style="background:linear-gradient(165deg,#243015,#1A2110);padding:26px 28px;display:flex;flex-direction:column;justify-content:center">
           <div class="mono" style="font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#8FA862;margin-bottom:12px">Kolejne wpisy</div>
-          <p style="font-size:15px;line-height:1.55;color:#C3C8AF;margin-bottom:18px;text-wrap:pretty">Paletyzacja, pakowanie i projektowanie linii — nowe poradniki w przygotowaniu.</p>
+          <p style="font-size:15px;line-height:1.55;color:#C3C8AF;margin-bottom:18px;text-wrap:pretty">Kosz przyjęciowy, separator, mycie warzyw — poradniki doboru maszyn pisane przez konstruktorów.</p>
           <a class="btn btnc" href="/blog/" style="align-self:flex-start;background:#ECE7D7;color:#14160E;border:1.5px solid #ECE7D7;padding:11px 20px;font-weight:700;font-size:14px">Przejdź na bloga <span class="ar">→</span></a>
         </div>
       </div>
@@ -746,15 +783,18 @@ footer>div>div:last-child{flex-direction:column;align-items:flex-start!important
   var active=0,paused=false,resumeT=null;
   var line=document.getElementById('awLine'),fill=document.getElementById('awFill'),dot=document.getElementById('awDot');
   var stations=line.querySelectorAll('.station'),panels=document.querySelectorAll('.awPanel'),stepNo=document.getElementById('awStepNo');
-  function left(i){var lr=line.getBoundingClientRect(),br=stations[i].getBoundingClientRect();if(lr.width>0)return((br.left+br.width/2-lr.left)/lr.width)*100;return((i+0.5)/stations.length)*100;}
+  function vert(){return window.matchMedia('(max-width:980px)').matches;}
+  function left(i){var lr=line.getBoundingClientRect(),br=stations[i].getBoundingClientRect();if(vert()){if(lr.height>0)return((br.top+br.height/2-lr.top)/lr.height)*100;return((i+0.5)/stations.length)*100;}if(lr.width>0)return((br.left+br.width/2-lr.left)/lr.width)*100;return((i+0.5)/stations.length)*100;}
   function show(i,instant){
     var l=left(i).toFixed(2)+'%';
     var dist=Math.max(1,Math.abs(i-active));var ms=instant?0:Math.min(950+dist*320,2100);
     var ease='cubic-bezier(.45,.05,.15,1)';
+    var v=vert();
     dot.style.opacity='1';
-    dot.style.transition=instant?'none':('left '+ms+'ms '+ease);
-    fill.style.transition=instant?'none':('width '+ms+'ms '+ease);
-    dot.style.left=l;fill.style.width=l;
+    dot.style.transition=instant?'none':((v?'top ':'left ')+ms+'ms '+ease);
+    fill.style.transition=instant?'none':((v?'height ':'width ')+ms+'ms '+ease);
+    if(v){dot.style.left='';dot.style.setProperty('top',l,'important');fill.style.width='';fill.style.setProperty('height',l,'important');}
+    else{dot.style.setProperty('top','-2px');dot.style.left=l;fill.style.height='';fill.style.setProperty('width',l,'important');}
     active=i;
     stations.forEach(function(s,j){s.classList.toggle('is-on',j===i);});
     panels.forEach(function(p,j){p.style.display=j===i?'grid':'none';});
@@ -762,6 +802,7 @@ footer>div>div:last-child{flex-direction:column;align-items:flex-start!important
   }
   stations.forEach(function(s,i){s.addEventListener('click',function(){paused=true;show(i,false);clearTimeout(resumeT);resumeT=setTimeout(function(){paused=false;},9000);});});
   show(0,true);
+  var rzT;window.addEventListener('resize',function(){clearTimeout(rzT);rzT=setTimeout(function(){show(active,true);},120);});
   setInterval(function(){
     if(paused)return;
     var next=(active+1)%stations.length;

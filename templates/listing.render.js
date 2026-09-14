@@ -6,7 +6,7 @@
   var pad2 = function (n) { return (n < 10 ? '0' : '') + n; };
   function render(machines) {
     return CATS.map(function (c, i) {
-      var list = machines.filter(function (m) { return m.cat === c[0]; });
+      var list = machines.filter(function (m) { return m.listing !== false && m.cat === c[0]; });
       var rows = list.map(function (m) {
         var card = m.url && m.url.split('/').length > 4;
         var img = m.img ? '../assets/' + m.img : '../assets/maszyna-placeholder.png';
