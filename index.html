@@ -107,8 +107,10 @@ a.tile:hover .tarr{color:#B7D44B;transform:translateX(3px)}
 .rz:hover .rzimg{transform:scale(1.06)}
 .rzimg{transition:transform .6s cubic-bezier(.2,.7,.2,1);width:100%;height:100%;object-fit:cover;display:block}
 .aw-mob{display:none}.hamb{display:none}.aw-mob.is-open{display:block}
-.cardgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#14160E;border:1px solid #14160E}
-.tilegrid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#14160E;border:1px solid #14160E}
+.cardgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:#14160E;border:1px solid #14160E;box-shadow:inset 0 0 0 1px #14160E}
+.tilegrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:#14160E;border:1px solid #14160E;box-shadow:inset 0 0 0 1px #14160E}
+.cardgrid .mono{flex-wrap:wrap}
+.cardgrid .mono>span{min-width:0}
 @media(max-width:1000px){
 .hnav{display:none!important}.hamb{display:inline-flex!important}
 .verbgrid{grid-template-columns:1fr!important;gap:38px!important}
@@ -130,7 +132,7 @@ a.tile:hover .tarr{color:#B7D44B;transform:translateX(3px)}
 .station.is-on .stname{transform:translateX(4px);transition:transform .4s,color .3s}
 .rzgrid{grid-template-columns:1fr!important}.rzcta{grid-column:auto!important;grid-row:auto!important}
 }
-@media(max-width:900px){.cardgrid{grid-template-columns:1fr 1fr!important}}
+@media(max-width:900px){.cardgrid{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
 @media(max-width:1000px){.blogrow{grid-template-columns:1fr!important}}
 @media(max-width:680px){.bfeat{grid-template-columns:1fr!important}.bfimg{min-height:200px!important}}
 @media(max-width:680px){
@@ -757,9 +759,11 @@ footer>div>div:last-child{flex-direction:column;align-items:flex-start!important
   var HERO=[
     {img:'assets/kp5000.webp',code:'KP5000G',name:'Kosz przyjęciowy',alt:'Kosz przyjęciowy KP5000G — maszyna Agro-Weld'},
     {img:'assets/czyszczarka-docisk.webp',code:'CS20110',name:'Czyszczarka szczotkowa',alt:'Czyszczarka szczotkowa CS20110 — maszyna Agro-Weld'},
-    {img:'assets/kalibrownik.webp',code:'KA-880',name:'Kalibrownik rozsuwany',alt:'Kalibrownik rozsuwany KA-880 — maszyna Agro-Weld'},
-    {img:'assets/przenosnik-poprzeczny.webp',code:'RA-PP-00',name:'Przenośnik poprzeczny',alt:'Przenośnik poprzeczny RA-PP-00 — maszyna Agro-Weld'},
-    {img:'assets/formator.webp',code:'FP-1210',name:'Formator palet',alt:'Formator palet FP-1210 — maszyna Agro-Weld'}
+    {img:'assets/maszyny/sortownik-dwubebnowy-1.webp',code:'SO2B-601012',name:'Dwubębnowy sortownik',alt:'Dwubębnowy sortownik do owoców drobnych SO2B-601012 — maszyna Agro-Weld'},
+    {img:'assets/maszyny/stol-tasmowy-1.webp',code:'SST-3510',name:'Stół selekcyjny taśmowy',alt:'Stół selekcyjny taśmowy SST-3510 — maszyna Agro-Weld'},
+    {img:'assets/maszyny/wagoworkownica-1.webp',code:'WW-302',name:'Wagoworkownica',alt:'Wagoworkownica WW-302 — maszyna Agro-Weld'},
+    {img:'assets/maszyny/raszlownica-1.webp',code:'RA2',name:'Raszlownica',alt:'Raszlownica RA2 — maszyna Agro-Weld'},
+    {img:'assets/maszyny/formator-palet-1.webp',code:'FP-1210',name:'Formator palet',alt:'Formator palet FP-1210 — maszyna Agro-Weld'}
   ];
   var hi=0,img=document.getElementById('awHeroImg'),code=document.getElementById('awHeroCode'),nm=document.getElementById('awHeroName'),cnt=document.getElementById('awHeroCounter'),ghost=document.getElementById('awGhost'),dots=document.getElementById('awHeroDots');
   function pad(n){return String(n+1).padStart(2,'0');}
