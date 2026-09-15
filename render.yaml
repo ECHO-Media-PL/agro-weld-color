@@ -28,7 +28,7 @@ services:
     name: agro-weld
     runtime: static
     buildCommand: node build.js
-    staticPublishPath: .
+    staticPublishPath: dist
     routes:
       - type: redirect
         source: /maszyny/kosz-przyjeciowy

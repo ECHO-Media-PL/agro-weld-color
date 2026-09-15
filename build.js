@@ -1,17 +1,69 @@
 #!/usr/bin/env node
-// Agro-Weld — build treści CMS. Uruchamiany przez Render przy każdym deployu (render.yaml: buildCommand).
-// Wstrzykuje content/*.json w statyczne HTML-e (markery data-cms), podmienia meta/alty (content/seo.json),
-// generuje strony wpisów blogowych z templates/blog-post.html oraz aktualizuje listing bloga i sitemap.
+// Agro-Weld — generator statycznej witryny. Uruchamiany przez Render (render.yaml: buildCommand).
+//
+// ZASADA: repozytorium NIE jest nigdy modyfikowane przez build.
+//   content/   → dane redakcyjne (źródło prawdy, edytowane przez CMS)
+//   templates/ → szablony stron generowanych z danych
+//   *.html     → strony statyczne (źródło layoutu; build wstrzykuje w nie treść z content/)
+//   dist/      → JEDYNY artefakt publikacji; usuwany i budowany od zera przy każdym buildzie
+//
+// Dzięki temu strony osierocone (usunięty wpis blogowy, zmieniony slug, usunięta kategoria
+// lub produkt) przestają istnieć na produkcji, a wygenerowany HTML nigdy nie jest maskowany
+// przez stary plik z repozytorium.
 const fs = require('fs'), path = require('path');
+
+const OUT = 'dist';
 const read = f => fs.readFileSync(f, 'utf8');
-const write = (f, s) => { fs.mkdirSync(path.dirname(f), { recursive: true }); fs.writeFileSync(f, s); };
 const J = f => JSON.parse(read(f));
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const escA = s => esc(s).replace(/"/g, '&quot;');
 const reEsc = s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 const fmtDate = iso => { const [y, m, d] = iso.split('-'); return d + '.' + m + '.' + y; };
 
-// ---------- dane ----------
+// pliki wygenerowane w tym buildzie (ścieżki względne, bez prefiksu dist/)
+const built = new Set();
+function write(rel, s) {
+  const f = path.join(OUT, rel);
+  fs.mkdirSync(path.dirname(f), { recursive: true });
+  fs.writeFileSync(f, s);
+  built.add(rel.replace(/\\/g, '/'));
+}
+// źródło strony: jeśli została już wygenerowana w tym buildzie, czytamy wersję z dist/
+const src = rel => read(built.has(rel) ? path.join(OUT, rel) : rel);
+const hasSrc = rel => built.has(rel) || fs.existsSync(rel);
+
+// ---------- 1. czysty katalog wyjściowy ----------
+fs.rmSync(OUT, { recursive: true, force: true });
+fs.mkdirSync(OUT, { recursive: true });
+
+// ---------- 2. kopiowanie plików publikowanych bez generowania ----------
+// Wykluczone: dane, szablony, kod CMS, pliki robocze projektu i katalogi deweloperskie.
+const SKIP_DIRS = new Set(['.git', '.github', 'node_modules', 'dist', 'cms', 'content', 'templates', 'screenshots', 'seo']);
+const SKIP_FILES = new Set(['build.js', 'render.yaml', 'github.md', 'package.json', 'package-lock.json', '.gitignore', 'support.js', 'aw-data.js', 'CLAUDE.md']);
+const skipFile = f => SKIP_FILES.has(f) || f.endsWith('.dc.html') || f.startsWith('.');
+// katalogi, których zawartość HTML jest w całości generowana z danych — kopiujemy tylko
+// pliki spoza tej roli (np. maszyny/index.html), podkatalogi powstają od zera niżej
+const GENERATED_SUBTREES = ['maszyny', 'blog', 'realizacje'];
+
+let copied = 0;
+function copyTree(from, rel) {
+  for (const e of fs.readdirSync(from, { withFileTypes: true })) {
+    const childRel = rel ? rel + '/' + e.name : e.name;
+    if (e.isDirectory()) {
+      if (!rel && SKIP_DIRS.has(e.name)) continue;
+      // podkatalogi generowanych sekcji (blog/<slug>/, maszyny/<kat>/…) — pomijamy, build je odtworzy
+      if (GENERATED_SUBTREES.includes(rel || '')) continue;
+      copyTree(path.join(from, e.name), childRel);
+    } else if (e.isFile() && !skipFile(e.name)) {
+      fs.mkdirSync(path.join(OUT, rel), { recursive: true });
+      fs.copyFileSync(path.join(from, e.name), path.join(OUT, childRel));
+      copied++;
+    }
+  }
+}
+copyTree('.', '');
+
+// ---------- 3. dane ----------
 const site = J('content/strona-glowna.json');
 const machines = J('content/maszyny.json');
 const seo = J('content/seo.json');
@@ -36,8 +88,8 @@ function injectSeo(html, page) {
     html = html.replace(/(<meta name="description" content=")[^"]*(")/, '$1' + escA(p.description) + '$2');
     html = html.replace(/(<meta property="og:description" content=")[^"]*(")/, '$1' + escA(p.description) + '$2');
   }
-  for (const [src, alt] of Object.entries(p.alts || {})) {
-    const s = reEsc(src), a = escA(alt);
+  for (const [s0, alt] of Object.entries(p.alts || {})) {
+    const s = reEsc(s0), a = escA(alt);
     html = html.replace(new RegExp('(<img[^>]*src="' + s + '"[^>]*alt=")[^"]*(")', 'g'), '$1' + a + '$2');
     html = html.replace(new RegExp('(<img[^>]*alt=")[^"]*("[^>]*src="' + s + '")', 'g'), '$1' + a + '$2');
   }
@@ -50,7 +102,7 @@ function region(html, name, inner) {
   return html.slice(0, i + a.length) + '\n' + inner + '\n' + html.slice(j);
 }
 
-// ---------- blog: generowanie wpisów ----------
+// ---------- 4. blog: wpisy ----------
 const MCATS = { 'rozladunek-skrzyn':'Rozładunek skrzyń', 'przyjecie-i-buforowanie':'Przyjęcie i buforowanie', 'oczyszczanie':'Oczyszczanie', 'sortowanie':'Sortowanie', 'selekcja':'Selekcja', 'wazenie-i-liczenie':'Ważenie i liczenie', 'pakowanie':'Pakowanie', 'paletyzacja':'Paletyzacja', 'przenosniki':'Przenośniki', 'pielenie':'Pielenie' };
 const ICON = '<span style="width:56px;height:44px;display:flex;align-items:center;justify-content:center;color:#8C3A43;flex:none"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 13h11a3 3 0 0 1 0 6h-11a3 3 0 0 1 0-6z M9 5h6v4H9z"></path></svg></span>';
 function relMachines(p) {
@@ -107,9 +159,9 @@ for (const p of posts) {
   generated++;
 }
 
-// ---------- blog: listing + sitemap ----------
+// ---------- 5. blog: listing ----------
 const managed = posts.filter(p => p.managed && !p.draft);
-if (fs.existsSync('blog/index.html')) {
+if (hasSrc('blog/index.html')) {
   const cards = managed.map(p => {
     const cover = p.cover ? '../' + p.cover : '../assets/maszyna-placeholder.png';
     return '<article style="display:contents" data-cat="' + escA(p.catSlug || 'dobor') + '"><a class="bcard" href="/blog/' + p.slug + '/">\n' +
@@ -120,13 +172,14 @@ if (fs.existsSync('blog/index.html')) {
       '        <span class="mono bmore" style="margin-top:auto;font-size:11px;font-weight:700;color:#41571F">Czytaj artykuł<span>→</span><span style="color:#A8A084;font-weight:400;margin-left:4px">· ' + (p.read || 5) + ' min</span></span>\n' +
       '      </a></article>';
   }).join('\n      ');
-  write('blog/index.html', region(read('blog/index.html'), 'POSTS', '      ' + cards));
+  write('blog/index.html', region(src('blog/index.html'), 'POSTS', '      ' + cards));
 }
-// ---------- strona główna: wyróżniony wpis + najnowszy ----------
+
+// ---------- 6. strona główna: wyróżniony wpis + najnowszy ----------
 const visible = posts.filter(p => !p.draft);
 const feat = visible.find(p => p.featured) || visible[0];
 const mini = visible.find(p => p !== feat);
-if (feat && fs.existsSync('index.html') && read('index.html').includes('<!--CMS:HOMEBLOG-->')) {
+if (feat && hasSrc('index.html') && src('index.html').includes('<!--CMS:HOMEBLOG-->')) {
   const cover = p => p.cover || 'assets/maszyna-placeholder.png';
   const featHtml = '<a class="bfeat" href="/blog/' + feat.slug + '/" style="background:#ECE7D7;display:grid;grid-template-columns:1fr 1fr">\n' +
     '        <span class="bfimg" style="overflow:hidden;display:block;background:#E3DCC8;min-height:300px"><img src="' + escA(cover(feat)) + '" alt="' + escA(feat.coverAlt || feat.title) + '" loading="lazy" style="width:100%;height:100%;object-fit:' + (feat.coverPad ? 'contain;padding:26px' : 'cover') + ';display:block"></span>\n' +
@@ -140,19 +193,19 @@ if (feat && fs.existsSync('index.html') && read('index.html').includes('<!--CMS:
     '          <span class="mono" style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase"><span style="color:#8C3A43">' + esc(mini.category) + '</span><span style="color:#8A8163">' + fmtDate(mini.date) + '</span></span>\n' +
     '          <h3 class="btitle" style="font-size:21px;line-height:1.14;margin-bottom:9px;text-wrap:balance">' + esc(mini.title) + '</h3>\n' +
     '          <p style="font-size:14px;line-height:1.55;color:#56603F;text-wrap:pretty">' + esc(mini.excerpt || '') + '</p>\n        </a>' : '';
-  let home = read('index.html');
-  home = region(home, 'HOMEBLOG', '      ' + featHtml);
+  let home = region(src('index.html'), 'HOMEBLOG', '      ' + featHtml);
   if (home.includes('<!--CMS:HOMEMINI-->')) home = region(home, 'HOMEMINI', '        ' + miniHtml);
   write('index.html', home);
 }
 
-if (fs.existsSync('sitemap.xml')) {
+// ---------- 7. sitemap ----------
+if (hasSrc('sitemap.xml')) {
   const urls = managed.map(p =>
     '  <url><loc>https://www.agro-weld.pl/blog/' + p.slug + '/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>').join('\n');
-  write('sitemap.xml', region(read('sitemap.xml'), 'BLOG', urls));
+  write('sitemap.xml', region(src('sitemap.xml'), 'BLOG', urls));
 }
 
-// ---------- strony kategorii maszyn (content/kategorie.json + templates/kategoria.html) ----------
+// ---------- 8. kategorie maszyn (content/kategorie.json + templates/kategoria.html) ----------
 let catsBuilt = 0, prodsBuilt = 0;
 if (fs.existsSync('content/kategorie.json') && fs.existsSync('templates/kategoria.html')) {
   const KR = require('./templates/kategoria.render.js');
@@ -162,20 +215,20 @@ if (fs.existsSync('content/kategorie.json') && fs.existsSync('templates/kategori
     catsBuilt++;
   }
 }
-// ---------- karty produktów (content/produkty.json + templates/produkt.html) ----------
+// ---------- 9. karty produktów (content/produkty.json + templates/produkt.html) ----------
 if (fs.existsSync('content/produkty.json') && fs.existsSync('templates/produkt.html')) {
   const PR = require('./templates/produkt.render.js');
   const ptpl = read('templates/produkt.html');
   const prods = J('content/produkty.json');
   for (const p of prods) { write('maszyny/' + p.cat + '/' + p.slug + '/index.html', PR.render(p, prods, machines, ptpl)); prodsBuilt++; }
 }
-// ---------- listing /maszyny/ ----------
-if (fs.existsSync('maszyny/index.html') && read('maszyny/index.html').includes('<!--CMS:GROUPS-->')) {
+// ---------- 10. listing /maszyny/ ----------
+if (hasSrc('maszyny/index.html') && src('maszyny/index.html').includes('<!--CMS:GROUPS-->')) {
   const LR = require('./templates/listing.render.js');
-  write('maszyny/index.html', region(read('maszyny/index.html'), 'GROUPS', LR.render(machines)));
+  write('maszyny/index.html', region(src('maszyny/index.html'), 'GROUPS', LR.render(machines)));
 }
 
-// ---------- realizacje (content/realizacje.json) ----------
+// ---------- 11. realizacje (content/realizacje.json) ----------
 if (fs.existsSync('content/realizacje.json') && fs.existsSync('templates/strony.render.js')) {
   const SR = require('./templates/strony.render.js');
   const ktpl2 = read('templates/kategoria.html');
@@ -184,11 +237,27 @@ if (fs.existsSync('content/realizacje.json') && fs.existsSync('templates/strony.
   for (const r of reals) write('realizacje/' + r.slug + '/index.html', SR.renderCase(r, reals, machines, ktpl2));
 }
 
-// ---------- strony z markerami / SEO ----------
+// ---------- 12. meta/SEO + markery data-cms ----------
+// Uwaga na kolejność: strony wygenerowane wyżej czytamy z dist/, więc SEO nakłada się
+// na świeży HTML, a nie na starą kopię z repozytorium.
+let seoPages = 0, seoMissing = [];
 for (const page of Object.keys(seo.pages)) {
-  if (!fs.existsSync(page)) { console.warn('brak strony ' + page); continue; }
-  write(page, injectSeo(injectCms(read(page)), page));
+  if (!hasSrc(page)) { seoMissing.push(page); console.warn('brak strony ' + page); continue; }
+  write(page, injectSeo(injectCms(src(page)), page));
+  seoPages++;
 }
-// legacy sync — katalog produktów używany przez generatory
+// pozostałe skopiowane strony statyczne — wstrzyknięcie markerów data-cms
+(function cmsRest(dir) {
+  for (const e of fs.readdirSync(path.join(OUT, dir || '.'), { withFileTypes: true })) {
+    const rel = dir ? dir + '/' + e.name : e.name;
+    if (e.isDirectory()) cmsRest(rel);
+    else if (e.name === 'index.html' && !seo.pages[rel]) write(rel, injectCms(read(path.join(OUT, rel))));
+  }
+})('');
+
+// legacy katalog produktów (używany przez generatory pomocnicze)
 write('seo/data-products.json', JSON.stringify(machines, null, 1));
-console.log('Build OK: ' + Object.keys(seo.pages).length + ' stron, ' + catsBuilt + ' kategorii, ' + prodsBuilt + ' kart produktów, ' + generated + ' wygenerowanych wpisów, ' + managed.length + ' wpisów CMS na listingu.');
+
+console.log('Build OK → ' + OUT + '/: ' + copied + ' plików skopiowanych, ' + catsBuilt + ' kategorii, ' +
+  prodsBuilt + ' kart produktów, ' + generated + ' wpisów bloga, ' + managed.length + ' na listingu, ' +
+  seoPages + ' stron z meta SEO' + (seoMissing.length ? ' (brakujące źródła: ' + seoMissing.join(', ') + ')' : '') + '.');
