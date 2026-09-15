@@ -5,11 +5,10 @@
   <url><loc>https://www.agro-weld.pl/maszyny/przyjecie-i-buforowanie/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.agro-weld.pl/maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.agro-weld.pl/blog/</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.agro-weld.pl/blog/jak-dobrac-kosz-przyjeciowy/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://www.agro-weld.pl/blog/czyszczenie-warzyw-szczotki-czy-plukanie/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <!--CMS:BLOG-->
   <url><loc>https://www.agro-weld.pl/blog/myjka-do-warzyw-przemyslowa/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.agro-weld.pl/blog/separator-kamieni-i-ziemi/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.agro-weld.pl/blog/jak-dobrac-kosz-przyjeciowy/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
 <!--/CMS:BLOG-->
   <url><loc>https://www.agro-weld.pl/kontakt/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://www.agro-weld.pl/maszyny/rozladunek-skrzyn/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>

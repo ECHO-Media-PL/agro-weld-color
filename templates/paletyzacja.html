@@ -6,11 +6,11 @@
 <title>{{META_TITLE}}</title>
 <meta name="description" content="{{META_DESC}}">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
-<link rel="canonical" href="https://www.agro-weld.pl/maszyny/{{SLUG}}/">
+<link rel="canonical" href="https://www.agro-weld.pl/maszyny/paletyzacja/">
 <meta property="og:title" content="{{META_TITLE}}">
 <meta property="og:description" content="{{META_DESC}}">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://www.agro-weld.pl/maszyny/{{SLUG}}/">
+<meta property="og:url" content="https://www.agro-weld.pl/maszyny/paletyzacja/">
 <meta property="og:image" content="{{OGIMAGE}}">
 <meta property="og:site_name" content="Agro-Weld">
 <meta property="og:locale" content="pl_PL">
@@ -78,6 +78,8 @@ a{color:#41571F}a:hover{color:#8C3A43}
 .faq[open] .faqmark{transform:rotate(45deg)}
 .faqmark{transition:transform .3s;display:inline-block}
 @media(max-width:980px){.hero2{grid-template-columns:1fr!important;gap:38px!important}.art2{grid-template-columns:1fr!important;gap:36px!important}.toc{position:static!important}.prow{grid-template-columns:1fr!important}.hnav{display:none!important}.hamb{display:inline-flex!important}.fgrid{grid-template-columns:1fr 1fr!important}}
+@media(max-width:980px){.tiles{grid-template-columns:1fr 1fr!important}}
+@media(max-width:680px){.tiles{grid-template-columns:minmax(0,1fr)!important}}
 @media(max-width:680px){.pad{padding-left:20px!important;padding-right:20px!important}.fgrid{grid-template-columns:1fr!important}}
 /*aw-resp*/
 [style*="display:grid"]>*{min-width:0}
@@ -172,25 +174,24 @@ th[scope="row"]{min-width:120px}
     <nav aria-label="breadcrumb" class="mono" data-reveal style="font-size:12px;color:#8A8163;padding:22px 0 0">
       <a href="/" style="color:#41571F;text-decoration:none">Start</a> <span style="color:#8C3A43">/</span>
       <a href="/maszyny/" style="color:#41571F;text-decoration:none">Maszyny</a> <span style="color:#8C3A43">/</span>
-      <span style="color:#14160E;font-weight:700">{{NAME}}</span>
+      <span style="color:#14160E;font-weight:700">{{CRUMB}}</span>
     </nav>
     <div data-reveal style="display:flex;align-items:center;justify-content:space-between;gap:20px;border-top:1px solid rgba(20,22,14,.18);border-bottom:1px solid rgba(20,22,14,.18);padding:13px 0;margin-top:20px;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase">
-      <span style="color:#8C3A43">/ Kategoria maszyn</span>
-      <span style="color:#41571F">Etap {{NUM}} / 10</span>
+      <span style="color:#8C3A43">{{EYEBROW}}</span>
+      <span style="color:#41571F">Etap 08 / 10</span>
     </div>
     <div class="hero2" style="display:grid;grid-template-columns:1.32fr .68fr;gap:56px;align-items:end;padding:44px 0 50px">
       <div class="article">
         <h1 data-reveal style="font-size:clamp(38px,4.6vw,58px);line-height:1.02;font-weight:700;letter-spacing:-.03em;margin-bottom:24px;text-wrap:balance;color:#14160E">{{H1}}</h1>
         <p data-reveal style="font-size:18px;line-height:1.62;color:#4C543B;max-width:640px;margin-bottom:30px;text-wrap:pretty">{{LEAD}}</p>
         <div data-reveal style="display:flex;flex-wrap:wrap;gap:13px">
-          <a class="btn btnd" href="#maszyny" style="background:#14160E;color:#ECE7D7;padding:15px 26px;border-radius:7px;font-weight:700;font-size:15px">Zobacz maszyny <span class="ard">↓</span></a>
-          <a class="btn btnb" href="/kontakt/" style="background:transparent;color:#14160E;border:1.5px solid rgba(20,22,14,.38);padding:14px 24px;border-radius:7px;font-weight:600;font-size:15px">Zapytaj o ofertę</a>
+          {{HERO_CTA}}
         </div>
       </div>
       <div data-reveal style="position:relative;border:1px solid #14160E;background:#F4EFE2">
         <span aria-hidden="true" style="position:absolute;top:-1px;left:-1px;width:20px;height:20px;border-top:2px solid #8C3A43;border-left:2px solid #8C3A43"></span>
         <span aria-hidden="true" style="position:absolute;bottom:-1px;right:-1px;width:20px;height:20px;border-bottom:2px solid #8C3A43;border-right:2px solid #8C3A43"></span>
-        <div class="mono" style="display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid rgba(20,22,14,.16);font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8C3A43">Etap w linii<span style="color:#8A8163">{{NUM}} / 10</span></div>
+        <div class="mono" style="display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid rgba(20,22,14,.16);font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8C3A43">Etap w linii<span style="color:#8A8163">08 / 10</span></div>
         <ol style="padding:6px 18px 12px">
           {{STAGES}}
         </ol>
@@ -204,11 +205,47 @@ th[scope="row"]{min-width:120px}
 <section id="maszyny" style="background:#ECE7D7;color:#14160E;padding:54px 0 74px;scroll-margin-top:80px">
   <div class="pad" style="max-width:1280px;margin:0 auto;padding:0 32px">
     <div data-reveal style="display:flex;align-items:center;justify-content:space-between;gap:20px;border-top:1px solid rgba(20,22,14,.18);padding-top:14px;margin-bottom:34px;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase">
-      <span style="color:#8C3A43">/ Maszyny w kategorii</span><span style="color:#8A8163">{{MCOUNT}} poz.</span>
+      <span style="color:#8C3A43">{{MODELS_LABEL}}</span><span style="color:#8A8163">{{MODELS_COUNT}}</span>
     </div>
-    {{MACHINES}}
-    <div data-reveal style="border-top:1px solid rgba(20,22,14,.18);margin-top:18px;padding-top:18px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.02em;color:#8A8163">
-      <span>↳ Każdą maszynę konfigurujemy pod surowiec i wydajność linii.</span>
+
+    <div class="col2" data-reveal style="display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;margin-bottom:46px">
+      <div style="position:relative;border:1px solid #14160E;background:#F4EFE2;overflow:hidden">
+        <span aria-hidden="true" style="position:absolute;top:-1px;left:-1px;width:22px;height:22px;border-top:2px solid #8C3A43;border-left:2px solid #8C3A43;z-index:2"></span>
+        <span aria-hidden="true" style="position:absolute;bottom:-1px;right:-1px;width:22px;height:22px;border-bottom:2px solid #8C3A43;border-right:2px solid #8C3A43;z-index:2"></span>
+        <div aria-hidden="true" style="position:absolute;inset:0;background-image:linear-gradient(rgba(20,22,14,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(20,22,14,.05) 1px,transparent 1px);background-size:28px 28px"></div>
+        <img src="{{IMG_SRC}}" alt="{{IMG_ALT}}" loading="lazy" style="position:relative;z-index:1;width:100%;height:auto;display:block;padding:26px 22px">
+      </div>
+      <div>
+        <h2 style="font-size:30px;font-weight:700;line-height:1.1;letter-spacing:-.02em;margin-bottom:16px;text-wrap:balance;color:#14160E">{{FAMILIES_H2}}</h2>
+        <p style="font-size:16.5px;line-height:1.66;color:#3B4230;margin-bottom:18px;text-wrap:pretty">{{FAMILIES_P}}</p>
+        <ul style="display:grid;gap:10px;margin-bottom:26px">{{FAMILIES_LIST}}</ul>
+        <div style="display:flex;flex-wrap:wrap;gap:12px">
+          {{FAMILIES_CTA}}
+        </div>
+      </div>
+    </div>
+
+    <div data-reveal class="mono" style="display:flex;align-items:center;justify-content:space-between;gap:20px;border-top:1px solid rgba(20,22,14,.18);padding-top:14px;margin-bottom:20px;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase">
+      <span style="color:#8C3A43">{{BAGS_LABEL}}</span><span style="color:#8A8163">{{BAGS_NOTE}}</span>
+    </div>
+    <ul data-reveal class="tiles" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:#14160E;border:1px solid #14160E;margin-bottom:46px">
+      {{BAG_TILES}}
+    </ul>
+
+    <div data-reveal class="mono" style="display:flex;align-items:center;justify-content:space-between;gap:20px;border-top:1px solid rgba(20,22,14,.18);padding-top:14px;margin-bottom:20px;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase">
+      <span style="color:#8C3A43">{{BOXES_LABEL}}</span><span style="color:#8A8163">{{BOXES_NOTE}}</span>
+    </div>
+    <ul data-reveal class="tiles" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:#14160E;border:1px solid #14160E">
+      {{BOX_TILES}}
+    </ul>
+
+    <div data-reveal style="border:1px solid #14160E;background:#F4EFE2;padding:28px 26px;margin-top:34px">
+      <div class="mono" style="font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8C3A43;margin-bottom:12px">{{SECURE_LABEL}}</div>
+      <p style="font-size:16px;line-height:1.66;color:#3B4230;max-width:820px;text-wrap:pretty">{{SECURE_P}}</p>
+    </div>
+
+    <div data-reveal style="border-top:1px solid rgba(20,22,14,.18);margin-top:26px;padding-top:18px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.02em;color:#8A8163">
+      <span>{{FOOTNOTE}}</span>
       <a href="/maszyny/" style="color:#41571F;font-weight:700;white-space:nowrap;text-decoration:none">← Wszystkie kategorie</a>
     </div>
   </div>
@@ -225,7 +262,6 @@ th[scope="row"]{min-width:120px}
         </ul>
       </aside>
       <div class="article" style="max-width:780px">
-        {{INTRO_REST}}
         {{CONTENT}}
       </div>
     </div>
@@ -252,10 +288,12 @@ th[scope="row"]{min-width:120px}
   <div class="pad" style="max-width:1280px;margin:0 auto;padding:0 32px">
     <div data-reveal style="background:linear-gradient(165deg,#243015,#1A2110);padding:46px 44px;display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap">
       <div>
-        <div class="mono" style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8FA862;margin-bottom:14px">Dobór pod produkcję</div>
-        <p style="font-size:19px;line-height:1.5;color:#ECE7D7;max-width:680px;text-wrap:pretty;font-weight:600">{{CTA}}</p>
+        <div class="mono" style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8FA862;margin-bottom:14px">{{CTA_KICKER}}</div>
+        <p style="font-size:19px;line-height:1.5;color:#ECE7D7;max-width:680px;text-wrap:pretty;font-weight:600">{{CTA_P}}</p>
       </div>
-      <a class="btn btnc" href="/kontakt/" style="background:#ECE7D7;color:#14160E;padding:16px 28px;font-weight:700;font-size:15.5px">Zapytaj o ofertę <span class="aru">↗</span></a>
+      <div style="display:flex;flex-wrap:wrap;gap:12px">
+        {{CTA_BUTTONS}}
+      </div>
     </div>
   </div>
 </section>

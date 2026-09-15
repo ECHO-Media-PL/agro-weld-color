@@ -2,6 +2,7 @@
  {
   "name": "Rozładunek skrzyń",
   "slug": "rozladunek-skrzyn",
+  "ogImage": "assets/maszyny/wywrotnica-1.webp",
   "metaTitle": "Wywrotnice skrzyniopalet – maszyny do rozładunku skrzyń – Agro-Weld",
   "metaDesc": "Wywrotnice do skrzyniopalet polskiej produkcji WS-1420/1620/1820. Udźwig do 2 ton, siłowniki dwustronnego działania. Wycena gratis – Agro-Weld.",
   "h1": "Wywrotnice skrzyniopalet – maszyny do rozładunku skrzyń i palet",
@@ -139,6 +140,7 @@
  {
   "name": "Przyjęcie i buforowanie",
   "slug": "przyjecie-i-buforowanie",
+  "ogImage": "assets/maszyny/kosz-kp2000.webp",
   "metaTitle": "Kosze przyjęciowe do warzyw – maszyny przyjęcia surowca – Agro-Weld",
   "metaDesc": "Kosze przyjęciowe KP1000-KP5000G (1-5 m³) i zasobniki buforowe do warzyw. Rozdzielenie na frakcje, wersje INOX. Wycena gratis – Agro-Weld.",
   "h1": "Kosze przyjęciowe i zasobniki buforowe – maszyny do przyjęcia surowca",
@@ -271,6 +273,7 @@
  {
   "name": "Oczyszczanie",
   "slug": "oczyszczanie",
+  "ogImage": "assets/maszyny/separator-a.webp",
   "metaTitle": "Maszyny do mycia i czyszczenia warzyw – czyszczarki – Agro-Weld",
   "metaDesc": "Czyszczarki szczotkowe, separatory ziemi i kamieni, wanny do płukania warzyw korzeniowych. Wykonanie stalowe i INOX. Producent PL – Agro-Weld.",
   "h1": "Maszyny do mycia i czyszczenia warzyw – czyszczarki, separatory, wanny do płukania",
@@ -391,6 +394,7 @@
  {
   "name": "Sortowanie",
   "slug": "sortowanie",
+  "ogImage": "assets/kalibrownik.webp",
   "metaTitle": "Sortowniki i kalibrowniki do owoców i warzyw – Agro-Weld",
   "metaDesc": "Kalibrownik rozsuwany, sortownik do owoców drobnych, dwubębnowy sortownik do borówek. Precyzyjna kalibracja 4-100 mm. Producent PL – Agro-Weld.",
   "h1": "Sortowniki i kalibrowniki do owoców i warzyw",
@@ -516,6 +520,7 @@
  {
   "name": "Selekcja",
   "slug": "selekcja",
+  "ogImage": "assets/maszyny/stol-tasmowy-1.webp",
   "metaTitle": "Stoły selekcyjne rolkowe i taśmowe do warzyw – Agro-Weld",
   "metaDesc": "Stoły selekcyjne rolkowe i taśmowe do ręcznej selekcji warzyw i owoców. Oświetlenie LED, konfigurowalne przegrody. Producent PL – Agro-Weld.",
   "h1": "Stoły selekcyjne rolkowe i taśmowe – maszyny do selekcji warzyw i owoców",
@@ -630,6 +635,7 @@
  {
   "name": "Ważenie i liczenie",
   "slug": "wazenie-i-liczenie",
+  "ogImage": "assets/maszyny/liczarka-1.webp",
   "metaTitle": "Liczarki i wagi kontrolne do owoców i warzyw – Agro-Weld",
   "metaDesc": "Liczarka do owoców (do 350 szt./min) i waga kontrolna ze zrzutem opakowań. Precyzyjne ważenie i liczenie w linii pakującej. Agro-Weld.",
   "h1": "Liczarki i wagi kontrolne – precyzyjne ważenie i liczenie owoców i warzyw",
@@ -750,6 +756,7 @@
  {
   "name": "Pakowanie",
   "slug": "pakowanie",
+  "ogImage": "assets/maszyny/wagoworkownica-1.webp",
   "metaTitle": "Maszyny do pakowania warzyw – raszlownice, wagoworkownice – Agro-Weld",
   "metaDesc": "Maszyny do pakowania warzyw: raszlownica do 6 t/h, wagoworkownica automatyczna, napełniacz kaskadowy do big-bagów. Polski producent Agro-Weld.",
   "h1": "Maszyny do pakowania warzyw – raszlownice, wagoworkownice i napełniacze",
@@ -891,6 +898,8 @@
  {
   "name": "Paletyzacja",
   "slug": "paletyzacja",
+  "ogImage": "assets/maszyny/paletyzator-vpm.webp",
+  "template": "paletyzacja",
   "metaTitle": "Paletyzatory do warzyw – autoryzowany dystrybutor Verbruggen – Agro-Weld",
   "metaDesc": "Paletyzatory Verbruggen do automatycznego układania worków, skrzynek i kartonów. Agro-Weld – autoryzowany dystrybutor w Polsce. Zapytaj o wycenę.",
   "h1": "Paletyzatory Verbruggen – Agro-Weld, autoryzowany dystrybutor w Polsce",
@@ -919,7 +928,7 @@
       "p": "<strong>Do pudeł i skrzynek</strong> – modele VPM-BL, VPM-ACP, VPM-VHV, o maksymalnej wydajności 20–80 szt./min."
      },
      {
-      "p": "Pełną specyfikację techniczną wszystkich modeli Verbruggen znajdziesz w <a href=\"/uploads/AgroWeld katalog 2026 20 01.pdf\">katalogu PDF</a> do pobrania:. Aby otrzymać dobór modelu i wycenę pod Twój format opakowania, skorzystaj z <a href=\"/kontakt/\">formularza kontaktowego</a>."
+      "p": "Pełną specyfikację techniczną wszystkich modeli Verbruggen — wraz z tabelą wyposażenia standardowego i opcjonalnego — znajdziesz w <a href=\"/uploads/verbruggen-katalog-paletyzatorow.pdf\" target=\"_blank\" rel=\"noopener\">katalogu Verbruggen (PDF)</a>. Dobór modelu i wycenę pod Twój format opakowania przygotujemy po kontakcie przez <a href=\"/kontakt/\">formularz</a> lub telefonicznie."
      },
      {
       "ul": [
@@ -1008,6 +1017,7 @@
  {
   "name": "Przenośniki",
   "slug": "przenosniki",
+  "ogImage": "assets/maszyny/przenosnik-tasmowy-poziomy-1.webp",
   "metaTitle": "Przenośniki taśmowe i rolkowe do warzyw – producent – Agro-Weld",
   "metaDesc": "Przenośniki taśmowe poziome, wznoszące, odpadowe, do materiałów sypkich i rolkowe. Modułowa budowa, dostępne szerokości 20-90 cm. Agro-Weld.",
   "h1": "Przenośniki taśmowe i rolkowe – transport wewnętrzny dla linii do warzyw",
@@ -1116,6 +1126,7 @@
  {
   "name": "Pielenie",
   "slug": "pielenie",
+  "ogImage": "assets/maszyny/pielnik-1.webp",
   "metaTitle": "Pielnik do redlin – mechaniczne odchwaszczanie międzyrzędzi – Agro-Weld",
   "metaDesc": "Pielnik do obróbki redlin Pip-4/Pia-4 – sekcje równoległoboczne, wymienne narzędzia robocze. Sprawdzony produkt Agro-Weld – CTR 14%. Wycena!",
   "h1": "Pielnik do redlin – mechaniczne odchwaszczanie i formowanie redlin",

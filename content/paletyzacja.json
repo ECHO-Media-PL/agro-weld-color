@@ -1,0 +1,265 @@
+{
+ "_opis": "Dane strony /maszyny/paletyzacja/. Sekcje redakcyjne (intro, sections, faq, metaTitle/metaDesc) pozostają w content/kategorie.json — tu są wyłącznie dane dedykowanego designu.",
+ "catalogPdf": {
+  "href": "/uploads/verbruggen-katalog-paletyzatorow.pdf",
+  "label": "↓ Katalog Verbruggen (PDF)"
+ },
+ "seo": {
+  "canonical": "https://www.agro-weld.pl/maszyny/paletyzacja/",
+  "ogType": "website",
+  "ogImage": "assets/maszyny/paletyzator-vpm.webp"
+ },
+ "hero": {
+  "eyebrow": "/ Kategoria maszyn",
+  "crumb": "Paletyzacja",
+  "cta": [
+   {
+    "label": "Zobacz modele",
+    "href": "#maszyny",
+    "variant": "dark",
+    "arrow": "down"
+   },
+   {
+    "label": "↓ Katalog Verbruggen (PDF)",
+    "href": "$catalogPdf",
+    "variant": "outline",
+    "newTab": true
+   },
+   {
+    "label": "Zapytaj o ofertę",
+    "href": "/kontakt/",
+    "variant": "outline"
+   }
+  ]
+ },
+ "models": {
+  "label": "/ Modele Verbruggen",
+  "count": "08 modeli",
+  "image": {
+   "src": "../../assets/paletyzator-vpm.webp",
+   "alt": "Paletyzator Verbruggen VPM z systemem podawania i odbioru palet"
+  },
+  "families": {
+   "h2": "Dwie rodziny maszyn, jeden standard jakości",
+   "p": "Verbruggen produkuje paletyzatory w fabryce w Emmeloord w Holandii od 1991 roku. Konstrukcje ograniczają liczbę elementów ruchomych do minimum, co przekłada się na długie interwały serwisowe i wysoką niezawodność. Każda maszyna ma w standardzie panel dotykowy z konfiguracją wzorów układania metodą „przeciągnij i upuść” oraz moduł zdalnego dostępu serwisowego.",
+   "list": [
+    {
+     "strong": "Do worków",
+     "text": "— VPM-5, VPM-7, VPM-8, VPM-10, VPM-14. Od 10 do 40 szt./min, masa worka 25 lub 50 kg."
+    },
+    {
+     "strong": "Do pudeł i skrzynek",
+     "text": "— VPM-BL, VPM-ACP, VPM-VHV. Od 20 do 80 szt./min, układanie oparte na zasadzie przesuwu."
+    }
+   ],
+   "cta": [
+    {
+     "label": "↓ Katalog Verbruggen (PDF)",
+     "href": "$catalogPdf",
+     "variant": "darkSm",
+     "newTab": true
+    },
+    {
+     "label": "Zapytaj o paletyzator",
+     "href": "/kontakt/",
+     "variant": "outlineSm"
+    }
+   ]
+  },
+  "bags": {
+   "label": "/ Paletyzatory do worków",
+   "note": "25 / 50 kg",
+   "items": [
+    {
+     "code": "VPM-5",
+     "badge": "Kompaktowy",
+     "desc": "Mała powierzchnia zabudowy i podawanie na niskim poziomie — wchodzi tam, gdzie miejsca jest niewiele. Najniższy próg inwestycji.",
+     "specs": [
+      [
+       "Wydajność",
+       "10 szt./min"
+      ],
+      [
+       "Na godzinę",
+       "550 szt."
+      ],
+      [
+       "Maks. worek",
+       "900 × 560 × 240 mm"
+      ]
+     ]
+    },
+    {
+     "code": "VPM-7",
+     "badge": "Średnie pakownie",
+     "desc": "Drzwi formujące i dodatkowe drzwi frontowe pozwalają zamknąć stos z czterech stron. Podawanie na wysokim poziomie.",
+     "specs": [
+      [
+       "Wydajność",
+       "18 szt./min"
+      ],
+      [
+       "Na godzinę",
+       "920 / 975 szt."
+      ],
+      [
+       "Maks. worek",
+       "880 × 590 × 325 mm"
+      ]
+     ]
+    },
+    {
+     "code": "VPM-8",
+     "badge": "W pełni automatyczny",
+     "desc": "Automatyczny transport stosu i elementów podporowych w standardzie. Rozbudowa o dozownik przekładek, owijarkę lub wiązarkę.",
+     "specs": [
+      [
+       "Wydajność",
+       "18 szt./min"
+      ],
+      [
+       "Na godzinę",
+       "970 / 1025 szt."
+      ],
+      [
+       "Maks. worek",
+       "880 × 590 × 325 mm"
+      ]
+     ]
+    },
+    {
+     "code": "VPM-10",
+     "badge": "Duże zakłady",
+     "desc": "W standardzie podajnik palet, przenośnik rolkowy i platforma inspekcyjna. Dostępny z manipulatorem combi do worków i pudeł.",
+     "specs": [
+      [
+       "Wydajność",
+       "30 szt./min"
+      ],
+      [
+       "Na godzinę",
+       "1310 / 1710 szt."
+      ],
+      [
+       "Maks. worek",
+       "880 × 590 × 325 mm"
+      ]
+     ]
+    },
+    {
+     "code": "VPM-14",
+     "badge": "Najwyższa wydajność",
+     "desc": "Najszybszy paletyzator do worków w gamie. Opcjonalny szybki system podawania zwiększa wydajność przy workach typu smallpack.",
+     "specs": [
+      [
+       "Wydajność",
+       "40 szt./min"
+      ],
+      [
+       "Na godzinę",
+       "1710 / 2280 szt."
+      ],
+      [
+       "Maks. worek",
+       "880 × 590 × 325 mm"
+      ]
+     ]
+    }
+   ],
+   "noteTile": {
+    "label": "/ Wspólne dla rodziny",
+    "text": "Maksymalna warstwa 1600 × 1250 mm, minimalny worek 350 × 220 × 50 mm, masa 25 lub 50 kg zależnie od manipulatora. Dane dla jednego opakowania na odłożenie.",
+    "link": {
+     "href": "/kontakt/",
+     "label": "Dobór modelu pod Twój worek →"
+    }
+   }
+  },
+  "boxes": {
+   "label": "/ Paletyzatory do pudeł i skrzynek",
+   "note": "do 80 szt./min",
+   "items": [
+    {
+     "code": "VPM-BL",
+     "badge": "Kompaktowy",
+     "desc": "Układanie na zasadzie przesuwu, podawanie na niskim i wysokim poziomie. Opcjonalnie automatyczny transport palet i owijanie.",
+     "specs": [
+      [
+       "Wydajność",
+       "20 szt./min"
+      ],
+      [
+       "Na godzinę",
+       "780 / 1150 szt."
+      ],
+      [
+       "Maks. warstwa",
+       "1250 × 1250 mm"
+      ]
+     ]
+    },
+    {
+     "code": "VPM-ACP",
+     "badge": "W pełni automatyczny",
+     "desc": "Precyzyjne odkładanie produktu kontrolowanym ruchem — delikatne obchodzenie się z opakowaniem przy wysokiej powtarzalności.",
+     "specs": [
+      [
+       "Wydajność",
+       "35 szt./min"
+      ],
+      [
+       "Na godzinę",
+       "1100 / 1680 szt."
+      ],
+      [
+       "Maks. warstwa",
+       "1350 × 1350 mm"
+      ]
+     ]
+    },
+    {
+     "code": "VPM-VHV",
+     "badge": "High speed",
+     "desc": "Separacja, obracanie i formowanie warstwy w przepływie produktu. Elektryczny podnośnik palet w standardzie, przekładki opcjonalnie.",
+     "specs": [
+      [
+       "Wydajność",
+       "80 szt./min"
+      ],
+      [
+       "Na godzinę",
+       "2030 / 4065 szt."
+      ],
+      [
+       "Maks. warstwa",
+       "1350 × 1350 mm"
+      ]
+     ]
+    }
+   ]
+  }
+ },
+ "secure": {
+  "label": "/ Zabezpieczanie ładunku",
+  "text": "Gotową paletę można od razu zabezpieczyć: owijarki i wiązarki Verbruggen (VSW, VTW, VSM) pracują samodzielnie lub w integracji z linią, z prędkością do 60 palet na godzinę, przy stosie do 1350 × 1350 mm i wysokości owijania do 2500 mm. W opcji: wstępny rozciąg folii, wiązanie końcówki bez elementów metalowych, dozowanie papieru i nakładanie narożników."
+ },
+ "footnote": "Szukasz prostszego rozwiązania? Zobacz <a href=\"/maszyny/pakowanie/formatory-palet/\" style=\"color:#41571F;font-weight:700;text-decoration:none\">formatory palet</a> w kategorii Pakowanie.",
+ "cta": {
+  "kicker": "Dobór pod produkcję",
+  "text": "Kończysz linię pakowania i szukasz sposobu na automatyczne układanie palet? Napisz do nas, jaki rodzaj opakowania pakujesz i jaką wydajność chcesz osiągnąć – jako autoryzowany dystrybutor Verbruggen w Polsce dobierzemy odpowiedni model paletyzatora i przygotujemy wycenę.",
+  "buttons": [
+   {
+    "label": "Zapytaj o paletyzator",
+    "href": "/kontakt/",
+    "variant": "light",
+    "arrow": "up"
+   },
+   {
+    "label": "↓ Katalog Verbruggen (PDF)",
+    "href": "$catalogPdf",
+    "variant": "ghost",
+    "newTab": true
+   }
+  ]
+ }
+}

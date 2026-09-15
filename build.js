@@ -210,7 +210,21 @@ let catsBuilt = 0, prodsBuilt = 0;
 if (fs.existsSync('content/kategorie.json') && fs.existsSync('templates/kategoria.html')) {
   const KR = require('./templates/kategoria.render.js');
   const ktpl = read('templates/kategoria.html');
+  // kategorie z własnym szablonem: cat.template === "<nazwa>" → templates/<nazwa>.html
+  // + templates/<nazwa>.render.js + content/<nazwa>.json. Standardowy renderer ich nie dotyka.
+  const CUSTOM = {};
   for (const cat of J('content/kategorie.json')) {
+    const t = cat.template;
+    if (t) {
+      const tf = 'templates/' + t + '.html', rf = './templates/' + t + '.render.js', df = 'content/' + t + '.json';
+      if (fs.existsSync(tf) && fs.existsSync('templates/' + t + '.render.js') && fs.existsSync(df)) {
+        const CR = CUSTOM[t] || (CUSTOM[t] = require(rf));
+        write('maszyny/' + cat.slug + '/index.html', CR.render(cat, J(df), machines, read(tf)));
+        catsBuilt++;
+        continue;
+      }
+      console.warn('kategoria ' + cat.slug + ': brak kompletu plików szablonu "' + t + '" — użyto szablonu standardowego');
+    }
     write('maszyny/' + cat.slug + '/index.html', KR.render(cat, machines, ktpl));
     catsBuilt++;
   }

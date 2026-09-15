@@ -102,6 +102,7 @@
     var fill = {
       META_TITLE: esc(cat.metaTitle || cat.h1), META_DESC: escA(cat.metaDesc || ''), SLUG: cat.slug, NAME: esc(name), NUM: num,
       JSONLD: jsonld, H1: esc(cat.h1 || name), LEAD: lead,
+      OGIMAGE: 'https://www.agro-weld.pl/' + (cat.ogImage || (list[0] && list[0].img ? 'assets/' + list[0].img : 'assets/logo.webp')),
       INTRO_REST: rest.map(function (p) { return '<p style="font-size:16.5px;line-height:1.7;color:#3B4230;margin:0 0 16px;text-wrap:pretty">' + p + '</p>'; }).join('\n'),
       STAGES: renderStages(cat.slug), MACHINES: renderMachines(list), MCOUNT: pad2(list.length),
       TOC: renderToc(cat.sections, cat.faq.length > 0), CONTENT: renderSections(cat.sections),
@@ -112,6 +113,8 @@
     return html;
   }
 
-  var api = { render: render, CATS: CATS, machinesFor: machinesFor };
+  var api = { render: render, CATS: CATS, machinesFor: machinesFor,
+    renderStages: renderStages, renderMachines: renderMachines, renderSections: renderSections,
+    renderToc: renderToc, renderFaq: renderFaq, renderTable: renderTable };
   if (typeof module !== 'undefined' && module.exports) module.exports = api; else root.KategoriaRender = api;
 })(typeof window !== 'undefined' ? window : this);
