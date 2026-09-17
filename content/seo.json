@@ -1,8 +1,8 @@
 {
  "pages": {
   "index.html": {
-   "title": "Agro-Weld — maszyny i linie technologiczne dla rolnictwa i przemysłu",
-   "description": "Agro-Weld projektuje i produkuje maszyny do obróbki warzyw i owoców oraz kompletne linie produkcyjne — od przyjęcia surowca po paletyzację. Polski producent, Środa Wlkp.",
+   "title": "Producent maszyn rolniczych do warzyw i owoców | Agro-Weld",
+   "description": "Agro-Weld - polski producent maszyn do mycia, sortowania i pakowania warzyw oraz linii pod klucz. Środa Wielkopolska. Zapytaj o wycenę!",
    "alts": {
     "assets/logo.webp": "Agro-Weld — producent maszyn i linii technologicznych",
     "assets/kp5000.webp": "Kosz przyjęciowy KP5000G — maszyna Agro-Weld",
@@ -20,7 +20,7 @@
    }
   },
   "maszyny/index.html": {
-   "title": "Katalog maszyn — oferta Agro-Weld | Maszyny do warzyw i owoców",
+   "title": "Maszyny do warzyw i owoców - katalog | Agro-Weld",
    "description": "Pełen przegląd maszyn Agro-Weld pogrupowany według etapu linii technologicznej — przyjęcie, oczyszczanie, sortowanie, ważenie, pakowanie i paletyzacja.",
    "alts": {
     "../assets/logo.webp": "Agro-Weld — producent maszyn i linii technologicznych",
@@ -28,7 +28,7 @@
    }
   },
   "blog/index.html": {
-   "title": "Blog — wiedza o maszynach i liniach technologicznych | Agro-Weld",
+   "title": "Blog - maszyny i linie do warzyw w praktyce | Agro-Weld",
    "description": "Praktyczna wiedza od producenta: dobór maszyn do warzyw i owoców, projektowanie linii technologicznych, czyszczenie, sortowanie, pakowanie i paletyzacja.",
    "alts": {
     "../assets/logo.webp": "Agro-Weld — producent maszyn i linii technologicznych",

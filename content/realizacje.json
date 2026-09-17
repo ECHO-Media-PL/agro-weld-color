@@ -1,22 +1,499 @@
 [
- {"slug":"linia-do-sortowania-borowki","ref":"2025-014","cat":"Sortowanie","title":"Linia do sortowania borówki","img":"real-borowka.webp",
-  "lead":"Delikatna selekcja owoców miękkich — bez uszkodzeń, z odprowadzaniem zanieczyszczeń i sortowaniem na frakcje wielkości.",
-  "body":["Plantacja borówki amerykańskiej potrzebowała stanowiska, które podzieli owoce według kalibru bez obijania i pozwoli równocześnie ręcznie odrzucać sztuki uszkodzone. Owoce trafiały do sortowni luzem, w skrzynkach z pola.","Zaproponowaliśmy sortownik do owoców drobnych ze stałym rozstawem dobranym pod borówkę oraz dwubębnowy sortownik dzielący owoce na 3 sorty. Biała taśma i oświetlenie LED ułatwiają kontrolę jakości podczas sortowania, a płynna regulacja obrotów pozwala dopasować tempo do stanu owoców.","Maszyny wykonano z gumą z atestem spożywczym; regulowana wysokość podstawy pozwoliła wpiąć je w istniejący układ hali."],
-  "machines":["sortownik-sod","sortownik-2b","przenosnik-odpadowy"],
-  "facts":[["Surowiec","borówka amerykańska"],["Kaliber","8–25 mm, 3 sorty"],["Etap linii","sortowanie · selekcja"]]},
- {"slug":"linia-do-cytrusow","ref":"2025-031","cat":"Pakowanie","title":"Linia licząco-pakująca do cytrusów INOX","img":"real-cytrusy.webp",
-  "lead":"Kompletna linia: transport, zliczanie sztuk i automatyczne pakowanie — zaprojektowana i uruchomiona pod klucz, w wykonaniu ze stali nierdzewnej.",
-  "body":["Pakownia cytrusów rozlicza część produkcji na sztuki, część na wagę. Potrzebowała jednego ciągu, który obsłuży oba tryby i zagwarantuje zgodność masy opakowań z etykietą.","Linia składa się ze stołu selekcyjnego rolkowego, rynny dwukierunkowej rozdzielającej strumień, liczarki do owoców, wagoworkownicy z autozsypami oraz wagi kontrolnej ze zrzutem opakowań o niewłaściwej masie. Na końcu pracuje etykieciarka.","Całość wykonano ze stali nierdzewnej, z komunikacją PLC między wagą kontrolną a resztą linii."],
-  "machines":["stol-rolkowy","liczarka","wagoworkownica","waga"],
-  "facts":[["Surowiec","cytrusy"],["Wykonanie","stal nierdzewna (INOX)"],["Etap linii","selekcja · liczenie · pakowanie · kontrola"]]},
- {"slug":"stol-selekcyjny-inox","ref":"2025-022","cat":"Selekcja","title":"Stół selekcyjny INOX","img":"real-inox.webp",
-  "lead":"Stanowisko kontroli jakości ze stali nierdzewnej — higieniczne, z zadaszeniem i regulacją prędkości.",
-  "body":["Zakład przetwórczy wymagał stanowiska ręcznej selekcji spełniającego podwyższone wymagania higieniczne, z możliwością codziennego mycia.","Dostarczyliśmy stół selekcyjny taśmowy w wykonaniu ze stali nierdzewnej, z taśmą z atestem spożywczym, oświetleniem LED i falownikiem do regulacji prędkości. Konfigurowalne podzielnice kierują odsort na przenośnik odpadowy pod stołem.","Stół na kołach z hamulcem pozwala szybko zmienić układ linii."],
-  "machines":["stol-tasmowy","przenosnik-odpadowy"],
-  "facts":[["Wykonanie","stal nierdzewna, taśma z atestem"],["Wyposażenie","LED · falownik · podzielnice"],["Etap linii","selekcja"]]},
- {"slug":"raszlownica-z-modulem-pakujacym","ref":"2025-008","cat":"Pakowanie","title":"Raszlownica z modułem pakującym","img":"real-raszlownica.webp",
-  "lead":"Stanowisko pakowania w worki raszlowe z bezpośrednim workowaniem — zwarta, mobilna konstrukcja ustawiona równolegle do linii.",
-  "body":["Gospodarstwo pakujące warzywa korzeniowe do worków raszlowych 2,5–15 kg chciało odciążyć pracowników i zwiększyć powtarzalność porcji.","Stanowisko tworzą wagoworkownica WW-302 z podłączeniem pod raszlownicę oraz raszlownica RA1 z zaszywarką jednoigłową. Przenośnik poprzeczny pozwolił ustawić oba urządzenia równolegle do linii i pracować w obu kierunkach bez przebudowy stanowiska.","Sterowanie odbywa się z jednego panelu dotykowego 7\"; całość obsługuje jedna osoba."],
-  "machines":["wagoworkownica","raszlownica","przenosnik-poprzeczny"],
-  "facts":[["Opakowanie","worki raszlowe 2,5–15 kg"],["Sterowanie","panel dotykowy 7\""],["Etap linii","pakowanie"]]}
+ {
+  "slug": "linia-do-sortowania-borowki",
+  "ref": "2025-014",
+  "cat": "Sortowanie",
+  "title": "Linia do sortowania borówki",
+  "img": "real-borowka.webp",
+  "lead": "Delikatna selekcja owoców miękkich — bez uszkodzeń, z odprowadzaniem zanieczyszczeń i sortowaniem na frakcje wielkości.",
+  "body": [
+   "Plantacja borówki amerykańskiej potrzebowała stanowiska, które podzieli owoce według kalibru bez obijania i pozwoli równocześnie ręcznie odrzucać sztuki uszkodzone. Owoce trafiały do sortowni luzem, w skrzynkach z pola.",
+   "Zaproponowaliśmy sortownik do owoców drobnych ze stałym rozstawem dobranym pod borówkę oraz dwubębnowy sortownik dzielący owoce na 3 sorty. Biała taśma i oświetlenie LED ułatwiają kontrolę jakości podczas sortowania, a płynna regulacja obrotów pozwala dopasować tempo do stanu owoców.",
+   "Maszyny wykonano z gumą z atestem spożywczym; regulowana wysokość podstawy pozwoliła wpiąć je w istniejący układ hali."
+  ],
+  "machines": [
+   "sortownik-sod",
+   "sortownik-2b",
+   "przenosnik-odpadowy"
+  ],
+  "facts": [
+   [
+    "Surowiec",
+    "borówka amerykańska"
+   ],
+   [
+    "Kaliber",
+    "8–25 mm, 3 sorty"
+   ],
+   [
+    "Etap linii",
+    "sortowanie · selekcja"
+   ]
+  ],
+  "metaTitle": "Linia do sortowania borówki - realizacja | Agro-Weld",
+  "metaDesc": "Linia do sortowania borówki: delikatna selekcja owoców miękkich, usuwanie zanieczyszczeń, podział na frakcje. Zobacz realizację Agro-Weld."
+ },
+ {
+  "slug": "linia-do-cytrusow",
+  "ref": "2025-031",
+  "cat": "Pakowanie",
+  "title": "Linia licząco-pakująca do cytrusów INOX",
+  "img": "real-cytrusy.webp",
+  "lead": "Kompletna linia: transport, zliczanie sztuk i automatyczne pakowanie — zaprojektowana i uruchomiona pod klucz, w wykonaniu ze stali nierdzewnej.",
+  "body": [
+   "Pakownia cytrusów rozlicza część produkcji na sztuki, część na wagę. Potrzebowała jednego ciągu, który obsłuży oba tryby i zagwarantuje zgodność masy opakowań z etykietą.",
+   "Linia składa się ze stołu selekcyjnego rolkowego, rynny dwukierunkowej rozdzielającej strumień, liczarki do owoców, wagoworkownicy z autozsypami oraz wagi kontrolnej ze zrzutem opakowań o niewłaściwej masie. Na końcu pracuje etykieciarka.",
+   "Całość wykonano ze stali nierdzewnej, z komunikacją PLC między wagą kontrolną a resztą linii."
+  ],
+  "machines": [
+   "stol-rolkowy",
+   "liczarka",
+   "wagoworkownica",
+   "waga"
+  ],
+  "facts": [
+   [
+    "Surowiec",
+    "cytrusy"
+   ],
+   [
+    "Wykonanie",
+    "stal nierdzewna (INOX)"
+   ],
+   [
+    "Etap linii",
+    "selekcja · liczenie · pakowanie · kontrola"
+   ]
+  ],
+  "metaTitle": "Linia do cytrusów INOX - realizacja | Agro-Weld"
+ },
+ {
+  "slug": "stol-selekcyjny-inox",
+  "ref": "2025-022",
+  "cat": "Selekcja",
+  "title": "Stół selekcyjny INOX",
+  "img": "real-inox.webp",
+  "lead": "Stanowisko kontroli jakości ze stali nierdzewnej — higieniczne, z zadaszeniem i regulacją prędkości.",
+  "body": [
+   "Zakład przetwórczy wymagał stanowiska ręcznej selekcji spełniającego podwyższone wymagania higieniczne, z możliwością codziennego mycia.",
+   "Dostarczyliśmy stół selekcyjny taśmowy w wykonaniu ze stali nierdzewnej, z taśmą z atestem spożywczym, oświetleniem LED i falownikiem do regulacji prędkości. Konfigurowalne podzielnice kierują odsort na przenośnik odpadowy pod stołem.",
+   "Stół na kołach z hamulcem pozwala szybko zmienić układ linii."
+  ],
+  "machines": [
+   "stol-tasmowy",
+   "przenosnik-odpadowy"
+  ],
+  "facts": [
+   [
+    "Wykonanie",
+    "stal nierdzewna, taśma z atestem"
+   ],
+   [
+    "Wyposażenie",
+    "LED · falownik · podzielnice"
+   ],
+   [
+    "Etap linii",
+    "selekcja"
+   ]
+  ],
+  "metaTitle": "Stół selekcyjny INOX - realizacja Agro-Weld | Agro-Weld",
+  "metaDesc": "Stół selekcyjny ze stali nierdzewnej: higieniczne stanowisko kontroli jakości z zadaszeniem i regulacją prędkości. Realizacja Agro-Weld."
+ },
+ {
+  "slug": "raszlownica-z-modulem-pakujacym",
+  "ref": "2025-008",
+  "cat": "Pakowanie",
+  "title": "Raszlownica z modułem pakującym",
+  "img": "real-raszlownica.webp",
+  "lead": "Stanowisko pakowania w worki raszlowe z bezpośrednim workowaniem — zwarta, mobilna konstrukcja ustawiona równolegle do linii.",
+  "body": [
+   "Gospodarstwo pakujące warzywa korzeniowe do worków raszlowych 2,5–15 kg chciało odciążyć pracowników i zwiększyć powtarzalność porcji.",
+   "Stanowisko tworzą wagoworkownica WW-302 z podłączeniem pod raszlownicę oraz raszlownica RA1 z zaszywarką jednoigłową. Przenośnik poprzeczny pozwolił ustawić oba urządzenia równolegle do linii i pracować w obu kierunkach bez przebudowy stanowiska.",
+   "Sterowanie odbywa się z jednego panelu dotykowego 7\"; całość obsługuje jedna osoba."
+  ],
+  "machines": [
+   "wagoworkownica",
+   "raszlownica",
+   "przenosnik-poprzeczny"
+  ],
+  "facts": [
+   [
+    "Opakowanie",
+    "worki raszlowe 2,5–15 kg"
+   ],
+   [
+    "Sterowanie",
+    "panel dotykowy 7\""
+   ],
+   [
+    "Etap linii",
+    "pakowanie"
+   ]
+  ],
+  "metaTitle": "Raszlownica z modułem pakującym - realizacja | Agro-Weld"
+ },
+ {
+  "slug": "czyszczarka-szczotkowa-z-szuflada",
+  "ref": "2025-041",
+  "cat": "Oczyszczanie",
+  "title": "Czyszczarka szczotkowa z szufladą na odpady",
+  "img": "realizacje/czyszczarka-szuflada-1.webp",
+  "gallery": [
+   "realizacje/czyszczarka-szuflada-1.webp",
+   "realizacje/czyszczarka-szuflada-2.webp",
+   "realizacje/czyszczarka-szuflada-3.webp"
+  ],
+  "lead": "Czyszczarka z wysuwaną szufladą na odpady — porządek na stanowisku i rozładunek odpadów wózkiem widłowym.",
+  "body": [
+   "Czyszczarka z szufladą firmy Agro-Weld to idealna maszyna dla wszystkich, którzy cenią sobie porządek i organizację w pracy.",
+   "Dzięki wysuwanej szufladzie na odpady nie trzeba już martwić się bałaganem spowodowanym wykonywaną pracą, a otwory na widły pod szufladą umożliwiają bezproblemowe pozbycie się odpadów przy pomocy wózka widłowego."
+  ],
+  "machines": [
+   "czyszczarka",
+   "przenosnik-odpadowy"
+  ],
+  "facts": [
+   [
+    "Etap linii",
+    "oczyszczanie"
+   ],
+   [
+    "Odbiór odpadów",
+    "wysuwana szuflada"
+   ],
+   [
+    "Rozładunek",
+    "otwory na widły wózka"
+   ]
+  ],
+  "metaTitle": "Czyszczarka szczotkowa z szufladą na odpady - realizacja | Agro-Weld",
+  "metaDesc": "Czyszczarka szczotkowa Agro-Weld z wysuwaną szufladą na odpady i otworami na widły wózka widłowego. Zobacz realizację."
+ },
+ {
+  "slug": "kosz-przyjeciowy-5m3",
+  "ref": "2025-037",
+  "cat": "Przyjęcie i buforowanie",
+  "title": "Kosz przyjęciowy 5 m³",
+  "img": "realizacje/kosz-5m3-1.webp",
+  "gallery": [
+   "realizacje/kosz-5m3-1.webp",
+   "realizacje/kosz-5m3-2.webp",
+   "realizacje/kosz-5m3-3.webp",
+   "realizacje/kosz-5m3-4.webp",
+   "realizacje/kosz-5m3-5.webp"
+  ],
+  "lead": "Duży kosz przyjęciowy o pojemności 5 m³ — jednoczesne przyjęcie dużej partii towaru i buforowanie przed linią.",
+  "body": [
+   "Dla jednego z naszych Klientów wykonaliśmy duży kosz przyjęciowy o pojemności aż 5 m³, umożliwiający przyjęcie jednocześnie dużej ilości towaru.",
+   "Dzięki temu zaspokoi potrzeby większych przedsiębiorców i rolników w zakresie buforowania towaru."
+  ],
+  "machines": [
+   "kosz",
+   "kosz-kp5000g"
+  ],
+  "facts": [
+   [
+    "Pojemność",
+    "5 m³"
+   ],
+   [
+    "Etap linii",
+    "przyjęcie · buforowanie"
+   ],
+   [
+    "Dla kogo",
+    "większe gospodarstwa i zakłady"
+   ]
+  ],
+  "metaTitle": "Kosz przyjęciowy 5 m³ - realizacja | Agro-Weld",
+  "metaDesc": "Kosz przyjęciowy o pojemności 5 m³ do przyjęcia i buforowania dużych partii towaru. Realizacja Agro-Weld dla klienta."
+ },
+ {
+  "slug": "kosz-przyjeciowy-z-separatorem",
+  "ref": "2025-034",
+  "cat": "Przyjęcie i buforowanie",
+  "title": "Kosz przyjęciowy z separatorem",
+  "img": "realizacje/kosz-separator-1.webp",
+  "gallery": [
+   "realizacje/kosz-separator-1.webp",
+   "realizacje/kosz-separator-2.webp",
+   "realizacje/kosz-separator-3.webp",
+   "realizacje/kosz-separator-4.webp"
+  ],
+  "video": "miN_iL0-mBs",
+  "lead": "Kosz przyjęciowy z separatorem ziemi i kamieni — taśma PCV i falownik do płynnej regulacji prędkości.",
+  "body": [
+   "Nasz kosz przyjęciowy z separatorem to jakość połączona z prostotą w obsłudze.",
+   "Solidna taśma PCV oraz silnik z falownikiem do płynnej regulacji prędkości maszyny zapewnia komfortową i efektywną pracę. Z działaniem maszyny można zapoznać się na filmie poniżej."
+  ],
+  "machines": [
+   "kosz",
+   "separator"
+  ],
+  "facts": [
+   [
+    "Taśma",
+    "PCV"
+   ],
+   [
+    "Sterowanie",
+    "falownik — płynna regulacja"
+   ],
+   [
+    "Etap linii",
+    "przyjęcie · oczyszczanie wstępne"
+   ]
+  ],
+  "metaTitle": "Kosz przyjęciowy z separatorem - realizacja | Agro-Weld",
+  "metaDesc": "Kosz przyjęciowy z separatorem ziemi i kamieni: taśma PCV, falownik do regulacji prędkości. Realizacja Agro-Weld z filmem."
+ },
+ {
+  "slug": "linia-do-pakowania-warzyw",
+  "ref": "2025-028",
+  "cat": "Pakowanie",
+  "title": "Linia do pakowania warzyw",
+  "img": "realizacje/linia-pakowanie-warzyw-1.webp",
+  "gallery": [
+   "realizacje/linia-pakowanie-warzyw-1.webp",
+   "realizacje/linia-pakowanie-warzyw-2.webp",
+   "realizacje/linia-pakowanie-warzyw-3.webp",
+   "realizacje/linia-pakowanie-warzyw-4.webp",
+   "realizacje/linia-pakowanie-warzyw-5.webp"
+  ],
+  "video": "s1i5h-hYMS0",
+  "lead": "Kompletna linia sortująco-ważąco-pakująca: od wywrotnicy skrzyniopalet po raszlownicę.",
+  "body": [
+   "Nasza realizacja dla jednego z klientów to połączenie funkcjonalności i jakości współpracujących ze sobą maszyn.",
+   "Przedstawiona linia do pakowania warzyw umożliwia sortowanie, ważenie i pakowanie produktów w odpowiedniej ilości. Z działaniem wszystkich maszyn można zapoznać się na filmie poniżej.",
+   "Maszyny znajdujące się w przedstawionej linii produkcyjnej: wywrotnica skrzyniopalet, kosz przyjęciowy, kalibrownik rozsuwany, stół selekcyjny rolkowy, wagoworkownica, raszlownica."
+  ],
+  "machines": [
+   "wywrotnica",
+   "kosz",
+   "kalibrownik",
+   "stol-rolkowy",
+   "wagoworkownica",
+   "raszlownica"
+  ],
+  "facts": [
+   [
+    "Zakres",
+    "sortowanie · ważenie · pakowanie"
+   ],
+   [
+    "Maszyn w linii",
+    "6"
+   ],
+   [
+    "Etap linii",
+    "linia kompletna"
+   ]
+  ],
+  "metaTitle": "Linia do pakowania warzyw - realizacja | Agro-Weld",
+  "metaDesc": "Linia do pakowania warzyw: wywrotnica, kosz przyjęciowy, kalibrownik, stół rolkowy, wagoworkownica i raszlownica. Realizacja Agro-Weld."
+ },
+ {
+  "slug": "linia-do-pakowania-ziemniakow",
+  "ref": "2025-026",
+  "cat": "Pakowanie",
+  "title": "Linia do pakowania ziemniaków",
+  "img": "realizacje/linia-ziemniaki-1.webp",
+  "gallery": [
+   "realizacje/linia-ziemniaki-1.webp",
+   "realizacje/linia-ziemniaki-2.webp",
+   "realizacje/linia-ziemniaki-3.webp",
+   "realizacje/linia-ziemniaki-4.webp",
+   "realizacje/linia-ziemniaki-5.webp",
+   "realizacje/linia-ziemniaki-6.webp",
+   "realizacje/linia-ziemniaki-7.webp",
+   "realizacje/linia-ziemniaki-8.webp"
+  ],
+  "video": "cBmztQq_f6o",
+  "lead": "Rozbudowana linia do ziemniaków: sortowanie, czyszczenie, polerowanie, ważenie i pakowanie w jednym ciągu.",
+  "body": [
+   "Z dumą prezentujemy jedną z naszych ostatnich realizacji – rozbudowaną i funkcjonalną linię do pakowania ziemniaków.",
+   "Dzięki połączeniu wielu flagowych maszyn linia umożliwia sortowanie, czyszczenie, polerowanie, ważenie oraz pakowanie odpowiedniej ilości produktów z pełnym profesjonalizmem i większą przyjemnością. Z działaniem wszystkich maszyn można zapoznać się na filmie poniżej.",
+   "Maszyny znajdujące się w linii produkcyjnej: kosz przyjęciowy 1,5 m³, separator podwieszany, czyszczarka szczotkowa z wanną na odpady, przenośnik taśmowy wznoszący, polerka, stół selekcyjny rolkowy z podzielnicami, przenośniki taśmowe odpadowe z wysypami kierunkowymi, wagoworkownica."
+  ],
+  "machines": [
+   "kosz-kp1500",
+   "separator",
+   "czyszczarka",
+   "przenosnik-tasmowe-wznoszace",
+   "stol-rolkowy",
+   "przenosnik-odpadowy",
+   "wagoworkownica"
+  ],
+  "facts": [
+   [
+    "Surowiec",
+    "ziemniaki"
+   ],
+   [
+    "Zakres",
+    "sortowanie · czyszczenie · polerowanie · ważenie · pakowanie"
+   ],
+   [
+    "Etap linii",
+    "linia kompletna"
+   ]
+  ],
+  "metaTitle": "Linia do pakowania ziemniaków - realizacja | Agro-Weld",
+  "metaDesc": "Rozbudowana linia do pakowania ziemniaków: kosz 1,5 m³, separator, czyszczarka szczotkowa, polerka, stół rolkowy, wagoworkownica. Realizacja Agro-Weld."
+ },
+ {
+  "slug": "przenosniki-rolkowe",
+  "ref": "2025-019",
+  "cat": "Transport",
+  "title": "Przenośniki rolkowe — rolotoki grawitacyjne",
+  "img": "realizacje/przenosniki-rolkowe-1.webp",
+  "gallery": [
+   "realizacje/przenosniki-rolkowe-1.webp",
+   "realizacje/przenosniki-rolkowe-2.webp",
+   "realizacje/przenosniki-rolkowe-3.webp",
+   "realizacje/przenosniki-rolkowe-4.webp",
+   "realizacje/przenosniki-rolkowe-5.webp"
+  ],
+  "lead": "Rolotoki grawitacyjne do hal produkcyjnych, magazynowych i handlowych — płynny transport ładunków bez napędu.",
+  "body": [
+   "Nasze przenośniki rolkowe są doskonałym wyposażeniem dla hal produkcyjnych, magazynowych i handlowych. Znacznie usprawniają przepływ ładunków i zwiększając bezpieczeństwo ich transportu, poprawiając w ten sposób efektywność produkcji.",
+   "Oferujemy rolotoki grawitacyjne, które wykorzystują siłę grawitacji do przemieszczania materiałów. Dzięki odpowiedniemu nachyleniu urządzenia te umożliwiają płynny transport towarów na wyznaczonym odcinku."
+  ],
+  "machines": [
+   "przenosnik-rolkowe"
+  ],
+  "facts": [
+   [
+    "Rodzaj",
+    "rolotok grawitacyjny"
+   ],
+   [
+    "Zastosowanie",
+    "hale produkcyjne, magazyny, handel"
+   ],
+   [
+    "Napęd",
+    "brak — siła grawitacji"
+   ]
+  ],
+  "metaTitle": "Przenośniki rolkowe - rolotoki grawitacyjne - realizacja | Agro-Weld",
+  "metaDesc": "Przenośniki rolkowe Agro-Weld: rolotoki grawitacyjne do hal produkcyjnych, magazynowych i handlowych. Zobacz realizację."
+ },
+ {
+  "slug": "przenosniki-tasmowe-z-tasma-modularna",
+  "ref": "2025-016",
+  "cat": "Transport",
+  "title": "Przenośniki taśmowe z taśmą modularną",
+  "img": "realizacje/tasma-modularna-1.webp",
+  "gallery": [
+   "realizacje/tasma-modularna-1.webp",
+   "realizacje/tasma-modularna-2.webp",
+   "realizacje/tasma-modularna-3.webp",
+   "realizacje/tasma-modularna-4.webp",
+   "realizacje/tasma-modularna-5.webp",
+   "realizacje/tasma-modularna-6.webp",
+   "realizacje/tasma-modularna-7.webp",
+   "realizacje/tasma-modularna-8.webp"
+  ],
+  "lead": "Taśma modularna: wytrzymałość, łatwe czyszczenie i odporność chemiczna — transport w wymagających warunkach higienicznych.",
+  "body": [
+   "Przenośniki taśmowe z taśmą modularną oferują wiele korzyści, które czynią je doskonałym rozwiązaniem w różnych branżach. Są niezwykle wytrzymałe i trwałe dzięki wysokiej jakości materiałom, a ich modułowa konstrukcja ułatwia konserwację i czyszczenie.",
+   "Elastyczność i adaptowalność pozwalają na łatwe dostosowanie do specyficznych potrzeb, a wysoka odporność chemiczna i termiczna sprawia, że są idealne do trudnych warunków pracy. Zapewniają bezpieczeństwo i higienę, minimalizując ryzyko zanieczyszczeń i oferując bezpieczne warunki dla operatorów.",
+   "Dodatkowo przenośniki te pracują cicho, co poprawia komfort pracy, i są wszechstronnie stosowane w różnych branżach, takich jak spożywcza, farmaceutyczna, motoryzacyjna i elektroniczna. Efektywność energetyczna przenośników modularnych również pomaga w redukcji kosztów operacyjnych, co czyni je niezawodnym i ekonomicznym rozwiązaniem przemysłowym."
+  ],
+  "machines": [
+   "przenosnik-tasmowe-poziome",
+   "przenosnik-tasmowe-wznoszace"
+  ],
+  "facts": [
+   [
+    "Taśma",
+    "modularna, segmentowa"
+   ],
+   [
+    "Odporność",
+    "chemiczna i termiczna"
+   ],
+   [
+    "Branże",
+    "spożywcza · farmaceutyczna · motoryzacyjna · elektroniczna"
+   ]
+  ],
+  "metaTitle": "Przenośniki taśmowe z taśmą modularną - realizacja | Agro-Weld",
+  "metaDesc": "Przenośniki taśmowe z taśmą modularną: trwałość, łatwa konserwacja, odporność chemiczna i termiczna, cicha praca. Realizacja Agro-Weld."
+ },
+ {
+  "slug": "wagoworkownica",
+  "ref": "2025-012",
+  "cat": "Pakowanie",
+  "title": "Wagoworkownica z podestem do worków",
+  "img": "realizacje/wagoworkownica-1.webp",
+  "gallery": [
+   "realizacje/wagoworkownica-1.webp",
+   "realizacje/wagoworkownica-2.webp"
+  ],
+  "video": "sIx43jitIlI",
+  "lead": "Stanowisko workowania obsługiwane jedną ręką — podest do worków i pedał nożny zwalniający ręce operatora.",
+  "body": [
+   "Wagoworkownica firmy Agro-Weld powstała z myślą o usprawnieniu pracy każdego jej użytkownika.",
+   "Dzięki podestowi do worków praca z naszą maszyną jest prosta i można ją obsługiwać jedną ręką, a pedał zapewnia komfort i przyspiesza pracę. Z działaniem maszyny można zapoznać się na filmie poniżej."
+  ],
+  "machines": [
+   "wagoworkownica"
+  ],
+  "facts": [
+   [
+    "Obsługa",
+    "jedna ręka — pedał nożny"
+   ],
+   [
+    "Wyposażenie",
+    "podest do worków"
+   ],
+   [
+    "Etap linii",
+    "pakowanie"
+   ]
+  ],
+  "metaTitle": "Wagoworkownica z podestem do worków - realizacja | Agro-Weld",
+  "metaDesc": "Wagoworkownica Agro-Weld z podestem do worków i pedałem nożnym — obsługa jedną ręką. Zobacz realizację z filmem."
+ },
+ {
+  "slug": "zasobnik-buforowy-kwasoodporny",
+  "ref": "2025-009",
+  "cat": "Przyjęcie i buforowanie",
+  "title": "Zasobnik buforowy ze stali nierdzewnej",
+  "img": "realizacje/zasobnik-buforowy-1.webp",
+  "gallery": [
+   "realizacje/zasobnik-buforowy-1.webp",
+   "realizacje/zasobnik-buforowy-2.webp",
+   "realizacje/zasobnik-buforowy-3.webp"
+  ],
+  "video": "fE0JFT665q8",
+  "lead": "Zasobnik buforowy w wykonaniu kwasoodpornym — regulowana przepustnica, daszek odciążający taśmę, atest spożywczy.",
+  "body": [
+   "Nasz zasobnik buforowy wykonany jest z wysokiej jakości stali nierdzewnej, co zapewnia jego trwałość i wytrzymałość konstrukcji.",
+   "Dzięki regulacji otwarcia przepustnicy oraz daszkowi odciążającemu taśmę praca będzie płynna i przyjemna. Zastosowanie taśmy z atestem spożywczym pozwala na pracę z żywnością. Z działaniem maszyny można zapoznać się na filmie poniżej."
+  ],
+  "machines": [
+   "zasobnik"
+  ],
+  "facts": [
+   [
+    "Wykonanie",
+    "stal nierdzewna (kwasoodporna)"
+   ],
+   [
+    "Taśma",
+    "atest spożywczy"
+   ],
+   [
+    "Regulacja",
+    "otwarcie przepustnicy"
+   ]
+  ],
+  "metaTitle": "Zasobnik buforowy ze stali nierdzewnej - realizacja | Agro-Weld",
+  "metaDesc": "Zasobnik buforowy Agro-Weld ze stali nierdzewnej: regulowana przepustnica, daszek odciążający taśmę, taśma z atestem spożywczym."
+ }
 ]

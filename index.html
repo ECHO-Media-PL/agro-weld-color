@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="assets/favicon.png" sizes="any">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <title>Agro-Weld — maszyny i linie technologiczne dla rolnictwa i przemysłu</title>
 <meta name="description" content="Agro-Weld projektuje i produkuje maszyny do obróbki warzyw i owoców oraz kompletne linie produkcyjne — od przyjęcia surowca po paletyzację. Polski producent, Środa Wlkp.">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
@@ -256,7 +258,7 @@ footer>div>div:last-child{flex-direction:column;align-items:flex-start!important
   <div class="pad" style="max-width:1280px;margin:0 auto;padding:0 32px;position:relative">
     <div data-reveal style="display:flex;flex-wrap:wrap;border-top:1px solid rgba(20,22,14,.18);border-bottom:1px solid rgba(20,22,14,.18);font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.11em;text-transform:uppercase;color:#7E7A5E">
       <div style="flex:1.6;min-width:230px;padding:9px 0;display:flex;align-items:center;gap:9px"><span style="width:7px;height:7px;background:#8C3A43;display:inline-block"></span>Projektowanie · Produkcja · Serwis</div>
-      <a href="/uploads/AgroWeld katalog 2026 20 01.pdf" target="_blank" rel="noopener" style="padding:9px 0 9px 18px;border-left:1px solid rgba(20,22,14,.18);display:flex;align-items:center;justify-content:flex-end;color:#41571F;font-weight:700">Katalog 2026 ↗</a>
+      <a href="/uploads/agro-weld-katalog-2026.pdf" target="_blank" rel="noopener" style="padding:9px 0 9px 18px;border-left:1px solid rgba(20,22,14,.18);display:flex;align-items:center;justify-content:flex-end;color:#41571F;font-weight:700">Katalog 2026 ↗</a>
     </div>
     <div style="position:relative;min-height:calc(100vh - 214px);padding:10px 0 20px">
       <div aria-hidden="true" class="ghost" id="awGhost" style="position:absolute;top:50%;right:6%;transform:translateY(-53%);font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:clamp(300px,42vw,600px);line-height:.66;letter-spacing:-.05em;color:transparent;-webkit-text-stroke:1.5px rgba(20,22,14,.09);z-index:0;pointer-events:none;animation:awGhostIn 1.1s cubic-bezier(.2,.7,.2,1) both">01</div>
@@ -628,7 +630,7 @@ footer>div>div:last-child{flex-direction:column;align-items:flex-start!important
         <span style="padding:32px 34px;display:flex;flex-direction:column;justify-content:center">
           <span class="mono" style="display:flex;align-items:center;gap:12px;margin-bottom:16px;font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase"><span style="color:#8C3A43">Wyróżniony</span><span style="color:#C6BEA4">·</span><span style="color:#8A8163">Dobór maszyn</span></span>
           <h3 class="btitle" style="font-size:28px;line-height:1.1;margin-bottom:12px;text-wrap:balance">Jak wybrać kosz przyjęciowy do linii produkcyjnej? Poradnik krok po kroku</h3>
-          <p style="font-size:15px;line-height:1.6;color:#56603F;text-wrap:pretty;margin-bottom:22px">Pojemność, taśma, separator i miejsce w linii — jak dobrać kosz KP1500, KP3000, KPS 3001G lub KP5000G do skali produkcji.</p>
+          <p style="font-size:15px;line-height:1.6;color:#56603F;text-wrap:pretty;margin-bottom:22px">Pojemność, taśma, separator i miejsce w linii — jak dobrać kosz KP1500, KP3000, KPS3000G lub KP5000G do skali produkcji.</p>
           <span class="mono bmore" style="font-size:11px;font-weight:700;color:#41571F;display:inline-flex;align-items:center;gap:8px">Czytaj artykuł<span>→</span><span style="color:#A8A084;font-weight:400;margin-left:4px">· 8 min</span></span>
         </span>
       </a>
@@ -743,7 +745,11 @@ footer>div>div:last-child{flex-direction:column;align-items:flex-start!important
     <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;padding-top:26px;flex-wrap:wrap">
       <span style="font-size:13px;color:#5E6A47">© 2026 Agro-Weld Spółka z ograniczoną odpowiedzialnością. Wszelkie prawa zastrzeżone.</span>
       <a class="awlink" href="/polityka-prywatnosci/" style="font-size:13px;color:#5E6A47">Polityka prywatności</a>
-      <a class="awlink mono" href="/uploads/AgroWeld katalog 2026 20 01.pdf" style="font-size:12.5px;color:#7E8A63;letter-spacing:.04em">↓ Pobierz katalog (PDF)</a>
+      <button type="button" class="awlink" data-aw-cookie-settings style="font-size:13px;color:#5E6A47;background:none;border:0;padding:0;cursor:pointer;font-family:inherit">Ustawienia cookies</button>
+      <a class="awlink mono" href="/uploads/agro-weld-katalog-2026.pdf" style="font-size:12.5px;color:#7E8A63;letter-spacing:.04em">↓ Pobierz katalog (PDF)</a>
+    </div>
+    <div style="display:flex;justify-content:flex-end;padding-top:14px">
+      <a class="awlink mono" href="https://echo-media.pl" target="_blank" rel="noopener" style="font-size:10.5px;letter-spacing:.05em;color:#3E4630">Strona zmontowana i uspawana przez ECHO Media</a>
     </div>
   </div>
 </footer>
@@ -822,11 +828,10 @@ footer>div>div:last-child{flex-direction:column;align-items:flex-start!important
       },320);
     }else{show(next,false);}
   },3400);
-
-  // contact form
-  var form=document.getElementById('awForm');
-  form.addEventListener('submit',function(e){e.preventDefault();form.style.display='none';var s=document.getElementById('awSent');s.style.display='flex';});
 })();
 </script>
+<script src="assets/form.js" defer></script>
+<script>addEventListener("load",function(){var f=document.getElementById("awForm");if(!f||f.dataset.awBound)return;f.addEventListener("submit",function(e){e.preventDefault();var p=document.createElement("p");p.style.cssText="font-size:14px;line-height:1.5;color:#E0A0A6;margin:0";p.textContent="Wysyłka formularza jest chwilowo niedostępna. Napisz na biuro@agro-weld.pl lub zadzwoń: +48 725 140 257.";f.appendChild(p);});});</script>
+<script src="assets/cookies.js" defer></script>
 </body>
 </html>

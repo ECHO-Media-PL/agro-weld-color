@@ -24,6 +24,12 @@ services:
         sync: false
       - key: DEEPL_API_KEY
         sync: false
+      - key: RESEND_API_KEY
+        sync: false
+      - key: FORM_TO
+        value: biuro@agro-weld.pl
+      - key: FORM_FROM
+        sync: false
   - type: web
     name: agro-weld
     runtime: static
@@ -31,8 +37,209 @@ services:
     staticPublishPath: dist
     routes:
       - type: redirect
-        source: /maszyny/kosz-przyjeciowy
-        destination: /maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe
+        source: /realizacje/czyszczarka-z-szuflada
+        destination: /realizacje/czyszczarka-szczotkowa-z-szuflada/
       - type: redirect
-        source: /maszyny/kosz-przyjeciowy/
-        destination: /maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/
+        source: /realizacje/kosz-przyjeciowy-5m
+        destination: /realizacje/kosz-przyjeciowy-5m3/
+      - type: redirect
+        source: /realizacje/kosz-przyjeciowy-separator
+        destination: /realizacje/kosz-przyjeciowy-z-separatorem/
+      - type: redirect
+        source: /realizacje/linia-do-pakowania-warzyw
+        destination: /realizacje/linia-do-pakowania-warzyw/
+      - type: redirect
+        source: /realizacje/linia-do-sortowania-pakowania-oczyszczania
+        destination: /realizacje/linia-do-pakowania-ziemniakow/
+      - type: redirect
+        source: /realizacje/przenosniki-rolkowe
+        destination: /realizacje/przenosniki-rolkowe/
+      - type: redirect
+        source: /realizacje/przenosniki-tasmowe-z-tasma-modularna
+        destination: /realizacje/przenosniki-tasmowe-z-tasma-modularna/
+      - type: redirect
+        source: /realizacje/wagoworkownica
+        destination: /realizacje/wagoworkownica/
+      - type: redirect
+        source: /realizacje/zasobnik-buforowy-kwasoodrporny
+        destination: /realizacje/zasobnik-buforowy-kwasoodporny/
+      - type: redirect
+        source: /finansowanie
+        destination: /kontakt/
+      - type: redirect
+        source: /katalog
+        destination: /do-pobrania/
+      - type: redirect
+        source: /kontakt
+        destination: /kontakt/
+      - type: redirect
+        source: /o-firmie
+        destination: /o-firmie/
+      - type: redirect
+        source: /polityka-prywatnosci
+        destination: /polityka-prywatnosci/
+      - type: redirect
+        source: /maszyny
+        destination: /maszyny/
+      - type: redirect
+        source: /maszyny/bufor-do-sortowania/67cdeb15799068ebb64efde8/
+        destination: /maszyny/pakowanie/bufor-do-pakowania/
+      - type: redirect
+        source: /maszyny/czyszczarka-do-imbiru-lub-chrzanu/697c788bfd4fc91bf9d751b9/
+        destination: /maszyny/oczyszczanie/czyszczarka-do-imbiru-i-chrzanu/
+      - type: redirect
+        source: /maszyny/czyszczarka-szczotkowa/67cde010799068ebb64efde2/
+        destination: /maszyny/oczyszczanie/czyszczarka-szczotkowa/
+      - type: redirect
+        source: /maszyny/dwubębnowy-sortownik-do-owoców-drobnych/67d05050a60f9ebfefd3a472/
+        destination: /maszyny/sortowanie/dwubebnowy-sortownik-do-owocow-drobnych/
+      - type: redirect
+        source: /maszyny/formatory-palet/697b8b67b218f4072882f3fd/
+        destination: /maszyny/pakowanie/formatory-palet/
+      - type: redirect
+        source: /maszyny/kalibrownik-rozsuwany/67cde69c799068ebb64efde4/
+        destination: /maszyny/sortowanie/kalibrownik-rozsuwany/
+      - type: redirect
+        source: /maszyny/kosz-przyjęciowy-kp1000/67cf16f2593631ce8409a954/
+        destination: /maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/#kp1000
+      - type: redirect
+        source: /maszyny/kosz-przyjęciowy-kp1500/67cf195f593631ce8409a956/
+        destination: /maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/#kp1500
+      - type: redirect
+        source: /maszyny/kosz-przyjęciowy-kp2000/67cf1cd8593631ce8409a958/
+        destination: /maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/#kp2000
+      - type: redirect
+        source: /maszyny/kosz-przyjęciowy-kp3000/67cf1eea593631ce8409a95a/
+        destination: /maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/#kp3000
+      - type: redirect
+        source: /maszyny/kosz-przyjęciowy-kp5000g/67cf24b6593631ce8409a95e/
+        destination: /maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/#kp5000g
+      - type: redirect
+        source: /maszyny/kosz-przyjęciowy-kps3000g/67cf2193593631ce8409a95c/
+        destination: /maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/#kps3000g
+      - type: redirect
+        source: /maszyny/liczarka/67cf27a9593631ce8409a960/
+        destination: /maszyny/wazenie-i-liczenie/liczarka/
+      - type: redirect
+        source: /maszyny/napełniacz-kaskadowy/67ce00bcfbceb1c67efb671c/
+        destination: /maszyny/pakowanie/napelniacz-kaskadowy/
+      - type: redirect
+        source: /maszyny/paletyzatory/696fb7e82abe02495323d54f/
+        destination: /maszyny/paletyzacja/
+      - type: redirect
+        source: /maszyny/pielnik-do-obróbki-redlin/696a59794da81bc256722bba/
+        destination: /maszyny/pielenie/pielnik-do-obrobki-redlin/
+      - type: redirect
+        source: /maszyny/przenośnik-do-materiałów-sypkich/6672c526a12ee4f19ab16310/
+        destination: /maszyny/przenosniki/przenosnik-do-materialow-sypkich/
+      - type: redirect
+        source: /maszyny/przenośnik-odpadowy/6672c2a4a12ee4f19ab16309/
+        destination: /maszyny/przenosniki/przenosnik-odpadowy/
+      - type: redirect
+        source: /maszyny/przenośnik-taśmowy-poprzeczny/697c8638fd4fc91bf9d751e5/
+        destination: /maszyny/pakowanie/przenosnik-poprzeczny-do-raszlownicy/
+      - type: redirect
+        source: /maszyny/przenośnik-taśmowy-poziomy/6671d5e3ad3ebbf4a1bdb8fa/
+        destination: /maszyny/przenosniki/przenosniki-tasmowe-poziome/
+      - type: redirect
+        source: /maszyny/przenośnik-taśmowy-wznoszący/6672d8b4a12ee4f19ab1632f/
+        destination: /maszyny/przenosniki/przenosniki-tasmowe-wznoszace/
+      - type: redirect
+        source: /maszyny/przenośnik-taśmowy-z-przegrodami/666c1dd97db89265d45932c9/
+        destination: /maszyny/przenosniki/przenosniki-tasmowe-poziome/
+      - type: redirect
+        source: /maszyny/przenośniki-rolkowe/67d055ce56741f12cc290d54/
+        destination: /maszyny/przenosniki/przenosniki-rolkowe/
+      - type: redirect
+        source: /maszyny/przenośniki-z-taśmą-modularną/67d05b4e56741f12cc290d56/
+        destination: /maszyny/przenosniki/przenosniki-tasmowe-poziome/
+      - type: redirect
+        source: /maszyny/raszlownica/67cdfef9fbceb1c67efb671a/
+        destination: /maszyny/pakowanie/raszlownica/
+      - type: redirect
+        source: /maszyny/separator-ziemii-i-kamienii/67cddcf7799068ebb64efde0/
+        destination: /maszyny/oczyszczanie/separator-ziemi-i-kamieni/
+      - type: redirect
+        source: /maszyny/sortownik-do-owoców-drobnych/67cde8d0799068ebb64efde6/
+        destination: /maszyny/sortowanie/sortownik-do-owocow-drobnych/
+      - type: redirect
+        source: /maszyny/stoły-obrotowe/697c804dfd4fc91bf9d751ce/
+        destination: /maszyny/pakowanie/stoly-obrotowe/
+      - type: redirect
+        source: /maszyny/stoły-selekcyjne-rolkowe/67cdf2cf799068ebb64efdec/
+        destination: /maszyny/selekcja/stoly-selekcyjne-rolkowe/
+      - type: redirect
+        source: /maszyny/stoły-selekcyjne-taśmowe/67cded6b799068ebb64efdea/
+        destination: /maszyny/selekcja/stoly-selekcyjne-tasmowe/
+      - type: redirect
+        source: /maszyny/waga-kontrolna/67cf2b2e593631ce8409a962/
+        destination: /maszyny/wazenie-i-liczenie/waga-kontrolna/
+      - type: redirect
+        source: /maszyny/wagoworkownica/67cdfd50fbceb1c67efb6718/
+        destination: /maszyny/pakowanie/wagoworkownica/
+      - type: redirect
+        source: /maszyny/wanna-do-płukania/697c7cc3fd4fc91bf9d751c0/
+        destination: /maszyny/oczyszczanie/wanna-do-plukania/
+      - type: redirect
+        source: /maszyny/wywrotnica-skrzyniopalet/67cdd634799068ebb64efddc/
+        destination: /maszyny/rozladunek-skrzyn/wywrotnica-skrzyniopalet/
+      - type: redirect
+        source: /maszyny/zasobnik-buforowy/67cdd9c4799068ebb64efdde/
+        destination: /maszyny/przyjecie-i-buforowanie/zasobnik-buforowy/
+      - type: redirect
+        source: /realizacje
+        destination: /realizacje/
+      - type: redirect
+        source: /realizacje/linia-do-cytrusow
+        destination: /realizacje/linia-do-cytrusow/
+      - type: redirect
+        source: /realizacje/sortownik-do-borowek
+        destination: /realizacje/linia-do-sortowania-borowki/
+      - type: redirect
+        source: /realizacje/stol-selekcyjny-inox
+        destination: /realizacje/stol-selekcyjny-inox/
+      - type: redirect
+        source: /realizacje/raszlownica
+        destination: /realizacje/raszlownica-z-modulem-pakujacym/
+      - type: redirect
+        source: /linie-produkcyjne
+        destination: /linie-produkcyjne/
+      - type: redirect
+        source: /linie-produkcyjne/zaawansowana-linia-do-liczenia-i-pakowania-cytrusow-inox
+        destination: /realizacje/linia-do-cytrusow/
+      - type: redirect
+        source: /linie-produkcyjne/linia-do-buforowania-i-recznej-selekcji-cebuli
+        destination: /linie-produkcyjne/
+      - type: redirect
+        source: /linie-produkcyjne/linia-do-oczyszczania-mycia-i-pakowania-warzyw
+        destination: /linie-produkcyjne/
+      - type: redirect
+        source: /linie-produkcyjne/linia-do-selekcji-i-recznego-pakowania-batatow
+        destination: /linie-produkcyjne/
+      - type: redirect
+        source: /linie-produkcyjne/propozycja-linii-do-czyszczenia-i-pakowania
+        destination: /linie-produkcyjne/
+      - type: redirect
+        source: /linie-produkcyjne/propozycja-linii-do-kalibracji-i-wazenia
+        destination: /linie-produkcyjne/
+      - type: redirect
+        source: /linie-produkcyjne/propozycja-linii-do-kalibrowania-i-pakowania
+        destination: /linie-produkcyjne/
+      - type: redirect
+        source: /images/AgroWeldKatalog2026.pdf
+        destination: /uploads/agro-weld-katalog-2026.pdf
+      - type: redirect
+        source: /images/Katalog Verbruggen 1 PL v5.pdf
+        destination: /uploads/verbruggen-katalog-paletyzatorow.pdf
+      - type: redirect
+        source: /images/AgroWeldENG.pdf
+        destination: /do-pobrania/
+      - type: redirect
+        source: /en
+        destination: /
+      - type: redirect
+        source: /en/
+        destination: /
+      - type: redirect
+        source: /images/AgroWeldKatalog2025.pdf
+        destination: /uploads/agro-weld-katalog-2026.pdf

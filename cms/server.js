@@ -36,6 +36,7 @@ const R = '/repos/' + REPO;
 // Jeden atomowy commit wielu plików (Git Data API) → jeden deploy na publikację.
 // Kolejka: równoległe publikacje wykonują się jedna po drugiej (bez wyścigu o ref),
 // a konflikt refa (ktoś pchnął w międzyczasie) jest ponawiany raz na świeżym stanie.
+const formHits = {}; // limit zapytań z formularza per IP
 let commitChain = Promise.resolve();
 function commitFiles(files, message, author) {
   const run = async () => {
@@ -135,6 +136,57 @@ http.createServer(async (req, res) => {
       return json(res, 401, { error: 'Błędny e-mail lub hasło.' });
     }
     if (url.pathname === '/api/logout') { res.writeHead(200, { 'Set-Cookie': 'awcms=; Path=/; Max-Age=0', 'Content-Type': 'application/json' }); return res.end('{"ok":true}'); }
+
+    // ---------- publiczny endpoint formularzy zapytań ze strony ----------
+    if (url.pathname === '/api/form') {
+      const origin = req.headers.origin || '';
+      const allowed = ['https://www.agro-weld.pl', 'https://agro-weld.pl', 'https://agro-weld.onrender.com'];
+      const cors = {
+        'Access-Control-Allow-Origin': allowed.includes(origin) ? origin : allowed[0],
+        'Access-Control-Allow-Methods': 'POST, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Max-Age': '86400',
+      };
+      if (req.method === 'OPTIONS') { res.writeHead(204, cors); return res.end(); }
+      if (req.method !== 'POST') { res.writeHead(405, cors); return res.end(); }
+      const ip = (req.headers['x-forwarded-for'] || '').split(',')[0].trim() || req.socket.remoteAddress;
+      const now = Date.now();
+      formHits[ip] = (formHits[ip] || []).filter(t => now - t < 3600e3);
+      if (formHits[ip].length >= 10) { res.writeHead(429, { ...cors, 'Content-Type': 'application/json' }); return res.end('{"error":"Zbyt wiele zapytań. Spróbuj później."}'); }
+      formHits[ip].push(now);
+      let data = {};
+      try { data = JSON.parse(await readBody(req)); } catch (e) {}
+      if (data._hp) { res.writeHead(200, { ...cors, 'Content-Type': 'application/json' }); return res.end('{"ok":true}'); }
+      const email = String(data.email || '').trim();
+      const name = String(data.name || '').trim();
+      if (!name || !/^[^@\s]+@[^@\s]+\.[a-z]{2,}$/i.test(email)) {
+        res.writeHead(400, { ...cors, 'Content-Type': 'application/json' });
+        return res.end('{"error":"Podaj imię i poprawny adres e-mail."}');
+      }
+      const lines = Object.keys(data).filter(k => k !== '_hp').map(k => k + ': ' + String(data[k]).slice(0, 2000));
+      const text = lines.join('\n');
+      const to = ENV.FORM_TO || 'biuro@agro-weld.pl';
+      const subject = 'Zapytanie ze strony' + (data.product ? ' — ' + String(data.product).slice(0, 80) : '');
+      if (!ENV.RESEND_API_KEY) {
+        console.error('FORM (brak RESEND_API_KEY, wiadomość nie wysłana):\n' + text);
+        res.writeHead(501, { ...cors, 'Content-Type': 'application/json' });
+        return res.end('{"error":"Wysyłka nie jest jeszcze skonfigurowana."}');
+      }
+      const body = JSON.stringify({
+        from: ENV.FORM_FROM || 'Formularz Agro-Weld <formularz@agro-weld.pl>',
+        to: [to], reply_to: email, subject, text,
+      });
+      const r = await request('api.resend.com', 'POST', '/emails', {
+        'Authorization': 'Bearer ' + ENV.RESEND_API_KEY, 'Content-Type': 'application/json', 'Content-Length': Buffer.byteLength(body),
+      }, body);
+      if (r.status >= 400) {
+        console.error('FORM Resend ' + r.status + ': ' + r.body.slice(0, 300) + '\n' + text);
+        res.writeHead(502, { ...cors, 'Content-Type': 'application/json' });
+        return res.end('{"error":"Nie udało się wysłać wiadomości."}');
+      }
+      res.writeHead(200, { ...cors, 'Content-Type': 'application/json' });
+      return res.end('{"ok":true}');
+    }
 
     if (url.pathname.startsWith('/api/')) {
       const user = checkSession(req);

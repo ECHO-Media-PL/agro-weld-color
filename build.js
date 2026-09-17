@@ -38,7 +38,10 @@ fs.mkdirSync(OUT, { recursive: true });
 
 // ---------- 2. kopiowanie plików publikowanych bez generowania ----------
 // Wykluczone: dane, szablony, kod CMS, pliki robocze projektu i katalogi deweloperskie.
-const SKIP_DIRS = new Set(['.git', '.github', 'node_modules', 'dist', 'cms', 'content', 'templates', 'screenshots', 'seo']);
+const SKIP_DIRS = new Set(['.git', '.github', 'node_modules', 'dist', 'cms', 'content', 'templates', 'screenshots', 'seo', 'uploads']);
+// uploads/ to katalog roboczy (dokumenty, zdjęcia źródłowe, arkusze) — NIE publikujemy go w całości.
+// Do dist/uploads/ trafiają tylko pliki z tej listy oraz zdjęcia wpisów dodane przez CMS (uploads/blog/).
+const UPLOADS_PUBLIC = ['agro-weld-katalog-2026.pdf', 'verbruggen-katalog-paletyzatorow.pdf'];
 const SKIP_FILES = new Set(['build.js', 'render.yaml', 'github.md', 'package.json', 'package-lock.json', '.gitignore', 'support.js', 'aw-data.js', 'CLAUDE.md']);
 const skipFile = f => SKIP_FILES.has(f) || f.endsWith('.dc.html') || f.startsWith('.');
 // katalogi, których zawartość HTML jest w całości generowana z danych — kopiujemy tylko
@@ -62,6 +65,18 @@ function copyTree(from, rel) {
   }
 }
 copyTree('.', '');
+
+// publikowane pliki z uploads/ (whitelist + zdjęcia wpisów blogowych z CMS)
+if (fs.existsSync('uploads')) {
+  fs.mkdirSync(path.join(OUT, 'uploads'), { recursive: true });
+  for (const f of UPLOADS_PUBLIC) {
+    if (fs.existsSync(path.join('uploads', f))) {
+      fs.copyFileSync(path.join('uploads', f), path.join(OUT, 'uploads', f));
+      copied++;
+    } else console.warn('brak pliku uploads/' + f);
+  }
+  if (fs.existsSync(path.join('uploads', 'blog'))) copyTree(path.join('uploads', 'blog'), 'uploads/blog');
+}
 
 // ---------- 3. dane ----------
 const site = J('content/strona-glowna.json');
@@ -142,13 +157,16 @@ for (const p of posts) {
   if (!p.managed || p.draft || !tpl) continue;
   const jsonld = JSON.stringify({
     '@context': 'https://schema.org', '@type': 'BlogPosting',
-    headline: p.title, description: p.metaDesc, datePublished: p.date,
+    headline: p.title, description: p.metaDesc, datePublished: p.date, dateModified: p.updated || p.date,
+    image: 'https://www.agro-weld.pl/' + (p.cover || 'assets/logo.webp'),
     url: 'https://www.agro-weld.pl/blog/' + p.slug + '/',
+    mainEntityOfPage: { '@type': 'WebPage', '@id': 'https://www.agro-weld.pl/blog/' + p.slug + '/' },
     publisher: { '@type': 'Organization', name: 'Agro-Weld Spółka z ograniczoną odpowiedzialnością', url: 'https://www.agro-weld.pl/' },
   });
   const fill = {
     META_TITLE: esc(p.metaTitle || p.title), META_DESC: escA(p.metaDesc || ''), SLUG: p.slug,
-    JSONLD: jsonld, CRUMB: esc(p.title.length > 44 ? p.title.slice(0, 42).trim() + '…' : p.title),
+    JSONLD: jsonld, OGIMAGE: 'https://www.agro-weld.pl/' + (p.cover || 'assets/logo.webp'),
+    CRUMB: esc(p.title.length > 44 ? p.title.slice(0, 42).trim() + '…' : p.title),
     CATEGORY: esc(p.category), DATE: fmtDate(p.date), READ: p.read || 5,
     TITLE: esc(p.title), LEAD: esc(p.lead || ''), TOC: tocFromBody(p.bodyHtml || ''),
     BODY: p.bodyHtml || '', RELATED: relatedCards(p), RELM: relMachines(p),
@@ -201,7 +219,7 @@ if (feat && hasSrc('index.html') && src('index.html').includes('<!--CMS:HOMEBLOG
 // ---------- 7. sitemap ----------
 if (hasSrc('sitemap.xml')) {
   const urls = managed.map(p =>
-    '  <url><loc>https://www.agro-weld.pl/blog/' + p.slug + '/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>').join('\n');
+    '  <url><loc>https://www.agro-weld.pl/blog/' + p.slug + '/</loc><lastmod>' + (p.updated || p.date) + '</lastmod></url>').join('\n');
   write('sitemap.xml', region(src('sitemap.xml'), 'BLOG', urls));
 }
 

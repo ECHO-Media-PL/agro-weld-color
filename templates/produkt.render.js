@@ -163,12 +163,13 @@
       { '@type': 'Product', name: p.name, description: p.metaDesc || p.lead, url: url,
         image: (p.gallery && p.gallery.length) ? p.gallery.map(function (g) { return 'https://www.agro-weld.pl/assets/' + g[0]; }) : (p.img ? 'https://www.agro-weld.pl/assets/' + p.img : undefined),
         brand: { '@type': 'Brand', name: 'Agro-Weld' }, manufacturer: { '@type': 'Organization', name: 'Agro-Weld Spółka z ograniczoną odpowiedzialnością' },
-        model: single ? undefined : p.models.join(', '), category: catName }
+        model: single ? undefined : p.models.join(', '), category: catName,
+        offers: { '@type': 'Offer', availability: 'https://schema.org/InStock', itemCondition: 'https://schema.org/NewCondition', priceSpecification: { '@type': 'PriceSpecification', priceCurrency: 'PLN', valueAddedTaxIncluded: false }, url: url, seller: { '@type': 'Organization', name: 'Agro-Weld Spółka z ograniczoną odpowiedzialnością', url: 'https://www.agro-weld.pl/' } } }
     ].concat((p.faq && p.faq.length) ? [{ '@type': 'FAQPage', mainEntity: p.faq.map(function (f) { return { '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: stripTags(f.a) } }; }) }] : []) });
     var img = (p.variants && p.variants.length) ? '../../../assets/' + p.variants[0].img : (p.img ? '../../../assets/' + p.img : '../../../assets/maszyna-placeholder.png');
     var fill = {
       META_TITLE: esc(p.metaTitle || p.name + ' – Agro-Weld'), META_DESC: escA(p.metaDesc || p.lead), URL: url, JSONLD: jsonld,
-      CAT: p.cat, CATNAME: esc(catName), CATNUM: pad2(ci + 1), CATNUMINT: String(ci + 1), NAME: esc(p.name), LEAD: esc(p.lead), DESC: esc(p.desc || ''),
+      CAT: p.cat, CATNAME: esc(catName), CATNUM: pad2(ci + 1), CATNUMINT: String(ci + 1), NAME: esc(p.name), H1: esc(p.h1 || p.name), LEAD: esc(p.lead), DESC: esc(p.desc || ''),
       MODELS_LABEL: single ? 'Wykonanie na zamówienie' : (p.models.length + (p.models.length === 1 ? ' model' : p.models.length < 5 ? ' modele' : ' modeli')),
       MODEL_CHIPS: single ? '' : '<div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px">' + p.models.map(function (m, i) {
         var v = (p.variants || []).find(function (x) { return x.model === m; });

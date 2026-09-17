@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="../../../assets/favicon.png" sizes="any">
+<link rel="apple-touch-icon" href="../../../assets/apple-touch-icon.png">
 <title>{{META_TITLE}}</title>
 <meta name="description" content="{{META_DESC}}">
 <link rel="canonical" href="{{URL}}">
@@ -182,13 +184,13 @@ th[scope="row"]{min-width:120px}
     </div>
     <div class="phero" style="display:grid;grid-template-columns:1.02fr .98fr;grid-template-areas:'text img' 'cta img';gap:0 56px;align-items:center;padding:46px 0 60px">
       <div style="grid-area:text;align-self:end">
-        <h1 data-reveal style="font-size:clamp(40px,4.8vw,60px);line-height:.98;margin-bottom:18px;text-wrap:balance;color:#ECE7D7">{{NAME}}</h1>
+        <h1 data-reveal style="font-size:clamp(40px,4.8vw,60px);line-height:.98;margin-bottom:18px;text-wrap:balance;color:#ECE7D7">{{H1}}</h1>
         <p data-reveal style="font-size:18px;line-height:1.6;color:#A7AE92;margin-bottom:26px;max-width:540px;text-wrap:pretty">{{LEAD}}</p>
         <div data-reveal>{{MODEL_CHIPS}}</div>
       </div>
       <div class="pcta" data-reveal style="grid-area:cta;align-self:start;display:flex;flex-wrap:wrap;gap:12px">
           <a class="btn btnp" href="#zapytanie" style="background:#B7D44B;color:#14160E;padding:15px 26px;border-radius:7px;font-weight:700;font-size:15.5px">Zapytaj o tę maszynę <span class="ar">→</span></a>
-          <a class="btn btno" href="/uploads/AgroWeld katalog 2026 20 01.pdf" target="_blank" rel="noopener" style="background:transparent;color:#ECE7D7;border:1.5px solid rgba(236,231,215,.34);padding:14px 24px;border-radius:7px;font-weight:600;font-size:15.5px">↓ Katalog (PDF)</a>
+          <a class="btn btno" href="/uploads/agro-weld-katalog-2026.pdf" target="_blank" rel="noopener" style="background:transparent;color:#ECE7D7;border:1.5px solid rgba(236,231,215,.34);padding:14px 24px;border-radius:7px;font-weight:600;font-size:15.5px">↓ Katalog (PDF)</a>
       </div>
       <div data-reveal style="grid-area:img">
         <div style="position:relative;background:#ECE7D7;border:1px solid #14160E;border-radius:18px;overflow:hidden;box-shadow:0 50px 90px -50px rgba(0,0,0,.7)">
@@ -365,7 +367,11 @@ th[scope="row"]{min-width:120px}
     <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;padding-top:26px;flex-wrap:wrap">
       <span style="font-size:13px;color:#5E6A47">© 2026 Agro-Weld Spółka z ograniczoną odpowiedzialnością. Wszelkie prawa zastrzeżone.</span>
       <a class="awlink" href="/polityka-prywatnosci/" style="font-size:13px;color:#5E6A47">Polityka prywatności</a>
-      <a class="awlink mono" href="/uploads/AgroWeld katalog 2026 20 01.pdf" style="font-size:12.5px;color:#7E8A63;letter-spacing:.04em">↓ Pobierz katalog (PDF)</a>
+      <button type="button" class="awlink" data-aw-cookie-settings style="font-size:13px;color:#5E6A47;background:none;border:0;padding:0;cursor:pointer;font-family:inherit">Ustawienia cookies</button>
+      <a class="awlink mono" href="/uploads/agro-weld-katalog-2026.pdf" style="font-size:12.5px;color:#7E8A63;letter-spacing:.04em">↓ Pobierz katalog (PDF)</a>
+    </div>
+    <div style="display:flex;justify-content:flex-end;padding-top:14px">
+      <a class="awlink mono" href="https://echo-media.pl" target="_blank" rel="noopener" style="font-size:10.5px;letter-spacing:.05em;color:#3E4630">Strona zmontowana i uspawana przez ECHO Media</a>
     </div>
   </div>
 </footer>
@@ -381,9 +387,10 @@ th[scope="row"]{min-width:120px}
   if(main)main.style.transition='opacity .16s';
   document.querySelectorAll('.gthumb').forEach(function(b){b.addEventListener('click',function(){swap(b.getAttribute('data-src'),b.getAttribute('data-alt'));clearThumbs();clearChips();b.style.borderColor='#B7D44B';b.setAttribute('aria-current','true');if(cap)cap.style.display='none';});});
   document.querySelectorAll('.mchip').forEach(function(b){b.addEventListener('click',function(){swap(b.getAttribute('data-src'),b.getAttribute('data-alt'));clearThumbs();clearChips();b.style.background='#B7D44B';b.style.color='#14160E';b.style.borderColor='#B7D44B';b.setAttribute('aria-pressed','true');if(cap){cap.textContent=b.getAttribute('data-cap');cap.style.display='block';}var t=document.querySelector(b.getAttribute('data-target'));document.querySelectorAll('#modele li[id]').forEach(function(l){l.style.boxShadow='';});if(t)t.style.boxShadow='inset 0 0 0 3px #B7D44B';});});
-  var form=document.getElementById('awForm');
-  form.addEventListener('submit',function(e){e.preventDefault();form.style.display='none';document.getElementById('awSent').style.display='flex';});
 })();
 </script>
+<script src="../../../assets/form.js" defer></script>
+<script>addEventListener("load",function(){var f=document.getElementById("awForm");if(!f||f.dataset.awBound)return;f.addEventListener("submit",function(e){e.preventDefault();var p=document.createElement("p");p.style.cssText="font-size:14px;line-height:1.5;color:#E0A0A6;margin:0";p.textContent="Wysyłka formularza jest chwilowo niedostępna. Napisz na biuro@agro-weld.pl lub zadzwoń: +48 725 140 257.";f.appendChild(p);});});</script>
+<script src="../../../assets/cookies.js" defer></script>
 </body>
 </html>

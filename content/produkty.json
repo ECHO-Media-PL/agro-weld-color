@@ -76,7 +76,7 @@
    "Płynna regulacja obrotów falownikiem"
   ],
   "uses": "Warzywa korzeniowe (marchew, pietruszka, buraki, ziemniaki), warzywa cebulowe i owoce dostarczane w skrzyniopaletach lub Big-Bagach z otwartą górą worka.",
-  "metaTitle": "Wywrotnica skrzyniopalet WS-1420/1620/1820 – Agro-Weld",
+  "metaTitle": "Wywrotnica skrzyniopalet WS-1420/1620/1820 | Agro-Weld",
   "metaDesc": "Wywrotnica do skrzyniopalet – 3 szerokości robocze, udźwig do 2 ton, siłowniki 180 barów. Regulowana klapa wylotowa. Wycena – Agro-Weld.",
   "sections": [
    {
@@ -122,7 +122,8 @@
     "a": "Tak, regulowana klapa wylotowa pozwala precyzyjnie kontrolować tempo rozładunku, co ogranicza ryzyko obicia delikatnych produktów."
    }
   ],
-  "cta": "Rozładowujesz skrzyniopalety ręcznie? Napisz do nas, jaką szerokość skrzyń posiadasz – dobierzemy odpowiedni model wywrotnicy i zaproponujemy wycenę. Wróć do kategorii <a href=\"/maszyny/rozladunek-skrzyn/\">Rozładunek skrzyń</a>."
+  "cta": "Rozładowujesz skrzyniopalety ręcznie? Napisz do nas, jaką szerokość skrzyń posiadasz – dobierzemy odpowiedni model wywrotnicy i zaproponujemy wycenę. Wróć do kategorii <a href=\"/maszyny/rozladunek-skrzyn/\">Rozładunek skrzyń</a>.",
+  "h1": "Wywrotnica skrzyniopalet WS-1420, WS-1620, WS-1820"
  },
  {
   "slug": "kosze-przyjeciowe",
@@ -293,7 +294,7 @@
    "Wykonanie ze stali nierdzewnej"
   ],
   "uses": "Warzywa korzeniowe — marchew, pietruszka, buraki, ziemniaki, cebula — dostarczane bezpośrednio z pola przyczepą lub ze skrzyniopalet.",
-  "metaTitle": "Kosze przyjęciowe KP1000–KP5000G (1–5 m³) – Agro-Weld",
+  "metaTitle": "Kosze przyjęciowe KP1000-KP5000G (1-5 m³) | Agro-Weld",
   "metaDesc": "Kosze przyjęciowe do warzyw, 6 wariantów pojemności 1–5 m³. Rozdzielenie na 3 frakcje. Możliwość INOX. Wycena gratis – Agro-Weld.",
   "sections": [
    {
@@ -570,7 +571,8 @@
     ]
    }
   ],
-  "singular": "Kosz przyjęciowy"
+  "singular": "Kosz przyjęciowy",
+  "h1": "Kosze przyjęciowe KP1000, KP1500, KP2000, KP3000, KPS3000G, KP5000G"
  },
  {
   "slug": "zasobnik-buforowy",
@@ -635,7 +637,7 @@
    "Wykonanie ze stali nierdzewnej"
   ],
   "uses": "Większe linie do warzyw korzeniowych i cebuli, gdzie trzeba wyrównać nierówną podaż surowca dostarczanego partiami.",
-  "metaTitle": "Zasobnik buforowy do warzyw – konfigurowalny – Agro-Weld",
+  "metaTitle": "Zasobnik buforowy do warzyw - konfigurowalny | Agro-Weld",
   "metaDesc": "Zasobnik buforowy do warzyw, pojemność 1,5–24 m³, w pełni konfigurowalny. Nadstawki zwiększające pojemność. Wycena – Agro-Weld.",
   "sections": [
    {
@@ -678,7 +680,8 @@
    }
   ],
   "cta": "Rozbudowujesz linię i potrzebujesz zbiornika, który dostosuje się do rosnącej skali produkcji? Napisz do nas o planowanej pojemności i wymiarach hali – zaproponujemy konfigurację zasobnika buforowego. Wróć do kategorii <a href=\"/maszyny/przyjecie-i-buforowanie/\">Przyjęcie i buforowanie</a> lub zobacz <a href=\"/maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/\">kosze przyjęciowe</a>.",
-  "imgPhoto": false
+  "imgPhoto": false,
+  "h1": "Zasobnik buforowy - konfigurowalny zbiornik do warzyw"
  },
  {
   "slug": "separator-ziemi-i-kamieni",
@@ -753,7 +756,7 @@
    "Konfiguracja do 20 wałków z gwiazdami"
   ],
   "uses": "Marchew, pietruszka, ziemniaki, buraki, seler — surowiec prosto z pola przed czyszczarką lub innymi maszynami.",
-  "metaTitle": "Separator ziemi i kamieni SE-560/880/1080 – Agro-Weld",
+  "metaTitle": "Separator ziemi i kamieni SE-560/880/1080 | Agro-Weld",
   "metaDesc": "Separator ziemi i kamieni do warzyw, wydajność do 10 t/h, wałki gwiazdowe. Możliwość podwieszenia. Wycena gratis – Agro-Weld.",
   "sections": [
    {
@@ -810,7 +813,8 @@
     "Separator ziemi i kamieni – widok od strony napędu"
    ]
   ],
-  "imgPhoto": false
+  "imgPhoto": false,
+  "h1": "Separator ziemi i kamieni SE-560, SE-880, SE-1080"
  },
  {
   "slug": "czyszczarka-szczotkowa",
@@ -891,7 +895,7 @@
    "Funkcja separatora (gwiazdy w pierwszych rzędach)"
   ],
   "uses": "Warzywa korzeniowe i bulwiaste — marchew, pietruszka, ziemniaki, buraki, seler; w wersji ze specjalnymi szczotkami także pomidory.",
-  "metaTitle": "Czyszczarka szczotkowa do warzyw CS1056–CS20110 – Agro-Weld",
+  "metaTitle": "Czyszczarka szczotkowa do warzyw CS1056-CS20110 | Agro-Weld",
   "metaDesc": "Czyszczarka szczotkowa do warzyw korzeniowych, 10–20 szczotek, wydajność do 10 t/h. Wersja INOX. Zapytaj o wycenę – Agro-Weld.",
   "sections": [
    {
@@ -937,7 +941,8 @@
     "a": "Tak, wystarczy wymienić pierwsze rzędy szczotek na wałki gwiazdowe, co pozwala połączyć funkcję czyszczenia i wstępnej separacji w jednej maszynie."
    }
   ],
-  "cta": "Szukasz maszyny do dokładnego czyszczenia warzyw korzeniowych bez naruszania skórki? Napisz do nas, jaki surowiec i jaką wydajność potrzebujesz – dobierzemy szerokość roboczą czyszczarki. Wróć do kategorii <a href=\"/maszyny/oczyszczanie/\">Oczyszczanie</a> lub zobacz <a href=\"/maszyny/oczyszczanie/separator-ziemi-i-kamieni/\">separator ziemi i kamieni</a>."
+  "cta": "Szukasz maszyny do dokładnego czyszczenia warzyw korzeniowych bez naruszania skórki? Napisz do nas, jaki surowiec i jaką wydajność potrzebujesz – dobierzemy szerokość roboczą czyszczarki. Wróć do kategorii <a href=\"/maszyny/oczyszczanie/\">Oczyszczanie</a> lub zobacz <a href=\"/maszyny/oczyszczanie/separator-ziemi-i-kamieni/\">separator ziemi i kamieni</a>.",
+  "h1": "Czyszczarka szczotkowa CS1056, CS1480, CS20110"
  },
  {
   "slug": "czyszczarka-do-imbiru-i-chrzanu",
@@ -1003,7 +1008,7 @@
    "Rozbudowa o kolejne szczotki"
   ],
   "uses": "Imbir, chrzan i podobne kłącza o innej charakterystyce niż klasyczne warzywa korzeniowe.",
-  "metaTitle": "Czyszczarka do imbiru i chrzanu CI-00 – Agro-Weld",
+  "metaTitle": "Czyszczarka do imbiru i chrzanu CI-00 | Agro-Weld",
   "metaDesc": "Kompaktowa czyszczarka do imbiru, chrzanu i kłączy CI-00. Regulacja prędkości. Delikatne szczotki. Zapytaj o wycenę – Agro-Weld.",
   "sections": [
    {
@@ -1050,7 +1055,8 @@
    }
   ],
   "cta": "Przetwarzasz imbir, chrzan lub podobne kłącza i szukasz dedykowanego rozwiązania do ich oczyszczania? Zapytaj o wycenę CI-00. Zobacz też <a href=\"/maszyny/oczyszczanie/wanna-do-plukania/\">wannę do płukania</a> i dużą <a href=\"/maszyny/oczyszczanie/czyszczarka-szczotkowa/\">czyszczarkę szczotkową</a>, a także wróć do kategorii <a href=\"/maszyny/oczyszczanie/\">Oczyszczanie</a>.",
-  "imgPhoto": false
+  "imgPhoto": false,
+  "h1": "Czyszczarka do imbiru i chrzanu CI-00"
  },
  {
   "slug": "wanna-do-plukania",
@@ -1117,7 +1123,7 @@
    "Przenośnik typu Z"
   ],
   "uses": "Surowiec prosto z pola oraz po obróbce mechanicznej — np. ziemniaki lub jabłka po obieraniu.",
-  "metaTitle": "Wanna do płukania warzyw WP-600/800/900 – Agro-Weld",
+  "metaTitle": "Wanna do płukania warzyw WP-600/800/900 | Agro-Weld",
   "metaDesc": "Wanna do płukania warzyw korzeniowych i bulwiastych, taśma perforowana modułowa. Szybkie wypięcie do mycia. Wycena – Agro-Weld.",
   "sections": [
    {
@@ -1178,7 +1184,8 @@
     "Wanna do płukania WP-600 z przenośnikiem wyładunkowym"
    ]
   ],
-  "imgPhoto": false
+  "imgPhoto": false,
+  "h1": "Wanna do płukania warzyw WP-600, WP-800, WP-900"
  },
  {
   "slug": "kalibrownik-rozsuwany",
@@ -1258,7 +1265,7 @@
    "Szerokości 60, 100 i 120 cm na zamówienie (np. KA7100, KA8100)"
   ],
   "uses": "Owoce i warzywa korzeniowe wymagające kalibracji według wielkości w zakresie 10–100 mm.",
-  "metaTitle": "Kalibrownik rozsuwany KA-780/KA-880 – Agro-Weld",
+  "metaTitle": "Kalibrownik rozsuwany KA-780/KA-880 | Agro-Weld",
   "metaDesc": "Kalibrownik rozsuwany do owoców i warzyw, zakres 10–100 mm, zmiana ustawień w kilka sekund. Bez demontażu. Wycena – Agro-Weld.",
   "sections": [
    {
@@ -1304,7 +1311,8 @@
     "a": "Tak, kalibrownik może zostać podwieszony przy wysypie kosza przyjęciowego lub taśmociągu."
    }
   ],
-  "cta": "Sortujesz warzywa lub owoce według wielkości i szukasz szybkiego przezbrojenia przy zmianie kalibru? Napisz do nas, jaki zakres wielkości potrzebujesz rozdzielać – dobierzemy model KA-780 lub KA-880. Wróć do kategorii <a href=\"/maszyny/sortowanie/\">Sortowanie</a> lub zobacz <a href=\"/maszyny/sortowanie/sortownik-do-owocow-drobnych/\">sortownik do owoców drobnych</a>."
+  "cta": "Sortujesz warzywa lub owoce według wielkości i szukasz szybkiego przezbrojenia przy zmianie kalibru? Napisz do nas, jaki zakres wielkości potrzebujesz rozdzielać – dobierzemy model KA-780 lub KA-880. Wróć do kategorii <a href=\"/maszyny/sortowanie/\">Sortowanie</a> lub zobacz <a href=\"/maszyny/sortowanie/sortownik-do-owocow-drobnych/\">sortownik do owoców drobnych</a>.",
+  "h1": "Kalibrownik rozsuwany KA-780 i KA-880"
  },
  {
   "slug": "sortownik-do-owocow-drobnych",
@@ -1384,7 +1392,7 @@
    "Silnik z falownikiem"
   ],
   "uses": "Plantacje i skupy borówki amerykańskiej, malin i porzeczek.",
-  "metaTitle": "Sortownik do owoców drobnych SOD-6010–6014 – Agro-Weld",
+  "metaTitle": "Sortownik do owoców drobnych SOD-6010-6014 | Agro-Weld",
   "metaDesc": "Sortownik do owoców drobnych (borówka, malina, porzeczka), stały rozstaw 4–25 mm. Delikatna praca. Platforma boczna. Wycena – Agro-Weld.",
   "sections": [
    {
@@ -1430,7 +1438,8 @@
     "a": "Tak, sortownik dostępny jest opcjonalnie w wykonaniu ze stali nierdzewnej oraz z gumą z atestem spożywczym."
    }
   ],
-  "cta": "Sortujesz borówki, maliny lub porzeczki i szukasz delikatnego rozwiązania bez ryzyka uszkodzenia owoców? Napisz do nas o skali produkcji – dobierzemy odpowiedni wariant SOD. Zobacz realizację <a href=\"/realizacje/linia-do-sortowania-borowki/\">sortownika do borówek</a>, <a href=\"/maszyny/sortowanie/dwubebnowy-sortownik-do-owocow-drobnych/\">dwubębnowy sortownik do owoców drobnych</a> i wróć do kategorii <a href=\"/maszyny/sortowanie/\">Sortowanie</a>."
+  "cta": "Sortujesz borówki, maliny lub porzeczki i szukasz delikatnego rozwiązania bez ryzyka uszkodzenia owoców? Napisz do nas o skali produkcji – dobierzemy odpowiedni wariant SOD. Zobacz realizację <a href=\"/realizacje/linia-do-sortowania-borowki/\">sortownika do borówek</a>, <a href=\"/maszyny/sortowanie/dwubebnowy-sortownik-do-owocow-drobnych/\">dwubębnowy sortownik do owoców drobnych</a> i wróć do kategorii <a href=\"/maszyny/sortowanie/\">Sortowanie</a>.",
+  "h1": "Sortownik do owoców drobnych SOD-6010, SOD-6012, SOD-6014"
  },
  {
   "slug": "dwubebnowy-sortownik-do-owocow-drobnych",
@@ -1441,7 +1450,7 @@
    "SO2B-601012"
   ],
   "img": "maszyny/sortownik-dwubebnowy-1.webp",
-  "lead": "Dwubębnowy sortownik zapewnia precyzyjne i delikatne sortowanie drobnych owoców na 3 sorty. Biała taśma i oświetlenie LED dają doskonałą widoczność produktu i kontrolę nad procesem sortowania.",
+  "lead": "Dwubębnowy sortownik do borówek i innych owoców drobnych zapewnia precyzyjne i delikatne sortowanie drobnych owoców na 3 sorty. Biała taśma i oświetlenie LED dają doskonałą widoczność produktu i kontrolę nad procesem sortowania.",
   "desc": "Dwa bębny sortujące zwiększają dokładność podziału, a płynna regulacja obrotów każdego elementu napędowego z osobna pozwala dopasować prędkość pracy do stanu owoców. Konstrukcja umożliwia łatwą wymianę bębnów sortujących, co ułatwia dostosowanie maszyny do różnych wielkości owoców bez długich przerw.",
   "features": [
    [
@@ -1493,7 +1502,7 @@
    "Wykonanie ze stali nierdzewnej"
   ],
   "uses": "Borówka amerykańska i inne drobne owoce — sortowanie na 3 sorty.",
-  "metaTitle": "Dwubębnowy sortownik do owoców SO2B-601012 – Agro-Weld",
+  "metaTitle": "Sortownik do borówek dwubębnowy SO2B-601012 | Agro-Weld",
   "metaDesc": "Dwubębnowy sortownik do borówek i owoców drobnych, biała taśma, oświetlenie LED. Wysoka precyzja. Sprawdzona realizacja – Agro-Weld.",
   "sections": [
    {
@@ -1543,7 +1552,8 @@
     "a": "Tak, sortownik dostępny jest opcjonalnie w wykonaniu ze stali nierdzewnej."
    }
   ],
-  "cta": "Sortujesz borówki na dużą skalę i potrzebujesz wyższej precyzji niż daje jednostopniowe sortowanie? Napisz do nas – to rozwiązanie ma już sprawdzone wdrożenie w branży borówkowej. Zobacz realizację <a href=\"/realizacje/linia-do-sortowania-borowki/\">sortownika do borówek</a>, prostszy <a href=\"/maszyny/sortowanie/sortownik-do-owocow-drobnych/\">sortownik SOD</a> i wróć do kategorii <a href=\"/maszyny/sortowanie/\">Sortowanie</a>."
+  "cta": "Sortujesz borówki na dużą skalę i potrzebujesz wyższej precyzji niż daje jednostopniowe sortowanie? Napisz do nas – to rozwiązanie ma już sprawdzone wdrożenie w branży borówkowej. Zobacz realizację <a href=\"/realizacje/linia-do-sortowania-borowki/\">sortownika do borówek</a>, prostszy <a href=\"/maszyny/sortowanie/sortownik-do-owocow-drobnych/\">sortownik SOD</a> i wróć do kategorii <a href=\"/maszyny/sortowanie/\">Sortowanie</a>.",
+  "h1": "Sortownik do borówek dwubębnowy SO2B-601012"
  },
  {
   "slug": "stoly-selekcyjne-tasmowe",
@@ -1557,7 +1567,7 @@
   ],
   "img": "maszyny/stol-tasmowy-1.webp",
   "imgPhoto": true,
-  "lead": "Stoły selekcyjne taśmowe umożliwiają ręczne sortowanie warzyw na linii produkcyjnej. Duża gama rozmiarów oraz dowolna konfiguracja podzielnic i wysypów pozwalają w pełni dostosować stół do potrzeb klienta.",
+  "lead": "Stół selekcyjny taśmowy to mobilne stanowisko z ruchomą taśmą PCV, przy którym kilku pracowników jednocześnie ręcznie ocenia i sortuje warzywa przesuwające się wzdłuż stołu – w odróżnieniu od automatycznych maszyn sortujących, gdzie decyzję podejmuje mechanizm, tu decyzję o jakości podejmuje zespół ludzi na stanowisku. Agro-Weld oferuje stoły selekcyjne taśmowe w trzech wariantach szerokości – SST-2008, SST-3510 i SST-5012.",
   "desc": "Każdy stół wyposażony jest w oświetlenie LED oraz skrzynkę z falownikiem do regulacji prędkości pracy. Obrotowe koła z hamulcem pozwalają łatwo przestawić stół i zmienić układ linii. W zależności od potrzeb stoły można wyposażyć w długi zasobnik lub kieszenie z taśmociągiem przeznaczone do odpadów i odsortu. Przy stole długości 2–2,5 m pracują maksymalnie 4 osoby, przy 2,5–3 m — 6 osób.",
   "features": [
    [
@@ -1625,8 +1635,58 @@
    "Taśmociąg odpadowy"
   ],
   "uses": "Końcowa kontrola jakości warzyw korzeniowych i owoców po kalibrowaniu lub czyszczeniu — w sortowniach i pakowniach.",
-  "metaTitle": "Stoły selekcyjne taśmowe SST do warzyw i owoców – Agro-Weld",
-  "metaDesc": "Stół selekcyjny taśmowy do ręcznej selekcji: taśma PCV, konfigurowalne podzielnice, oświetlenie LED, falownik, wydajność do 8 t/h. Producent Agro-Weld."
+  "metaTitle": "Stoły selekcyjne taśmowe SST-2008–5012 | Agro-Weld",
+  "metaDesc": "Stoły selekcyjne taśmowe do warzyw, konfigurowalne podzielnice, oświetlenie LED. Wydajność do 8 t/h. Zapytaj o wycenę – Agro-Weld.",
+  "h1": "Stoły selekcyjne taśmowe SST-2008, SST-3510, SST-5012",
+  "sections": [
+   {
+    "h2": "Co to jest stół selekcyjny taśmowy?",
+    "p": "To stanowisko pracy zespołowej z ciągłą taśmą PCV i w pełni konfigurowalnymi podzielnicami, pozwalającymi rozdzielić towar na kilka strumieni już podczas selekcji. Produkt leży na taśmie nieruchomo w trakcie przesuwu, co ułatwia pracę przy wielu podzielnicach jednocześnie – każda z nich ma osobny zsyp kierujący towar na właściwy taśmociąg."
+   },
+   {
+    "h2": "Do czego służy?",
+    "p": "Umożliwia zespołowi pracowników ręczną selekcję jakościową towaru – odrzucanie wad, sortowanie wizualne po gatunku – z jednoczesnym oddzieleniem odpadu na osobny taśmociąg dzięki konfigurowalnym podzielnicom. Kilka osób pracuje po obu stronach stołu równocześnie, a prędkość taśmy reguluje się falownikiem, dopasowując tempo do wielkości zespołu."
+   },
+   {
+    "h2": "Jaki problem rozwiązuje?",
+    "p": "Automatyczne maszyny sortujące – kalibrowniki, sortowniki – nie wychwytują wad jakościowych typu przebarwienia czy uszkodzenia mechaniczne. Potrzebne jest wygodne, dobrze oświetlone stanowisko do końcowej kontroli ręcznej, gdzie zespół ludzi ocenia produkt wizualnie i na bieżąco oddziela odpad lub inny gatunek towaru bez przerywania pracy linii."
+   },
+   {
+    "h2": "Dla kogo?",
+    "p": "Sortownie i pakownie zatrudniające zespół do ręcznej selekcji jakościowej, a także gospodarstwa łączące automatyczną kalibrację z kontrolą wizualną przed pakowaniem."
+   },
+   {
+    "h2": "Stół selekcyjny taśmowy a rolkowy – jak wybrać?",
+    "p": "Kryterium wyboru to sposób, w jaki produkt prezentuje się pracownikowi podczas przesuwu. Na stole taśmowym produkt leży nieruchomo – to dobre rozwiązanie przy pracy z wieloma podzielnicami do sortowania wielogatunkowego, gdzie kluczowe jest precyzyjne kierowanie strumienia towaru, a nie obracanie każdej sztuki. <a href=\"/maszyny/selekcja/stoly-selekcyjne-rolkowe/\">Stół selekcyjny rolkowy</a> działa inaczej – obracające się rolki prezentują produkt z każdej strony, co sprawdza się lepiej przy warzywach okrągłych, gdzie wada może znajdować się w dowolnym miejscu powierzchni."
+   },
+   {
+    "h2": "Dlaczego stół selekcyjny taśmowy od Agro-Weld",
+    "p": "W pełni konfigurowalne podzielnice z osobnymi zsypami pozwalają dostosować stół do potrzeb konkretnej linii, w tym do montażu dodatkowego taśmociągu odpadowego. Zintegrowane oświetlenie LED zapewnia komfort pracy niezależnie od warunków w hali, a sterowanie falownikiem umożliwia płynną regulację prędkości taśmy pod tempo zespołu. Mobilna rama na obrotowych kołach z hamulcem pozwala szybko zmienić układ linii, a opcja taśmy z atestem spożywczym otwiera zastosowanie tam, gdzie wymagania higieniczne są wyższe."
+   }
+  ],
+  "faq": [
+   {
+    "q": "Ile osób może pracować jednocześnie przy stole selekcyjnym taśmowym?",
+    "a": "Zależy to od długości wybranego wariantu – od kompaktowego SST-2008 (220 cm) po najdłuższy SST-5012 (520 cm), przy którym może pracować większy zespół po obu stronach stołu."
+   },
+   {
+    "q": "Czym różni się od stołu rolkowego?",
+    "a": "Stół taśmowy przenosi produkt na nieruchomej, ciągłej taśmie – dobrze sprawdza się przy wielu podzielnicach i sortowaniu wielogatunkowym. Stół rolkowy wykorzystuje obracające się rolki, które prezentują produkt z każdej strony, co bywa lepszym wyborem przy warzywach okrągłych."
+   },
+   {
+    "q": "Czy można dołożyć taśmociąg na odpady?",
+    "a": "Tak, stół można wyposażyć w podwójną przegrodę i dodatkowy przenośnik taśmowy na odpady, który odbiera odseparowany materiał i transportuje go do skrzyni lub na kolejny etap linii."
+   },
+   {
+    "q": "Jaka jest maksymalna wydajność?",
+    "a": "Największy wariant, SST-5012, osiąga wydajność do 8 t/h przy 60 Hz, przy szerokości 120 cm i długości 520 cm."
+   },
+   {
+    "q": "Czy dostępna jest wersja ze stali nierdzewnej?",
+    "a": "Tak, stoły selekcyjne taśmowe dostępne są opcjonalnie w wykonaniu ze stali nierdzewnej, z taśmą posiadającą atest spożywczy oraz z kieszeniami odpadowymi."
+   }
+  ],
+  "cta": "Budujesz stanowisko do ręcznej selekcji jakościowej z wieloma podzielnicami? Napisz do nas, ile osób ma pracować przy stole i jaki asortyment sortujesz – dobierzemy odpowiedni wariant SST. Zobacz też <a href=\"/maszyny/selekcja/stoly-selekcyjne-rolkowe/\">stoły selekcyjne rolkowe</a> i wróć do przeglądu kategorii <a href=\"/maszyny/selekcja/\">Selekcja</a>."
  },
  {
   "slug": "stoly-selekcyjne-rolkowe",
@@ -1639,7 +1699,7 @@
    "SSR-3010",
    "SSR-4012"
   ],
-  "lead": "Stoły selekcyjne rolkowe umożliwiają ręczne sortowanie warzyw na linii produkcyjnej. Na rolkach warzywa obracają się wokół własnej osi, co pozwala ocenić produkt z każdej strony.",
+  "lead": "Stół selekcyjny rolkowy do warzyw działa na innej zasadzie niż stanowisko z taśmą – produkt przesuwa się po obracających się rolkach, a nie po nieruchomej powierzchni, dzięki czemu każda sztuka prezentuje się pracownikowi z kilku stron podczas przejazdu przez stanowisko. Agro-Weld oferuje stoły selekcyjne rolkowe w trzech wariantach szerokości – SSR-2508, SSR-3010 i SSR-4012.",
   "desc": "Rolki mogą być wykonane z PCV, aluminium lub stali kwasoodpornej — materiał dobiera się do produktu i wymagań higienicznych. Każdy stół wyposażony jest w koła umożliwiające łatwe zestawienie oraz zmianę układu linii, oświetlenie LED i silnik sterowany falownikiem. Stoły mogą mieć boczne kieszenie na odpady, pojedynczą lub podwójną przegrodę oraz przenośnik taśmowy na odpady umieszczony pod stołem.",
   "features": [
    [
@@ -1706,8 +1766,58 @@
    "Taśmociąg odpadowy"
   ],
   "uses": "Ręczna selekcja jakościowa warzyw i owoców w sortowniach i pakowniach.",
-  "metaTitle": "Stoły selekcyjne rolkowe SSR do warzyw – Agro-Weld",
-  "metaDesc": "Stół selekcyjny rolkowy: rolki PCV, aluminium lub INOX, otwarta rolka bez zapychania, przegrody, oświetlenie LED, falownik, do 8 t/h. Producent Agro-Weld."
+  "metaTitle": "Stoły selekcyjne rolkowe SSR-2508–4012 | Agro-Weld",
+  "metaDesc": "Stoły selekcyjne rolkowe do warzyw, rolki PCV/aluminium/kwasoodporne. Zabezpieczenie przed zapchaniem. Wycena gratis – Agro-Weld.",
+  "h1": "Stoły selekcyjne rolkowe SSR-2508, SSR-3010, SSR-4012",
+  "sections": [
+   {
+    "h2": "Co to jest stół selekcyjny rolkowy?",
+    "p": "To stanowisko z napędzanymi rolkami wykonanymi z rury PVC, aluminiowej lub kwasoodpornej, przeznaczone do ręcznego sortowania warzyw na linii produkcyjnej. Obrót rolek podczas przesuwu produktu wymusza jego ciągłe obracanie się, co daje pracownikowi lepszą widoczność całej powierzchni w porównaniu do produktu leżącego nieruchomo na taśmie."
+   },
+   {
+    "h2": "Do czego służy?",
+    "p": "Obracające się rolki prezentują produkt pracownikowi z każdej strony podczas przesuwu, co ułatwia wykrycie wad na całej powierzchni – trudniejszych do zauważenia, gdy produkt leży nieruchomo. Materiał rolek dobiera się pod rodzaj sortowanego towaru i wymagania higieniczne, a prędkość obrotu reguluje falownik."
+   },
+   {
+    "h2": "Jaki problem rozwiązuje?",
+    "p": "Przy produktach okrągłych lub owalnych – ziemniakach, burakach, cebuli – wada może znajdować się po dowolnej stronie. Bez mechanizmu obrotowego pracownik musiałby ręcznie obracać każdą sztukę, by ją dokładnie ocenić. Stały ruch obrotowy rolek eliminuje tę dodatkową czynność, przyspieszając selekcję bez utraty dokładności."
+   },
+   {
+    "h2": "Dla kogo?",
+    "p": "Sortownie warzyw okrągłych i owalnych – ziemniaków, buraków, cebuli – oraz zakłady wymagające wysokiej jakości kontroli wizualnej całej powierzchni produktu, a nie tylko jednej, widocznej strony."
+   },
+   {
+    "h2": "Stół selekcyjny rolkowy a taśmowy – jak wybrać?",
+    "p": "W przeciwieństwie do stołu taśmowego, gdzie produkt leży nieruchomo i sprawdza się to przy wielu podzielnicach do sortowania wielogatunkowego, stół rolkowy sprawdza się lepiej przy warzywach okrągłych wymagających oceny całej powierzchni – tam, gdzie ręczne obracanie każdej sztuki byłoby dodatkowym, spowalniającym krokiem. Pełny opis wersji taśmowej znajdziesz na stronie <a href=\"/maszyny/selekcja/stoly-selekcyjne-tasmowe/\">stoły selekcyjne taśmowe</a>."
+   },
+   {
+    "h2": "Dlaczego stół selekcyjny rolkowy od Agro-Weld",
+    "p": "Otwarta rolka zapobiega zapchaniu mechanizmu przez wpadające odpady – konstrukcja nie blokuje się, gdy drobne resztki trafią między rolki. Wybór materiału rolek – PCV, aluminium lub stal kwasoodporna – pozwala dopasować stół do rodzaju towaru i wymagań higienicznych panujących w zakładzie. Zintegrowane oświetlenie LED zapewnia dobrą widoczność niezależnie od warunków w hali, a mobilna konstrukcja na kołach ułatwia szybkie przestawienie stołu przy zmianie układu linii. Opcjonalne boczne kieszenie na odpady i taśmociąg pod stołem pozwalają zorganizować odbiór odrzuconego materiału bez dodatkowych przestojów."
+   }
+  ],
+  "faq": [
+   {
+    "q": "Czym różni się stół rolkowy od taśmowego?",
+    "a": "Stół rolkowy do warzyw wykorzystuje napędzane, obracające się rolki, które prezentują produkt z każdej strony podczas przesuwu, natomiast stół taśmowy pracuje na nieruchomej, ciągłej taśmie – wybór zależy głównie od kształtu sortowanego produktu i liczby potrzebnych podzielnic."
+   },
+   {
+    "q": "Jakie materiały rolek są dostępne?",
+    "a": "Rolki wykonane są z rury PVC, aluminiowej lub kwasoodpornej – materiał dobiera się pod rodzaj sortowanego produktu oraz wymagania higieniczne panujące w zakładzie."
+   },
+   {
+    "q": "Do jakich warzyw najlepiej nadaje się stół rolkowy?",
+    "a": "Sprawdza się szczególnie przy warzywach okrągłych i owalnych – ziemniakach, burakach, cebuli – gdzie obrót rolek pozwala ocenić całą powierzchnię produktu bez ręcznego obracania każdej sztuki."
+   },
+   {
+    "q": "Czy dostępne są boczne kieszenie na odpady?",
+    "a": "Tak, stoły selekcyjne rolkowe do warzyw można dodatkowo wyposażyć w boczne kieszenie na odpady, pojedynczą lub podwójną przegrodę oraz przenośnik taśmowy na odpady umieszczony pod stołem."
+   },
+   {
+    "q": "Jaka jest maksymalna wydajność?",
+    "a": "Największy wariant, SSR-4012, osiąga wydajność do 8 t/h przy 60 Hz, przy szerokości 120 cm i długości 420 cm."
+   }
+  ],
+  "cta": "Sortujesz ręcznie warzywa okrągłe i potrzebujesz lepszej widoczności całej powierzchni produktu? Napisz do nas, jaki towar sortujesz i jakie masz wymagania higieniczne – dobierzemy odpowiedni materiał rolek i wariant SSR. Zobacz też <a href=\"/maszyny/selekcja/stoly-selekcyjne-tasmowe/\">stoły selekcyjne taśmowe</a> i wróć do przeglądu kategorii <a href=\"/maszyny/selekcja/\">Selekcja</a>."
  },
  {
   "slug": "liczarka",
@@ -1719,7 +1829,7 @@
    "LO1.90",
    "LO2.90"
   ],
-  "lead": "Liczarka do owoców to urządzenie zaprojektowane do precyzyjnego liczenia większych owoców na sztuki — limonek, cytryn, jabłek czy awokado. Dostępna w wersji jedno- lub dwukanałowej, dopasowanej do skali produkcji.",
+  "lead": "Liczenie owoców na sztuki ma sens biznesowy tam, gdzie sprzedaż detaliczna rozliczana jest per sztuka, a nie na wagę – na przykład przy wymogach sieci handlowych co do liczby owoców w opakowaniu. Liczarka do owoców Agro-Weld automatycznie zlicza większe owoce – jabłka, cytryny, limonki, awokado – dostępna w wersji jedno- lub dwukanałowej.",
   "desc": "Szybkie i dokładne liczenie usprawnia pakowanie oraz przygotowanie owoców do dystrybucji rozliczanej per sztuka. Wersja dwukanałowa liczy dwa strumienie owoców jednocześnie, przyspieszając cały proces. Liczarka działa szybko, ale delikatnie, minimalizując ryzyko uszkodzeń istotnych dla estetyki owoców na półce.",
   "features": [
    [
@@ -1772,8 +1882,58 @@
    "Wykonanie ze stali nierdzewnej"
   ],
   "uses": "Cytrusy, jabłka, limonki, awokado — pakowanie rozliczane na sztuki.",
-  "metaTitle": "Liczarka do owoców LO1.90 / LO2.90 – do 350 szt./min – Agro-Weld",
-  "metaDesc": "Liczarka do owoców na sztuki: jabłka, cytryny, limonki, awokado. Wersja jedno- lub dwukanałowa, do 350 szt./min, sterowanie automatyczne. Producent Agro-Weld."
+  "metaTitle": "Liczarka do owoców LO1.90 i LO2.90 | Agro-Weld",
+  "metaDesc": "Liczarka do owoców (jabłka, cytrusy, awokado), do 350 szt./min w wersji dwurzędowej. Precyzyjne liczenie. Wycena – Agro-Weld.",
+  "h1": "Liczarka do owoców LO1.90 i LO2.90",
+  "sections": [
+   {
+    "h2": "Co to jest liczarka do owoców?",
+    "p": "To urządzenie do precyzyjnego liczenia większych owoców na sztuki, dostępne w wersji jedno- (LO1.90) lub dwukanałowej (LO2.90). Owoce przechodzą przez maszynę, która automatycznie zlicza je i podaje dalej, bez udziału pracownika przy samym liczeniu."
+   },
+   {
+    "h2": "Do czego służy?",
+    "p": "Automatycznie zlicza owoce przechodzące przez maszynę, usprawniając pakowanie i przygotowanie towaru do dalszej dystrybucji – tam, gdzie sprzedaż rozliczana jest na sztuki, a nie na wagę. Wersja dwukanałowa liczy dwa strumienie owoców jednocześnie, przyspieszając cały proces względem wersji jednokanałowej."
+   },
+   {
+    "h2": "Jaki problem rozwiązuje?",
+    "p": "Ręczne liczenie owoców jest wolne i podatne na błędy, co ma znaczenie przy sprzedaży detalicznej rozliczanej per sztuka – na przykład przy wymogach sieci handlowych co do liczby owoców w opakowaniu. Liczarka eliminuje ten błąd i przyspiesza cały etap przygotowania towaru do wysyłki."
+   },
+   {
+    "h2": "Dla kogo?",
+    "p": "Pakownie cytrusów i większych owoców przeznaczonych do sprzedaży detalicznej rozliczanej na sztuki oraz eksporterzy owoców do sieci handlowych z wymogami liczbowymi na opakowanie."
+   },
+   {
+    "h2": "Liczarka a waga kontrolna – czym się różnią?",
+    "p": "Liczarka i waga kontrolna odpowiadają na dwie różne potrzeby biznesowe. Liczarka liczy sztuki – sprawdza się tam, gdzie sprzedaż lub pakowanie rozliczane jest na liczbę owoców w opakowaniu. <a href=\"/maszyny/wazenie-i-liczenie/waga-kontrolna/\">Waga kontrolna</a> kontroluje masę całego opakowania, nie liczbę sztuk – to inna funkcja, choć obie maszyny często współpracują w jednej linii pakującej, gdzie jedna liczy owoce, a druga weryfikuje wagę gotowego opakowania."
+   },
+   {
+    "h2": "Dlaczego liczarka od Agro-Weld",
+    "p": "Wersja dwukanałowa LO2.90 liczy do 350 sztuk na minutę, co pozwala dopasować wydajność maszyny do skali produkcji bez przestojów przy większym wolumenie. Sterowanie automatyczne nie wymaga stałego nadzoru operatora podczas pracy. Delikatne działanie mechanizmu minimalizuje ryzyko uszkodzeń owoców, co ma znaczenie dla estetyki produktu na półce sklepowej. Liczarka dostępna jest opcjonalnie w wykonaniu ze stali nierdzewnej."
+   }
+  ],
+  "faq": [
+   {
+    "q": "Do jakich owoców przeznaczona jest liczarka?",
+    "a": "Liczarka LO1.90/LO2.90 zaprojektowana jest do precyzyjnego liczenia większych owoców na sztuki, takich jak jabłka, cytryny, limonki czy awokado."
+   },
+   {
+    "q": "Czym różni się wersja jedno- i dwukanałowa?",
+    "a": "Model LO1.90 liczy jeden strumień owoców (do 200 szt./min), natomiast LO2.90 liczy dwa strumienie jednocześnie, osiągając wydajność do 350 sztuk na minutę."
+   },
+   {
+    "q": "Jaka jest maksymalna wydajność liczenia?",
+    "a": "Wersja dwukanałowa LO2.90 liczy do 350 sztuk na minutę, co jest maksymalną wydajnością w tej rodzinie produktowej."
+   },
+   {
+    "q": "Czy liczarka uszkadza delikatne owoce?",
+    "a": "Nie, liczarka działa szybko, ale delikatnie – mechanizm minimalizuje ryzyko uszkodzeń, co jest istotne dla estetyki owoców trafiających na półki sklepowe."
+   },
+   {
+    "q": "Czy dostępna jest wersja ze stali nierdzewnej?",
+    "a": "Tak, liczarka dostępna jest opcjonalnie w wykonaniu ze stali nierdzewnej."
+   }
+  ],
+  "cta": "Pakujesz owoce na sztuki i chcesz wyeliminować błędy ręcznego liczenia? Napisz do nas, jaki wolumen i jaki rodzaj owoców liczysz – dobierzemy wersję jedno- lub dwukanałową. Zobacz też <a href=\"/maszyny/wazenie-i-liczenie/waga-kontrolna/\">wagę kontrolną</a> i wróć do przeglądu kategorii <a href=\"/maszyny/wazenie-i-liczenie/\">Ważenie i liczenie</a>."
  },
  {
   "slug": "waga-kontrolna",
@@ -1784,7 +1944,7 @@
    "WKO"
   ],
   "img": "maszyny/waga-kontrolna-calosc.webp",
-  "lead": "Waga kontrolna służy do dynamicznego ważenia opakowań w ruchu, zapewniając ciągłą kontrolę jakości na linii pakującej. Automatycznie sprawdza, czy masa każdego opakowania mieści się w zadanych przedziałach tolerancji.",
+  "lead": "Waga kontrolna WKO to waga przelotowa, dynamiczna – waży opakowania w ruchu, przesuwające się na linii produkcyjnej, a nie pojedyncze sztuki podstawiane ręcznie na stanowisku wagowym. To kluczowe rozróżnienie względem wag stanowiskowych: WKO pracuje w tempie linii, bez zatrzymywania przepływu produktu.",
   "desc": "Opakowanie o niewłaściwej masie może być automatycznie kierowane na boczny przenośnik, eliminując produkty niespełniające standardów z dalszego procesu. Waga wykorzystuje legalizowaną wagę AXIS, a system podnoszenia na pasach zębatych minimalizuje wibracje wpływające na dokładność pomiaru. Komunikacja ze sterownikiem PLC pozwala zintegrować wagę z resztą linii.",
   "features": [
    [
@@ -1836,8 +1996,58 @@
    "Zrzut opakowań o niewłaściwej wadze"
   ],
   "uses": "Koniec linii pakującej — kontrola zgodności masy z deklaracją na etykiecie.",
-  "metaTitle": "Waga kontrolna WKO ze zrzutem opakowań 1–30 kg – Agro-Weld",
-  "metaDesc": "Dynamiczna waga kontrolna w linii pakującej: zakres 1–30 kg, do 10 opakowań/min, waga AXIS, komunikacja PLC, automatyczny zrzut opakowań poza tolerancją. Agro-Weld."
+  "metaTitle": "Waga kontrolna WKO ze zrzutem opakowań | Agro-Weld",
+  "metaDesc": "Waga kontrolna WKO do dynamicznego ważenia opakowań w linii, zakres 1–30 kg. Legalizowana waga AXIS. Wycena gratis – Agro-Weld.",
+  "h1": "Waga kontrolna WKO ze zrzutem opakowań",
+  "sections": [
+   {
+    "h2": "Co to jest waga kontrolna?",
+    "p": "To urządzenie do dynamicznego ważenia opakowań w ruchu na linii produkcyjnej, automatycznie sprawdzające masę każdego opakowania względem zadanych granic tolerancji. Cały proces odbywa się bez udziału operatora – waga sama porównuje wynik pomiaru z ustawionymi wcześniej wartościami."
+   },
+   {
+    "h2": "Do czego służy?",
+    "p": "Kontroluje masę każdego przechodzącego opakowania i automatycznie odrzuca na boczny przenośnik te, które nie mieszczą się w zadanej tolerancji, eliminując je z dalszego procesu produkcyjnego. System podnoszenia na pasach zębatych minimalizuje wibracje wpływające na dokładność pomiaru."
+   },
+   {
+    "h2": "Jaki problem rozwiązuje?",
+    "p": "Ręczna kontrola wagi nie gwarantuje powtarzalności i nie wychwytuje każdego niezgodnego opakowania, co grozi wprowadzeniem na rynek produktu niezgodnego z deklarowaną wagą na etykiecie. Waga kontrolna automatyzuje tę kontrolę na 100% opakowań przechodzących przez linię, bez wyrywkowych sprawdzeń."
+   },
+   {
+    "h2": "Dla kogo?",
+    "p": "Linie pakujące wymagające automatycznej kontroli jakości i zgodności wagowej oraz zakłady sprzedające towar w opakowaniach jednostkowych z deklarowaną wagą na etykiecie."
+   },
+   {
+    "h2": "Waga kontrolna a liczarka – czym się różnią?",
+    "p": "W przeciwieństwie do <a href=\"/maszyny/wazenie-i-liczenie/liczarka/\">liczarki</a>, która liczy sztuki, a nie waży, waga kontrolna WKO weryfikuje masę całego opakowania – to inna funkcja w linii pakującej. Obie maszyny mogą współpracować przy pełnej automatyzacji kontroli jakości: liczarka odpowiada za liczbę owoców w opakowaniu, waga kontrolna za jego łączną masę."
+   },
+   {
+    "h2": "Dlaczego waga kontrolna od Agro-Weld",
+    "p": "Automatyczny zrzut opakowań o niewłaściwej masie na boczny przenośnik odrzutowy eliminuje potrzebę ręcznej kontroli i wyrywkowego ważenia. Legalizowana waga AXIS spełnia wymogi formalnej kontroli jakości. System podnoszenia na pasach zębatych minimalizuje wibracje, co przekłada się na dokładność pomiaru nawet przy dużej prędkości linii. Szybka komunikacja ze sterownikiem PLC pozwala zintegrować wagę z resztą linii i reagować na wykryte niezgodności praktycznie natychmiast. Zakres ważenia 1–30 kg pokrywa większość typowych opakowań stosowanych w pakowaniu warzyw i owoców."
+   }
+  ],
+  "faq": [
+   {
+    "q": "Jak działa waga kontrolna i co się dzieje z opakowaniem o złej wadze?",
+    "a": "Waga kontrolna WKO dynamicznie waży opakowania w ruchu i porównuje ich masę z zadanymi granicami tolerancji – opakowanie niespełniające normy jest automatycznie kierowane na boczny przenośnik odrzutowy."
+   },
+   {
+    "q": "Czy waga WKO jest legalizowana?",
+    "a": "Tak, w wyposażeniu podstawowym znajduje się legalizowana waga AXIS, spełniająca wymogi formalnej kontroli jakości."
+   },
+   {
+    "q": "Jaki jest zakres ważenia?",
+    "a": "Waga kontrolna WKO obsługuje zakres od 1 do 30 kg, przy maksymalnym wymiarze opakowania 60×70×40 cm."
+   },
+   {
+    "q": "Czy wagę można zintegrować z istniejącą linią pakującą?",
+    "a": "Tak, waga kontrolna WKO komunikuje się ze sterownikiem PLC lub innym systemem sterowania, co ułatwia integrację z już działającą linią."
+   },
+   {
+    "q": "Jaka jest maksymalna wydajność wagi kontrolnej?",
+    "a": "Waga kontrolna WKO obsługuje do 10 opakowań na minutę."
+   }
+  ],
+  "cta": "Potrzebujesz automatycznej kontroli wagi opakowań przed wysyłką, bez ryzyka niezgodności z etykietą? Napisz do nas, jaki rodzaj opakowań pakujesz i w jakim tempie – zaproponujemy wdrożenie wagi kontrolnej WKO w Twojej linii. Zobacz też <a href=\"/maszyny/wazenie-i-liczenie/liczarka/\">liczarkę do owoców</a> i wróć do przeglądu kategorii <a href=\"/maszyny/wazenie-i-liczenie/\">Ważenie i liczenie</a>."
  },
  {
   "slug": "wagoworkownica",
@@ -1850,7 +2060,7 @@
    "WW-302 Compact",
    "WW-151 Smart"
   ],
-  "lead": "Wagoworkownica umożliwia łatwe dozowanie i pakowanie warzyw do worków oraz innych opakowań. Pracuje w trybie automatycznym po wprowadzeniu parametrów lub manualnym, w którym klapę zbiornika otwiera wyłącznik nożny.",
+  "lead": "Wagoworkownica odważa porcje warzyw w zakresie od 1 do 30 kg i pakuje je do worków z wysoką dokładnością dzięki wąskiej taśmie doważającej. Agro-Weld oferuje wagoworkownicę w trzech wariantach – WW-302, WW-302 Compact i WW-151 Smart – dopasowanych do różnej skali produkcji i sposobu integracji z resztą stanowiska pakowania.",
   "desc": "Sterowanie realizowane jest przez 7-calowy panel dotykowy. Urządzenie waży porcje od 1 do 30 kg; wąska taśma doważająca zapewnia wysoką dokładność, ograniczając straty z przeważania. Połączenie wagoworkownicy z raszlownicą zwiększa płynność pracy oraz wydajność całego stanowiska pakowania. W trybie manualnym możliwe jest opróżnianie zbiornika z nadwyżki produktu.",
   "features": [
    [
@@ -1924,8 +2134,58 @@
    "Wykonanie ze stali nierdzewnej"
   ],
   "uses": "Warzywa korzeniowe i cebulowe pakowane do worków, skrzynek i innych opakowań w porcjach 1–30 kg.",
-  "metaTitle": "Wagoworkownica WW-302 / Compact / WW-151 Smart – Agro-Weld",
-  "metaDesc": "Automatyczna wagoworkownica do warzyw: porcje 1–30 kg, do 6 t/h, panel dotykowy 7\", taśma doważająca, podłączenie pod raszlownicę. Producent Agro-Weld."
+  "metaTitle": "Wagoworkownica WW-302, Compact, WW-151 Smart | Agro-Weld",
+  "metaDesc": "Wagoworkownica do warzyw, ważenie 1–30 kg, panel dotykowy 7 cali. Tryb automatyczny i manualny. Zapytaj o wycenę – Agro-Weld.",
+  "h1": "Wagoworkownica WW-302, WW-302 Compact, WW-151 Smart",
+  "sections": [
+   {
+    "h2": "Co to jest wagoworkownica?",
+    "p": "To urządzenie do precyzyjnego dozowania i pakowania warzyw do worków oraz innych opakowań, z automatycznym lub manualnym trybem odważania porcji. Sterowanie odbywa się za pomocą 7-calowego panelu dotykowego, a w trybie manualnym otwarcie klapy zbiornika następuje przez wyłącznik nożny, co uwalnia obie ręce operatora do pracy z workiem."
+   },
+   {
+    "h2": "Do czego służy?",
+    "p": "Automatycznie odważa porcje towaru według zadanej masy – od 1 do 30 kg – i umożliwia ich napełnienie do worków, minimalizując straty produktu z przeważania dzięki wąskiej taśmie doważającej. W trybie manualnym możliwe jest też szybkie opróżnienie zbiornika z nadwyżki produktu za pomocą wyłącznika nożnego."
+   },
+   {
+    "h2": "Jaki problem rozwiązuje?",
+    "p": "Ręczne odważanie i pakowanie do worków jest wolne, niedokładne i generuje realne straty finansowe przy systematycznym przeważaniu porcji ponad zadaną wagę. Wagoworkownica automatyzuje ten proces z wysoką dokładnością, dzięki czemu każda porcja odpowiada zadanej masie bez marnowania nadwyżki produktu."
+   },
+   {
+    "h2": "Dla kogo?",
+    "p": "Sortownie i pakownie warzyw korzeniowych i cebulowych pakujące towar do worków o wadze 1–30 kg oraz gospodarstwa skalujące produkcję, które szukają alternatywy dla ręcznego odważania."
+   },
+   {
+    "h2": "Wagoworkownica a prosty napełniacz – dlaczego dokładność ma znaczenie",
+    "p": "W przeciwieństwie do prostego napełniacza bez ważenia, wagoworkownica gwarantuje precyzję dzięki wąskiej taśmie doważającej, co realnie ogranicza straty produktu z przeważania kolejnych porcji. W połączeniu z <a href=\"/maszyny/pakowanie/raszlownica/\">raszlownicą</a>, która automatycznie zaszywa worki raszlowe, wagoworkownica tworzy pełne, zsynchronizowane stanowisko pakowania – jedna maszyna odważa porcję, druga ją pakuje i zamyka."
+   },
+   {
+    "h2": "Dlaczego wagoworkownica od Agro-Weld",
+    "p": "Zakres ważenia od 1 do 30 kg z wysoką dokładnością pokrywa większość typowych opakowań stosowanych przy pakowaniu warzyw. Panel dotykowy 7 cali pozwala sterować maszyną automatycznie lub ręcznie za pomocą pedała nożnego, w zależności od potrzeb stanowiska. Manualne opróżnianie zbiornika z nadwyżki produktu ułatwia obsługę przy zmianie asortymentu. Połączenie z raszlownicą zwiększa wydajność całego stanowiska pakowania, a model WW-302 osiąga wydajność do 6 t/h."
+   }
+  ],
+  "faq": [
+   {
+    "q": "Jaki jest zakres ważenia wagoworkownicy?",
+    "a": "Modele WW-302 i WW-302 Compact obsługują zakres od 1 do 30 kg, natomiast kompaktowa wersja WW-151 Smart – od 2,5 do 15 kg."
+   },
+   {
+    "q": "Czym różnią się WW-302, WW-302 Compact i WW-151 Smart?",
+    "a": "Model WW-302 ma podłączenie pod raszlownicę i taśmę doważającą, WW-302 Compact ma taśmę doważającą bez podłączenia pod raszlownicę, a WW-151 Smart to najprostsza, kompaktowa wersja bez taśmy doważającej, o mniejszym zakresie ważenia i wydajności."
+   },
+   {
+    "q": "Czy wagoworkownicę można połączyć z raszlownicą?",
+    "a": "Tak, model WW-302 ma dedykowane podłączenie pod raszlownicę, co pozwala stworzyć pełne, zsynchronizowane stanowisko odważania i pakowania."
+   },
+   {
+    "q": "Jaka jest dokładność ważenia?",
+    "a": "Wąska taśma doważająca zapewnia bardzo wysoką dokładność ważenia, co znacząco zmniejsza ryzyko przeważania opakowań i ogranicza straty produktu."
+   },
+   {
+    "q": "Czy dostępny jest tryb manualny sterowania pedałem?",
+    "a": "Tak, wszystkie warianty można sterować ręcznie za pomocą pedału nożnego, co pozwala operatorowi mieć obie ręce wolne podczas pracy z workiem."
+   }
+  ],
+  "cta": "Pakujesz warzywa do worków i chcesz wyeliminować straty z ręcznego przeważania porcji? Napisz do nas, jaki zakres wagowy i jaką wydajność potrzebujesz – dobierzemy wariant WW-302, WW-302 Compact lub WW-151 Smart. Zobacz też <a href=\"/maszyny/pakowanie/raszlownica/\">raszlownicę</a> i wróć do przeglądu kategorii <a href=\"/maszyny/pakowanie/\">Pakowanie</a>."
  },
  {
   "slug": "raszlownica",
@@ -1938,7 +2198,7 @@
    "RA2"
   ],
   "imgPhoto": true,
-  "lead": "Raszlownica Agro-Weld pakuje worki raszlowe (siatkowe) o masie od 2,5 do 25 kg. Dwa silniki wibracyjne — na leju i przenośniku — wspomagają równomierny przepływ produktu, a zaszywarka jedno- lub dwuigłowa zamyka opakowanie.",
+  "lead": "Worki raszlowe (siatkowe) to standardowe opakowanie zbiorcze dla ziemniaków, cebuli i innych warzyw korzeniowych trafiających na rynek hurtowy i detaliczny – a raszlownica to maszyna, która automatyzuje ich napełnianie i zaszywanie. Agro-Weld oferuje raszlownicę w dwóch wariantach – RA1 z zaszywarką jednoigłową i RA2 z zaszywarką dwuigłową.",
   "desc": "Konstrukcja ma dwa kominy odprowadzające dym ze zgrzewania worków oraz przezroczyste drzwi do monitorowania procesu. Maszyna może być wyposażona w zaszywarki marki Fischbein, Newlong lub Yao Han. Obsługa odbywa się intuicyjnym panelem dotykowym 7\". Szereg czujników zapewnia niezawodność i bezpieczne działanie w każdych warunkach produkcyjnych.",
   "features": [
    [
@@ -2003,8 +2263,58 @@
    "Waga"
   ],
   "uses": "Warzywa korzeniowe i cebulowe pakowane w worki raszlowe — od 2,5 kg detalicznych po 25 kg hurtowych.",
-  "metaTitle": "Raszlownica RA1 / RA2 – pakowanie w worki raszlowe 2,5–25 kg – Agro-Weld",
-  "metaDesc": "Raszlownica do worków siatkowych 2,5–25 kg, zaszywarka Fischbein / Newlong / Yao Han, panel 7\", do 13 porcji/min. Polski producent Agro-Weld."
+  "metaTitle": "Raszlownica RA1 i RA2 do worków raszlowych | Agro-Weld",
+  "metaDesc": "Raszlownica do pakowania warzyw w worki raszlowe 2,5–25 kg, do 6 t/h. Zaszywarka Fischbein, Newlong lub Yao Han. Wycena – Agro-Weld.",
+  "h1": "Raszlownica RA1 i RA2 do worków raszlowych",
+  "sections": [
+   {
+    "h2": "Co to jest raszlownica?",
+    "p": "To maszyna do automatycznego pakowania warzyw w worki raszlowe o masie od 2,5 do 25 kg, wyposażona w dwa silniki wibracyjne – jeden zamontowany na leju zasypowym, drugi na przenośniku taśmowym – które zapewniają równomierny przepływ produktu do worka."
+   },
+   {
+    "h2": "Do czego służy?",
+    "p": "Automatyzuje napełnianie i zaszywanie worków raszlowych, kontrolując przepływ produktu wibracją leja zasypowego i taśmy, a następnie zaszywając worek jedną z dostępnych zaszywarek – Fischbein, Newlong lub Yao Han. Dwa kominy odprowadzają dym powstający podczas zgrzewania worków, a przezroczyste drzwi umożliwiają bieżący monitoring pracy maszyny."
+   },
+   {
+    "h2": "Jaki problem rozwiązuje?",
+    "p": "Ręczne napełnianie i zaszywanie worków raszlowych jest wolne i niejednolite jakościowo – tempo i skuteczność zaszycia zależą od doświadczenia pracownika. Raszlownica automatyzuje cały proces z powtarzalną jakością, a czujnik zablokowania wsypu i inne zabezpieczenia zapewniają bezpieczną, ciągłą pracę bez nadzoru przy każdym worku."
+   },
+   {
+    "h2": "Dla kogo?",
+    "p": "Zakłady pakujące ziemniaki, cebulę i inne warzywa w worki siatkowe na rynek hurtowy i detaliczny oraz gospodarstwa zwiększające wydajność stanowiska pakowania."
+   },
+   {
+    "h2": "Raszlownica i wagoworkownica – rekomendowany duet",
+    "p": "Raszlownica pracuje najczęściej w połączeniu z <a href=\"/maszyny/pakowanie/wagoworkownica/\">wagoworkownicą</a>, która odważa porcję produktu przed napełnieniem worka. Razem tworzą kompletne, zsynchronizowane stanowisko: wagoworkownica odmierza dokładną porcję, a raszlownica napełnia nią worek i go zaszywa. To rekomendowany zestaw dla zakładów chcących w pełni zautomatyzować etap pakowania do worków raszlowych."
+   },
+   {
+    "h2": "Dlaczego raszlownica od Agro-Weld",
+    "p": "Wydajność sięga do 6 t/h przy porcji 15 kg w wersji RA1 lub 13 porcji na minutę w wersji dwuigłowej RA2, co pozwala dopasować maszynę do skali produkcji. Wybór spośród trzech renomowanych marek zaszywarek – Fischbein, Newlong, Yao Han – daje elastyczność w doborze rozwiązania pod preferencje zakładu. Przezroczyste drzwi umożliwiają bieżącą kontrolę procesu pakowania bez otwierania obudowy, a szereg czujników bezpieczeństwa zapewnia niezawodną pracę w warunkach przemysłowych. Panel dotykowy 7 cali ułatwia obsługę całej maszyny jednej osobie."
+   }
+  ],
+  "faq": [
+   {
+    "q": "Jaka jest różnica między raszlownicą jednoigłową a dwuigłową?",
+    "a": "Raszlownica RA1 z zaszywarką jednoigłową osiąga wydajność do 6 t/h przy porcji 15 kg, natomiast RA2 z zaszywarką dwuigłową pakuje do 13 porcji na minutę przy tej samej wadze opakowania."
+   },
+   {
+    "q": "Jakie marki zaszywarek są dostępne?",
+    "a": "Raszlownica może być wyposażona w zaszywarkę jedno- lub dwuigłową marki Fischbein, Newlong lub Yao Han."
+   },
+   {
+    "q": "Czy raszlownicę można połączyć z wagoworkownicą?",
+    "a": "Tak, raszlownica najczęściej pracuje w połączeniu z wagoworkownicą – wagoworkownica odmierza porcję, a raszlownica napełnia nią worek i go zaszywa, tworząc pełne stanowisko pakowania."
+   },
+   {
+    "q": "Do jakiej wagi worków przeznaczona jest raszlownica?",
+    "a": "Raszlownica pakuje worki raszlowe o masie od 2,5 do 25 kg, niezależnie od wybranego wariantu."
+   },
+   {
+    "q": "Czy raszlownica wymaga dodatkowej wentylacji ze względu na zgrzewanie worków?",
+    "a": "Konstrukcja raszlownicy obejmuje dwa kominy odprowadzające dym powstający podczas zgrzewania worków, co ogranicza potrzebę dodatkowej wentylacji stanowiska."
+   }
+  ],
+  "cta": "Pakujesz ziemniaki, cebulę lub inne warzywa w worki raszlowe i szukasz sposobu na automatyzację tego etapu? Napisz do nas, jaką wagę worków pakujesz i jaką zaszywarkę preferujesz – dobierzemy wariant RA1 lub RA2. Zobacz też <a href=\"/maszyny/pakowanie/wagoworkownica/\">wagoworkownicę</a> i wróć do przeglądu kategorii <a href=\"/maszyny/pakowanie/\">Pakowanie</a>."
  },
  {
   "slug": "przenosnik-poprzeczny-do-raszlownicy",
@@ -2015,7 +2325,7 @@
    "RA-PP-00"
   ],
   "img": "przenosnik-poprzeczny.webp",
-  "lead": "Przenośnik przejmuje porcje warzyw z linii i poprzecznie podaje je do lejka raszlownicy, zapewniając stały, delikatny strumień produktu. Pozwala ustawić raszlownicę i wagoworkownicę równolegle do linii i pracować w obu kierunkach.",
+  "lead": "Przenośnik poprzeczny RA-PP-00 to element uzupełniający stanowisko pakowania – nie samodzielny produkt, lecz urządzenie, które łączy raszlownicę lub wagoworkownicę z resztą linii technologicznej i pozwala ustawić je pod kątem względem głównego ciągu maszyn.",
   "desc": "Taśma z zabierakami stabilizuje transport, a mobilna rama na kołach z hamulcem ułatwia podjazd i szybkie dopięcie do stanowiska pakowania. Konstrukcja przewidziana do pracy w strefie pakowania — łatwa w myciu, z wygodnym dostępem serwisowym.",
   "features": [
    [
@@ -2056,8 +2366,58 @@
    "Waga na podeście"
   ],
   "uses": "Stanowiska pakowania z raszlownicą lub ręcznym wiązaniem worków.",
-  "metaTitle": "Przenośnik poprzeczny do raszlownicy RA-PP-00 – Agro-Weld",
-  "metaDesc": "Przenośnik taśmowy poprzeczny do raszlownicy: taśma z amortyzującymi zabierakami, mobilna rama, praca w obu kierunkach, podest pod worek. Producent Agro-Weld."
+  "metaTitle": "Przenośnik poprzeczny do raszlownicy RA-PP-00 | Agro-Weld",
+  "metaDesc": "Przenośnik poprzeczny RA-PP-00 do raszlownicy, taśma falowana amortyzująca. Praca w obu kierunkach. Zapytaj o wycenę – Agro-Weld.",
+  "h1": "Przenośnik poprzeczny do raszlownicy RA-PP-00",
+  "sections": [
+   {
+    "h2": "Co to jest przenośnik poprzeczny do raszlownicy?",
+    "p": "To urządzenie transportowe przejmujące porcje warzyw bezpośrednio z linii technologicznej i kierujące je poprzecznie do leja raszlownicy lub na stanowisko ręcznego wiązania worków. Taśma falowana z zabierakami w kształcie poduszek amortyzuje upadek towaru podczas transportu."
+   },
+   {
+    "h2": "Do czego służy?",
+    "p": "Umożliwia elastyczne ustawienie raszlownicy i wagoworkownicy równolegle do linii produkcyjnej oraz pracę w obu kierunkach – lewo lub prawo – bez przebudowy całego stanowiska pakowania. Mobilna rama na kołach z hamulcem ułatwia podjazd i szybkie podłączenie do stanowiska."
+   },
+   {
+    "h2": "Jaki problem rozwiązuje?",
+    "p": "Bez przenośnika poprzecznego raszlownica musiałaby stać w bezpośredniej linii z resztą maszyn, co ogranicza możliwy układ hali. Przenośnik pozwala ustawić stanowisko pakowania pod kątem względem głównej linii, oszczędzając przestrzeń tam, gdzie hala nie pozwala na prostoliniowy ciąg maszyn."
+   },
+   {
+    "h2": "Dla kogo?",
+    "p": "Zakłady z ograniczoną przestrzenią hali, które planują elastyczny układ stanowiska pakowania względem reszty linii technologicznej."
+   },
+   {
+    "h2": "Przenośnik poprzeczny na tle innych maszyn kategorii Pakowanie",
+    "p": "To produkt akcesoryjny do <a href=\"/maszyny/pakowanie/raszlownica/\">raszlownicy</a> i <a href=\"/maszyny/pakowanie/wagoworkownica/\">wagoworkownicy</a> – nie konkuruje z żadną inną maszyną w portfolio, tylko rozszerza możliwości ustawienia stanowiska pakowania względem reszty hali."
+   },
+   {
+    "h2": "Dlaczego przenośnik poprzeczny od Agro-Weld",
+    "p": "Taśma falowana amortyzująca chroni produkt przed uszkodzeniem podczas upadku w trakcie procesu ważenia i pakowania. Mobilna rama na 4 kołach skrętnych z hamulcami pozwala szybko przestawić przenośnik w inne miejsce hali. Regulacja wysokości i wylotu ułatwia dopasowanie do różnych modeli raszlownic i wysokości linii, a możliwość pracy w obu kierunkach oznacza, że stanowisko pakowania nie wymaga przebudowy przy zmianie układu produkcji."
+   }
+  ],
+  "faq": [
+   {
+    "q": "Do czego służy przenośnik poprzeczny do raszlownicy?",
+    "a": "Przejmuje porcje warzyw bezpośrednio z linii technologicznej i kieruje je poprzecznie do leja raszlownicy lub na stanowisko ręcznego wiązania worków, umożliwiając ustawienie stanowiska pakowania pod kątem względem głównej linii."
+   },
+   {
+    "q": "Czy przenośnik można ustawić po obu stronach stanowiska?",
+    "a": "Tak, przenośnik pracuje w obu kierunkach – lewo lub prawo – bez konieczności przebudowy całego stanowiska pakowania."
+   },
+   {
+    "q": "Jak przenośnik chroni produkt przed uszkodzeniem?",
+    "a": "Taśma falowana z zabierakami w kształcie poduszek amortyzuje upadek towaru podczas procesu ważenia i pakowania, ograniczając ryzyko obić."
+   },
+   {
+    "q": "Czy przenośnik pasuje do każdego modelu raszlownicy Agro-Weld?",
+    "a": "Regulacja wysokości i wylotu pozwala szybko dopasować przenośnik do różnych modeli raszlownic i wysokości linii."
+   },
+   {
+    "q": "Jaka jest szerokość i długość przenośnika RA-PP-00?",
+    "a": "Przenośnik ma szerokość 700 mm i długość 2420 mm."
+   }
+  ],
+  "cta": "Planujesz stanowisko pakowania pod kątem względem reszty linii, żeby oszczędzić miejsce w hali? Napisz do nas o układzie, jaki masz na myśli – dobierzemy konfigurację przenośnika RA-PP-00. Zobacz też <a href=\"/maszyny/pakowanie/raszlownica/\">raszlownicę</a>, <a href=\"/maszyny/pakowanie/wagoworkownica/\">wagoworkownicę</a> i wróć do przeglądu kategorii <a href=\"/maszyny/pakowanie/\">Pakowanie</a>."
  },
  {
   "slug": "napelniacz-kaskadowy",
@@ -2069,7 +2429,7 @@
    "NK-2"
   ],
   "img": "maszyny/napelniacz-kaskadowy-1.webp",
-  "lead": "Napełniacz o konstrukcji kaskadowej umożliwia załadunek big-bagów i skrzyniopalet z ochroną towaru przed obiciem. Może być wyposażony w pojedynczą lub podwójną kaskadę z dziewięcioma żaglami.",
+  "lead": "Przy napełnianiu dużych opakowań z wysokości towar spadający swobodnie ulega obiciom, szczególnie przy delikatniejszych warzywach. Napełniacz kaskadowy Agro-Weld rozwiązuje ten problem, łamiąc spadek produktu na kilka etapów zamiast pozwalać mu spaść jednym ciągiem z pełnej wysokości urządzenia.",
   "desc": "Sterowanie oparte jest o przejrzysty, 7-calowy wyświetlacz dotykowy. Na platformie załadunkowej można zamontować wagę — po załadowaniu zadanej ilości towaru napełniacz przerywa pracę. Lekko zmodyfikowana wersja służy także do napełniania dużych opakowań kartonowych typu oktabin.",
   "features": [
    [
@@ -2118,8 +2478,58 @@
    "Waga"
   ],
   "uses": "Zakłady pakujące większe wolumeny do big-bagów, skrzyniopalet lub oktabinów.",
-  "metaTitle": "Napełniacz kaskadowy NK-1 / NK-2 do big-bagów – Agro-Weld",
-  "metaDesc": "Napełniacz kaskadowy do big-bagów i skrzyniopalet: 9 żagli, sterowanie dotykowe 7\", opcja wagi, ochrona towaru przed obiciem. Producent Agro-Weld."
+  "metaTitle": "Napełniacz kaskadowy NK-1 i NK-2 do big-bagów | Agro-Weld",
+  "metaDesc": "Napełniacz kaskadowy do big-bagów i skrzyniopalet, składana kaskada chroni towar. Możliwość montażu wagi. Wycena – Agro-Weld.",
+  "h1": "Napełniacz kaskadowy NK-1 i NK-2 do big-bagów",
+  "sections": [
+   {
+    "h2": "Co to jest napełniacz kaskadowy?",
+    "p": "To urządzenie do załadunku big-bagów oraz skrzyniopalet, wyposażone w pojedynczą lub podwójną kaskadę z dziewięcioma żaglami, zabezpieczającą towar przed obiciem podczas zsypu z wysokości. Sterowanie realizowane jest za pomocą 7-calowego wyświetlacza dotykowego."
+   },
+   {
+    "h2": "Do czego służy?",
+    "p": "Kontroluje spadek towaru z wysokości podczas napełniania dużych opakowań – big-baga lub skrzyniopalety – minimalizując obicia i uszkodzenia mechaniczne produktu. Kaskada łamie ciągły spadek na kilka mniejszych etapów, znacznie ograniczając prędkość, z jaką produkt uderza o dno opakowania."
+   },
+   {
+    "h2": "Jaki problem rozwiązuje?",
+    "p": "Przy napełnianiu dużych opakowań z wysoka towar spadający swobodnie ulega obiciom, co obniża jakość produktu trafiającego do dalszego transportu hurtowego. Napełniacz kaskadowy rozbija ten spadek na etapy, znacznie ograniczając uszkodzenia mechaniczne, szczególnie istotne przy delikatniejszych warzywach."
+   },
+   {
+    "h2": "Dla kogo?",
+    "p": "Zakłady pakujące duże partie warzyw do big-bagów lub skrzyniopalet do dalszego transportu hurtowego oraz eksporterzy wysyłający towar luzem w dużych opakowaniach zbiorczych."
+   },
+   {
+    "h2": "Napełniacz kaskadowy na tle innych maszyn do pakowania",
+    "p": "To urządzenie końcowe linii, uzupełniające resztę procesu pakowania – <a href=\"/maszyny/pakowanie/wagoworkownica/\">wagoworkownica</a> i <a href=\"/maszyny/pakowanie/raszlownica/\">raszlownica</a> pakują towar do mniejszych opakowań jednostkowych, natomiast napełniacz kaskadowy obsługuje duże opakowania zbiorcze typu big-bag, gdzie skala i wysokość zsypu wymagają innego podejścia do ochrony produktu."
+   },
+   {
+    "h2": "Dlaczego napełniacz kaskadowy od Agro-Weld",
+    "p": "Składana kaskada z dziewięcioma żaglami skutecznie zabezpiecza towar przed obiciem, łamiąc spadek na kilka kontrolowanych etapów. Niska podstawa na big-baga lub skrzynię ułatwia załadunek i rozładunek maszyny. Opcjonalna wersja z ważeniem na platformie załadunkowej automatycznie przerywa napełnianie po osiągnięciu zadanej masy towaru, a w wersji podwójnej NK-2 przełącza napełnianie na drugą sekcję, zwiększając ciągłość pracy. Sterowanie 7-calowym wyświetlaczem dotykowym ułatwia obsługę całego procesu."
+   }
+  ],
+  "faq": [
+   {
+    "q": "Do czego służy napełniacz kaskadowy?",
+    "a": "Umożliwia załadunek big-bagów oraz skrzyniopalet, kontrolując spadek towaru z wysokości za pomocą składanej kaskady, co chroni produkt przed obiciem."
+   },
+   {
+    "q": "Jak kaskada chroni towar przed obiciem?",
+    "a": "Kaskada z dziewięcioma żaglami łamie ciągły spadek towaru na kilka mniejszych etapów, znacznie ograniczając prędkość uderzenia produktu o dno opakowania."
+   },
+   {
+    "q": "Czym różni się NK-1 od NK-2?",
+    "a": "NK-1 ma jedną sekcję ważącą, natomiast NK-2 ma dwie sekcje – po osiągnięciu zadanej masy w jednej sekcji napełniacz automatycznie przełącza pracę na drugą, zwiększając ciągłość napełniania."
+   },
+   {
+    "q": "Czy dostępna jest opcja z automatycznym ważeniem?",
+    "a": "Tak, w wersji z ważeniem na platformie załadunkowej montowana jest waga, która po osiągnięciu zadanej masy towaru automatycznie przerywa napełnianie."
+   },
+   {
+    "q": "Jaka jest wysokość urządzenia?",
+    "a": "Oba warianty – NK-1 i NK-2 – mają wysokość 315 cm."
+   }
+  ],
+  "cta": "Pakujesz duże partie warzyw do big-bagów lub skrzyniopalet i chcesz ograniczyć obicia przy zsypie z wysokości? Napisz do nas, jaki wolumen pakujesz – dobierzemy wariant NK-1 lub NK-2. Zobacz też <a href=\"/maszyny/pakowanie/wagoworkownica/\">wagoworkownicę</a> i wróć do przeglądu kategorii <a href=\"/maszyny/pakowanie/\">Pakowanie</a>."
  },
  {
   "slug": "stoly-obrotowe",
@@ -2130,7 +2540,7 @@
   "models": [
    "SO-150"
   ],
-  "lead": "Stół obrotowy umożliwia buforowanie i kompletację warzyw przy końcu linii lub przed pakowaniem. Obracający się blat zapewnia stały dopływ towaru do pracowników, a obwodowa osłona zapobiega zsypywaniu.",
+  "lead": "Stół obrotowy buforowy SO-150 od Agro-Weld to urządzenie do gromadzenia i buforowania produktu na końcu linii lub przed pakowaniem zbiorczym – nie mylić z ogólnoprzemysłowymi stołami obrotowymi stosowanymi np. przy spawaniu czy obróbce, gdzie funkcja i konstrukcja są zupełnie inne.",
   "desc": "Płynna regulacja prędkości i zmiana kierunku obrotu pozwalają dopasować pracę do tempa linii. Konstrukcja na mobilnej ramie ułatwia szybkie przezbrojenia stanowiska.",
   "features": [
    [
@@ -2178,8 +2588,58 @@
    "Falownik"
   ],
   "uses": "Koniec linii i stanowiska ręcznego kompletowania produktu luzem lub gotowych porcji.",
-  "metaTitle": "Stół obrotowy SO-150 do buforowania i kompletacji – Agro-Weld",
-  "metaDesc": "Stół obrotowy Ø1500 mm na mobilnej ramie: rewers, regulacja prędkości i wysokości, obwodowa osłona. Buforowanie na końcu linii. Producent Agro-Weld."
+  "metaTitle": "Stół obrotowy buforowy SO-150 | Agro-Weld",
+  "metaDesc": "Stół obrotowy buforowy SO-150 do warzyw i owoców, regulacja prędkości i kierunku L/P. Osłona obwodowa. Zapytaj o wycenę – Agro-Weld.",
+  "h1": "Stół obrotowy buforowy SO-150",
+  "sections": [
+   {
+    "h2": "Co to jest stół obrotowy buforowy?",
+    "p": "To urządzenie z obracającym się blatem o średnicy 1500 mm, przeznaczone do gromadzenia i buforowania produktów luzem lub gotowych, spakowanych porcji na końcu linii lub przed pakowaniem zbiorczym. Osłona obwodowa zabezpiecza produkt przed zsypywaniem się z blatu podczas obrotu."
+   },
+   {
+    "h2": "Do czego służy?",
+    "p": "Zapewnia pracownikom stały dostęp do towaru dzięki obrotowi blatu, umożliwiając wygodną kompletację i pakowanie bez konieczności przemieszczania się wokół stanowiska. Płynna regulacja prędkości obrotowej z rewersem (lewo/prawo) pozwala dostosować pracę stołu do aktualnego tempa linii."
+   },
+   {
+    "h2": "Jaki problem rozwiązuje?",
+    "p": "Przy pakowaniu zbiorczym lub kompletacji zamówień pracownik potrzebuje stałego dostępu do różnych partii towaru rozłożonych na stanowisku. Stół obrotowy eliminuje potrzebę chodzenia wokół blatu, przybliżając produkt w rytm obrotu wprost do pracownika."
+   },
+   {
+    "h2": "Dla kogo?",
+    "p": "Stanowiska końcowe linii pakującej, punkty kompletacji zamówień zbiorczych oraz zakłady buforujące gotowe porcje przed kolejnym etapem produkcji."
+   },
+   {
+    "h2": "Stół obrotowy a bufor do pakowania – jak wybrać?",
+    "p": "W przeciwieństwie do <a href=\"/maszyny/pakowanie/bufor-do-pakowania/\">bufora do pakowania</a>, który jest stałym podestem ze skrzynką bez ruchu, stół obrotowy aktywnie przybliża towar do pracownika dzięki obrotowi blatu – to lepszy wybór przy pracy z wieloma partiami towaru jednocześnie, gdzie stały dostęp do różnych sekcji stanowiska ma znaczenie."
+   },
+   {
+    "h2": "Dlaczego stół obrotowy buforowy od Agro-Weld",
+    "p": "Płynna regulacja prędkości obrotowej z rewersem L/P stabilizuje przepływ produktu i pozwala dostosować tempo do rytmu pracy zespołu. Osłona obwodowa zabezpiecza produkt przed zsypywaniem się z blatu podczas obrotu. Mobilna rama na 4 kołach skrętnych z hamulcami ułatwia szybkie przemieszczanie urządzenia i zmianę stanowiska pracy. Panel operatorski z przyciskiem awaryjnym ułatwia bezpieczną obsługę, a regulacja wysokości o +300 mm pozwala dopasować stół do sąsiednich urządzeń linii."
+   }
+  ],
+  "faq": [
+   {
+    "q": "Do czego służy stół obrotowy buforowy?",
+    "a": "Gromadzi i buforuje produkty luzem lub gotowe, spakowane porcje na końcu linii lub przed pakowaniem zbiorczym, zapewniając pracownikom stały dostęp do towaru dzięki obrotowi blatu."
+   },
+   {
+    "q": "Czy prędkość obrotu jest regulowana?",
+    "a": "Tak, płynna regulacja prędkości obrotowej z rewersem (lewo/prawo) pozwala dostosować tempo stołu do aktualnego rytmu pracy linii."
+   },
+   {
+    "q": "Jaka jest średnica blatu SO-150?",
+    "a": "Blat stołu ma średnicę 1500 mm."
+   },
+   {
+    "q": "Czy stół ma zabezpieczenie przed zsypywaniem towaru?",
+    "a": "Tak, osłona obwodowa zabezpiecza produkt przed zsypywaniem się z blatu podczas obrotu."
+   },
+   {
+    "q": "Czy dostępna jest opcja z falownikiem?",
+    "a": "Tak, falownik dostępny jest jako opcja dodatkowa, umożliwiająca precyzyjną regulację prędkości obrotowej."
+   }
+  ],
+  "cta": "Potrzebujesz stanowiska ułatwiającego kompletację i pakowanie kilku partii towaru jednocześnie? Napisz do nas, jak wygląda Twoje stanowisko końcowe linii – doradzimy, czy lepszym rozwiązaniem będzie stół obrotowy SO-150, czy <a href=\"/maszyny/pakowanie/bufor-do-pakowania/\">bufor do pakowania</a>. Wróć też do przeglądu kategorii <a href=\"/maszyny/pakowanie/\">Pakowanie</a>."
  },
  {
   "slug": "bufor-do-pakowania",
@@ -2191,7 +2651,7 @@
    "BU-12",
    "BU-20"
   ],
-  "lead": "Bufory umożliwiają ręczne sortowanie, a następnie pakowanie warzyw i owoców do skrzyń. Wykonujemy je w wersji jedno- lub dwustanowiskowej; każde stanowisko ma indywidualną zapadkę ułatwiającą kontrolę pakowania.",
+  "lead": "Bufor do pakowania to kompaktowe stanowisko dla jednej lub dwóch osób, dedykowane bezpośredniemu pakowaniu warzyw i owoców do skrzyń – w odróżnieniu od stołu selekcyjnego, gdzie zespół pracuje wzdłuż długiej taśmy lub rolek, tutaj chodzi o krótkie buforowanie porcji tuż przed samym zapakowaniem.",
   "desc": "Konstrukcja wyposażona jest w 4 koła umożliwiające łatwy transport maszyny. Pod wylotem znajduje się podest na skrzynkę z możliwością zamontowania wagi, co ułatwia pakowanie towaru do kartonów, worków lub skrzynek.",
   "features": [
    [
@@ -2244,8 +2704,58 @@
    "Waga na podeście"
   ],
   "uses": "Ręczne pakowanie do skrzynek i kartonów na jedno- lub dwustanowiskowej platformie.",
-  "metaTitle": "Bufor do pakowania BU-12 / BU-20 – Agro-Weld",
-  "metaDesc": "Bufor do ręcznego sortowania i pakowania do skrzynek: 1 lub 2 stanowiska, zapadki, podest z opcją wagi, 4 koła. Producent Agro-Weld."
+  "metaTitle": "Bufor do pakowania BU-12 i BU-20 | Agro-Weld",
+  "metaDesc": "Bufor do pakowania warzyw i owoców do skrzyń, 1–2 stanowiska z zapadkami. Podest z możliwością wagi. Wycena gratis – Agro-Weld.",
+  "h1": "Bufor do pakowania BU-12 i BU-20",
+  "sections": [
+   {
+    "h2": "Co to jest bufor do pakowania?",
+    "p": "To mobilne stanowisko z indywidualnymi zapadkami, umożliwiające ręczne sortowanie oraz pakowanie warzyw i owoców bezpośrednio do skrzyń. Duża powierzchnia sortownika ułatwia pracownikowi selekcję i pozwala na krótkie buforowanie porcji produktu tuż przed zapakowaniem."
+   },
+   {
+    "h2": "Do czego służy?",
+    "p": "Umożliwia jednemu lub dwóm pracownikom – w wersji dwustanowiskowej BU-20 – jednoczesną selekcję i pakowanie produktu do skrzynek ustawionych na podeście pod wylotem, z kontrolą tempa dzięki indywidualnym zapadkom przy każdym stanowisku."
+   },
+   {
+    "h2": "Jaki problem rozwiązuje?",
+    "p": "Przy stanowiskach bez zapadek pracownik nie ma kontroli nad tempem napływu produktu do pakowania – towar może napływać szybciej, niż zdąży go zapakować. Zapadki bufora pozwalają zmniejszyć lub całkowicie zamknąć wylot, dopasowując tempo napływu do własnej wydajności pracy."
+   },
+   {
+    "h2": "Dla kogo?",
+    "p": "Stanowiska ręcznego pakowania do skrzyń na końcu linii oraz gospodarstwa łączące krótkie buforowanie porcji z bezpośrednim pakowaniem, bez potrzeby długiego stołu selekcyjnego."
+   },
+   {
+    "h2": "Bufor do pakowania a stół selekcyjny – jak wybrać?",
+    "p": "W przeciwieństwie do <a href=\"/maszyny/selekcja/stoly-selekcyjne-tasmowe/\">stołu selekcyjnego</a>, gdzie pracuje zespół wzdłuż długiej taśmy lub rolek, bufor do pakowania to kompaktowe stanowisko 1–2-osobowe, dedykowane bezpośredniemu pakowaniu do skrzyń, a nie ciągłej selekcji na linii. Sprawdza się tam, gdzie potrzeba krótkiego buforowania tuż przed zapakowaniem, a nie rozbudowanego etapu ręcznej kontroli jakości na całej szerokości linii."
+   },
+   {
+    "h2": "Dlaczego bufor do pakowania od Agro-Weld",
+    "p": "Duża powierzchnia sortownika ułatwia pracownikowi selekcję owoców oraz umożliwia krótkie buforowanie porcji produktu bez dodatkowego stanowiska pośredniego. Indywidualne zapadki przy każdym stanowisku kontrolują tempo załadunku, dopasowując je do rytmu pracy pracownika. Podest na skrzynkę z możliwością zamontowania wagi ułatwia pakowanie towaru bezpośrednio do kartonów, worków lub skrzynek z jednoczesną kontrolą wagi. Cztery koła jezdne ułatwiają transport i szybką zmianę stanowiska pracy w hali."
+   }
+  ],
+  "faq": [
+   {
+    "q": "Czym różni się bufor do pakowania od stołu selekcyjnego?",
+    "a": "Bufor do pakowania to kompaktowe stanowisko 1–2-osobowe do bezpośredniego pakowania do skrzyń, natomiast stół selekcyjny to dłuższe stanowisko pracy zespołowej wzdłuż taśmy lub rolek, przeznaczone do ciągłej selekcji na linii."
+   },
+   {
+    "q": "Ile osób może jednocześnie pracować przy buforze BU-20?",
+    "a": "Model BU-20 to wersja dwustanowiskowa, przy której mogą jednocześnie pracować dwie osoby, każda przy własnej zapadce kontrolującej tempo załadunku."
+   },
+   {
+    "q": "Czy można zamontować wagę na podeście?",
+    "a": "Tak, podest na skrzynkę można opcjonalnie wyposażyć w wagę, co ułatwia kontrolę masy pakowanego towaru bezpośrednio przy stanowisku."
+   },
+   {
+    "q": "Jak działają zapadki kontrolujące tempo?",
+    "a": "Zapadki umożliwiają zmniejszenie lub całkowite zamknięcie wylotu produktu, co pozwala pracownikowi samodzielnie regulować prędkość załadunku dopasowaną do własnego tempa pakowania."
+   },
+   {
+    "q": "Czy dostępna jest wersja ze stali nierdzewnej?",
+    "a": "Tak, bufor do pakowania dostępny jest opcjonalnie w wykonaniu ze stali nierdzewnej, z wagą zamontowaną na podeście."
+   }
+  ],
+  "cta": "Potrzebujesz kompaktowego stanowiska do ręcznego pakowania warzyw lub owoców do skrzyń? Napisz do nas, czy pracować ma jedna, czy dwie osoby – dobierzemy wariant BU-12 lub BU-20. Zobacz też <a href=\"/maszyny/pakowanie/stoly-obrotowe/\">stół obrotowy buforowy</a> i wróć do przeglądu kategorii <a href=\"/maszyny/pakowanie/\">Pakowanie</a>."
  },
  {
   "slug": "formatory-palet",
@@ -2301,7 +2811,7 @@
    "Wykonanie ze stali nierdzewnej"
   ],
   "uses": "Mniejsze zakłady i gospodarstwa układające worki na paletach euro lub przemysłowych.",
-  "metaTitle": "Formatory palet FP-1280 i FP-1210 – Agro-Weld",
+  "metaTitle": "Formatory palet FP-1280 i FP-1210 | Agro-Weld",
   "metaDesc": "Agro-Weld – formator palet do worków, konstrukcja w kształcie litery C, stal nierdzewna. Prosty i szybki montaż. Zapytaj o wycenę!",
   "sections": [
    {
@@ -2351,7 +2861,8 @@
     "a": "Tak, formator może być wykonany w całości ze stali nierdzewnej."
    }
   ],
-  "cta": "Pakujesz do worków ręcznie i szukasz sposobu, by stos na palecie był stabilny bez inwestycji w pełną automatyzację? Formator palet FP-1280 lub FP-1210 to naturalny pierwszy krok – porównaj go z automatycznymi paletyzatorami Verbruggen na stronie kategorii <a href=\"/maszyny/paletyzacja/\">Paletyzacja</a> i sprawdź, które rozwiązanie pasuje do Twojej skali produkcji. Zapytaj o wycenę i termin realizacji."
+  "cta": "Pakujesz do worków ręcznie i szukasz sposobu, by stos na palecie był stabilny bez inwestycji w pełną automatyzację? Formator palet FP-1280 lub FP-1210 to naturalny pierwszy krok – porównaj go z automatycznymi paletyzatorami Verbruggen na stronie kategorii <a href=\"/maszyny/paletyzacja/\">Paletyzacja</a> i sprawdź, które rozwiązanie pasuje do Twojej skali produkcji. Zapytaj o wycenę i termin realizacji.",
+  "h1": "Formatory palet FP-1280 i FP-1210"
  },
  {
   "slug": "przenosniki-tasmowe-poziome",
@@ -2415,7 +2926,7 @@
    "Przegrody i kaskady na wylotach"
   ],
   "uses": "Transport luzem między maszynami czyszczącymi, sortującymi i pakującymi na jednym poziomie.",
-  "metaTitle": "Przenośniki taśmowe poziome do warzyw – Agro-Weld",
+  "metaTitle": "Przenośniki taśmowe poziome do warzyw | Agro-Weld",
   "metaDesc": "Agro-Weld – przenośniki taśmowe poziome do warzyw, szerokości 20–90 cm, długości 1–12 m. Regulowane burty i podzielnice. Wycena!",
   "sections": [
    {
@@ -2531,7 +3042,7 @@
    "Taśmy z atestem spożywczym"
   ],
   "uses": "Odcinki linii wymagające pokonania różnicy wysokości — zasyp koszy, buforów, wagoworkownic.",
-  "metaTitle": "Przenośniki taśmowe wznoszące i łamane – Agro-Weld",
+  "metaTitle": "Przenośniki taśmowe wznoszące i łamane | Agro-Weld",
   "metaDesc": "Agro-Weld – przenośniki taśmowe wznoszące, w tym łamane pod kątem do 50°. Falownik, zasobniki buforujące. Zapytaj o wycenę!",
   "sections": [
    {
@@ -2629,7 +3140,7 @@
    "Wykonanie ze stali kwasoodpornej"
   ],
   "uses": "Stoły selekcyjne i kalibrowniki — odprowadzanie odsortu poza linię.",
-  "metaTitle": "Przenośnik odpadowy do linii warzywnych – Agro-Weld",
+  "metaTitle": "Przenośnik odpadowy do linii warzywnych | Agro-Weld",
   "metaDesc": "Agro-Weld – przenośnik odpadowy z poziomymi zabierakami do transportu odsortu i odpadów. Współpraca ze stołami i kalibrownikami. Wycena!",
   "sections": [
    {
@@ -2724,7 +3235,7 @@
    "Waga"
   ],
   "uses": "Workowanie węgla, pelletu i podobnych materiałów — poza głównym profilem warzywno-owocowym.",
-  "metaTitle": "Przenośnik do materiałów sypkich – Agro-Weld",
+  "metaTitle": "Przenośnik do materiałów sypkich | Agro-Weld",
   "metaDesc": "Agro-Weld – przenośnik do materiałów sypkich (węgiel, pellet) z taśmą w kształcie V. Opcja wagi półautomatycznej. Zapytaj o wycenę!",
   "sections": [
    {
@@ -2822,7 +3333,7 @@
    "Wykonanie ze stali kwasoodpornej"
   ],
   "uses": "Transport gotowych, spakowanych jednostek na końcu linii i w magazynie.",
-  "metaTitle": "Przenośniki rolkowe grawitacyjne i napędzane – Agro-Weld",
+  "metaTitle": "Przenośniki rolkowe grawitacyjne i napędzane | Agro-Weld",
   "metaDesc": "Agro-Weld – przenośniki rolkowe do transportu ładunków, wersja grawitacyjna i napędzana. Bezpieczny transport palet. Zapytaj o wycenę!",
   "sections": [
    {
@@ -2872,7 +3383,8 @@
     "a": "Tak, konstrukcję można w pełni dostosować do indywidualnych potrzeb klienta."
    }
   ],
-  "cta": "Transportujesz gotowe opakowania lub palety i szukasz prostego, niezawodnego rozwiązania? Powiedz nam, czy zależy Ci na wersji grawitacyjnej, czy potrzebujesz napędzanego, automatycznego odcinka – dobierzemy długość i szerokość pod Twoje stanowisko. Zobacz też <a href=\"/maszyny/przenosniki/przenosniki-tasmowe-poziome/\">przenośniki taśmowe poziome</a> do transportu produktu luzem."
+  "cta": "Transportujesz gotowe opakowania lub palety i szukasz prostego, niezawodnego rozwiązania? Powiedz nam, czy zależy Ci na wersji grawitacyjnej, czy potrzebujesz napędzanego, automatycznego odcinka – dobierzemy długość i szerokość pod Twoje stanowisko. Zobacz też <a href=\"/maszyny/przenosniki/przenosniki-tasmowe-poziome/\">przenośniki taśmowe poziome</a> do transportu produktu luzem.",
+  "h1": "Przenośniki rolkowe - wersja grawitacyjna i napędzana"
  },
  {
   "slug": "pielnik-do-obrobki-redlin",
@@ -2944,7 +3456,7 @@
    "Wymienne narzędzia: noże, gęsie stópki, dłuta, tarcze ochronne, obsypniki"
   ],
   "uses": "Uprawy warzyw na redlinach — głównie marchew i pietruszka — szczególnie przy ograniczaniu herbicydów.",
-  "metaTitle": "Pielnik do obróbki redlin Pip-4 i Pia-4 – Agro-Weld",
+  "metaTitle": "Pielnik do obróbki redlin Pip-4 i Pia-4 | Agro-Weld",
   "metaDesc": "Agro-Weld – pielnik do redlin Pip-4/Pia-4, sekcje równoległoboczne, koła kopiujące, wymienne narzędzia, opcjonalny podsiewacz nawozu. Wycena!",
   "sections": [
    {
@@ -2994,6 +3506,7 @@
     "a": "Zestaw wymiennych narzędzi obejmuje m.in. noże, gęsie stópki, dłuta, tarcze ochronne oraz obsypniki formujące – dobierane pod rodzaj gleby i fazę rozwojową roślin."
    }
   ],
-  "cta": "Szukasz sposobu na mechaniczne odchwaszczanie międzyrzędzi bez zwiększania zużycia herbicydów? Pielnik Pip-4 lub Pia-4 formuje redliny i usuwa chwasty w jednym przejeździe, utrzymując stałą głębokość nawet na nierównym polu. Napisz do nas z informacją o rozstawie rzędów i mocy posiadanego ciągnika – dobierzemy odpowiedni model i zestaw narzędzi."
+  "cta": "Szukasz sposobu na mechaniczne odchwaszczanie międzyrzędzi bez zwiększania zużycia herbicydów? Pielnik Pip-4 lub Pia-4 formuje redliny i usuwa chwasty w jednym przejeździe, utrzymując stałą głębokość nawet na nierównym polu. Napisz do nas z informacją o rozstawie rzędów i mocy posiadanego ciągnika – dobierzemy odpowiedni model i zestaw narzędzi.",
+  "h1": "Pielnik do obróbki redlin Pip-4 i Pia-4"
  }
 ]

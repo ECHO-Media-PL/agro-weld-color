@@ -1,0 +1,539 @@
+{
+ "_opis": "Mapowanie URL-i starego serwisu agro-weld.pl na nowy. Domena bez zmian. Źródło: uploads/Agro-Weld_mapa-serwisu-20027393.xlsx (86 adresów).",
+ "redirects": [
+  {
+   "from": "/",
+   "to": "/",
+   "status": "—",
+   "note": "Strona główna — bez zmian"
+  },
+  {
+   "from": "/finansowanie",
+   "to": "/kontakt/",
+   "status": "301",
+   "note": "Decyzja klienta 16.09.2026: przekierowanie na kontakt (strona nieodtwarzana na start)"
+  },
+  {
+   "from": "/katalog",
+   "to": "/do-pobrania/",
+   "status": "301",
+   "note": "Katalogi i materiały PDF są teraz w „Do pobrania”"
+  },
+  {
+   "from": "/kontakt",
+   "to": "/kontakt/",
+   "status": "301",
+   "note": "Tylko dodany ukośnik"
+  },
+  {
+   "from": "/o-firmie",
+   "to": "/o-firmie/",
+   "status": "301",
+   "note": "Tylko dodany ukośnik"
+  },
+  {
+   "from": "/polityka-prywatnosci",
+   "to": "/polityka-prywatnosci/",
+   "status": "301",
+   "note": "Tylko dodany ukośnik"
+  },
+  {
+   "from": "/maszyny/",
+   "to": "/maszyny/",
+   "status": "—",
+   "note": "Listing maszyn — bez zmian"
+  },
+  {
+   "from": "/maszyny",
+   "to": "/maszyny/",
+   "status": "301",
+   "note": "Już przekierowane na starym serwisie"
+  },
+  {
+   "from": "/maszyny/bufor-do-sortowania/67cdeb15799068ebb64efde8/",
+   "to": "/maszyny/pakowanie/bufor-do-pakowania/",
+   "status": "301",
+   "note": "PRZYBLIŻENIE: nowa nazwa „Bufor do pakowania”"
+  },
+  {
+   "from": "/maszyny/czyszczarka-do-imbiru-lub-chrzanu/697c788bfd4fc91bf9d751b9/",
+   "to": "/maszyny/oczyszczanie/czyszczarka-do-imbiru-i-chrzanu/",
+   "status": "301",
+   "note": ""
+  },
+  {
+   "from": "/maszyny/czyszczarka-szczotkowa/67cde010799068ebb64efde2/",
+   "to": "/maszyny/oczyszczanie/czyszczarka-szczotkowa/",
+   "status": "301",
+   "note": ""
+  },
+  {
+   "from": "/maszyny/dwubębnowy-sortownik-do-owoców-drobnych/67d05050a60f9ebfefd3a472/",
+   "to": "/maszyny/sortowanie/dwubebnowy-sortownik-do-owocow-drobnych/",
+   "status": "301",
+   "note": "Nowy slug bez polskich znaków"
+  },
+  {
+   "from": "/maszyny/formatory-palet/697b8b67b218f4072882f3fd/",
+   "to": "/maszyny/pakowanie/formatory-palet/",
+   "status": "301",
+   "note": "Przeniesione z paletyzacji do kategorii Pakowanie"
+  },
+  {
+   "from": "/maszyny/kalibrownik-rozsuwany/67cde69c799068ebb64efde4/",
+   "to": "/maszyny/sortowanie/kalibrownik-rozsuwany/",
+   "status": "301",
+   "note": ""
+  },
+  {
+   "from": "/maszyny/kosz-przyjęciowy-kp1000/67cf16f2593631ce8409a954/",
+   "to": "/maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/#kp1000",
+   "status": "301",
+   "note": "Modele KP to teraz sekcje jednej karty"
+  },
+  {
+   "from": "/maszyny/kosz-przyjęciowy-kp1500/67cf195f593631ce8409a956/",
+   "to": "/maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/#kp1500",
+   "status": "301",
+   "note": "Sekcja karty koszy"
+  },
+  {
+   "from": "/maszyny/kosz-przyjęciowy-kp2000/67cf1cd8593631ce8409a958/",
+   "to": "/maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/#kp2000",
+   "status": "301",
+   "note": "Sekcja karty koszy"
+  },
+  {
+   "from": "/maszyny/kosz-przyjęciowy-kp3000/67cf1eea593631ce8409a95a/",
+   "to": "/maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/#kp3000",
+   "status": "301",
+   "note": "Sekcja karty koszy"
+  },
+  {
+   "from": "/maszyny/kosz-przyjęciowy-kp5000g/67cf24b6593631ce8409a95e/",
+   "to": "/maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/#kp5000g",
+   "status": "301",
+   "note": "Sekcja karty koszy"
+  },
+  {
+   "from": "/maszyny/kosz-przyjęciowy-kps3000g/67cf2193593631ce8409a95c/",
+   "to": "/maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/#kps3000g",
+   "status": "301",
+   "note": "Sekcja karty koszy"
+  },
+  {
+   "from": "/maszyny/liczarka/67cf27a9593631ce8409a960/",
+   "to": "/maszyny/wazenie-i-liczenie/liczarka/",
+   "status": "301",
+   "note": ""
+  },
+  {
+   "from": "/maszyny/napełniacz-kaskadowy/67ce00bcfbceb1c67efb671c/",
+   "to": "/maszyny/pakowanie/napelniacz-kaskadowy/",
+   "status": "301",
+   "note": ""
+  },
+  {
+   "from": "/maszyny/paletyzatory/696fb7e82abe02495323d54f/",
+   "to": "/maszyny/paletyzacja/",
+   "status": "301",
+   "note": "Paletyzatory Verbruggen — strona kategorii"
+  },
+  {
+   "from": "/maszyny/pielnik-do-obróbki-redlin/696a59794da81bc256722bba/",
+   "to": "/maszyny/pielenie/pielnik-do-obrobki-redlin/",
+   "status": "301",
+   "note": ""
+  },
+  {
+   "from": "/maszyny/przenośnik-do-materiałów-sypkich/6672c526a12ee4f19ab16310/",
+   "to": "/maszyny/przenosniki/przenosnik-do-materialow-sypkich/",
+   "status": "301",
+   "note": ""
+  },
+  {
+   "from": "/maszyny/przenośnik-odpadowy/6672c2a4a12ee4f19ab16309/",
+   "to": "/maszyny/przenosniki/przenosnik-odpadowy/",
+   "status": "301",
+   "note": ""
+  },
+  {
+   "from": "/maszyny/przenośnik-taśmowy-poprzeczny/697c8638fd4fc91bf9d751e5/",
+   "to": "/maszyny/pakowanie/przenosnik-poprzeczny-do-raszlownicy/",
+   "status": "301",
+   "note": "W nowym serwisie w kategorii Pakowanie"
+  },
+  {
+   "from": "/maszyny/przenośnik-taśmowy-poziomy/6671d5e3ad3ebbf4a1bdb8fa/",
+   "to": "/maszyny/przenosniki/przenosniki-tasmowe-poziome/",
+   "status": "301",
+   "note": ""
+  },
+  {
+   "from": "/maszyny/przenośnik-taśmowy-wznoszący/6672d8b4a12ee4f19ab1632f/",
+   "to": "/maszyny/przenosniki/przenosniki-tasmowe-wznoszace/",
+   "status": "301",
+   "note": ""
+  },
+  {
+   "from": "/maszyny/przenośnik-taśmowy-z-przegrodami/666c1dd97db89265d45932c9/",
+   "to": "/maszyny/przenosniki/przenosniki-tasmowe-poziome/",
+   "status": "301",
+   "note": "Decyzja 16.09.2026: przegrody opisane na przenośnikach poziomych"
+  },
+  {
+   "from": "/maszyny/przenośniki-rolkowe/67d055ce56741f12cc290d54/",
+   "to": "/maszyny/przenosniki/przenosniki-rolkowe/",
+   "status": "301",
+   "note": ""
+  },
+  {
+   "from": "/maszyny/przenośniki-z-taśmą-modularną/67d05b4e56741f12cc290d56/",
+   "to": "/maszyny/przenosniki/przenosniki-tasmowe-poziome/",
+   "status": "301",
+   "note": "PRZYBLIŻENIE: taśma modularna to wariant przenośnika poziomego"
+  },
+  {
+   "from": "/maszyny/raszlownica/67cdfef9fbceb1c67efb671a/",
+   "to": "/maszyny/pakowanie/raszlownica/",
+   "status": "301",
+   "note": ""
+  },
+  {
+   "from": "/maszyny/separator-ziemii-i-kamienii/67cddcf7799068ebb64efde0/",
+   "to": "/maszyny/oczyszczanie/separator-ziemi-i-kamieni/",
+   "status": "301",
+   "note": "Poprawiona pisownia sluga"
+  },
+  {
+   "from": "/maszyny/sortownik-do-owoców-drobnych/67cde8d0799068ebb64efde6/",
+   "to": "/maszyny/sortowanie/sortownik-do-owocow-drobnych/",
+   "status": "301",
+   "note": ""
+  },
+  {
+   "from": "/maszyny/stoły-obrotowe/697c804dfd4fc91bf9d751ce/",
+   "to": "/maszyny/pakowanie/stoly-obrotowe/",
+   "status": "301",
+   "note": ""
+  },
+  {
+   "from": "/maszyny/stoły-selekcyjne-rolkowe/67cdf2cf799068ebb64efdec/",
+   "to": "/maszyny/selekcja/stoly-selekcyjne-rolkowe/",
+   "status": "301",
+   "note": ""
+  },
+  {
+   "from": "/maszyny/stoły-selekcyjne-taśmowe/67cded6b799068ebb64efdea/",
+   "to": "/maszyny/selekcja/stoly-selekcyjne-tasmowe/",
+   "status": "301",
+   "note": ""
+  },
+  {
+   "from": "/maszyny/waga-kontrolna/67cf2b2e593631ce8409a962/",
+   "to": "/maszyny/wazenie-i-liczenie/waga-kontrolna/",
+   "status": "301",
+   "note": ""
+  },
+  {
+   "from": "/maszyny/wagoworkownica/67cdfd50fbceb1c67efb6718/",
+   "to": "/maszyny/pakowanie/wagoworkownica/",
+   "status": "301",
+   "note": ""
+  },
+  {
+   "from": "/maszyny/wanna-do-płukania/697c7cc3fd4fc91bf9d751c0/",
+   "to": "/maszyny/oczyszczanie/wanna-do-plukania/",
+   "status": "301",
+   "note": ""
+  },
+  {
+   "from": "/maszyny/wywrotnica-skrzyniopalet/67cdd634799068ebb64efddc/",
+   "to": "/maszyny/rozladunek-skrzyn/wywrotnica-skrzyniopalet/",
+   "status": "301",
+   "note": ""
+  },
+  {
+   "from": "/maszyny/zasobnik-buforowy/67cdd9c4799068ebb64efdde/",
+   "to": "/maszyny/przyjecie-i-buforowanie/zasobnik-buforowy/",
+   "status": "301",
+   "note": ""
+  },
+  {
+   "from": "/maszyny/?cat=Rozładunek+skrzyń",
+   "to": "/maszyny/rozladunek-skrzyn/",
+   "status": "301",
+   "note": "Filtr → strona kategorii"
+  },
+  {
+   "from": "/maszyny/?cat=rozładunek skrzyń",
+   "to": "/maszyny/rozladunek-skrzyn/",
+   "status": "301",
+   "note": "Wariant zapisu"
+  },
+  {
+   "from": "/maszyny/?cat=Przyjęcie+i+buforowanie",
+   "to": "/maszyny/przyjecie-i-buforowanie/",
+   "status": "301",
+   "note": "Filtr → strona kategorii"
+  },
+  {
+   "from": "/maszyny/?cat=przyjęcie i buforowanie",
+   "to": "/maszyny/przyjecie-i-buforowanie/",
+   "status": "301",
+   "note": "Wariant zapisu"
+  },
+  {
+   "from": "/maszyny/?cat=Oczyszczanie",
+   "to": "/maszyny/oczyszczanie/",
+   "status": "301",
+   "note": "Filtr → strona kategorii"
+  },
+  {
+   "from": "/maszyny/?cat=oczyszczanie",
+   "to": "/maszyny/oczyszczanie/",
+   "status": "301",
+   "note": "Wariant zapisu"
+  },
+  {
+   "from": "/maszyny/?cat=Sortowanie",
+   "to": "/maszyny/sortowanie/",
+   "status": "301",
+   "note": "Filtr → strona kategorii"
+  },
+  {
+   "from": "/maszyny/?cat=sortowanie",
+   "to": "/maszyny/sortowanie/",
+   "status": "301",
+   "note": "Wariant zapisu"
+  },
+  {
+   "from": "/maszyny/?cat=Selekcja",
+   "to": "/maszyny/selekcja/",
+   "status": "301",
+   "note": "Filtr → strona kategorii"
+  },
+  {
+   "from": "/maszyny/?cat=selekcja",
+   "to": "/maszyny/selekcja/",
+   "status": "301",
+   "note": "Wariant zapisu"
+  },
+  {
+   "from": "/maszyny/?cat=Ważenie",
+   "to": "/maszyny/wazenie-i-liczenie/",
+   "status": "301",
+   "note": "Filtr → strona kategorii"
+  },
+  {
+   "from": "/maszyny/?cat=ważenie",
+   "to": "/maszyny/wazenie-i-liczenie/",
+   "status": "301",
+   "note": "Wariant zapisu"
+  },
+  {
+   "from": "/maszyny/?cat=Pakowanie",
+   "to": "/maszyny/pakowanie/",
+   "status": "301",
+   "note": "Filtr → strona kategorii"
+  },
+  {
+   "from": "/maszyny/?cat=pakowanie",
+   "to": "/maszyny/pakowanie/",
+   "status": "301",
+   "note": "Wariant zapisu"
+  },
+  {
+   "from": "/maszyny?cat=pakowanie",
+   "to": "/maszyny/pakowanie/",
+   "status": "301",
+   "note": "Wariant bez ukośnika"
+  },
+  {
+   "from": "/maszyny/?cat=Paletyzacja",
+   "to": "/maszyny/paletyzacja/",
+   "status": "301",
+   "note": "Filtr → strona kategorii"
+  },
+  {
+   "from": "/maszyny/?cat=Przenośniki+taśmowe",
+   "to": "/maszyny/przenosniki/",
+   "status": "301",
+   "note": "Filtr → strona kategorii"
+  },
+  {
+   "from": "/maszyny/?cat=Pielenie",
+   "to": "/maszyny/pielenie/",
+   "status": "301",
+   "note": "Filtr → strona kategorii"
+  },
+  {
+   "from": "/realizacje",
+   "to": "/realizacje/",
+   "status": "301",
+   "note": "Tylko dodany ukośnik"
+  },
+  {
+   "from": "/realizacje/linia-do-cytrusow",
+   "to": "/realizacje/linia-do-cytrusow/",
+   "status": "301",
+   "note": "Istnieje w nowym serwisie"
+  },
+  {
+   "from": "/realizacje/sortownik-do-borowek",
+   "to": "/realizacje/linia-do-sortowania-borowki/",
+   "status": "301",
+   "note": "Zmieniony slug"
+  },
+  {
+   "from": "/realizacje/stol-selekcyjny-inox",
+   "to": "/realizacje/stol-selekcyjny-inox/",
+   "status": "301",
+   "note": "Istnieje w nowym serwisie"
+  },
+  {
+   "from": "/realizacje/raszlownica",
+   "to": "/realizacje/raszlownica-z-modulem-pakujacym/",
+   "status": "301",
+   "note": "Zmieniony slug"
+  },
+  {
+   "from": "/realizacje/czyszczarka-z-szuflada",
+   "to": "/realizacje/czyszczarka-szczotkowa-z-szuflada/",
+   "status": "301",
+   "note": "Odtworzona realizacja — nowy slug"
+  },
+  {
+   "from": "/realizacje/kosz-przyjeciowy-5m",
+   "to": "/realizacje/kosz-przyjeciowy-5m3/",
+   "status": "301",
+   "note": "Odtworzona realizacja — nowy slug"
+  },
+  {
+   "from": "/realizacje/kosz-przyjeciowy-separator",
+   "to": "/realizacje/kosz-przyjeciowy-z-separatorem/",
+   "status": "301",
+   "note": "Odtworzona realizacja — nowy slug"
+  },
+  {
+   "from": "/realizacje/linia-do-pakowania-warzyw",
+   "to": "/realizacje/linia-do-pakowania-warzyw/",
+   "status": "301",
+   "note": "Odtworzona realizacja"
+  },
+  {
+   "from": "/realizacje/linia-do-sortowania-pakowania-oczyszczania",
+   "to": "/realizacje/linia-do-pakowania-ziemniakow/",
+   "status": "301",
+   "note": "Odtworzona realizacja — nowy slug"
+  },
+  {
+   "from": "/realizacje/przenosniki-rolkowe",
+   "to": "/realizacje/przenosniki-rolkowe/",
+   "status": "301",
+   "note": "Odtworzona realizacja"
+  },
+  {
+   "from": "/realizacje/przenosniki-tasmowe-z-tasma-modularna",
+   "to": "/realizacje/przenosniki-tasmowe-z-tasma-modularna/",
+   "status": "301",
+   "note": "Odtworzona realizacja"
+  },
+  {
+   "from": "/realizacje/wagoworkownica",
+   "to": "/realizacje/wagoworkownica/",
+   "status": "301",
+   "note": "Odtworzona realizacja"
+  },
+  {
+   "from": "/realizacje/zasobnik-buforowy-kwasoodrporny",
+   "to": "/realizacje/zasobnik-buforowy-kwasoodporny/",
+   "status": "301",
+   "note": "Odtworzona realizacja — nowy slug"
+  },
+  {
+   "from": "/linie-produkcyjne",
+   "to": "/linie-produkcyjne/",
+   "status": "301",
+   "note": "Tylko dodany ukośnik"
+  },
+  {
+   "from": "/linie-produkcyjne/zaawansowana-linia-do-liczenia-i-pakowania-cytrusow-inox",
+   "to": "/realizacje/linia-do-cytrusow/",
+   "status": "301",
+   "note": "Ta linia ma w nowym serwisie własną realizację"
+  },
+  {
+   "from": "/linie-produkcyjne/linia-do-buforowania-i-recznej-selekcji-cebuli",
+   "to": "/linie-produkcyjne/",
+   "status": "301",
+   "note": "Brak osobnych podstron linii — strona zbiorcza"
+  },
+  {
+   "from": "/linie-produkcyjne/linia-do-oczyszczania-mycia-i-pakowania-warzyw",
+   "to": "/linie-produkcyjne/",
+   "status": "301",
+   "note": "Brak osobnych podstron linii — strona zbiorcza"
+  },
+  {
+   "from": "/linie-produkcyjne/linia-do-selekcji-i-recznego-pakowania-batatow",
+   "to": "/linie-produkcyjne/",
+   "status": "301",
+   "note": "Brak osobnych podstron linii — strona zbiorcza"
+  },
+  {
+   "from": "/linie-produkcyjne/propozycja-linii-do-czyszczenia-i-pakowania",
+   "to": "/linie-produkcyjne/",
+   "status": "301",
+   "note": "Brak osobnych podstron linii — strona zbiorcza"
+  },
+  {
+   "from": "/linie-produkcyjne/propozycja-linii-do-kalibracji-i-wazenia",
+   "to": "/linie-produkcyjne/",
+   "status": "301",
+   "note": "Brak osobnych podstron linii — strona zbiorcza"
+  },
+  {
+   "from": "/linie-produkcyjne/propozycja-linii-do-kalibrowania-i-pakowania",
+   "to": "/linie-produkcyjne/",
+   "status": "301",
+   "note": "Brak osobnych podstron linii — strona zbiorcza"
+  },
+  {
+   "from": "/images/AgroWeldKatalog2026.pdf",
+   "to": "/uploads/agro-weld-katalog-2026.pdf",
+   "status": "301",
+   "note": "Katalog Agro-Weld 2026"
+  },
+  {
+   "from": "/images/Katalog Verbruggen 1 PL v5.pdf",
+   "to": "/uploads/verbruggen-katalog-paletyzatorow.pdf",
+   "status": "301",
+   "note": "Katalog paletyzatorów Verbruggen"
+  },
+  {
+   "from": "/images/AgroWeldENG.pdf",
+   "to": "/do-pobrania/",
+   "status": "301",
+   "note": "Brak katalogu EN — kierujemy na Do pobrania"
+  },
+  {
+   "from": "/en",
+   "to": "/",
+   "status": "301",
+   "note": "Wersja EN w planie — do czasu wdrożenia 301 na stronę główną"
+  },
+  {
+   "from": "/en/",
+   "to": "/",
+   "status": "301",
+   "note": "Wersja EN w planie — do czasu wdrożenia 301 na stronę główną"
+  },
+  {
+   "from": "/images/AgroWeldKatalog2025.pdf",
+   "to": "/uploads/agro-weld-katalog-2026.pdf",
+   "status": "301",
+   "note": "Stary katalog 2025 → katalog 2026"
+  }
+ ]
+}

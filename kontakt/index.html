@@ -3,12 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Kontakt – Agro-Weld, producent maszyn do warzyw i owoców | Środa Wlkp.</title>
-<meta name="description" content="Skontaktuj się z Agro-Weld: ul. Ignacego Prądzyńskiego 16, 63-000 Środa Wielkopolska. Tel. +48 725 140 257, biuro@agro-weld.pl. Zapytaj o maszynę lub całą linię – wycena gratis.">
+<link rel="icon" href="../assets/favicon.png" sizes="any">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<title>Kontakt - producent maszyn, Środa Wlkp. | Agro-Weld</title>
+<meta name="description" content="Agro-Weld, ul. Ignacego Prądzyńskiego 16, 63-000 Środa Wielkopolska. Tel. +48 725 140 257, biuro@agro-weld.pl. Wycena gratis.">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
 <link rel="canonical" href="https://www.agro-weld.pl/kontakt/">
-<meta property="og:title" content="Kontakt | Agro-Weld">
-<meta property="og:description" content="Zakład Agro-Weld w Środzie Wielkopolskiej – dane kontaktowe, mapa dojazdu i formularz zapytania.">
+<meta property="og:title" content="Kontakt - producent maszyn, Środa Wlkp. | Agro-Weld">
+<meta property="og:description" content="Agro-Weld, ul. Ignacego Prądzyńskiego 16, 63-000 Środa Wielkopolska. Tel. +48 725 140 257, biuro@agro-weld.pl. Wycena gratis.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.agro-weld.pl/kontakt/">
 <meta property="og:image" content="https://www.agro-weld.pl/assets/zespol-targi.jpg?v=2">
@@ -222,7 +224,7 @@ footer>div>div:last-child{flex-direction:column;align-items:flex-start!important
           <h3 style="font-size:26px;color:#ECE7D7">Dziękujemy za zapytanie</h3>
           <p style="font-size:15px;color:#A7AE92;line-height:1.55">Odpowiadamy zwykle w ciągu jednego dnia roboczego.</p>
         </div>
-        <form id="awForm" action="mailto:biuro@agro-weld.pl" method="post" enctype="text/plain" style="display:flex;flex-direction:column;gap:15px">
+        <form id="awForm" style="display:flex;flex-direction:column;gap:15px">
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:15px">
             <input class="fin" required name="name" placeholder="Imię i nazwisko">
             <input class="fin" name="company" placeholder="Firma / gospodarstwo">
@@ -287,7 +289,7 @@ footer>div>div:last-child{flex-direction:column;align-items:flex-start!important
           <div class="mono" style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8FA862;margin-bottom:10px">Katalog 2026</div>
           <p style="font-size:15px;line-height:1.55;color:#ECE7D7;max-width:320px;text-wrap:pretty">Pełna oferta maszyn i linii technologicznych w jednym PDF.</p>
         </div>
-        <a class="btn btnc" href="/uploads/AgroWeld katalog 2026 20 01.pdf" target="_blank" rel="noopener" style="background:#ECE7D7;color:#14160E;padding:14px 22px;font-weight:700;font-size:14.5px;white-space:nowrap">↓ Pobierz katalog</a>
+        <a class="btn btnc" href="/uploads/agro-weld-katalog-2026.pdf" target="_blank" rel="noopener" style="background:#ECE7D7;color:#14160E;padding:14px 22px;font-weight:700;font-size:14.5px;white-space:nowrap">↓ Pobierz katalog</a>
       </div>
     </div>
   </div>
@@ -342,7 +344,11 @@ footer>div>div:last-child{flex-direction:column;align-items:flex-start!important
     <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;padding-top:26px;flex-wrap:wrap">
       <span style="font-size:13px;color:#5E6A47">© 2026 Agro-Weld Spółka z ograniczoną odpowiedzialnością. Wszelkie prawa zastrzeżone.</span>
       <a class="awlink" href="/polityka-prywatnosci/" style="font-size:13px;color:#5E6A47">Polityka prywatności</a>
-      <a class="awlink mono" href="/uploads/AgroWeld katalog 2026 20 01.pdf" style="font-size:12.5px;color:#7E8A63;letter-spacing:.04em">↓ Pobierz katalog (PDF)</a>
+      <button type="button" class="awlink" data-aw-cookie-settings style="font-size:13px;color:#5E6A47;background:none;border:0;padding:0;cursor:pointer;font-family:inherit">Ustawienia cookies</button>
+      <a class="awlink mono" href="/uploads/agro-weld-katalog-2026.pdf" style="font-size:12.5px;color:#7E8A63;letter-spacing:.04em">↓ Pobierz katalog (PDF)</a>
+    </div>
+    <div style="display:flex;justify-content:flex-end;padding-top:14px">
+      <a class="awlink mono" href="https://echo-media.pl" target="_blank" rel="noopener" style="font-size:10.5px;letter-spacing:.05em;color:#3E4630">Strona zmontowana i uspawana przez ECHO Media</a>
     </div>
   </div>
 </footer>
@@ -352,9 +358,10 @@ footer>div>div:last-child{flex-direction:column;align-items:flex-start!important
 (function(){
   function check(){var h=window.innerHeight||800;document.querySelectorAll('[data-reveal]:not([data-in])').forEach(function(el){if(el.getBoundingClientRect().top<h*0.92)el.setAttribute('data-in','');});}
   window.addEventListener('scroll',check,{passive:true});window.addEventListener('resize',check,{passive:true});check();
-  var form=document.getElementById('awForm');
-  form.addEventListener('submit',function(e){e.preventDefault();form.style.display='none';document.getElementById('awSent').style.display='flex';});
 })();
 </script>
+<script src="../assets/form.js" defer></script>
+<script>addEventListener("load",function(){var f=document.getElementById("awForm");if(!f||f.dataset.awBound)return;f.addEventListener("submit",function(e){e.preventDefault();var p=document.createElement("p");p.style.cssText="font-size:14px;line-height:1.5;color:#E0A0A6;margin:0";p.textContent="Wysyłka formularza jest chwilowo niedostępna. Napisz na biuro@agro-weld.pl lub zadzwoń: +48 725 140 257.";f.appendChild(p);});});</script>
+<script src="../assets/cookies.js" defer></script>
 </body>
 </html>
