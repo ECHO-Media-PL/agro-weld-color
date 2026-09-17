@@ -6,7 +6,7 @@ Audyt: `uploads/Agro-Weld_audyt_SEO_migracja_dane_v2.xlsx`. Numeracja wg listy u
 |---|---|---|---|
 | 1 | Wersja kanoniczna domeny | `https://www.agro-weld.pl` (zgodnie z buildem) | Render sam przekierowuje: dodanie domeny `www` tworzy regułę z domeny głównej na `www`, a HTTP na HTTPS działa automatycznie. Do wykonania w panelu Render + DNS. |
 | 2 | `/finansowanie` | 301 na `/kontakt/` | Wdrożone (`render.yaml`) |
-| 3 | Wersja EN | W planie; do czasu wdrożenia `/en` → `/`, `/images/AgroWeldENG.pdf` → `/do-pobrania/` | Wdrożone (`render.yaml`) |
+| 3 | Wersja EN | W planie; do czasu wdrożenia `/en` → `/` | Wdrożone (`render.yaml`). 17.09.2026: katalog EN dodany na `/do-pobrania/` (`uploads/agro-weld-catalogue-2026-en.pdf`), stary adres `/images/AgroWeldENG.pdf` prowadzi teraz wprost do pliku |
 | 4 | Realizacje i układy linii | Odtworzymy realizacje; materiały od klienta | Wdrożone 17.09.2026: 9 realizacji z treścią, zdjęciami (43 pliki w `assets/realizacje/`) i filmami YouTube od klienta. Łącznie 13 realizacji. Przekierowania starych adresów uzupełnione (`render.yaml`, `content/przekierowania.json`), sitemap zaktualizowana |
 | 5 | Title / H1 / description | Wg propozycji SEO (kolumny „Propozycja…" w arkuszu On-page) | Wdrożone: 54 title, 10 description, H1 produktów z modelami, „borówka" w H1 i leadzie sortownika dwubębnowego |
 | 6 | Schema Product | Bez ceny, tylko dostępność („na zamówienie") | Wdrożone (`offers` z `availability: InStock`, `priceCurrency: PLN`, bez wartości) |

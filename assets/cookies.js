@@ -22,19 +22,22 @@
     for (var i = 0; i < frames.length; i++) {
       var f = frames[i], src = f.getAttribute('src') || '';
       if (!/google\.[a-z.]+\/maps|youtube|player\.vimeo/i.test(src)) continue;
+      var isMap = /google\.[a-z.]+\/maps/i.test(src);
       var ph = document.createElement('div');
       ph.setAttribute('data-aw-embed-placeholder', '');
       ph.style.cssText = 'position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;padding:28px;background:#1E2113;background-image:linear-gradient(rgba(236,231,215,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(236,231,215,.05) 1px,transparent 1px);background-size:34px 34px';
       var label = document.createElement('div');
       label.style.cssText = 'font-family:' + FM + ';font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:' + C.lime;
-      label.textContent = '/ Treść zewnętrzna';
+      label.textContent = isMap ? '/ Mapa Google' : '/ Film zewnętrzny';
       var p = document.createElement('p');
       p.style.cssText = 'font-family:' + FS + ';font-size:14.5px;line-height:1.6;color:' + C.sage + ';max-width:360px;margin:0';
-      p.textContent = 'Mapa Google ładuje się z serwerów Google i zapisuje własne pliki cookies. Pokażemy ją po Twojej zgodzie.';
+      p.textContent = isMap
+        ? 'Mapa Google ładuje się z serwerów Google i zapisuje własne pliki cookies. Pokażemy ją po Twojej zgodzie.'
+        : 'Film ładuje się z serwerów YouTube, które zapisują własne pliki cookies. Odtworzymy go po Twojej zgodzie.';
       var btn = document.createElement('button');
       btn.type = 'button';
       btn.style.cssText = 'font-family:' + FS + ';font-size:13.5px;font-weight:700;padding:11px 18px;border:0;border-radius:8px;background:' + C.lime + ';color:' + C.ink + ';cursor:pointer';
-      btn.textContent = 'Pokaż mapę';
+      btn.textContent = isMap ? 'Pokaż mapę' : 'Załaduj film';
       btn.addEventListener('click', function () {
         var v = read() || {}; v.external = true; if (typeof v.analytics !== 'boolean') v.analytics = false; save(v); hideBanner();
       });
@@ -100,16 +103,16 @@
 
     var p = document.createElement('p');
     p.style.cssText = 'font-family:' + FS + ';font-size:14px;line-height:1.6;color:' + C.sage + ';margin:0 0 16px';
-    p.innerHTML = 'Pliki niezbędne utrzymują działanie strony i formularzy. Statystyki i treści zewnętrzne (mapa Google) włączamy tylko za Twoją zgodą. Szczegóły w <a href="/polityka-prywatnosci/" style="color:' + C.lime + ';font-weight:600">polityce prywatności</a>.';
+    p.innerHTML = 'Pliki niezbędne utrzymują działanie strony i wysyłkę formularzy zapytań. Statystyki oraz treści zewnętrzne (mapa Google, filmy YouTube) włączamy tylko za Twoją zgodą. Szczegóły w <a href="/polityka-prywatnosci/" style="color:' + C.lime + ';font-weight:600">polityce prywatności</a>.';
     box.appendChild(p);
 
     var rows = null;
     if (mode === 'settings') {
       rows = document.createElement('div');
       rows.style.cssText = 'margin:0 0 18px';
-      rows.appendChild(row('awcNec', 'Niezbędne', 'Obsługa formularzy zapytań, zapamiętanie tej zgody, bezpieczeństwo.', true, true));
+      rows.appendChild(row('awcNec', 'Niezbędne', 'Wysyłka formularza zapytania (operator Resend), zapamiętanie tej zgody, bezpieczeństwo.', true, true));
       rows.appendChild(row('awcAna', 'Statystyki', 'Anonimowe dane o ruchu — ile osób odwiedza podstrony maszyn i realizacji.', !!cur.analytics, false));
-      rows.appendChild(row('awcExt', 'Treści zewnętrzne', 'Mapa dojazdu Google na stronie kontaktu. Bez zgody wyświetlamy zastępczy kafel.', !!cur.external, false));
+      rows.appendChild(row('awcExt', 'Treści zewnętrzne', 'Mapa dojazdu Google i filmy YouTube z maszynami. Bez zgody wyświetlamy zastępczy kafel.', !!cur.external, false));
       box.appendChild(rows);
     }
 
