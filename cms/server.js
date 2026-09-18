@@ -173,7 +173,7 @@ http.createServer(async (req, res) => {
         return res.end('{"error":"Wysyłka nie jest jeszcze skonfigurowana."}');
       }
       const body = JSON.stringify({
-        from: ENV.FORM_FROM || 'Formularz Agro-Weld <formularz@agro-weld.pl>',
+        from: ENV.FORM_FROM || 'Wiadomość z formularza <noreply@agro-weld.pl>',
         to: [to], reply_to: email, subject, text,
       });
       const r = await request('api.resend.com', 'POST', '/emails', {

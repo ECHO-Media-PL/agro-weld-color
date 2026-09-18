@@ -34,7 +34,7 @@ Audyt: `uploads/Agro-Weld_audyt_SEO_migracja_dane_v2.xlsx`. Numeracja wg listy u
 Serwis `agro-weld-cms` (Render), zmienne środowiskowe:
 
 - `RESEND_API_KEY` — klucz API dostawcy wysyłki (resend.com),
-- `FORM_FROM` — adres nadawcy zweryfikowanej domeny, np. `Formularz Agro-Weld <formularz@agro-weld.pl>`,
+- `FORM_FROM` — adres nadawcy zweryfikowanej domeny, np. `Wiadomość z formularza <noreply@agro-weld.pl>`,
 - `FORM_TO` — odbiorca zapytań (domyślnie `biuro@agro-weld.pl`).
 
 Endpoint: `POST https://agro-weld-cms.onrender.com/api/form`. Zabezpieczenia: CORS tylko dla domen Agro-Weld, pole-pułapka na boty, limit 10 zapytań na godzinę z jednego IP. Bez klucza API endpoint zwraca błąd i loguje treść zapytania — przed migracją trzeba go ustawić i przetestować.
