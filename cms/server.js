@@ -163,8 +163,42 @@ http.createServer(async (req, res) => {
         res.writeHead(400, { ...cors, 'Content-Type': 'application/json' });
         return res.end('{"error":"Podaj imię i poprawny adres e-mail."}');
       }
-      const lines = Object.keys(data).filter(k => k !== '_hp').map(k => k + ': ' + String(data[k]).slice(0, 2000));
-      const text = lines.join('\n');
+      const LABELS = {
+        name: 'Imię i nazwisko', firstname: 'Imię', lastname: 'Nazwisko',
+        company: 'Firma / gospodarstwo', nip: 'NIP', email: 'E-mail',
+        phone: 'Numer telefonu', product: 'Produkt', message: 'Treść wiadomości',
+        page: 'Podstrona',
+      };
+      const ORDER = ['name', 'firstname', 'lastname', 'company', 'nip', 'email', 'phone', 'product', 'message', 'page'];
+      const keys = Object.keys(data).filter(k => k !== '_hp' && String(data[k] || '').trim());
+      keys.sort((a, b) => {
+        const ia = ORDER.indexOf(a), ib = ORDER.indexOf(b);
+        return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib);
+      });
+      const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+      const fields = keys.map(k => ({
+        label: LABELS[k] || (k.charAt(0).toUpperCase() + k.slice(1)),
+        value: String(data[k]).slice(0, 2000),
+        block: k === 'message',
+      }));
+      const text = fields.map(f => f.block
+        ? f.label + ':\n' + f.value
+        : f.label + ': ' + f.value).join('\n');
+      const rows = fields.map(f => {
+        const lab = '<strong style="color:#14160E">' + esc(f.label) + ':</strong>';
+        if (f.block) {
+          return '<tr><td style="padding:10px 0 0;font:400 16px/1.55 Arial,Helvetica,sans-serif;color:#3A3F33">'
+            + lab + '<div style="margin-top:4px;white-space:pre-wrap">' + esc(f.value) + '</div></td></tr>';
+        }
+        return '<tr><td style="padding:4px 0;font:400 16px/1.55 Arial,Helvetica,sans-serif;color:#3A3F33">'
+          + lab + ' ' + esc(f.value) + '</td></tr>';
+      }).join('');
+      const html = '<!doctype html><html lang="pl"><body style="margin:0;padding:24px;background:#F4F5F0">'
+        + '<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="max-width:600px;margin:0 auto;background:#FFFFFF;border-radius:8px">'
+        + '<tr><td style="padding:28px 28px 20px">'
+        + '<p style="margin:0 0 18px;font:700 13px/1.3 Arial,Helvetica,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#7E8A63">Zapytanie ze strony agro-weld.pl</p>'
+        + '<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">' + rows + '</table>'
+        + '</td></tr></table></body></html>';
       const to = ENV.FORM_TO || 'biuro@agro-weld.pl';
       const subject = 'Zapytanie ze strony' + (data.product ? ' — ' + String(data.product).slice(0, 80) : '');
       if (!ENV.RESEND_API_KEY) {
@@ -174,7 +208,7 @@ http.createServer(async (req, res) => {
       }
       const body = JSON.stringify({
         from: ENV.FORM_FROM || 'Wiadomość z formularza <noreply@agro-weld.pl>',
-        to: [to], reply_to: email, subject, text,
+        to: [to], reply_to: email, subject, text, html,
       });
       const r = await request('api.resend.com', 'POST', '/emails', {
         'Authorization': 'Bearer ' + ENV.RESEND_API_KEY, 'Content-Type': 'application/json', 'Content-Length': Buffer.byteLength(body),
