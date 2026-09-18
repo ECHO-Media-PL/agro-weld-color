@@ -282,8 +282,8 @@
   "name": "Paletyzatory Verbruggen",
   "short": "Automatyczne układanie worków, skrzynek i kartonów na palecie.",
   "models": "Verbruggen VPM",
-  "img": null,
-  "imgType": null,
+  "img": "maszyny/paletyzator-vpm.webp",
+  "imgType": "render",
   "url": "/maszyny/paletyzacja/"
  },
  {

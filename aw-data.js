@@ -282,7 +282,7 @@ const MACHINES = [
   M('bufor', 'packing', null, 'BU-12 · BU-20',
     { pl: 'Bufor do pakowania', en: 'Packing buffer', de: 'Verpackungspuffer', ru: 'Упаковочный буфер', fr: 'Tampon d’emballage' },
     { pl: 'Ręczna selekcja i pakowanie do skrzyń; podest z opcją wagi, 1–2 stanowiska.', en: 'Manual selection and crate packing; platform with optional scale.', de: 'Manuelle Selektion und Kistenpackung; Podest mit Waage-Option.', ru: 'Ручная сортировка и упаковка в ящики; платформа с опц. весами.', fr: 'Tri manuel et mise en caisses; plateau avec pesée en option.' }),
-  M('paletyzator', 'palletising', null, 'Verbruggen VPM',
+  M('paletyzator', 'palletising', 'assets/maszyny/paletyzator-vpm.webp', 'Verbruggen VPM',
     { pl: 'Paletyzatory Verbruggen', en: 'Verbruggen palletisers', de: 'Verbruggen-Palettierer', ru: 'Паллетайзеры Verbruggen', fr: 'Palettiseurs Verbruggen' },
     { pl: 'Automatyczne układanie worków, skrzynek i kartonów na palecie.', en: 'Automatic stacking of bags, crates and cartons on pallets.', de: 'Automatisches Stapeln von Säcken, Kisten und Kartons.', ru: 'Автоматическая укладка мешков, ящиков и коробов на паллету.', fr: 'Empilage automatique de sacs, caisses et cartons sur palette.' }),
   M('formator', 'palletising', 'assets/formator.webp', 'FP-1280 · FP-1210',
