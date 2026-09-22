@@ -168,7 +168,7 @@
     ].concat((p.faq && p.faq.length) ? [{ '@type': 'FAQPage', mainEntity: p.faq.map(function (f) { return { '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: stripTags(f.a) } }; }) }] : []) });
     var img = (p.variants && p.variants.length) ? '../../../assets/' + p.variants[0].img : (p.img ? '../../../assets/' + p.img : '../../../assets/maszyna-placeholder.png');
     var fill = {
-      META_TITLE: esc(p.metaTitle || p.name + ' – Agro-Weld'), META_DESC: escA(p.metaDesc || p.lead), URL: url, JSONLD: jsonld,
+      META_TITLE: esc(p.metaTitle || p.name + ' – Agro-Weld'), META_DESC: escA(p.metaDesc || p.lead), URL: url, JSONLD: jsonld, OGIMAGE: 'https://www.agro-weld.pl/assets/' + ((p.variants && p.variants.length) ? p.variants[0].img : (p.img || 'logo.webp')),
       CAT: p.cat, CATNAME: esc(catName), CATNUM: pad2(ci + 1), CATNUMINT: String(ci + 1), NAME: esc(p.name), H1: esc(p.h1 || p.name), LEAD: esc(p.lead), DESC: esc(p.desc || ''),
       MODELS_LABEL: single ? 'Wykonanie na zamówienie' : (p.models.length + (p.models.length === 1 ? ' model' : p.models.length < 5 ? ' modele' : ' modeli')),
       MODEL_CHIPS: single ? '' : '<div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px">' + p.models.map(function (m, i) {
