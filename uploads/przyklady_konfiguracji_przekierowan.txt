@@ -1,0 +1,408 @@
+PRZYKLADY KONFIGURACJI PRZEKIEROWAN 301 - Agro-Weld
+Do dostosowania. Wybierz JEDNA warstwe (patrz rozdzial 5 instrukcji). Wygenerowane z tabeli agro-weld_redirects.csv (79 regul).
+
+======================================================================
+A. nginx
+======================================================================
+# agroweld-redirects - PRZYKLAD do dostosowania (nginx)
+# CZESC 1 (bloki map) - w kontekscie http { }, np. /etc/nginx/conf.d/agroweld-maps.conf
+# CZESC 2 (reguly if/return) - include w KAZDYM bloku server (http i https, www i bez www),
+#   PRZED przekierowaniem domeny, aby stary adres trafial na cel jednym skokiem.
+
+# ===== CZESC 1 =====
+# 1. Produkty po ID (slug ignorowany, kodowanie polskich znakow bez znaczenia)
+map $request_uri $aw_prod_id {
+    default "";
+    "~^/maszyny/[^/?]+/(?<aw_pid>[0-9a-f]{24})/?(\?.*)?$" $aw_pid;
+}
+map $aw_prod_id $aw_prod_target {
+    default "";
+    696a59794da81bc256722bba "/maszyny/pielenie/pielnik-do-obrobki-redlin/";
+    67d05050a60f9ebfefd3a472 "/maszyny/sortowanie/dwubebnowy-sortownik-do-owocow-drobnych/";
+    67cdf2cf799068ebb64efdec "/maszyny/selekcja/stoly-selekcyjne-rolkowe/";
+    67cdd634799068ebb64efddc "/maszyny/rozladunek-skrzyn/wywrotnica-skrzyniopalet/";
+    67cdfd50fbceb1c67efb6718 "/maszyny/pakowanie/wagoworkownica/";
+    67cf2193593631ce8409a95c "/maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/#kps3000g";
+    67cddcf7799068ebb64efde0 "/maszyny/oczyszczanie/separator-ziemi-i-kamieni/";
+    67cf195f593631ce8409a956 "/maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/#kp1500";
+    67cf24b6593631ce8409a95e "/maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/#kp5000g";
+    67cde69c799068ebb64efde4 "/maszyny/sortowanie/kalibrownik-rozsuwany/";
+    6671d5e3ad3ebbf4a1bdb8fa "/maszyny/przenosniki/przenosniki-tasmowe-poziome/";
+    67cde8d0799068ebb64efde6 "/maszyny/sortowanie/sortownik-do-owocow-drobnych/";
+    67cdfef9fbceb1c67efb671a "/maszyny/pakowanie/raszlownica/";
+    67cded6b799068ebb64efdea "/maszyny/selekcja/stoly-selekcyjne-tasmowe/";
+    67cf1cd8593631ce8409a958 "/maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/#kp2000";
+    67cf16f2593631ce8409a954 "/maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/#kp1000";
+    697c788bfd4fc91bf9d751b9 "/maszyny/oczyszczanie/czyszczarka-do-imbiru-i-chrzanu/";
+    697b8b67b218f4072882f3fd "/maszyny/pakowanie/formatory-palet/";
+    6672c2a4a12ee4f19ab16309 "/maszyny/przenosniki/przenosnik-odpadowy/";
+    697c8638fd4fc91bf9d751e5 "/maszyny/pakowanie/przenosnik-poprzeczny-do-raszlownicy/";
+    6672d8b4a12ee4f19ab1632f "/maszyny/przenosniki/przenosniki-tasmowe-wznoszace/";
+    67cde010799068ebb64efde2 "/maszyny/oczyszczanie/czyszczarka-szczotkowa/";
+    6672c526a12ee4f19ab16310 "/maszyny/przenosniki/przenosnik-do-materialow-sypkich/";
+    67cdeb15799068ebb64efde8 "/maszyny/pakowanie/bufor-do-pakowania/";
+    67cf1eea593631ce8409a95a "/maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/#kp3000";
+    67cf27a9593631ce8409a960 "/maszyny/wazenie-i-liczenie/liczarka/";
+    67ce00bcfbceb1c67efb671c "/maszyny/pakowanie/napelniacz-kaskadowy/";
+    696fb7e82abe02495323d54f "/maszyny/paletyzacja/";
+    666c1dd97db89265d45932c9 "/maszyny/przenosniki/przenosniki-tasmowe-poziome/";
+    67d055ce56741f12cc290d54 "/maszyny/przenosniki/przenosniki-rolkowe/";
+    67d05b4e56741f12cc290d56 "/maszyny/przenosniki/przenosniki-tasmowe-poziome/";
+    6660a10598e0bc71d54ded80 "/maszyny/pakowanie/raszlownica/";
+    697c804dfd4fc91bf9d751ce "/maszyny/pakowanie/stoly-obrotowe/";
+    67cf2b2e593631ce8409a962 "/maszyny/wazenie-i-liczenie/waga-kontrolna/";
+    697c7cc3fd4fc91bf9d751c0 "/maszyny/oczyszczanie/wanna-do-plukania/";
+    67cdd9c4799068ebb64efdde "/maszyny/przyjecie-i-buforowanie/zasobnik-buforowy/";
+}
+# 2. Stare kategorie ?cat= (wartosc surowa, np. wa%C5%BCenie - dopasowanie po poczatku, bez wielkosci liter)
+map $arg_cat $aw_cat_target {
+    default "/maszyny/";
+    "~*^oczyszcz" "/maszyny/oczyszczanie/";
+    "~*^przyj" "/maszyny/przyjecie-i-buforowanie/";
+    "~*^selekc" "/maszyny/selekcja/";
+    "~*^roz" "/maszyny/rozladunek-skrzyn/";
+    "~*^pakow" "/maszyny/pakowanie/";
+    "~*^wa" "/maszyny/wazenie-i-liczenie/";
+    "~*^przen" "/maszyny/przenosniki/";
+    "~*^sortow" "/maszyny/sortowanie/";
+    "~*^piel" "/maszyny/pielenie/";
+    "~*^palet" "/maszyny/paletyzacja/";
+}
+# 3. Pozostale stare adresy o innej sciezce docelowej (zdekodowana sciezka $uri)
+map $uri $aw_static_target {
+    default "";
+    "~^/images/Katalog Verbruggen 1 PL v5\.pdf/?$" "/uploads/verbruggen-katalog-paletyzatorow.pdf";
+    "~^/images/AgroWeldKatalog2025\.pdf/?$" "/uploads/agro-weld-katalog-2026.pdf";
+    "~^/images/AgroWeldKatalog2026\.pdf/?$" "/uploads/agro-weld-katalog-2026.pdf";
+    "~^/images/AgroWeldENG\.pdf/?$" "/do-pobrania/";
+    "~^/realizacje/linia-do-sortowania-pakowania-oczyszczania/?$" "/realizacje/linia-do-pakowania-ziemniakow/";
+    "~^/realizacje/sortownik-do-borowek/?$" "/realizacje/linia-do-sortowania-borowki/";
+    "~^/realizacje/kosz-przyjeciowy-5m/?$" "/realizacje/kosz-przyjeciowy-5m3/";
+    "~^/realizacje/czyszczarka-z-szuflada/?$" "/realizacje/czyszczarka-szczotkowa-z-szuflada/";
+    "~^/realizacje/kosz-przyjeciowy-separator/?$" "/realizacje/kosz-przyjeciowy-z-separatorem/";
+    "~^/realizacje/raszlownica/?$" "/realizacje/raszlownica-z-modulem-pakujacym/";
+    "~^/realizacje/zasobnik-buforowy-kwasoodrporny/?$" "/realizacje/zasobnik-buforowy-kwasoodporny/";
+    "~^/linie-produkcyjne/linia-do-oczyszczania-mycia-i-pakowania-warzyw/?$" "/linie-produkcyjne/";
+    "~^/linie-produkcyjne/linia-do-buforowania-i-recznej-selekcji-cebuli/?$" "/linie-produkcyjne/";
+    "~^/linie-produkcyjne/linia-do-selekcji-i-recznego-pakowania-batatow/?$" "/linie-produkcyjne/";
+    "~^/linie-produkcyjne/propozycja-linii-do-czyszczenia-i-pakowania/?$" "/linie-produkcyjne/";
+    "~^/linie-produkcyjne/propozycja-linii-do-kalibracji-i-wazenia/?$" "/linie-produkcyjne/";
+    "~^/linie-produkcyjne/propozycja-linii-do-kalibrowania-i-pakowania/?$" "/linie-produkcyjne/";
+    "~^/linie-produkcyjne/zaawansowana-linia-do-liczenia-i-pakowania-cytrusow-inox/?$" "/realizacje/linia-do-cytrusow/";
+    "~^/katalog/?$" "/do-pobrania/";
+    "~^/finansowanie/?$" "/kontakt/";
+    "~^/en/?$" "/";
+}
+
+# ===== CZESC 2 (kolejnosc ma znaczenie) =====
+if ($aw_prod_target) { return 301 https://www.agro-weld.pl$aw_prod_target; }
+set $aw_cat "";
+if ($uri ~ "^/maszyny/?$") { set $aw_cat "M"; }
+if ($arg_cat) { set $aw_cat "${aw_cat}C"; }
+if ($aw_cat = "MC") { return 301 https://www.agro-weld.pl$aw_cat_target; }
+if ($aw_static_target) { return 301 https://www.agro-weld.pl$aw_static_target; }
+# /index.html -> katalog ($request_uri = oryginalne zadanie; nie zapetla wewnetrznej dyrektywy "index")
+if ($request_uri ~ "^(?<aw_dir>(/[^?]*)?/)index\.html(?<aw_q>\?.*)?$") { return 301 https://www.agro-weld.pl$aw_dir$aw_q; }
+# brak koncowego ukosnika (ostatni segment bez kropki = nie plik) -> ukosnik; dziala takze, gdy istnieje plik
+if ($request_uri ~ "^(?<aw_p>(/[^/?]+)*/[^/?.]+)(?<aw_q2>\?.*)?$") { return 301 https://www.agro-weld.pl$aw_p/$aw_q2; }
+# w blokach server dla http:// oraz agro-weld.pl (po include):
+# return 301 https://www.agro-weld.pl$request_uri;
+
+======================================================================
+B. Apache .htaccess
+======================================================================
+# .htaccess - PRZYKLAD do dostosowania (Apache, mod_rewrite), katalog glowny serwisu.
+# Cele absolutne (https://www.agro-weld.pl) = jeden skok niezaleznie od hosta i protokolu.
+# RewriteRule w .htaccess dopasowuje ZDEKODOWANA sciezke bez wiodacego "/".
+RewriteEngine On
+Options -Indexes
+# mod_dir nie dodaje ukosnika sam (robi to regula 5 z pelnym adresem https://www)
+DirectorySlash Off
+
+# 1. Produkty po ID (dowolny slug, takze z polskimi znakami)
+RewriteRule ^maszyny/[^/]+/696a59794da81bc256722bba/?$ https://www.agro-weld.pl/maszyny/pielenie/pielnik-do-obrobki-redlin/ [R=301,L,NE,QSD]
+RewriteRule ^maszyny/[^/]+/67d05050a60f9ebfefd3a472/?$ https://www.agro-weld.pl/maszyny/sortowanie/dwubebnowy-sortownik-do-owocow-drobnych/ [R=301,L,NE,QSD]
+RewriteRule ^maszyny/[^/]+/67cdf2cf799068ebb64efdec/?$ https://www.agro-weld.pl/maszyny/selekcja/stoly-selekcyjne-rolkowe/ [R=301,L,NE,QSD]
+RewriteRule ^maszyny/[^/]+/67cdd634799068ebb64efddc/?$ https://www.agro-weld.pl/maszyny/rozladunek-skrzyn/wywrotnica-skrzyniopalet/ [R=301,L,NE,QSD]
+RewriteRule ^maszyny/[^/]+/67cdfd50fbceb1c67efb6718/?$ https://www.agro-weld.pl/maszyny/pakowanie/wagoworkownica/ [R=301,L,NE,QSD]
+RewriteRule ^maszyny/[^/]+/67cf2193593631ce8409a95c/?$ https://www.agro-weld.pl/maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/#kps3000g [R=301,L,NE,QSD]
+RewriteRule ^maszyny/[^/]+/67cddcf7799068ebb64efde0/?$ https://www.agro-weld.pl/maszyny/oczyszczanie/separator-ziemi-i-kamieni/ [R=301,L,NE,QSD]
+RewriteRule ^maszyny/[^/]+/67cf195f593631ce8409a956/?$ https://www.agro-weld.pl/maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/#kp1500 [R=301,L,NE,QSD]
+RewriteRule ^maszyny/[^/]+/67cf24b6593631ce8409a95e/?$ https://www.agro-weld.pl/maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/#kp5000g [R=301,L,NE,QSD]
+RewriteRule ^maszyny/[^/]+/67cde69c799068ebb64efde4/?$ https://www.agro-weld.pl/maszyny/sortowanie/kalibrownik-rozsuwany/ [R=301,L,NE,QSD]
+RewriteRule ^maszyny/[^/]+/6671d5e3ad3ebbf4a1bdb8fa/?$ https://www.agro-weld.pl/maszyny/przenosniki/przenosniki-tasmowe-poziome/ [R=301,L,NE,QSD]
+RewriteRule ^maszyny/[^/]+/67cde8d0799068ebb64efde6/?$ https://www.agro-weld.pl/maszyny/sortowanie/sortownik-do-owocow-drobnych/ [R=301,L,NE,QSD]
+RewriteRule ^maszyny/[^/]+/67cdfef9fbceb1c67efb671a/?$ https://www.agro-weld.pl/maszyny/pakowanie/raszlownica/ [R=301,L,NE,QSD]
+RewriteRule ^maszyny/[^/]+/67cded6b799068ebb64efdea/?$ https://www.agro-weld.pl/maszyny/selekcja/stoly-selekcyjne-tasmowe/ [R=301,L,NE,QSD]
+RewriteRule ^maszyny/[^/]+/67cf1cd8593631ce8409a958/?$ https://www.agro-weld.pl/maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/#kp2000 [R=301,L,NE,QSD]
+RewriteRule ^maszyny/[^/]+/67cf16f2593631ce8409a954/?$ https://www.agro-weld.pl/maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/#kp1000 [R=301,L,NE,QSD]
+RewriteRule ^maszyny/[^/]+/697c788bfd4fc91bf9d751b9/?$ https://www.agro-weld.pl/maszyny/oczyszczanie/czyszczarka-do-imbiru-i-chrzanu/ [R=301,L,NE,QSD]
+RewriteRule ^maszyny/[^/]+/697b8b67b218f4072882f3fd/?$ https://www.agro-weld.pl/maszyny/pakowanie/formatory-palet/ [R=301,L,NE,QSD]
+RewriteRule ^maszyny/[^/]+/6672c2a4a12ee4f19ab16309/?$ https://www.agro-weld.pl/maszyny/przenosniki/przenosnik-odpadowy/ [R=301,L,NE,QSD]
+RewriteRule ^maszyny/[^/]+/697c8638fd4fc91bf9d751e5/?$ https://www.agro-weld.pl/maszyny/pakowanie/przenosnik-poprzeczny-do-raszlownicy/ [R=301,L,NE,QSD]
+RewriteRule ^maszyny/[^/]+/6672d8b4a12ee4f19ab1632f/?$ https://www.agro-weld.pl/maszyny/przenosniki/przenosniki-tasmowe-wznoszace/ [R=301,L,NE,QSD]
+RewriteRule ^maszyny/[^/]+/67cde010799068ebb64efde2/?$ https://www.agro-weld.pl/maszyny/oczyszczanie/czyszczarka-szczotkowa/ [R=301,L,NE,QSD]
+RewriteRule ^maszyny/[^/]+/6672c526a12ee4f19ab16310/?$ https://www.agro-weld.pl/maszyny/przenosniki/przenosnik-do-materialow-sypkich/ [R=301,L,NE,QSD]
+RewriteRule ^maszyny/[^/]+/67cdeb15799068ebb64efde8/?$ https://www.agro-weld.pl/maszyny/pakowanie/bufor-do-pakowania/ [R=301,L,NE,QSD]
+RewriteRule ^maszyny/[^/]+/67cf1eea593631ce8409a95a/?$ https://www.agro-weld.pl/maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/#kp3000 [R=301,L,NE,QSD]
+RewriteRule ^maszyny/[^/]+/67cf27a9593631ce8409a960/?$ https://www.agro-weld.pl/maszyny/wazenie-i-liczenie/liczarka/ [R=301,L,NE,QSD]
+RewriteRule ^maszyny/[^/]+/67ce00bcfbceb1c67efb671c/?$ https://www.agro-weld.pl/maszyny/pakowanie/napelniacz-kaskadowy/ [R=301,L,NE,QSD]
+RewriteRule ^maszyny/[^/]+/696fb7e82abe02495323d54f/?$ https://www.agro-weld.pl/maszyny/paletyzacja/ [R=301,L,NE,QSD]
+RewriteRule ^maszyny/[^/]+/666c1dd97db89265d45932c9/?$ https://www.agro-weld.pl/maszyny/przenosniki/przenosniki-tasmowe-poziome/ [R=301,L,NE,QSD]
+RewriteRule ^maszyny/[^/]+/67d055ce56741f12cc290d54/?$ https://www.agro-weld.pl/maszyny/przenosniki/przenosniki-rolkowe/ [R=301,L,NE,QSD]
+RewriteRule ^maszyny/[^/]+/67d05b4e56741f12cc290d56/?$ https://www.agro-weld.pl/maszyny/przenosniki/przenosniki-tasmowe-poziome/ [R=301,L,NE,QSD]
+RewriteRule ^maszyny/[^/]+/6660a10598e0bc71d54ded80/?$ https://www.agro-weld.pl/maszyny/pakowanie/raszlownica/ [R=301,L,NE,QSD]
+RewriteRule ^maszyny/[^/]+/697c804dfd4fc91bf9d751ce/?$ https://www.agro-weld.pl/maszyny/pakowanie/stoly-obrotowe/ [R=301,L,NE,QSD]
+RewriteRule ^maszyny/[^/]+/67cf2b2e593631ce8409a962/?$ https://www.agro-weld.pl/maszyny/wazenie-i-liczenie/waga-kontrolna/ [R=301,L,NE,QSD]
+RewriteRule ^maszyny/[^/]+/697c7cc3fd4fc91bf9d751c0/?$ https://www.agro-weld.pl/maszyny/oczyszczanie/wanna-do-plukania/ [R=301,L,NE,QSD]
+RewriteRule ^maszyny/[^/]+/67cdd9c4799068ebb64efdde/?$ https://www.agro-weld.pl/maszyny/przyjecie-i-buforowanie/zasobnik-buforowy/ [R=301,L,NE,QSD]
+
+# 2. Stare kategorie ?cat= (QUERY_STRING jest surowy, np. wa%C5%BCenie - dopasowanie po poczatku, NC)
+RewriteCond %{QUERY_STRING} (^|&)cat=oczyszcz [NC]
+RewriteRule ^maszyny/?$ https://www.agro-weld.pl/maszyny/oczyszczanie/ [R=301,L,QSD]
+RewriteCond %{QUERY_STRING} (^|&)cat=przyj [NC]
+RewriteRule ^maszyny/?$ https://www.agro-weld.pl/maszyny/przyjecie-i-buforowanie/ [R=301,L,QSD]
+RewriteCond %{QUERY_STRING} (^|&)cat=selekc [NC]
+RewriteRule ^maszyny/?$ https://www.agro-weld.pl/maszyny/selekcja/ [R=301,L,QSD]
+RewriteCond %{QUERY_STRING} (^|&)cat=roz [NC]
+RewriteRule ^maszyny/?$ https://www.agro-weld.pl/maszyny/rozladunek-skrzyn/ [R=301,L,QSD]
+RewriteCond %{QUERY_STRING} (^|&)cat=pakow [NC]
+RewriteRule ^maszyny/?$ https://www.agro-weld.pl/maszyny/pakowanie/ [R=301,L,QSD]
+RewriteCond %{QUERY_STRING} (^|&)cat=wa [NC]
+RewriteRule ^maszyny/?$ https://www.agro-weld.pl/maszyny/wazenie-i-liczenie/ [R=301,L,QSD]
+RewriteCond %{QUERY_STRING} (^|&)cat=przen [NC]
+RewriteRule ^maszyny/?$ https://www.agro-weld.pl/maszyny/przenosniki/ [R=301,L,QSD]
+RewriteCond %{QUERY_STRING} (^|&)cat=sortow [NC]
+RewriteRule ^maszyny/?$ https://www.agro-weld.pl/maszyny/sortowanie/ [R=301,L,QSD]
+RewriteCond %{QUERY_STRING} (^|&)cat=piel [NC]
+RewriteRule ^maszyny/?$ https://www.agro-weld.pl/maszyny/pielenie/ [R=301,L,QSD]
+RewriteCond %{QUERY_STRING} (^|&)cat=palet [NC]
+RewriteRule ^maszyny/?$ https://www.agro-weld.pl/maszyny/paletyzacja/ [R=301,L,QSD]
+RewriteCond %{QUERY_STRING} (^|&)cat= [NC]
+RewriteRule ^maszyny/?$ https://www.agro-weld.pl/maszyny/ [R=301,L,QSD]
+
+# 3. Pozostale stare adresy o innej sciezce docelowej
+RewriteRule ^images/Katalog\ Verbruggen\ 1\ PL\ v5\.pdf/?$ https://www.agro-weld.pl/uploads/verbruggen-katalog-paletyzatorow.pdf [R=301,L,NE,QSD]
+RewriteRule ^images/AgroWeldKatalog2025\.pdf/?$ https://www.agro-weld.pl/uploads/agro-weld-katalog-2026.pdf [R=301,L,NE,QSD]
+RewriteRule ^images/AgroWeldKatalog2026\.pdf/?$ https://www.agro-weld.pl/uploads/agro-weld-katalog-2026.pdf [R=301,L,NE,QSD]
+RewriteRule ^images/AgroWeldENG\.pdf/?$ https://www.agro-weld.pl/do-pobrania/ [R=301,L,NE,QSD]
+RewriteRule ^realizacje/linia-do-sortowania-pakowania-oczyszczania/?$ https://www.agro-weld.pl/realizacje/linia-do-pakowania-ziemniakow/ [R=301,L,NE,QSD]
+RewriteRule ^realizacje/sortownik-do-borowek/?$ https://www.agro-weld.pl/realizacje/linia-do-sortowania-borowki/ [R=301,L,NE,QSD]
+RewriteRule ^realizacje/kosz-przyjeciowy-5m/?$ https://www.agro-weld.pl/realizacje/kosz-przyjeciowy-5m3/ [R=301,L,NE,QSD]
+RewriteRule ^realizacje/czyszczarka-z-szuflada/?$ https://www.agro-weld.pl/realizacje/czyszczarka-szczotkowa-z-szuflada/ [R=301,L,NE,QSD]
+RewriteRule ^realizacje/kosz-przyjeciowy-separator/?$ https://www.agro-weld.pl/realizacje/kosz-przyjeciowy-z-separatorem/ [R=301,L,NE,QSD]
+RewriteRule ^realizacje/raszlownica/?$ https://www.agro-weld.pl/realizacje/raszlownica-z-modulem-pakujacym/ [R=301,L,NE,QSD]
+RewriteRule ^realizacje/zasobnik-buforowy-kwasoodrporny/?$ https://www.agro-weld.pl/realizacje/zasobnik-buforowy-kwasoodporny/ [R=301,L,NE,QSD]
+RewriteRule ^linie-produkcyjne/linia-do-oczyszczania-mycia-i-pakowania-warzyw/?$ https://www.agro-weld.pl/linie-produkcyjne/ [R=301,L,NE,QSD]
+RewriteRule ^linie-produkcyjne/linia-do-buforowania-i-recznej-selekcji-cebuli/?$ https://www.agro-weld.pl/linie-produkcyjne/ [R=301,L,NE,QSD]
+RewriteRule ^linie-produkcyjne/linia-do-selekcji-i-recznego-pakowania-batatow/?$ https://www.agro-weld.pl/linie-produkcyjne/ [R=301,L,NE,QSD]
+RewriteRule ^linie-produkcyjne/propozycja-linii-do-czyszczenia-i-pakowania/?$ https://www.agro-weld.pl/linie-produkcyjne/ [R=301,L,NE,QSD]
+RewriteRule ^linie-produkcyjne/propozycja-linii-do-kalibracji-i-wazenia/?$ https://www.agro-weld.pl/linie-produkcyjne/ [R=301,L,NE,QSD]
+RewriteRule ^linie-produkcyjne/propozycja-linii-do-kalibrowania-i-pakowania/?$ https://www.agro-weld.pl/linie-produkcyjne/ [R=301,L,NE,QSD]
+RewriteRule ^linie-produkcyjne/zaawansowana-linia-do-liczenia-i-pakowania-cytrusow-inox/?$ https://www.agro-weld.pl/realizacje/linia-do-cytrusow/ [R=301,L,NE,QSD]
+RewriteRule ^katalog/?$ https://www.agro-weld.pl/do-pobrania/ [R=301,L,NE,QSD]
+RewriteRule ^finansowanie/?$ https://www.agro-weld.pl/kontakt/ [R=301,L,NE,QSD]
+RewriteRule ^en/?$ https://www.agro-weld.pl/ [R=301,L,NE,QSD]
+
+# 4. /index.html -> katalog (THE_REQUEST = oryginalne zadanie, bez petli)
+RewriteCond %{THE_REQUEST} \s/(([^?\s]*/)?)index\.html[\s?]
+RewriteRule ^ https://www.agro-weld.pl/%1 [R=301,L]
+
+# 5. Brak koncowego ukosnika dla adresow bez rozszerzenia (takze gdy istnieje plik)
+RewriteCond %{REQUEST_URI} !\.[A-Za-z0-9]{2,5}$
+RewriteRule ^(.+[^/])$ https://www.agro-weld.pl/$1/ [R=301,L]
+
+# 6. Domena i protokol - NA KONCU
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} !^www\.agro-weld\.pl$ [NC]
+RewriteRule ^ https://www.agro-weld.pl%{REQUEST_URI} [R=301,L,NE]
+
+======================================================================
+C. Cloudflare Worker
+======================================================================
+// Cloudflare Worker - PRZYKLAD do dostosowania.
+// Kod dziala na serwerze brzegowym (CDN), NIE w przegladarce: zwraca prawdziwe HTTP 301.
+// Trasy (Routes): agro-weld.pl/* oraz www.agro-weld.pl/*.
+// Jeden skok dla http://: wylacz "Always Use HTTPS" (Worker sam przekierowuje http -> https)
+// albo zmierz skoki skryptem testowym i zaakceptuj tylko wynik = 1.
+const BASE = "https://www.agro-weld.pl";
+const PRODUCTS = {
+  "696a59794da81bc256722bba": "/maszyny/pielenie/pielnik-do-obrobki-redlin/",
+  "67d05050a60f9ebfefd3a472": "/maszyny/sortowanie/dwubebnowy-sortownik-do-owocow-drobnych/",
+  "67cdf2cf799068ebb64efdec": "/maszyny/selekcja/stoly-selekcyjne-rolkowe/",
+  "67cdd634799068ebb64efddc": "/maszyny/rozladunek-skrzyn/wywrotnica-skrzyniopalet/",
+  "67cdfd50fbceb1c67efb6718": "/maszyny/pakowanie/wagoworkownica/",
+  "67cf2193593631ce8409a95c": "/maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/#kps3000g",
+  "67cddcf7799068ebb64efde0": "/maszyny/oczyszczanie/separator-ziemi-i-kamieni/",
+  "67cf195f593631ce8409a956": "/maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/#kp1500",
+  "67cf24b6593631ce8409a95e": "/maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/#kp5000g",
+  "67cde69c799068ebb64efde4": "/maszyny/sortowanie/kalibrownik-rozsuwany/",
+  "6671d5e3ad3ebbf4a1bdb8fa": "/maszyny/przenosniki/przenosniki-tasmowe-poziome/",
+  "67cde8d0799068ebb64efde6": "/maszyny/sortowanie/sortownik-do-owocow-drobnych/",
+  "67cdfef9fbceb1c67efb671a": "/maszyny/pakowanie/raszlownica/",
+  "67cded6b799068ebb64efdea": "/maszyny/selekcja/stoly-selekcyjne-tasmowe/",
+  "67cf1cd8593631ce8409a958": "/maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/#kp2000",
+  "67cf16f2593631ce8409a954": "/maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/#kp1000",
+  "697c788bfd4fc91bf9d751b9": "/maszyny/oczyszczanie/czyszczarka-do-imbiru-i-chrzanu/",
+  "697b8b67b218f4072882f3fd": "/maszyny/pakowanie/formatory-palet/",
+  "6672c2a4a12ee4f19ab16309": "/maszyny/przenosniki/przenosnik-odpadowy/",
+  "697c8638fd4fc91bf9d751e5": "/maszyny/pakowanie/przenosnik-poprzeczny-do-raszlownicy/",
+  "6672d8b4a12ee4f19ab1632f": "/maszyny/przenosniki/przenosniki-tasmowe-wznoszace/",
+  "67cde010799068ebb64efde2": "/maszyny/oczyszczanie/czyszczarka-szczotkowa/",
+  "6672c526a12ee4f19ab16310": "/maszyny/przenosniki/przenosnik-do-materialow-sypkich/",
+  "67cdeb15799068ebb64efde8": "/maszyny/pakowanie/bufor-do-pakowania/",
+  "67cf1eea593631ce8409a95a": "/maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/#kp3000",
+  "67cf27a9593631ce8409a960": "/maszyny/wazenie-i-liczenie/liczarka/",
+  "67ce00bcfbceb1c67efb671c": "/maszyny/pakowanie/napelniacz-kaskadowy/",
+  "696fb7e82abe02495323d54f": "/maszyny/paletyzacja/",
+  "666c1dd97db89265d45932c9": "/maszyny/przenosniki/przenosniki-tasmowe-poziome/",
+  "67d055ce56741f12cc290d54": "/maszyny/przenosniki/przenosniki-rolkowe/",
+  "67d05b4e56741f12cc290d56": "/maszyny/przenosniki/przenosniki-tasmowe-poziome/",
+  "6660a10598e0bc71d54ded80": "/maszyny/pakowanie/raszlownica/",
+  "697c804dfd4fc91bf9d751ce": "/maszyny/pakowanie/stoly-obrotowe/",
+  "67cf2b2e593631ce8409a962": "/maszyny/wazenie-i-liczenie/waga-kontrolna/",
+  "697c7cc3fd4fc91bf9d751c0": "/maszyny/oczyszczanie/wanna-do-plukania/",
+  "67cdd9c4799068ebb64efdde": "/maszyny/przyjecie-i-buforowanie/zasobnik-buforowy/"
+};
+const STATIC = {
+  "/images/Katalog Verbruggen 1 PL v5.pdf": "/uploads/verbruggen-katalog-paletyzatorow.pdf",
+  "/images/AgroWeldKatalog2025.pdf": "/uploads/agro-weld-katalog-2026.pdf",
+  "/images/AgroWeldKatalog2026.pdf": "/uploads/agro-weld-katalog-2026.pdf",
+  "/images/AgroWeldENG.pdf": "/do-pobrania/",
+  "/realizacje/linia-do-sortowania-pakowania-oczyszczania": "/realizacje/linia-do-pakowania-ziemniakow/",
+  "/realizacje/sortownik-do-borowek": "/realizacje/linia-do-sortowania-borowki/",
+  "/realizacje/kosz-przyjeciowy-5m": "/realizacje/kosz-przyjeciowy-5m3/",
+  "/realizacje/czyszczarka-z-szuflada": "/realizacje/czyszczarka-szczotkowa-z-szuflada/",
+  "/realizacje/kosz-przyjeciowy-separator": "/realizacje/kosz-przyjeciowy-z-separatorem/",
+  "/realizacje/raszlownica": "/realizacje/raszlownica-z-modulem-pakujacym/",
+  "/realizacje/zasobnik-buforowy-kwasoodrporny": "/realizacje/zasobnik-buforowy-kwasoodporny/",
+  "/linie-produkcyjne/linia-do-oczyszczania-mycia-i-pakowania-warzyw": "/linie-produkcyjne/",
+  "/linie-produkcyjne/linia-do-buforowania-i-recznej-selekcji-cebuli": "/linie-produkcyjne/",
+  "/linie-produkcyjne/linia-do-selekcji-i-recznego-pakowania-batatow": "/linie-produkcyjne/",
+  "/linie-produkcyjne/propozycja-linii-do-czyszczenia-i-pakowania": "/linie-produkcyjne/",
+  "/linie-produkcyjne/propozycja-linii-do-kalibracji-i-wazenia": "/linie-produkcyjne/",
+  "/linie-produkcyjne/propozycja-linii-do-kalibrowania-i-pakowania": "/linie-produkcyjne/",
+  "/linie-produkcyjne/zaawansowana-linia-do-liczenia-i-pakowania-cytrusow-inox": "/realizacje/linia-do-cytrusow/",
+  "/katalog": "/do-pobrania/",
+  "/finansowanie": "/kontakt/",
+  "/en": "/"
+};
+const CATS = [
+  ["oczyszcz", "/maszyny/oczyszczanie/"],
+  ["przyj", "/maszyny/przyjecie-i-buforowanie/"],
+  ["selekc", "/maszyny/selekcja/"],
+  ["roz", "/maszyny/rozladunek-skrzyn/"],
+  ["pakow", "/maszyny/pakowanie/"],
+  ["wa", "/maszyny/wazenie-i-liczenie/"],
+  ["przen", "/maszyny/przenosniki/"],
+  ["sortow", "/maszyny/sortowanie/"],
+  ["piel", "/maszyny/pielenie/"],
+  ["palet", "/maszyny/paletyzacja/"]
+];
+const plain = s => s.replace(/ł/g, "l").replace(/Ł/g, "L").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
+const r301 = loc => new Response(null, { status: 301, headers: { Location: loc } });
+
+export default {
+  async fetch(request) {
+    const url = new URL(request.url);
+    const path = url.pathname;
+    let dpath; try { dpath = decodeURIComponent(path); } catch (e) { dpath = path; }
+    // 1. Produkty po ID
+    const m = path.match(/^\/maszyny\/[^/]+\/([0-9a-f]{24})\/?$/);
+    if (m && PRODUCTS[m[1]]) return r301(BASE + PRODUCTS[m[1]]);
+    // 2. ?cat= na /maszyny i /maszyny/
+    if (/^\/maszyny\/?$/.test(path) && url.searchParams.has("cat")) {
+      const v = plain(url.searchParams.get("cat") || "");
+      const hit = CATS.find(([p]) => v.startsWith(p));
+      return r301(BASE + (hit ? hit[1] : "/maszyny/"));
+    }
+    // 3. Pozostale stare adresy o innej sciezce docelowej
+    const key = dpath.length > 1 ? dpath.replace(/\/$/, "") : dpath;
+    if (Object.prototype.hasOwnProperty.call(STATIC, key)) return r301(BASE + STATIC[key]);
+    // 4. /index.html -> katalog
+    if (/\/index\.html$/.test(path)) return r301(BASE + path.replace(/index\.html$/, "") + url.search);
+    // 5. Brak koncowego ukosnika (ostatni segment bez kropki)
+    if (path !== "/" && !path.endsWith("/") && !/\.[a-z0-9]{2,5}$/i.test(path)) return r301(BASE + path + "/" + url.search);
+    // 6. Domena i protokol
+    if (url.hostname !== "www.agro-weld.pl" || url.protocol !== "https:") return r301(BASE + path + url.search);
+    return fetch(request);
+  }
+};
+
+
+======================================================================
+D. _redirects (Netlify)
+======================================================================
+# _redirects (Netlify i platformy zgodne) - PRZYKLAD do dostosowania.
+# "!" wymusza regule, nawet gdy pod adresem istnieje plik. Reguly czytane od gory.
+# 1. Produkty po ID
+/maszyny/:slug/696a59794da81bc256722bba/*  /maszyny/pielenie/pielnik-do-obrobki-redlin/  301!
+/maszyny/:slug/67d05050a60f9ebfefd3a472/*  /maszyny/sortowanie/dwubebnowy-sortownik-do-owocow-drobnych/  301!
+/maszyny/:slug/67cdf2cf799068ebb64efdec/*  /maszyny/selekcja/stoly-selekcyjne-rolkowe/  301!
+/maszyny/:slug/67cdd634799068ebb64efddc/*  /maszyny/rozladunek-skrzyn/wywrotnica-skrzyniopalet/  301!
+/maszyny/:slug/67cdfd50fbceb1c67efb6718/*  /maszyny/pakowanie/wagoworkownica/  301!
+/maszyny/:slug/67cf2193593631ce8409a95c/*  /maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/#kps3000g  301!
+/maszyny/:slug/67cddcf7799068ebb64efde0/*  /maszyny/oczyszczanie/separator-ziemi-i-kamieni/  301!
+/maszyny/:slug/67cf195f593631ce8409a956/*  /maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/#kp1500  301!
+/maszyny/:slug/67cf24b6593631ce8409a95e/*  /maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/#kp5000g  301!
+/maszyny/:slug/67cde69c799068ebb64efde4/*  /maszyny/sortowanie/kalibrownik-rozsuwany/  301!
+/maszyny/:slug/6671d5e3ad3ebbf4a1bdb8fa/*  /maszyny/przenosniki/przenosniki-tasmowe-poziome/  301!
+/maszyny/:slug/67cde8d0799068ebb64efde6/*  /maszyny/sortowanie/sortownik-do-owocow-drobnych/  301!
+/maszyny/:slug/67cdfef9fbceb1c67efb671a/*  /maszyny/pakowanie/raszlownica/  301!
+/maszyny/:slug/67cded6b799068ebb64efdea/*  /maszyny/selekcja/stoly-selekcyjne-tasmowe/  301!
+/maszyny/:slug/67cf1cd8593631ce8409a958/*  /maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/#kp2000  301!
+/maszyny/:slug/67cf16f2593631ce8409a954/*  /maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/#kp1000  301!
+/maszyny/:slug/697c788bfd4fc91bf9d751b9/*  /maszyny/oczyszczanie/czyszczarka-do-imbiru-i-chrzanu/  301!
+/maszyny/:slug/697b8b67b218f4072882f3fd/*  /maszyny/pakowanie/formatory-palet/  301!
+/maszyny/:slug/6672c2a4a12ee4f19ab16309/*  /maszyny/przenosniki/przenosnik-odpadowy/  301!
+/maszyny/:slug/697c8638fd4fc91bf9d751e5/*  /maszyny/pakowanie/przenosnik-poprzeczny-do-raszlownicy/  301!
+/maszyny/:slug/6672d8b4a12ee4f19ab1632f/*  /maszyny/przenosniki/przenosniki-tasmowe-wznoszace/  301!
+/maszyny/:slug/67cde010799068ebb64efde2/*  /maszyny/oczyszczanie/czyszczarka-szczotkowa/  301!
+/maszyny/:slug/6672c526a12ee4f19ab16310/*  /maszyny/przenosniki/przenosnik-do-materialow-sypkich/  301!
+/maszyny/:slug/67cdeb15799068ebb64efde8/*  /maszyny/pakowanie/bufor-do-pakowania/  301!
+/maszyny/:slug/67cf1eea593631ce8409a95a/*  /maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/#kp3000  301!
+/maszyny/:slug/67cf27a9593631ce8409a960/*  /maszyny/wazenie-i-liczenie/liczarka/  301!
+/maszyny/:slug/67ce00bcfbceb1c67efb671c/*  /maszyny/pakowanie/napelniacz-kaskadowy/  301!
+/maszyny/:slug/696fb7e82abe02495323d54f/*  /maszyny/paletyzacja/  301!
+/maszyny/:slug/666c1dd97db89265d45932c9/*  /maszyny/przenosniki/przenosniki-tasmowe-poziome/  301!
+/maszyny/:slug/67d055ce56741f12cc290d54/*  /maszyny/przenosniki/przenosniki-rolkowe/  301!
+/maszyny/:slug/67d05b4e56741f12cc290d56/*  /maszyny/przenosniki/przenosniki-tasmowe-poziome/  301!
+/maszyny/:slug/6660a10598e0bc71d54ded80/*  /maszyny/pakowanie/raszlownica/  301!
+/maszyny/:slug/697c804dfd4fc91bf9d751ce/*  /maszyny/pakowanie/stoly-obrotowe/  301!
+/maszyny/:slug/67cf2b2e593631ce8409a962/*  /maszyny/wazenie-i-liczenie/waga-kontrolna/  301!
+/maszyny/:slug/697c7cc3fd4fc91bf9d751c0/*  /maszyny/oczyszczanie/wanna-do-plukania/  301!
+/maszyny/:slug/67cdd9c4799068ebb64efdde/*  /maszyny/przyjecie-i-buforowanie/zasobnik-buforowy/  301!
+# 2. ?cat= - dopasowanie wartosci jest dokladne; warianty kodowania i wielkosci liter wymagaja
+#    Edge Function (logika jak w przykladzie Cloudflare Worker). Przyklad dla wartosci podstawowych:
+/maszyny  cat=oczyszczanie  /maszyny/oczyszczanie/  301!
+/maszyny  cat=przyjęcie i buforowanie  /maszyny/przyjecie-i-buforowanie/  301!
+/maszyny  cat=selekcja  /maszyny/selekcja/  301!
+/maszyny  cat=rozładunek skrzyń  /maszyny/rozladunek-skrzyn/  301!
+/maszyny  cat=pakowanie  /maszyny/pakowanie/  301!
+/maszyny  cat=ważenie  /maszyny/wazenie-i-liczenie/  301!
+/maszyny  cat=przenośniki taśmowe  /maszyny/przenosniki/  301!
+/maszyny  cat=sortowanie  /maszyny/sortowanie/  301!
+/maszyny  cat=pielenie  /maszyny/pielenie/  301!
+/maszyny  cat=paletyzacja  /maszyny/paletyzacja/  301!
+# 3. Pozostale stare adresy o innej sciezce docelowej
+/images/Katalog%20Verbruggen%201%20PL%20v5.pdf  /uploads/verbruggen-katalog-paletyzatorow.pdf  301!
+/images/AgroWeldKatalog2025.pdf  /uploads/agro-weld-katalog-2026.pdf  301!
+/images/AgroWeldKatalog2026.pdf  /uploads/agro-weld-katalog-2026.pdf  301!
+/images/AgroWeldENG.pdf  /do-pobrania/  301!
+/realizacje/linia-do-sortowania-pakowania-oczyszczania  /realizacje/linia-do-pakowania-ziemniakow/  301!
+/realizacje/sortownik-do-borowek  /realizacje/linia-do-sortowania-borowki/  301!
+/realizacje/kosz-przyjeciowy-5m  /realizacje/kosz-przyjeciowy-5m3/  301!
+/realizacje/czyszczarka-z-szuflada  /realizacje/czyszczarka-szczotkowa-z-szuflada/  301!
+/realizacje/kosz-przyjeciowy-separator  /realizacje/kosz-przyjeciowy-z-separatorem/  301!
+/realizacje/raszlownica  /realizacje/raszlownica-z-modulem-pakujacym/  301!
+/realizacje/zasobnik-buforowy-kwasoodrporny  /realizacje/zasobnik-buforowy-kwasoodporny/  301!
+/linie-produkcyjne/linia-do-oczyszczania-mycia-i-pakowania-warzyw  /linie-produkcyjne/  301!
+/linie-produkcyjne/linia-do-buforowania-i-recznej-selekcji-cebuli  /linie-produkcyjne/  301!
+/linie-produkcyjne/linia-do-selekcji-i-recznego-pakowania-batatow  /linie-produkcyjne/  301!
+/linie-produkcyjne/propozycja-linii-do-czyszczenia-i-pakowania  /linie-produkcyjne/  301!
+/linie-produkcyjne/propozycja-linii-do-kalibracji-i-wazenia  /linie-produkcyjne/  301!
+/linie-produkcyjne/propozycja-linii-do-kalibrowania-i-pakowania  /linie-produkcyjne/  301!
+/linie-produkcyjne/zaawansowana-linia-do-liczenia-i-pakowania-cytrusow-inox  /realizacje/linia-do-cytrusow/  301!
+/katalog  /do-pobrania/  301!
+/finansowanie  /kontakt/  301!
+/en  /  301!

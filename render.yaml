@@ -82,109 +82,220 @@ services:
         source: /maszyny
         destination: /maszyny/
       - type: redirect
-        source: /maszyny/bufor-do-sortowania/67cdeb15799068ebb64efde8/
-        destination: /maszyny/pakowanie/bufor-do-pakowania/
-      - type: redirect
-        source: /maszyny/czyszczarka-do-imbiru-lub-chrzanu/697c788bfd4fc91bf9d751b9/
-        destination: /maszyny/oczyszczanie/czyszczarka-do-imbiru-i-chrzanu/
-      - type: redirect
-        source: /maszyny/czyszczarka-szczotkowa/67cde010799068ebb64efde2/
-        destination: /maszyny/oczyszczanie/czyszczarka-szczotkowa/
-      - type: redirect
-        source: /maszyny/dwubębnowy-sortownik-do-owoców-drobnych/67d05050a60f9ebfefd3a472/
-        destination: /maszyny/sortowanie/dwubebnowy-sortownik-do-owocow-drobnych/
-      - type: redirect
-        source: /maszyny/formatory-palet/697b8b67b218f4072882f3fd/
-        destination: /maszyny/pakowanie/formatory-palet/
-      - type: redirect
-        source: /maszyny/kalibrownik-rozsuwany/67cde69c799068ebb64efde4/
-        destination: /maszyny/sortowanie/kalibrownik-rozsuwany/
-      - type: redirect
-        source: /maszyny/kosz-przyjęciowy-kp1000/67cf16f2593631ce8409a954/
-        destination: /maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/#kp1000
-      - type: redirect
-        source: /maszyny/kosz-przyjęciowy-kp1500/67cf195f593631ce8409a956/
-        destination: /maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/#kp1500
-      - type: redirect
-        source: /maszyny/kosz-przyjęciowy-kp2000/67cf1cd8593631ce8409a958/
-        destination: /maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/#kp2000
-      - type: redirect
-        source: /maszyny/kosz-przyjęciowy-kp3000/67cf1eea593631ce8409a95a/
-        destination: /maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/#kp3000
-      - type: redirect
-        source: /maszyny/kosz-przyjęciowy-kp5000g/67cf24b6593631ce8409a95e/
-        destination: /maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/#kp5000g
-      - type: redirect
-        source: /maszyny/kosz-przyjęciowy-kps3000g/67cf2193593631ce8409a95c/
-        destination: /maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/#kps3000g
-      - type: redirect
-        source: /maszyny/liczarka/67cf27a9593631ce8409a960/
-        destination: /maszyny/wazenie-i-liczenie/liczarka/
-      - type: redirect
-        source: /maszyny/napełniacz-kaskadowy/67ce00bcfbceb1c67efb671c/
-        destination: /maszyny/pakowanie/napelniacz-kaskadowy/
-      - type: redirect
-        source: /maszyny/paletyzatory/696fb7e82abe02495323d54f/
-        destination: /maszyny/paletyzacja/
-      - type: redirect
-        source: /maszyny/pielnik-do-obróbki-redlin/696a59794da81bc256722bba/
+        source: /maszyny/:slug/696a59794da81bc256722bba
         destination: /maszyny/pielenie/pielnik-do-obrobki-redlin/
       - type: redirect
-        source: /maszyny/przenośnik-do-materiałów-sypkich/6672c526a12ee4f19ab16310/
-        destination: /maszyny/przenosniki/przenosnik-do-materialow-sypkich/
+        source: /maszyny/:slug/696a59794da81bc256722bba/
+        destination: /maszyny/pielenie/pielnik-do-obrobki-redlin/
       - type: redirect
-        source: /maszyny/przenośnik-odpadowy/6672c2a4a12ee4f19ab16309/
-        destination: /maszyny/przenosniki/przenosnik-odpadowy/
+        source: /maszyny/:slug/67d05050a60f9ebfefd3a472
+        destination: /maszyny/sortowanie/dwubebnowy-sortownik-do-owocow-drobnych/
       - type: redirect
-        source: /maszyny/przenośnik-taśmowy-poprzeczny/697c8638fd4fc91bf9d751e5/
-        destination: /maszyny/pakowanie/przenosnik-poprzeczny-do-raszlownicy/
+        source: /maszyny/:slug/67d05050a60f9ebfefd3a472/
+        destination: /maszyny/sortowanie/dwubebnowy-sortownik-do-owocow-drobnych/
       - type: redirect
-        source: /maszyny/przenośnik-taśmowy-poziomy/6671d5e3ad3ebbf4a1bdb8fa/
-        destination: /maszyny/przenosniki/przenosniki-tasmowe-poziome/
-      - type: redirect
-        source: /maszyny/przenośnik-taśmowy-wznoszący/6672d8b4a12ee4f19ab1632f/
-        destination: /maszyny/przenosniki/przenosniki-tasmowe-wznoszace/
-      - type: redirect
-        source: /maszyny/przenośnik-taśmowy-z-przegrodami/666c1dd97db89265d45932c9/
-        destination: /maszyny/przenosniki/przenosniki-tasmowe-poziome/
-      - type: redirect
-        source: /maszyny/przenośniki-rolkowe/67d055ce56741f12cc290d54/
-        destination: /maszyny/przenosniki/przenosniki-rolkowe/
-      - type: redirect
-        source: /maszyny/przenośniki-z-taśmą-modularną/67d05b4e56741f12cc290d56/
-        destination: /maszyny/przenosniki/przenosniki-tasmowe-poziome/
-      - type: redirect
-        source: /maszyny/raszlownica/67cdfef9fbceb1c67efb671a/
-        destination: /maszyny/pakowanie/raszlownica/
-      - type: redirect
-        source: /maszyny/separator-ziemii-i-kamienii/67cddcf7799068ebb64efde0/
-        destination: /maszyny/oczyszczanie/separator-ziemi-i-kamieni/
-      - type: redirect
-        source: /maszyny/sortownik-do-owoców-drobnych/67cde8d0799068ebb64efde6/
-        destination: /maszyny/sortowanie/sortownik-do-owocow-drobnych/
-      - type: redirect
-        source: /maszyny/stoły-obrotowe/697c804dfd4fc91bf9d751ce/
-        destination: /maszyny/pakowanie/stoly-obrotowe/
-      - type: redirect
-        source: /maszyny/stoły-selekcyjne-rolkowe/67cdf2cf799068ebb64efdec/
+        source: /maszyny/:slug/67cdf2cf799068ebb64efdec
         destination: /maszyny/selekcja/stoly-selekcyjne-rolkowe/
       - type: redirect
-        source: /maszyny/stoły-selekcyjne-taśmowe/67cded6b799068ebb64efdea/
-        destination: /maszyny/selekcja/stoly-selekcyjne-tasmowe/
+        source: /maszyny/:slug/67cdf2cf799068ebb64efdec/
+        destination: /maszyny/selekcja/stoly-selekcyjne-rolkowe/
       - type: redirect
-        source: /maszyny/waga-kontrolna/67cf2b2e593631ce8409a962/
-        destination: /maszyny/wazenie-i-liczenie/waga-kontrolna/
-      - type: redirect
-        source: /maszyny/wagoworkownica/67cdfd50fbceb1c67efb6718/
-        destination: /maszyny/pakowanie/wagoworkownica/
-      - type: redirect
-        source: /maszyny/wanna-do-płukania/697c7cc3fd4fc91bf9d751c0/
-        destination: /maszyny/oczyszczanie/wanna-do-plukania/
-      - type: redirect
-        source: /maszyny/wywrotnica-skrzyniopalet/67cdd634799068ebb64efddc/
+        source: /maszyny/:slug/67cdd634799068ebb64efddc
         destination: /maszyny/rozladunek-skrzyn/wywrotnica-skrzyniopalet/
       - type: redirect
-        source: /maszyny/zasobnik-buforowy/67cdd9c4799068ebb64efdde/
+        source: /maszyny/:slug/67cdd634799068ebb64efddc/
+        destination: /maszyny/rozladunek-skrzyn/wywrotnica-skrzyniopalet/
+      - type: redirect
+        source: /maszyny/:slug/67cdfd50fbceb1c67efb6718
+        destination: /maszyny/pakowanie/wagoworkownica/
+      - type: redirect
+        source: /maszyny/:slug/67cdfd50fbceb1c67efb6718/
+        destination: /maszyny/pakowanie/wagoworkownica/
+      - type: redirect
+        source: /maszyny/:slug/67cf2193593631ce8409a95c
+        destination: /maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/#kps3000g
+      - type: redirect
+        source: /maszyny/:slug/67cf2193593631ce8409a95c/
+        destination: /maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/#kps3000g
+      - type: redirect
+        source: /maszyny/:slug/67cddcf7799068ebb64efde0
+        destination: /maszyny/oczyszczanie/separator-ziemi-i-kamieni/
+      - type: redirect
+        source: /maszyny/:slug/67cddcf7799068ebb64efde0/
+        destination: /maszyny/oczyszczanie/separator-ziemi-i-kamieni/
+      - type: redirect
+        source: /maszyny/:slug/67cf195f593631ce8409a956
+        destination: /maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/#kp1500
+      - type: redirect
+        source: /maszyny/:slug/67cf195f593631ce8409a956/
+        destination: /maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/#kp1500
+      - type: redirect
+        source: /maszyny/:slug/67cf24b6593631ce8409a95e
+        destination: /maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/#kp5000g
+      - type: redirect
+        source: /maszyny/:slug/67cf24b6593631ce8409a95e/
+        destination: /maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/#kp5000g
+      - type: redirect
+        source: /maszyny/:slug/67cde69c799068ebb64efde4
+        destination: /maszyny/sortowanie/kalibrownik-rozsuwany/
+      - type: redirect
+        source: /maszyny/:slug/67cde69c799068ebb64efde4/
+        destination: /maszyny/sortowanie/kalibrownik-rozsuwany/
+      - type: redirect
+        source: /maszyny/:slug/6671d5e3ad3ebbf4a1bdb8fa
+        destination: /maszyny/przenosniki/przenosniki-tasmowe-poziome/
+      - type: redirect
+        source: /maszyny/:slug/6671d5e3ad3ebbf4a1bdb8fa/
+        destination: /maszyny/przenosniki/przenosniki-tasmowe-poziome/
+      - type: redirect
+        source: /maszyny/:slug/67cde8d0799068ebb64efde6
+        destination: /maszyny/sortowanie/sortownik-do-owocow-drobnych/
+      - type: redirect
+        source: /maszyny/:slug/67cde8d0799068ebb64efde6/
+        destination: /maszyny/sortowanie/sortownik-do-owocow-drobnych/
+      - type: redirect
+        source: /maszyny/:slug/67cdfef9fbceb1c67efb671a
+        destination: /maszyny/pakowanie/raszlownica/
+      - type: redirect
+        source: /maszyny/:slug/67cdfef9fbceb1c67efb671a/
+        destination: /maszyny/pakowanie/raszlownica/
+      - type: redirect
+        source: /maszyny/:slug/67cded6b799068ebb64efdea
+        destination: /maszyny/selekcja/stoly-selekcyjne-tasmowe/
+      - type: redirect
+        source: /maszyny/:slug/67cded6b799068ebb64efdea/
+        destination: /maszyny/selekcja/stoly-selekcyjne-tasmowe/
+      - type: redirect
+        source: /maszyny/:slug/67cf1cd8593631ce8409a958
+        destination: /maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/#kp2000
+      - type: redirect
+        source: /maszyny/:slug/67cf1cd8593631ce8409a958/
+        destination: /maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/#kp2000
+      - type: redirect
+        source: /maszyny/:slug/67cf16f2593631ce8409a954
+        destination: /maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/#kp1000
+      - type: redirect
+        source: /maszyny/:slug/67cf16f2593631ce8409a954/
+        destination: /maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/#kp1000
+      - type: redirect
+        source: /maszyny/:slug/697c788bfd4fc91bf9d751b9
+        destination: /maszyny/oczyszczanie/czyszczarka-do-imbiru-i-chrzanu/
+      - type: redirect
+        source: /maszyny/:slug/697c788bfd4fc91bf9d751b9/
+        destination: /maszyny/oczyszczanie/czyszczarka-do-imbiru-i-chrzanu/
+      - type: redirect
+        source: /maszyny/:slug/697b8b67b218f4072882f3fd
+        destination: /maszyny/pakowanie/formatory-palet/
+      - type: redirect
+        source: /maszyny/:slug/697b8b67b218f4072882f3fd/
+        destination: /maszyny/pakowanie/formatory-palet/
+      - type: redirect
+        source: /maszyny/:slug/6672c2a4a12ee4f19ab16309
+        destination: /maszyny/przenosniki/przenosnik-odpadowy/
+      - type: redirect
+        source: /maszyny/:slug/6672c2a4a12ee4f19ab16309/
+        destination: /maszyny/przenosniki/przenosnik-odpadowy/
+      - type: redirect
+        source: /maszyny/:slug/697c8638fd4fc91bf9d751e5
+        destination: /maszyny/pakowanie/przenosnik-poprzeczny-do-raszlownicy/
+      - type: redirect
+        source: /maszyny/:slug/697c8638fd4fc91bf9d751e5/
+        destination: /maszyny/pakowanie/przenosnik-poprzeczny-do-raszlownicy/
+      - type: redirect
+        source: /maszyny/:slug/6672d8b4a12ee4f19ab1632f
+        destination: /maszyny/przenosniki/przenosniki-tasmowe-wznoszace/
+      - type: redirect
+        source: /maszyny/:slug/6672d8b4a12ee4f19ab1632f/
+        destination: /maszyny/przenosniki/przenosniki-tasmowe-wznoszace/
+      - type: redirect
+        source: /maszyny/:slug/67cde010799068ebb64efde2
+        destination: /maszyny/oczyszczanie/czyszczarka-szczotkowa/
+      - type: redirect
+        source: /maszyny/:slug/67cde010799068ebb64efde2/
+        destination: /maszyny/oczyszczanie/czyszczarka-szczotkowa/
+      - type: redirect
+        source: /maszyny/:slug/6672c526a12ee4f19ab16310
+        destination: /maszyny/przenosniki/przenosnik-do-materialow-sypkich/
+      - type: redirect
+        source: /maszyny/:slug/6672c526a12ee4f19ab16310/
+        destination: /maszyny/przenosniki/przenosnik-do-materialow-sypkich/
+      - type: redirect
+        source: /maszyny/:slug/67cdeb15799068ebb64efde8
+        destination: /maszyny/pakowanie/bufor-do-pakowania/
+      - type: redirect
+        source: /maszyny/:slug/67cdeb15799068ebb64efde8/
+        destination: /maszyny/pakowanie/bufor-do-pakowania/
+      - type: redirect
+        source: /maszyny/:slug/67cf1eea593631ce8409a95a
+        destination: /maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/#kp3000
+      - type: redirect
+        source: /maszyny/:slug/67cf1eea593631ce8409a95a/
+        destination: /maszyny/przyjecie-i-buforowanie/kosze-przyjeciowe/#kp3000
+      - type: redirect
+        source: /maszyny/:slug/67cf27a9593631ce8409a960
+        destination: /maszyny/wazenie-i-liczenie/liczarka/
+      - type: redirect
+        source: /maszyny/:slug/67cf27a9593631ce8409a960/
+        destination: /maszyny/wazenie-i-liczenie/liczarka/
+      - type: redirect
+        source: /maszyny/:slug/67ce00bcfbceb1c67efb671c
+        destination: /maszyny/pakowanie/napelniacz-kaskadowy/
+      - type: redirect
+        source: /maszyny/:slug/67ce00bcfbceb1c67efb671c/
+        destination: /maszyny/pakowanie/napelniacz-kaskadowy/
+      - type: redirect
+        source: /maszyny/:slug/696fb7e82abe02495323d54f
+        destination: /maszyny/paletyzacja/
+      - type: redirect
+        source: /maszyny/:slug/696fb7e82abe02495323d54f/
+        destination: /maszyny/paletyzacja/
+      - type: redirect
+        source: /maszyny/:slug/666c1dd97db89265d45932c9
+        destination: /maszyny/przenosniki/przenosniki-tasmowe-poziome/
+      - type: redirect
+        source: /maszyny/:slug/666c1dd97db89265d45932c9/
+        destination: /maszyny/przenosniki/przenosniki-tasmowe-poziome/
+      - type: redirect
+        source: /maszyny/:slug/67d055ce56741f12cc290d54
+        destination: /maszyny/przenosniki/przenosniki-rolkowe/
+      - type: redirect
+        source: /maszyny/:slug/67d055ce56741f12cc290d54/
+        destination: /maszyny/przenosniki/przenosniki-rolkowe/
+      - type: redirect
+        source: /maszyny/:slug/67d05b4e56741f12cc290d56
+        destination: /maszyny/przenosniki/przenosniki-tasmowe-poziome/
+      - type: redirect
+        source: /maszyny/:slug/67d05b4e56741f12cc290d56/
+        destination: /maszyny/przenosniki/przenosniki-tasmowe-poziome/
+      - type: redirect
+        source: /maszyny/:slug/6660a10598e0bc71d54ded80
+        destination: /maszyny/pakowanie/raszlownica/
+      - type: redirect
+        source: /maszyny/:slug/6660a10598e0bc71d54ded80/
+        destination: /maszyny/pakowanie/raszlownica/
+      - type: redirect
+        source: /maszyny/:slug/697c804dfd4fc91bf9d751ce
+        destination: /maszyny/pakowanie/stoly-obrotowe/
+      - type: redirect
+        source: /maszyny/:slug/697c804dfd4fc91bf9d751ce/
+        destination: /maszyny/pakowanie/stoly-obrotowe/
+      - type: redirect
+        source: /maszyny/:slug/67cf2b2e593631ce8409a962
+        destination: /maszyny/wazenie-i-liczenie/waga-kontrolna/
+      - type: redirect
+        source: /maszyny/:slug/67cf2b2e593631ce8409a962/
+        destination: /maszyny/wazenie-i-liczenie/waga-kontrolna/
+      - type: redirect
+        source: /maszyny/:slug/697c7cc3fd4fc91bf9d751c0
+        destination: /maszyny/oczyszczanie/wanna-do-plukania/
+      - type: redirect
+        source: /maszyny/:slug/697c7cc3fd4fc91bf9d751c0/
+        destination: /maszyny/oczyszczanie/wanna-do-plukania/
+      - type: redirect
+        source: /maszyny/:slug/67cdd9c4799068ebb64efdde
+        destination: /maszyny/przyjecie-i-buforowanie/zasobnik-buforowy/
+      - type: redirect
+        source: /maszyny/:slug/67cdd9c4799068ebb64efdde/
         destination: /maszyny/przyjecie-i-buforowanie/zasobnik-buforowy/
       - type: redirect
         source: /realizacje
@@ -230,6 +341,9 @@ services:
         destination: /uploads/agro-weld-katalog-2026.pdf
       - type: redirect
         source: /images/Katalog Verbruggen 1 PL v5.pdf
+        destination: /uploads/verbruggen-katalog-paletyzatorow.pdf
+      - type: redirect
+        source: /images/Katalog%20Verbruggen%201%20PL%20v5.pdf
         destination: /uploads/verbruggen-katalog-paletyzatorow.pdf
       - type: redirect
         source: /images/AgroWeldENG.pdf

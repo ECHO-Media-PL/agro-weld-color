@@ -154,6 +154,29 @@ Trzy karty maszyn nie mają dokładnego odpowiednika 1:1 — oznaczone w tabeli 
 Przekierowania w `render.yaml` dopasowują tylko ścieżkę — **nie** parametry zapytania. Adresy `/maszyny/?cat=…` trafią więc na `/maszyny/`, co jest poprawne (listing zawiera wszystkie kategorie), ale nie na konkretną kategorię.
 Żeby filtry prowadziły na strony kategorii, potrzebny jest na `/maszyny/` krótki skrypt czytający `?cat=` i wykonujący `location.replace()`. Mapowanie nazw filtrów na slugi jest w tabeli powyżej.
 
+## Naprawa 22.09.2026 — dopasowanie produktów po ID (PM-01)
+
+Audyt po migracji wykazał 404 na 23 starych adresach produktowych z polskimi znakami w slugu.
+
+**Przyczyna:** reguły w `render.yaml` miały w `source` slug zapisany znakami UTF-8 (`/maszyny/pielnik-do-obróbki-redlin/696a…/`), a Render dopasowuje ścieżkę w postaci surowej, procentowo zakodowanej (`/maszyny/pielnik-do-obr%C3%B3bki-redlin/696a…/`). Reguła nie trafiała, żądanie szło do 404.
+
+**Rozwiązanie:** wszystkie 36 reguł produktowych dopasowują teraz po 24-znakowym ID, a segment sluga zastępuje placeholder `:slug`:
+
+```yaml
+- type: redirect
+  source: /maszyny/:slug/696a59794da81bc256722bba
+  destination: /maszyny/pielenie/pielnik-do-obrobki-redlin/
+- type: redirect
+  source: /maszyny/:slug/696a59794da81bc256722bba/
+  destination: /maszyny/pielenie/pielnik-do-obrobki-redlin/
+```
+
+Placeholder dopasowuje dowolny pojedynczy segment, więc kodowanie polskich znaków i zmiana sluga nie mają znaczenia. Każde ID ma dwa warianty — z ukośnikiem i bez. To prawdziwe HTTP 301 z warstwy Render, bez JavaScriptu.
+
+Dodatkowo dodano zakodowany wariant źródła katalogu Verbruggen (`Katalog%20Verbruggen%201%20PL%20v5.pdf`) — ta sama przyczyna, spacje w nazwie pliku.
+
+**Nadal bez 301 na Render:** adresy `/maszyny/?cat=…`. Reguły Render nie dopasowują query stringów, więc obsługuje je skrypt na `/maszyny/` (`location.replace`). Twarde 301 wymaga warstwy przed aplikacją — nginx, Apache albo Cloudflare Worker; gotowe konfiguracje są w `uploads/przyklady_konfiguracji_przekierowan.txt`. Do decyzji, czy wchodzimy w CDN tylko dla tych 10 adresów.
+
 ## Decyzje klienta z 16.09.2026
 
 Patrz `DECYZJE-SEO.md`. Najważniejsze: `/finansowanie` → `/kontakt/`, `/en` → `/`, przenośnik z przegrodami → przenośniki taśmowe poziome, adresy `?cat=` obsługuje skrypt na `/maszyny/` (Render nie dopasowuje query stringów).

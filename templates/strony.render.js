@@ -18,6 +18,7 @@
       .replace(/<meta property="og:description" content="[^"]*">/, '<meta property="og:description" content="' + escA(o.desc) + '">')
       .replace('{{JSONLD}}', o.jsonld || JSON.stringify({ '@context': 'https://schema.org', '@type': 'WebPage', name: o.title, url: o.url, description: o.desc }))
       .replace(/\.\.\/\.\.\/assets\//g, rel)
+      .replace(/\{\{OGIMAGE\}\}/g, 'https://www.agro-weld.pl/' + (o.ogImage || 'assets/logo.webp'))
       .replace(/\s*\{\{MOBSUB\}\}/g, '')
       .replace(/(<a class="navlink" href="\/maszyny\/") style="color:#ECE7D7"/, '$1 style="color:#ECE7D7"');
     if (o.active && NAV[o.active]) {
@@ -66,7 +67,7 @@
       '<main><section style="background:#ECE7D7;padding:0 0 84px"><div class="pad" style="max-width:1280px;margin:0 auto;padding:0 32px">' +
       '<div data-reveal class="rzgrid" style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:#14160E;border:1px solid #14160E">' + list.map(function (r) { return realCard(r, '../'); }).join('') + '</div></div></section>' +
       cta('Twoja realizacja może być następna.', 'Opisz surowiec, skalę produkcji i halę — zaprojektujemy linię lub dobierzemy maszynę i przygotujemy wycenę.', 'Porozmawiajmy') + '</main>';
-    return shell(tpl, { depth: 1, url: 'https://www.agro-weld.pl/realizacje/', title: 'Realizacje - wdrożone linie i maszyny Agro-Weld | Agro-Weld', desc: 'Case studies wdrożeń Agro-Weld: linia do sortowania borówki, linia licząco-pakująca do cytrusów INOX, stół selekcyjny INOX, stanowisko pakowania z raszlownicą.', active: 'realizacje', body: body,
+    return shell(tpl, { depth: 1, url: 'https://www.agro-weld.pl/realizacje/', ogImage: (reals[0] && reals[0].img ? 'assets/' + reals[0].img : ''), title: 'Realizacje - wdrożone linie i maszyny Agro-Weld | Agro-Weld', desc: 'Case studies wdrożeń Agro-Weld: linia do sortowania borówki, linia licząco-pakująca do cytrusów INOX, stół selekcyjny INOX, stanowisko pakowania z raszlownicą.', active: 'realizacje', body: body,
       css: '.rz{transition:background .3s}.rz:hover{background:#F4EFE2}.rz:hover .rzimg{transform:scale(1.05)}.rzimg{transition:transform .6s cubic-bezier(.2,.7,.2,1)}.rzarr{display:inline-block;transition:transform .3s}.rz:hover .rzarr{transform:translate(3px,-3px)}@media(max-width:900px){.rzgrid{grid-template-columns:1fr!important}}' });
   }
   function caseGallery(r) {
@@ -101,7 +102,7 @@
       '<section style="background:#F4EFE2;padding:64px 0;border-top:1px solid rgba(20,22,14,.12)"><div class="pad" style="max-width:1280px;margin:0 auto;padding:0 32px"><div data-reveal style="display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:26px;font-family:\'Space Mono\',monospace;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase"><span style="color:#8C3A43">/ Inne realizacje</span><a href="/realizacje/" style="color:#41571F;text-decoration:none">Wszystkie →</a></div>' +
       '<div data-reveal class="rzgrid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#14160E;border:1px solid #14160E">' + list.filter(function (x) { return x.slug !== r.slug; }).map(function (x) { return realCard(x, '../../'); }).join('') + '</div></div></section>' +
       cta('Podobne zadanie w Twoim zakładzie?', 'Opisz surowiec i skalę produkcji — zaproponujemy maszyny lub linię dopasowaną do Twojej hali.', 'Porozmawiajmy') + '</main>';
-    return shell(tpl, { depth: 2, url: 'https://www.agro-weld.pl/realizacje/' + r.slug + '/', title: r.metaTitle || (r.title + ' - realizacja | Agro-Weld'), desc: r.metaDesc || r.lead, active: 'realizacje', body: body,
+    return shell(tpl, { depth: 2, url: 'https://www.agro-weld.pl/realizacje/' + r.slug + '/', ogImage: (r.img ? 'assets/' + r.img : ''), title: r.metaTitle || (r.title + ' - realizacja | Agro-Weld'), desc: r.metaDesc || r.lead, active: 'realizacje', body: body,
       css: '.rz{transition:background .3s}.rz:hover{background:#F4EFE2}.rz:hover .rzimg{transform:scale(1.05)}.rzimg{transition:transform .6s cubic-bezier(.2,.7,.2,1)}.rzarr{display:inline-block;transition:transform .3s}.rz:hover .rzarr{transform:translate(3px,-3px)}.relm{transition:background .25s}.relm:hover{background:#F4EFE2}.relm:hover .rarr{transform:translate(3px,-3px)}.rarr{display:inline-block;transition:transform .3s}@media(max-width:900px){.rzgrid{grid-template-columns:1fr!important}.cgal{grid-template-columns:repeat(2,1fr)!important}}' });
   }
 
