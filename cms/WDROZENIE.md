@@ -34,7 +34,7 @@ Bez żadnego klucza panel działa normalnie — tylko tłumaczenia zgłoszą bra
      `a@x.pl:haslo1,b@y.pl:haslo2`). Hasło nie może zawierać przecinka.
    - `GITHUB_TOKEN` — token z kroku 2
    - `ANTHROPIC_API_KEY` — klucz z kroku 3 (albo zostaw puste)
-3. Po deployu panel działa pod adresem `https://agro-weld-cms.onrender.com`.
+3. Po deployu panel działa pod adresem `https://agro-weld-cms-84hz.onrender.com`.
 
 ## Krok 5 — sprawdź obieg
 1. Zaloguj się do panelu → SEO podstron → zmień coś drobnego → „Opublikuj zmiany".

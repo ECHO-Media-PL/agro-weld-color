@@ -37,4 +37,4 @@ Serwis `agro-weld-cms` (Render), zmienne środowiskowe:
 - `FORM_FROM` — adres nadawcy zweryfikowanej domeny, np. `Wiadomość z formularza <noreply@agro-weld.pl>`,
 - `FORM_TO` — odbiorca zapytań (domyślnie `biuro@agro-weld.pl`).
 
-Endpoint: `POST https://agro-weld-cms.onrender.com/api/form`. Zabezpieczenia: CORS tylko dla domen Agro-Weld, pole-pułapka na boty, limit 10 zapytań na godzinę z jednego IP. Bez klucza API endpoint zwraca błąd i loguje treść zapytania — przed migracją trzeba go ustawić i przetestować.
+Endpoint: `POST https://agro-weld-cms-84hz.onrender.com/api/form`. Zabezpieczenia: CORS tylko dla domen Agro-Weld, pole-pułapka na boty, limit 10 zapytań na godzinę z jednego IP. Bez klucza API endpoint zwraca błąd i loguje treść zapytania — przed migracją trzeba go ustawić i przetestować.

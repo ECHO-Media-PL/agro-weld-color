@@ -1,7 +1,7 @@
 // Wysyłka formularzy zapytań (#awForm) do endpointu serwisu CMS.
 // Endpoint można nadpisać przed wczytaniem skryptu: window.AW_FORM_ENDPOINT = '...'
 (function () {
-  var ENDPOINT = window.AW_FORM_ENDPOINT || 'https://agro-weld-cms.onrender.com/api/form';
+  var ENDPOINT = window.AW_FORM_ENDPOINT || 'https://agro-weld-cms-84hz.onrender.com/api/form';
   function init(form) {
     if (!form || form.dataset.awBound) return;
     form.dataset.awBound = '1';
