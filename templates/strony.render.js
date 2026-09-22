@@ -81,7 +81,7 @@
     if (!r.video) return '';
     return '<section style="background:#1E2113;color:#ECE7D7;padding:72px 0"><div class="pad" style="max-width:1280px;margin:0 auto;padding:0 32px">' +
       '<div class="mono" data-reveal style="font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#B7D44B;margin-bottom:18px">/ Maszyna w pracy</div>' +
-      '<div data-reveal style="max-width:900px;background:#14160E;padding:6px"><div style="position:relative;aspect-ratio:16/9"><iframe src="https://www.youtube-nocookie.com/embed/' + escA(r.video) + '" title="' + escA(r.title + ' - film') + '" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:0;display:block"></iframe></div></div>' +
+      '<div data-reveal style="max-width:900px;background:#14160E;padding:6px"><div style="position:relative;aspect-ratio:16/9"><iframe data-aw-src="https://www.youtube-nocookie.com/embed/' + escA(r.video) + '" title="' + escA(r.title + ' - film') + '" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:0;display:block"></iframe></div></div>' +
       '</div></section>';
   }
   function renderCase(r, list, machines, tpl) {

@@ -347,7 +347,7 @@ services:
         destination: /uploads/verbruggen-katalog-paletyzatorow.pdf
       - type: redirect
         source: /images/AgroWeldENG.pdf
-        destination: /uploads/agro-weld-catalogue-2026-en.pdf
+        destination: /do-pobrania/
       - type: redirect
         source: /en
         destination: /

@@ -41,7 +41,7 @@ fs.mkdirSync(OUT, { recursive: true });
 const SKIP_DIRS = new Set(['.git', '.github', 'node_modules', 'dist', 'cms', 'content', 'templates', 'screenshots', 'seo', 'uploads']);
 // uploads/ to katalog roboczy (dokumenty, zdjęcia źródłowe, arkusze) — NIE publikujemy go w całości.
 // Do dist/uploads/ trafiają tylko pliki z tej listy oraz zdjęcia wpisów dodane przez CMS (uploads/blog/).
-const UPLOADS_PUBLIC = ['agro-weld-katalog-2026.pdf', 'verbruggen-katalog-paletyzatorow.pdf'];
+const UPLOADS_PUBLIC = ['agro-weld-katalog-2026.pdf', 'agro-weld-catalogue-2026-en.pdf', 'verbruggen-katalog-paletyzatorow.pdf'];
 const SKIP_FILES = new Set(['build.js', 'render.yaml', 'github.md', 'package.json', 'package-lock.json', '.gitignore', 'support.js', 'aw-data.js', 'CLAUDE.md']);
 const skipFile = f => SKIP_FILES.has(f) || f.endsWith('.dc.html') || f.startsWith('.');
 // katalogi, których zawartość HTML jest w całości generowana z danych — kopiujemy tylko

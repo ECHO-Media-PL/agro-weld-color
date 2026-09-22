@@ -18,9 +18,9 @@
   /* ---------- osadzone treści zewnętrzne (mapa Google) ---------- */
   var parked = [];
   function parkEmbeds() {
-    var frames = document.querySelectorAll('iframe[src]');
+    var frames = document.querySelectorAll('iframe[src], iframe[data-aw-src]');
     for (var i = 0; i < frames.length; i++) {
-      var f = frames[i], src = f.getAttribute('src') || '';
+      var f = frames[i], src = f.getAttribute('src') || f.getAttribute('data-aw-src') || '';
       if (!/google\.[a-z.]+\/maps|youtube|player\.vimeo/i.test(src)) continue;
       var isMap = /google\.[a-z.]+\/maps/i.test(src);
       var ph = document.createElement('div');
@@ -153,7 +153,7 @@
 
   function init() {
     var v = read();
-    if (!v || !v.external) parkEmbeds();
+    parkEmbeds();
     if (v) { apply(v); } else { render('banner'); }
     var links = document.querySelectorAll('[data-aw-cookie-settings]');
     for (var i = 0; i < links.length; i++) {
