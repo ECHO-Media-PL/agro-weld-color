@@ -2,7 +2,7 @@
  "pages": {
   "index.html": {
    "title": "Producent maszyn rolniczych do warzyw i owoców | Agro-Weld",
-   "description": "Agro-Weld - polski producent maszyn do mycia, sortowania i pakowania warzyw oraz linii pod klucz. Środa Wielkopolska. Zapytaj o wycenę!",
+   "description": "Agro-Weld ➤ Maszyny do czyszczenia, sortowania i pakowania warzyw oraz linie pod klucz. ✓ Środa Wlkp. ✓ Dystrybutor Verbruggen ➤ Zapytaj o ofertę!",
    "alts": {
     "assets/logo.webp": "Agro-Weld — producent maszyn i linii technologicznych",
     "assets/kp5000.webp": "Kosz przyjęciowy KP5000G — maszyna Agro-Weld",
@@ -20,16 +20,16 @@
    }
   },
   "maszyny/index.html": {
-   "title": "Maszyny do warzyw i owoców - katalog | Agro-Weld",
-   "description": "Pełen przegląd maszyn Agro-Weld pogrupowany według etapu linii technologicznej — przyjęcie, oczyszczanie, sortowanie, ważenie, pakowanie i paletyzacja.",
+   "title": "Maszyny do warzyw i owoców - pełny katalog | Agro-Weld",
+   "description": "Agro-Weld ➤ Kosze przyjęciowe, czyszczarki, kalibrowniki, stoły selekcyjne, wagoworkownice, raszlownice. ✓ Katalog PDF ✓ Na wymiar ➤ Zapytaj o ofertę!",
    "alts": {
     "../assets/logo.webp": "Agro-Weld — producent maszyn i linii technologicznych",
     "../assets/kp5000.webp": "Kosz przyjęciowy KP1000–KP5000G — maszyna Agro-Weld"
    }
   },
   "blog/index.html": {
-   "title": "Blog - maszyny i linie do warzyw w praktyce | Agro-Weld",
-   "description": "Praktyczna wiedza od producenta: dobór maszyn do warzyw i owoców, projektowanie linii technologicznych, czyszczenie, sortowanie, pakowanie i paletyzacja.",
+   "title": "Dobór maszyn do warzyw - poradniki i blog | Agro-Weld",
+   "description": "Agro-Weld ➤ Jak wybrać kosz przyjęciowy, myjkę do warzyw i separator kamieni? ✓ Dobór maszyny ✓ Mycie i oczyszczanie warzyw ➤ Czytaj poradniki!",
    "alts": {
     "../assets/logo.webp": "Agro-Weld — producent maszyn i linii technologicznych",
     "../assets/kp5000.webp": "Kosz przyjęciowy KP5000G — maszyna Agro-Weld",
@@ -55,6 +55,22 @@
     "../../assets/logo.webp": "Agro-Weld",
     "../../assets/kp5000.webp": "Kosz przyjęciowy KP5000"
    }
+  },
+  "linie-produkcyjne/index.html": {
+   "title": "Linie do pakowania warzyw i owoców pod klucz | Agro-Weld",
+   "description": "Agro-Weld ➤ Linia do mycia, kalibracji i pakowania warzyw lub selekcji cebuli. ✓ Projekt pod halę ✓ Montaż ✓ Wykonanie INOX ➤ Zapytaj o podobną linię!"
+  },
+  "realizacje/index.html": {
+   "title": "Realizacje linii do warzyw i owoców - wdrożenia | Agro-Weld",
+   "description": "Agro-Weld ➤ Linie do sortowania borówki, pakowania ziemniaków i cytrusów INOX. ✓ 13 wdrożeń u klientów ✓ Od kosza po raszlownicę ➤ Zobacz realizacje!"
+  },
+  "o-firmie/index.html": {
+   "title": "Polski producent maszyn do warzyw - o firmie | Agro-Weld",
+   "description": "Agro-Weld ➤ Konstruktorzy, spawacze i monterzy z zakładu w Środzie Wielkopolskiej. ✓ Autorskie konstrukcje ✓ Modyfikacje pod klienta ➤ Poznaj nas!"
+  },
+  "kontakt/index.html": {
+   "title": "Maszyny rolnicze Środa Wielkopolska - kontakt | Agro-Weld",
+   "description": "Agro-Weld ➤ Zakład: ul. Ignacego Prądzyńskiego 16, 63-000 Środa Wlkp. ✓ Tel. +48 725 140 257 ✓ Pon.-Pt. 7:00-16:00 ➤ Zapytaj o maszynę lub linię!"
   }
  }
 }
