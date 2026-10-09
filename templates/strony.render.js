@@ -57,7 +57,7 @@
   // ---------- realizacje ----------
   function realCard(r, rel) {
     return '<a class="rz" href="/realizacje/' + r.slug + '/" style="background:#ECE7D7;display:flex;flex-direction:column;color:#14160E;text-decoration:none">' +
-      '<span style="height:240px;overflow:hidden;border-bottom:1px solid #14160E;display:block"><img class="rzimg" src="' + rel + 'assets/' + r.img + '" alt="' + escA(r.title + ' — realizacja Agro-Weld') + '" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></span>' +
+      '<span style="height:240px;overflow:hidden;border-bottom:1px solid #14160E;display:block"><img class="rzimg" src="' + rel + 'assets/' + r.img + '" alt="' + escA(r.imgAlt || (r.title + ' — realizacja Agro-Weld')) + '" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></span>' +
       '<span style="padding:20px 22px 24px;flex:1;display:flex;flex-direction:column"><span class="mono" style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:11px;font-size:11px;letter-spacing:.05em"><span style="color:#8C3A43;font-weight:700">REF. ' + esc(r.ref) + '</span><span style="color:#8A8163;text-transform:uppercase;letter-spacing:.1em">' + esc(r.cat) + '</span></span>' +
       '<h3 style="font-size:23px;letter-spacing:-.01em;line-height:1.12;margin-bottom:10px;text-wrap:balance">' + esc(r.title) + '</h3><p style="font-size:14.5px;line-height:1.55;color:#56603F;text-wrap:pretty;margin-bottom:16px">' + esc(r.lead) + '</p>' +
       '<span class="mono" style="margin-top:auto;font-size:11px;font-weight:700;color:#41571F">Zobacz realizację <span class="rzarr">↗</span></span></span></a>';
@@ -73,8 +73,8 @@
   function caseGallery(r) {
     var g = (r.gallery || []).slice(1);
     if (!g.length) return '';
-    return '<div class="cgal" style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:26px">' + g.map(function (src) {
-      return '<figure style="margin:0;background:#14160E;padding:4px"><div style="overflow:hidden;aspect-ratio:4/3"><img src="../../assets/' + escA(src) + '" alt="' + escA(r.title + ' - realizacja Agro-Weld') + '" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div></figure>';
+    return '<div class="cgal" style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:26px">' + g.map(function (src, i) {
+      return '<figure style="margin:0;background:#14160E;padding:4px"><div style="overflow:hidden;aspect-ratio:4/3"><img src="../../assets/' + escA(src) + '" alt="' + escA((r.galleryAlts || [])[i + 1] || (r.title + ' - realizacja Agro-Weld')) + '" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div></figure>';
     }).join('') + '</div>';
   }
   function caseVideo(r) {
@@ -93,7 +93,7 @@
       '<h1 data-reveal style="font-size:clamp(38px,4.6vw,58px);line-height:1;letter-spacing:-.03em;margin-bottom:22px;text-wrap:balance;color:#ECE7D7">' + esc(r.title) + '</h1>' +
       '<p data-reveal style="font-size:18px;line-height:1.6;color:#A7AE92;max-width:540px;text-wrap:pretty;margin-bottom:30px">' + esc(r.lead) + '</p>' +
       '<dl data-reveal style="display:grid;grid-template-columns:auto 1fr;gap:10px 22px;font-size:14.5px;border-top:1px solid rgba(236,231,215,.16);padding-top:16px">' + r.facts.map(function (f) { return '<dt class="mono" style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#7E8A63;padding-top:3px">' + esc(f[0]) + '</dt><dd style="color:#ECE7D7;font-weight:600">' + esc(f[1]) + '</dd>'; }).join('') + '</dl></div>' +
-      '<figure data-reveal style="position:relative;background:#1E2113;padding:6px;box-shadow:0 2px 4px rgba(0,0,0,.3),0 28px 60px -20px rgba(0,0,0,.8)"><div style="overflow:hidden;aspect-ratio:4/3;outline:1px solid rgba(140,58,67,.7);outline-offset:-1px"><img src="../../assets/' + r.img + '" alt="' + escA(r.title + ' — realizacja Agro-Weld') + '" style="width:100%;height:100%;object-fit:cover;display:block"></div></figure></div></div></section>' +
+      '<figure data-reveal style="position:relative;background:#1E2113;padding:6px;box-shadow:0 2px 4px rgba(0,0,0,.3),0 28px 60px -20px rgba(0,0,0,.8)"><div style="overflow:hidden;aspect-ratio:4/3;outline:1px solid rgba(140,58,67,.7);outline-offset:-1px"><img src="../../assets/' + r.img + '" alt="' + escA(r.imgAlt || (r.title + ' — realizacja Agro-Weld')) + '" style="width:100%;height:100%;object-fit:cover;display:block"></div></figure></div></div></section>' +
       '<main><section style="background:#ECE7D7;color:#14160E;padding:80px 0"><div class="pad" style="max-width:1280px;margin:0 auto;padding:0 32px"><div class="art2" style="display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:64px;align-items:start">' +
       '<div data-reveal><div class="mono" style="font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8C3A43;margin-bottom:18px">/ Zadanie i rozwiązanie</div>' + r.body.map(function (p) { return '<p style="font-size:17px;line-height:1.7;color:#3B4230;margin-bottom:18px;text-wrap:pretty">' + esc(p) + '</p>'; }).join('') + caseGallery(r) + '</div>' +
       '<aside data-reveal><div class="mono" style="font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8C3A43;margin-bottom:14px">/ Maszyny w realizacji</div><div style="display:flex;flex-direction:column;border-top:1px solid rgba(20,22,14,.18)">' +

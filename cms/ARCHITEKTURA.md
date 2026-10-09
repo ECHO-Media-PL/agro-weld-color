@@ -29,6 +29,21 @@ budżet ≤100 zł/mies., treści muszą być w statycznym HTML (czytelne dla bo
   `machines:["m:<id>","cat:<slug-kategorii>"]` → blok „Maszyny z artykułu” obok spisu treści ({{RELM}}
   w szablonie; link maszyny = `url` z maszyny.json albo `/maszyny/#<id>`).
 
+## Panel (cms/public/index.html) — co edytuje
+- **SEO i opisy zdjęć** — jedna lista wszystkich podstron: stałe (`seo.json`), kategorie (`kategorie.json`),
+  karty maszyn (`produkty.json`), realizacje (`realizacje.json`), blog (`blog/*.json`). Meta zapisuje się
+  w pliku, z którego build faktycznie czyta daną stronę. Alty stron stałych: lista zdjęć odczytywana
+  z HTML strony, zapis do `seo.json → alts`; build dopisuje alt także do `<img>` bez atrybutu.
+- Alty stron generowanych — opcjonalne nadpisania: `imgAlt` (maszyny, produkty, realizacje),
+  `gallery[i][1]` (produkty), `galleryAlts[i]` (realizacje). Puste = opis domyślny z nazwy.
+- **Maszyny i karty** — wpis z `maszyny.json` + pełna karta z `produkty.json` (`mid`): opisy, modele,
+  zalety, tabela danych, wyposażenie, warianty, sekcje, FAQ, zdjęcia (upload → `assets/maszyny/`), meta.
+- **Kategorie** — H1, wstęp, sekcje (akapit / lista / tabela), FAQ, CTA, meta.
+- **Realizacje** — pełna edycja, dodawanie i usuwanie, zdjęcia (upload → `assets/realizacje/`), wideo YT.
+- **Pulpit** — kontrola SEO: brakujące / za długie meta, puste alty.
+- Bez serwera (podgląd pliku) panel działa w trybie podglądu na plikach projektu — publikacja jest symulowana.
+- Serwer sprawdza limity tylko dla pól zmienionych względem repo — stare za długie wartości nie blokują publikacji.
+
 ## Zasady
 - Markery `data-cms` zostają w HTML na stałe — build podmienia innerHTML oznaczonych elementów.
 - Wartości w JSON to czysty tekst (build robi escaping). bodyHtml wpisu to zaufany HTML z edytora panelu.

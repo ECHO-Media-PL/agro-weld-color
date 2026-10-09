@@ -41,16 +41,12 @@
    }
   },
   "blog/jak-dobrac-kosz-przyjeciowy/index.html": {
-   "title": "Jak dobrać kosz przyjęciowy do linii technologicznej? | Blog Agro-Weld",
-   "description": "Pojemność zasypu, szerokość taśmy, materiał konstrukcji i integracja z linią — praktyczny poradnik doboru kosza przyjęciowego od konstruktorów Agro-Weld.",
    "alts": {
     "../../assets/logo.webp": "Agro-Weld — producent maszyn i linii technologicznych",
     "../../assets/kp5000.webp": "Kosz przyjęciowy KP5000G"
    }
   },
   "maszyny/przyjecie-i-buforowanie/index.html": {
-   "title": "Kosze przyjęciowe do warzyw – maszyny przyjęcia surowca – Agro-Weld",
-   "description": "Kosze przyjęciowe KP1000-KP5000G (1-5 m³) i zasobniki buforowe do warzyw. Rozdzielenie na frakcje, wersje INOX. Wycena gratis – Agro-Weld.",
    "alts": {
     "../../assets/logo.webp": "Agro-Weld",
     "../../assets/kp5000.webp": "Kosz przyjęciowy KP5000"
@@ -71,6 +67,18 @@
   "kontakt/index.html": {
    "title": "Maszyny rolnicze Środa Wielkopolska - kontakt | Agro-Weld",
    "description": "Agro-Weld ➤ Zakład: ul. Ignacego Prądzyńskiego 16, 63-000 Środa Wlkp. ✓ Tel. +48 725 140 257 ✓ Pon.-Pt. 7:00-16:00 ➤ Zapytaj o maszynę lub linię!"
+  },
+  "do-pobrania/index.html": {
+   "title": "Do pobrania - katalogi PDF | Agro-Weld",
+   "description": "Pobierz katalog maszyn Agro-Weld 2026 (PDF, 40 stron), wersję angielską katalogu oraz katalog paletyzatorów Verbruggen. Dane techniczne i schematy linii."
+  },
+  "rozwiazania-specjalne/index.html": {
+   "title": "Rozwiązania specjalne - maszyny na zamówienie | Agro-Weld",
+   "description": "Maszyny i przenośniki na zamówienie: nietypowe wymiary, pozycjonowanie, trudne warunki, nowy surowiec. Zapytaj Agro-Weld o projekt."
+  },
+  "polityka-prywatnosci/index.html": {
+   "title": "Polityka prywatności | Agro-Weld",
+   "description": "Informacje o przetwarzaniu danych osobowych przez Agro-Weld Sp. z o.o. — administrator, cele, okres przechowywania, prawa użytkowników, cookies."
   }
  }
 }

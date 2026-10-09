@@ -67,33 +67,63 @@ async function commitOnce(files, message, author) {
 }
 
 // ---------- twarde limity (idioto-odporność) ----------
-const LIMITS = { title: 60, description: 160, alt: 125, metaTitle: 60, metaDesc: 160 };
-function validate(files) {
+// Limity sprawdzamy tylko dla pól ZMIENIONYCH względem repo — stare, za długie wartości
+// (np. z importu) nie blokują publikacji niezwiązanych zmian; panel pokazuje je jako ostrzeżenie.
+const LIMITS = { title: 60, description: 160, alt: 125 };
+const BAD_HTML = /<script|<iframe|<object|<embed|\son\w+\s*=|javascript:/i;
+async function repoJSON(p) {
+  try { const r = await gh('GET', R + '/contents/' + encodeURIComponent(p).replace(/%2F/g, '/') + '?ref=' + BRANCH); return JSON.parse(Buffer.from(r.content, 'base64').toString('utf8')); }
+  catch (e) { return null; }
+}
+function allStrings(o, out = []) { if (typeof o === 'string') out.push(o); else if (o && typeof o === 'object') for (const v of Object.values(o)) allStrings(v, out); return out; }
+async function validate(files) {
   const errs = [];
+  const lim = (label, cur, old, max, what) => { if ((cur || '').length > max && cur !== old) errs.push(label + ': ' + what + ' > ' + max + ' znaków (' + cur.length + ')'); };
+  const meta = (label, cur, old) => {
+    old = old || {};
+    lim(label, cur.metaTitle, old.metaTitle, LIMITS.title, 'meta title');
+    lim(label, cur.metaDesc, old.metaDesc, LIMITS.description, 'meta description');
+    lim(label, cur.imgAlt, old.imgAlt, LIMITS.alt, 'opis zdjęcia (alt)');
+    lim(label, cur.coverAlt, old.coverAlt, LIMITS.alt, 'opis zdjęcia (alt)');
+    (cur.gallery || []).forEach((g, i) => { if (Array.isArray(g)) lim(label + ' / galeria ' + (i + 1), g[1], ((old.gallery || [])[i] || [])[1], LIMITS.alt, 'alt'); });
+    (cur.galleryAlts || []).forEach((a, i) => lim(label + ' / galeria ' + (i + 1), a, (old.galleryAlts || [])[i], LIMITS.alt, 'alt'));
+  };
+  const keyed = (path, data, old, key, required) => {
+    if (!Array.isArray(data)) return errs.push(path + ': oczekiwano listy');
+    const seen = new Set();
+    for (const x of data) {
+      const k = x && x[key];
+      if (!k || !/^[a-z0-9-]+$/.test(k)) { errs.push(path + ': niepoprawny identyfikator „' + k + '”'); continue; }
+      if (seen.has(k)) errs.push(path + ': zdublowany identyfikator „' + k + '”'); seen.add(k);
+      for (const f of required) if (!String(x[f] || '').trim()) errs.push(path + ' / ' + k + ': puste pole „' + f + '”');
+      meta(path.replace('content/', '').replace('.json', '') + ' / ' + k, x, (old || []).find(o => o && o[key] === k));
+    }
+  };
   for (const f of files) {
-    if (f.delete) continue;
+    if (f.delete) { if (!/^content\/blog\/[a-z0-9-]+\.json$/.test(f.path)) errs.push(f.path + ': tego pliku nie można usunąć z panelu'); continue; }
     if (f.base64) { if (f.base64.length > 9e6) errs.push(f.path + ': zdjęcie za duże po kompresji (max ~6 MB)'); continue; }
-    if (!f.text) continue;
+    if (typeof f.text !== 'string') continue;
     let data; try { data = JSON.parse(f.text); } catch (e) { if (f.path.endsWith('.json')) errs.push(f.path + ': niepoprawny JSON'); continue; }
+    const old = await repoJSON(f.path);
+    if (f.path !== 'content/blog/' && !f.path.startsWith('content/blog/') && allStrings(data).some(s => BAD_HTML.test(s))) errs.push(f.path + ': niedozwolony kod (script / on… / javascript:)');
     if (f.path === 'content/seo.json') {
       for (const [page, p] of Object.entries(data.pages || {})) {
-        if ((p.title || '').length > LIMITS.title) errs.push(page + ': meta title > ' + LIMITS.title + ' znaków');
-        if ((p.description || '').length > LIMITS.description) errs.push(page + ': meta description > ' + LIMITS.description + ' znaków');
-        for (const [src, alt] of Object.entries(p.alts || {})) if ((alt || '').length > LIMITS.alt) errs.push(page + ' / ' + src + ': alt > ' + LIMITS.alt + ' znaków');
+        const o = (old && old.pages && old.pages[page]) || {};
+        lim(page, p.title, o.title, LIMITS.title, 'meta title');
+        lim(page, p.description, o.description, LIMITS.description, 'meta description');
+        for (const [src, alt] of Object.entries(p.alts || {})) lim(page + ' / ' + src, alt, (o.alts || {})[src], LIMITS.alt, 'alt');
       }
-    }
-    if (f.path.startsWith('content/blog/')) {
-      if ((data.metaTitle || '').length > LIMITS.metaTitle) errs.push(f.path + ': meta title > ' + LIMITS.metaTitle);
-      if ((data.metaDesc || '').length > LIMITS.metaDesc) errs.push(f.path + ': meta description > ' + LIMITS.metaDesc);
+    } else if (f.path === 'content/maszyny.json') keyed(f.path, data, old, 'id', ['name']);
+    else if (f.path === 'content/produkty.json') keyed(f.path, data, old, 'slug', ['name', 'cat']);
+    else if (f.path === 'content/kategorie.json') keyed(f.path, data, old, 'slug', ['name']);
+    else if (f.path === 'content/realizacje.json') keyed(f.path, data, old, 'slug', ['title']);
+    else if (f.path.startsWith('content/blog/')) {
+      meta(f.path, data, old);
       if (!data.slug || !/^[a-z0-9-]+$/.test(data.slug)) errs.push(f.path + ': niepoprawny adres (slug)');
-      if ((data.coverAlt || '').length > LIMITS.alt) errs.push(f.path + ': opis zdjęcia (alt) > ' + LIMITS.alt + ' znaków');
-      if (/<script|<iframe|<object|<embed|\son\w+\s*=|javascript:/i.test(data.bodyHtml || '')) errs.push(f.path + ': niedozwolony kod HTML we wpisie');
+      if (BAD_HTML.test(data.bodyHtml || '')) errs.push(f.path + ': niedozwolony kod HTML we wpisie');
       if (/src="data:/i.test(data.bodyHtml || '')) errs.push(f.path + ': wpis zawiera niezapisane zdjęcie — wgraj je ponownie');
       if (data.machines && (!Array.isArray(data.machines) || data.machines.some(k => !/^(cat|m):[a-z0-9-]+$/.test(k)))) errs.push(f.path + ': niepoprawna lista maszyn z artykułu');
       if (data.featured && data.draft) errs.push(f.path + ': szkic nie może być wyróżniony na stronie głównej');
-    }
-    if (f.path.startsWith('content/') && !f.path.startsWith('content/blog/') && f.path !== 'content/seo.json') {
-      // teksty i maszyny: bez limitów twardych, ale bez HTML w polach tekstowych
     }
   }
   const badPath = files.find(f => !/^(content\/|assets\/|uploads\/blog\/)[\w\-. \/ąćęłńóśźżĄĆĘŁŃÓŚŹŻ()]+$/.test(f.path) || f.path.includes('..'));
@@ -241,7 +271,7 @@ http.createServer(async (req, res) => {
       if (req.method === 'POST' && url.pathname === '/api/publish') {
         const { files, message } = JSON.parse(await readBody(req));
         if (!Array.isArray(files) || !files.length) return json(res, 400, { error: 'Brak plików do publikacji.' });
-        const errs = validate(files);
+        const errs = await validate(files);
         if (errs.length) return json(res, 422, { error: 'Nie opublikowano — popraw:', details: errs });
         const sha = await commitFiles(files, (message || 'Aktualizacja treści') + '\n\n[cms] ' + user, user);
         return json(res, 200, { ok: true, commit: sha });

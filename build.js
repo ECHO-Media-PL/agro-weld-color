@@ -22,9 +22,16 @@ const fmtDate = iso => { const [y, m, d] = iso.split('-'); return d + '.' + m + 
 
 // pliki wygenerowane w tym buildzie (ścieżki względne, bez prefiksu dist/)
 const built = new Set();
+// assets/*.js mają cache na rok — dopisujemy ?v=<hash treści>, żeby zmiana pliku od razu docierała do przeglądarek
+const ASSET_V = {};
+function assetV(name) {
+  if (!(name in ASSET_V)) { try { ASSET_V[name] = require('crypto').createHash('md5').update(fs.readFileSync(path.join('assets', name))).digest('hex').slice(0, 8); } catch (e) { ASSET_V[name] = ''; } }
+  return ASSET_V[name];
+}
 function write(rel, s) {
   const f = path.join(OUT, rel);
   fs.mkdirSync(path.dirname(f), { recursive: true });
+  if (typeof s === 'string' && rel.endsWith('.html')) s = s.replace(/(assets\/)([\w-]+\.js)(\?v=\w+)?"/g, (m, a, n) => { const v = assetV(n); return a + n + (v ? '?v=' + v : '') + '"'; });
   fs.writeFileSync(f, s);
   built.add(rel.replace(/\\/g, '/'));
 }
@@ -59,7 +66,8 @@ function copyTree(from, rel) {
       copyTree(path.join(from, e.name), childRel);
     } else if (e.isFile() && !skipFile(e.name)) {
       fs.mkdirSync(path.join(OUT, rel), { recursive: true });
-      fs.copyFileSync(path.join(from, e.name), path.join(OUT, childRel));
+      if (e.name.endsWith('.html')) write(childRel, fs.readFileSync(path.join(from, e.name), 'utf8'));
+      else fs.copyFileSync(path.join(from, e.name), path.join(OUT, childRel));
       copied++;
     }
   }
@@ -107,6 +115,8 @@ function injectSeo(html, page) {
     const s = reEsc(s0), a = escA(alt);
     html = html.replace(new RegExp('(<img[^>]*src="' + s + '"[^>]*alt=")[^"]*(")', 'g'), '$1' + a + '$2');
     html = html.replace(new RegExp('(<img[^>]*alt=")[^"]*("[^>]*src="' + s + '")', 'g'), '$1' + a + '$2');
+    // obrazek bez atrybutu alt — dopisujemy go
+    html = html.replace(new RegExp('<img(?![^>]*\\balt=)([^>]*\\bsrc="' + s + '")', 'g'), '<img alt="' + a + '"$1');
   }
   return html;
 }

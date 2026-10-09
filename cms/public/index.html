@@ -9,25 +9,31 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Hanken Grotesk',sans-serif;background:#EFEDE4;color:#14160E;-webkit-font-smoothing:antialiased}
+a{color:#41571F}a:hover{color:#14160E}
 button{font-family:inherit;cursor:pointer}
 input,textarea,select{font-family:inherit;font-size:14px}
 input:focus,textarea:focus,[contenteditable]:focus{outline:2px solid #B7D44B;outline-offset:-1px}
 .mono{font-family:'Space Mono',monospace}
 .card{background:#fff;border:1px solid #DDD9C9;border-radius:12px;padding:24px}
 .lbl{display:block;font-size:13px;font-weight:700;margin-bottom:6px}
-.inp{width:100%;padding:11px 13px;border-radius:8px;border:1px solid #C9C5B4;background:#FDFCF8;font-size:14.5px}
+.hint{font-weight:400;color:#6B6F5C}
+.help{font-size:12.5px;color:#6B6F5C;margin-top:6px;line-height:1.5}
+.inp{width:100%;padding:10px 12px;border-radius:8px;border:1px solid #C9C5B4;background:#FDFCF8;font-size:14px}
 textarea.inp{resize:vertical;line-height:1.5}
+.inp[readonly]{background:#F5F3EA;color:#6B6F5C}
 .btn{padding:11px 20px;border-radius:8px;border:0;font-size:14px;font-weight:700}
 .btn-p{background:#B7D44B;color:#14160E}.btn-p:hover{background:#c8e45c}
 .btn-d{background:#14160E;color:#B7D44B}
 .btn-o{background:#fff;border:1px solid #C9C5B4;color:#14160E;font-weight:600}
+.btn-r{background:none;color:#8C3A43;font-weight:600;font-size:13px;padding:8px 0}
 .btn:disabled{background:#EFEDE4;color:#B0AC9C;cursor:default}
-.cnt{font-family:'Space Mono',monospace;font-size:11.5px;font-weight:700}
+.cnt{font-family:'Space Mono',monospace;font-size:11.5px;font-weight:700;white-space:nowrap}
 .bar{height:4px;background:#EFEDE4;border-radius:2px;margin-top:7px;overflow:hidden}
 .bar>div{height:100%;border-radius:2px;transition:width .2s}
-.navbtn{text-align:left;padding:10px 12px;border-radius:8px;border:0;font-size:14px;font-weight:600;background:none;color:#A7AE92;width:100%}
+.navbtn{text-align:left;padding:10px 12px;border-radius:8px;border:0;font-size:14px;font-weight:600;background:none;color:#A7AE92;width:100%;display:flex;gap:10px;align-items:center}
 .navbtn:hover{background:rgba(236,231,215,.07)}
 .navbtn.on{background:#B7D44B;color:#14160E}
+.navbtn .ic{width:18px;text-align:center;opacity:.8}
 .pill{font-size:12px;font-weight:700;padding:5px 10px;border-radius:14px}
 .tabbtn{padding:8px 16px;border-radius:20px;font-size:13px;font-weight:600;border:1px solid #C9C5B4;background:#fff;color:#4A4D3E}
 .tabbtn.on{border-color:#14160E;background:#14160E;color:#B7D44B}
@@ -40,6 +46,39 @@ textarea.inp{resize:vertical;line-height:1.5}
 .art a{color:#41571F}
 .row{display:flex;gap:14px;align-items:center}
 .hidden{display:none!important}
+.fld{display:flex;flex-direction:column}
+.stack{display:flex;flex-direction:column;gap:16px}
+.lst{display:flex;flex-direction:column;gap:8px}
+.li{display:flex;gap:8px;align-items:flex-start;padding:8px;border:1px solid #EFEDE4;border-radius:9px;background:#FDFCF8}
+.idx{font-size:10.5px;color:#B0AC9C;width:18px;padding-top:11px;text-align:right;flex:none}
+.liact{display:flex;gap:2px;flex:none;padding-top:4px}
+.ib{border:0;background:none;width:28px;height:30px;border-radius:6px;color:#6B6F5C;font-size:14px}
+.ib:hover{background:#EFEDE4;color:#14160E}
+.ib.x:hover{background:#FDF6F6;color:#8C3A43}
+.add{align-self:flex-start;border:1px dashed #B7C78A;background:#F7F9EE;color:#41571F;border-radius:8px;padding:7px 13px;font-size:13px;font-weight:700;margin-top:8px}
+.add:hover{background:#EEF3DA}
+.dcard{padding:0}
+.dcard>summary{list-style:none;cursor:pointer;padding:16px 22px;font-family:'Chakra Petch',sans-serif;font-size:15.5px;font-weight:700;display:flex;justify-content:space-between;align-items:center}
+.dcard>summary::-webkit-details-marker{display:none}
+.dcard>summary::after{content:'+';font-family:'Space Mono',monospace;color:#7E8A63;font-size:18px}
+.dcard[open]>summary::after{content:'–'}
+.dcard[open]>summary{border-bottom:1px solid #EFEDE4}
+.dbody{padding:20px 22px;display:flex;flex-direction:column;gap:16px}
+.sub{border:1px solid #DDD9C9;border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:12px;background:#fff}
+.sublbl{font-size:10.5px;font-weight:700;letter-spacing:.1em;color:#7E8A63;text-transform:uppercase;font-family:'Space Mono',monospace}
+.pane{background:#fff;border:1px solid #DDD9C9;border-radius:12px;overflow:hidden;position:sticky;top:76px;max-height:calc(100vh - 100px);display:flex;flex-direction:column}
+.pane .plist{overflow:auto}
+.pgrp{padding:12px 16px 6px;font-size:10.5px;font-weight:700;letter-spacing:.1em;color:#7E8A63;font-family:'Space Mono',monospace;text-transform:uppercase;background:#FAF9F4;border-bottom:1px solid #F5F3EA}
+.pitem{width:100%;text-align:left;padding:10px 16px;border:0;border-bottom:1px solid #F5F3EA;font-size:13px;font-weight:600;background:none;color:#4A4D3E;display:flex;gap:8px;align-items:center}
+.pitem:hover{background:#FAF9F4}
+.pitem.on{background:#F3F6E4;color:#14160E;box-shadow:inset 3px 0 0 #41571F}
+.dot{width:7px;height:7px;border-radius:50%;flex:none}
+.thumb{width:72px;height:54px;object-fit:contain;border-radius:6px;background:#EFEDE4;border:1px solid #EFEDE4;flex:none}
+.tbl{display:grid;gap:6px}
+.tbl .inp{padding:7px 9px;font-size:13px}
+@media(max-width:1180px){.two{grid-template-columns:minmax(0,1fr)!important}.pane{position:static;max-height:300px}}
+@media(max-width:900px){#app>div{grid-template-columns:200px 1fr!important}#main{padding:20px!important}}
+.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid #DDD9C9;border-radius:8px;padding:6px 6px 6px 10px;font-size:13px;background:#fff}
 </style>
 </head>
 <body>
@@ -47,66 +86,219 @@ textarea.inp{resize:vertical;line-height:1.5}
 <script>
 'use strict';
 // ============ stan ============
-const S = { view: 'login', files: {}, orig: {}, dirty: {}, bins: [], deletes: [], seoPage: 'index.html', txtGroup: 'hero', post: null, pub: 'idle', lastErr: null, machEdit: null, posts: [], chgOpen: false };
+const S = { view:'login', files:{}, orig:{}, dirty:{}, bins:[], deletes:[], sel:null, mSel:null, cSel:null, rSel:null, txtGroup:'hero', post:null, pub:'idle', lastErr:null, posts:[], chgOpen:false, open:{}, html:{}, demo:false, ready:false };
 const LIM = { title: 60, desc: 160, alt: 125 };
+const ROOT = '../../'; // tryb podglądu: pliki projektu względem cms/public/
+const SITE = () => S.demo ? ROOT : 'https://www.agro-weld.pl/';
 const GROUPS = [['hero','Hero (góra strony)'],['process','Proces linii'],['featured','Wybrane maszyny'],['why','Dlaczego my'],['catalog','Pełna oferta'],['lines','Linie produkcyjne'],['real','Realizacje'],['blogsec','Sekcja blog'],['verbruggen','Verbruggen'],['contact','Kontakt'],['footer','Stopka']];
 const LABELS = { 'titleA':'Nagłówek — linia 1','titleB':'Nagłówek — linia 2 (zielona)','sub':'Tekst pod nagłówkiem','h2':'Nagłówek sekcji','stat1n':'Statystyka 1 — liczba','stat1l':'Statystyka 1 — opis','stat2n':'Statystyka 2 — liczba','stat2l':'Statystyka 2 — opis','stat3n':'Statystyka 3 — liczba','stat3l':'Statystyka 3 — opis','p1':'Punkt 1','p2':'Punkt 2','p3':'Punkt 3','addr':'Adres','phones':'Telefony','email':'E-mail','hours':'Godziny pracy','tagline':'Opis firmy' };
 const CATS = [['Dobór maszyn','dobor'],['Oczyszczanie','oczyszczanie'],['Pakowanie','pakowanie'],['Paletyzacja','paletyzacja'],['Linie technologiczne','linie']];
-const PAGE_NAMES = { 'index.html':'Strona główna','maszyny/index.html':'Katalog maszyn','blog/index.html':'Blog — lista','maszyny/przyjecie-i-buforowanie/index.html':'Przyjęcie i buforowanie' };
-// kategorie maszyn (adresy podstron katalogu) — do podlinkowania we wpisie
+const STATIC_NAMES = { 'index.html':'Strona główna','maszyny/index.html':'Katalog maszyn (lista)','blog/index.html':'Blog — lista wpisów','linie-produkcyjne/index.html':'Linie produkcyjne','realizacje/index.html':'Realizacje — lista','o-firmie/index.html':'O firmie','kontakt/index.html':'Kontakt','do-pobrania/index.html':'Do pobrania','rozwiazania-specjalne/index.html':'Rozwiązania specjalne','polityka-prywatnosci/index.html':'Polityka prywatności' };
 const MCATS = [['rozladunek-skrzyn','Rozładunek skrzyń'],['przyjecie-i-buforowanie','Przyjęcie i buforowanie'],['oczyszczanie','Oczyszczanie'],['sortowanie','Sortowanie'],['selekcja','Selekcja'],['wazenie-i-liczenie','Ważenie i liczenie'],['pakowanie','Pakowanie'],['paletyzacja','Paletyzacja'],['przenosniki','Przenośniki'],['pielenie','Pielenie']];
 const POST_FIELDS = { title:'tytuł', lead:'zajawka', bodyHtml:'treść artykułu', cover:'zdjęcie miniatury', coverAlt:'opis zdjęcia (alt)', coverPad:'kadrowanie miniatury', excerpt:'krótki opis', metaTitle:'meta title', metaDesc:'meta description', category:'kategoria', date:'data', draft:'status (szkic / publikacja)', featured:'wyróżnienie na stronie głównej', machines:'maszyny z artykułu', slug:'adres' };
+const FL = { name:'nazwa', short:'krótki opis', models:'modele', img:'zdjęcie', imgAlt:'alt zdjęcia', h1:'nagłówek H1', lead:'wstęp', desc:'opis', uses:'zastosowanie', features:'zalety', specs:'dane techniczne', common:'parametry wspólne', standard:'wyposażenie standardowe', options:'opcje', sections:'sekcje treści', faq:'FAQ', cta:'tekst wezwania do kontaktu', note:'przypis', metaTitle:'meta title', metaDesc:'meta description', gallery:'galeria', galleryAlts:'alty galerii', variants:'warianty', intro:'wstęp', title:'tytuł', cat:'kategoria', ref:'nr ref.', body:'treść', facts:'fakty', machines:'maszyny', video:'wideo', slug:'adres' };
+const ARR = { 'content/maszyny.json':['id','Maszyny — lista'], 'content/produkty.json':['slug','Karty maszyn'], 'content/kategorie.json':['slug','Kategorie'], 'content/realizacje.json':['slug','Realizacje'] };
+const DEMO_BLOG = ['jak-dobrac-kosz-przyjeciowy.json','myjka-do-warzyw-przemyslowa.json','separator-kamieni-i-ziemi.json'];
 const $ = s => document.querySelector(s);
+const clone = o => JSON.parse(JSON.stringify(o));
 const escH = s => String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 const slugify = s => s.toLowerCase().replace(/[ąćęłńóśźż]/g, c=>({'ą':'a','ć':'c','ę':'e','ł':'l','ń':'n','ó':'o','ś':'s','ź':'z','ż':'z'}[c])).replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'').slice(0,70);
-async function api(p, opts) { const r = await fetch(p, Object.assign({credentials:'same-origin'}, opts)); const d = await r.json(); if (r.status===401 && S.view!=='login'){S.view='login';render();throw new Error('auth')} if (!r.ok) throw Object.assign(new Error(d.error||('HTTP '+r.status)), {details:d.details}); return d; }
+const F = p => S.files[p];
+const SEO = () => F('content/seo.json'), MACH = () => F('content/maszyny.json'), PROD = () => F('content/produkty.json'), KAT = () => F('content/kategorie.json'), REAL = () => F('content/realizacje.json');
+const catName = s => (MCATS.find(c=>c[0]===s)||[s,s])[1];
+
+// ============ API (z trybem podglądu bez serwera) ============
+async function api(p, opts) {
+  if (S.demo) return demoApi(p, opts||{});
+  const r = await fetch(p, Object.assign({credentials:'same-origin'}, opts));
+  let d; try { d = await r.json(); } catch(e) { throw new Error('Serwer CMS nie odpowiada poprawnie (HTTP '+r.status+')'); }
+  if (r.status===401 && S.view!=='login'){S.view='login';render();throw new Error('auth')}
+  if (!r.ok) throw Object.assign(new Error(d.error||('HTTP '+r.status)), {details:d.details});
+  return d;
+}
+async function demoApi(p, opts) {
+  const u = new URL(p, location.href), path = u.searchParams.get('path')||'';
+  if (u.pathname.endsWith('/api/file')) { const r = await fetch(ROOT+path); if (!r.ok) throw new Error('Brak pliku '+path); return { path, text: await r.text() }; }
+  if (u.pathname.endsWith('/api/list')) return path==='content/blog' ? DEMO_BLOG.map(n=>({name:n,path:'content/blog/'+n,type:'file'})) : [];
+  if (u.pathname.endsWith('/api/publish')) { const b = JSON.parse(opts.body); console.log('[podgląd] publikacja — pliki:', b.files.map(f=>f.path)); return { ok:true, demo:true }; }
+  return { ok:true };
+}
 async function loadJSON(path) { if (S.files[path]) return S.files[path]; const r = await api('/api/file?path='+encodeURIComponent(path)); S.files[path] = JSON.parse(r.text); S.orig[path] = JSON.parse(r.text); return S.files[path]; }
-function touch(path) { S.dirty[path] = true; S.pub='idle'; renderTop(); }
+const FILES = ['content/seo.json','content/strona-glowna.json','content/maszyny.json','content/produkty.json','content/kategorie.json','content/realizacje.json'];
+async function loadAll() { if (S.ready) return; await Promise.all(FILES.map(loadJSON)); await loadPosts(); S.ready = true; }
+function touch(path) { if (!path) return; S.dirty[path] = true; S.pub='idle'; renderTop(); }
 const dirtyCount = () => Object.keys(S.dirty).length + S.bins.length + S.deletes.length;
+window.addEventListener('beforeunload', e => { if (dirtyCount()) { e.preventDefault(); e.returnValue = ''; } });
+
+// ============ rejestr pól formularza ============
+let REG = [];
+const reg = o => (REG.push(o), REG.length-1);
+const cntCol = (len,max,warn) => len>max ? '#8C3A43' : (warn && len<warn) ? '#C08A1E' : '#41571F';
+window.setF = (n, el) => {
+  const r = REG[n]; if (!r) return;
+  const v = el.type==='checkbox' ? el.checked : el.value;
+  r.set(v); touch(r.file);
+  if (r.max) { const len=String(v).length, col=cntCol(len,r.max,r.warn); const c=$('#c'+n); if(c){c.textContent=len+' / '+r.max;c.style.color=col;} const b=$('#b'+n); if(b){b.style.width=Math.min(100,len/r.max*100)+'%';b.style.background=col;} }
+  if (r.empty) { const e=!String(v).trim(); el.style.borderColor=e?'#8C3A43':''; el.style.background=e?'#FDF6F6':''; }
+  if (r.after) r.after(v);
+};
+window.act = async n => { const r = REG[n]; if (!r) return; const res = r.fn(); if (res && res.then) { if ((await res)===false) return; } else if (res===false) return; if (r.file) touch(r.file); if (!r.noRender) renderMain(); };
+function btnA(txt, fn, file, o={}) { const n = reg({fn, file, noRender:o.noRender}); return `<button type="button" class="${o.cls||'ib'}" title="${escH(o.title||'')}" onclick="act(${n})"${o.style?` style="${o.style}"`:''}>${txt}</button>`; }
+function inl(val, set, file, o={}) {
+  const v = val==null ? '' : String(val);
+  const n = reg({set, file, max:o.max, warn:o.warn, empty:o.empty, after:o.after});
+  const bad = o.empty && !v.trim();
+  const st = bad ? 'border-color:#8C3A43;background:#FDF6F6;' : '';
+  const ml = o.hard && o.max ? ` maxlength="${o.max}"` : '';
+  const ro = o.ro ? ' readonly' : '';
+  const long = o.long || v.length > 90;
+  const input = long
+    ? `<textarea class="inp${o.mono?' mono':''}" style="${st}${o.mono?'font-size:12.5px;':''}" rows="${o.rows||Math.min(12,Math.max(2,Math.ceil(v.length/85)))}"${ml}${ro} placeholder="${escH(o.ph||'')}" oninput="setF(${n},this)">${escH(v)}</textarea>`
+    : `<input class="inp${o.mono?' mono':''}" style="${st}${o.mono?'font-size:12.5px;':''}" value="${escH(v)}"${ml}${ro} placeholder="${escH(o.ph||'')}" oninput="setF(${n},this)">`;
+  const cnt = o.max && o.inlCnt ? `<span class="cnt" id="c${n}" style="color:${cntCol(v.length,o.max,o.warn)};font-size:10.5px">${v.length} / ${o.max}</span>` : '';
+  return o.inlCnt ? `<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:3px">${input}<div style="display:flex;justify-content:space-between;gap:8px">${o.under||'<span></span>'}${cnt}</div></div>` : `<div style="flex:1;min-width:0">${input}</div>`;
+}
+function fld(label, val, set, file, o={}) {
+  const v = val==null ? '' : String(val);
+  const n = REG.length; // inl zarejestruje się pod tym numerem
+  const body = inl(val, set, file, o);
+  const cnt = o.max ? `<span class="cnt" id="c${n}" style="color:${cntCol(v.length,o.max,o.warn)}">${v.length} / ${o.max}</span>` : '';
+  const bar = o.max ? `<div class="bar"><div id="b${n}" style="width:${Math.min(100,v.length/o.max*100)}%;background:${cntCol(v.length,o.max,o.warn)}"></div></div>` : '';
+  return `<div class="fld">${label?`<div class="row" style="justify-content:space-between;margin-bottom:6px;gap:10px"><label class="lbl" style="margin:0">${label}${o.hint?` <span class="hint">— ${o.hint}</span>`:''}</label>${cnt}</div>`:''}${body}${bar}${o.help?`<p class="help">${o.help}</p>`:''}</div>`;
+}
+const mv = (arr,i,d) => { const j=i+d; if (j<0||j>=arr.length) return false; [arr[i],arr[j]]=[arr[j],arr[i]]; };
+function liAct(arr, i, file, o={}) {
+  return `<span class="liact">${i>0?btnA('↑',()=>mv(arr,i,-1),file,{title:'W górę'}):'<span class="ib"></span>'}${i<arr.length-1?btnA('↓',()=>mv(arr,i,1),file,{title:'W dół'}):'<span class="ib"></span>'}${btnA('×',()=>{ if (o.confirm && !confirm(o.confirm)) return false; arr.splice(i,1); },file,{title:'Usuń',cls:'ib x'})}</span>`;
+}
+function wrap(label, inner, add, help) {
+  return `<div class="fld">${label?`<label class="lbl">${label}</label>`:''}${help?`<p class="help" style="margin:-2px 0 8px">${help}</p>`:''}<div class="lst">${inner||'<span style="font-size:12.5px;color:#B0AC9C">Brak pozycji</span>'}</div>${add||''}</div>`;
+}
+function fList(label, obj, key, file, o={}) {
+  const arr = obj[key] || [];
+  const rows = arr.map((v,i)=>`<div class="li"><span class="mono idx">${i+1}</span>${inl(v, x=>{arr[i]=x}, file, {long:o.long, ph:o.ph})}${liAct(arr,i,file)}</div>`).join('');
+  return wrap(label, rows, btnA('+ '+(o.add||'Dodaj'), ()=>{ (obj[key]=obj[key]||[]).push(''); }, file, {cls:'add'}), o.help);
+}
+function fPairs(label, obj, key, file, labs, o={}) {
+  const arr = obj[key] || [];
+  const rows = arr.map((pr,i)=>`<div class="li"><span class="mono idx">${i+1}</span><div style="flex:1;min-width:0;display:grid;grid-template-columns:${o.cols||'minmax(0,1fr) minmax(0,2fr)'};gap:8px">${inl(pr[0],v=>{arr[i][0]=v},file,{ph:labs[0]})}${inl(pr[1],v=>{arr[i][1]=v},file,{ph:labs[1],long:o.longB})}</div>${liAct(arr,i,file)}</div>`).join('');
+  return wrap(label, rows, btnA('+ '+(o.add||'Dodaj'), ()=>{ (obj[key]=obj[key]||[]).push(['','']); }, file, {cls:'add'}), o.help);
+}
+function fObjs(label, obj, key, file, fields, o={}) {
+  const arr = obj[key] || [];
+  const rows = arr.map((it,i)=>`<div class="li"><span class="mono idx">${i+1}</span><div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:8px">${fields.map(([k,l,long])=>`<div><div class="sublbl" style="margin-bottom:4px">${l}</div>${inl(it[k],v=>{it[k]=v},file,{long})}</div>`).join('')}</div>${liAct(arr,i,file,{confirm:o.confirm})}</div>`).join('');
+  const blank = () => Object.fromEntries(fields.map(([k])=>[k,'']));
+  return wrap(label, rows, btnA('+ '+(o.add||'Dodaj'), ()=>{ (obj[key]=obj[key]||[]).push(blank()); }, file, {cls:'add'}), o.help);
+}
+// tabela: head = nagłówki kolumn (tablica, opcjonalnie edytowalna), rows = tablica tablic
+function fTable(label, rows, head, file, o={}) {
+  const nc = Math.max(head.length, ...rows.map(r=>r.length), 1);
+  const cols = `repeat(${nc},minmax(0,1fr)) 92px`;
+  const hd = `<div class="tbl" style="grid-template-columns:${cols}">${Array.from({length:nc},(_,j)=> o.headEdit ? inl(head[j],v=>{head[j]=v},file,{ph:'Nagłówek'}) : `<span class="mono" style="font-size:10.5px;font-weight:700;color:#7E8A63;padding:4px 2px">${escH(head[j]||'')}</span>`).join('')}<span></span></div>`;
+  const body = rows.map((r,i)=>`<div class="tbl" style="grid-template-columns:${cols};align-items:start">${Array.from({length:nc},(_,j)=>inl(r[j],v=>{r[j]=v},file)).join('')}${liAct(rows,i,file)}</div>`).join('');
+  const colBtns = o.headEdit ? btnA('+ Kolumna', ()=>{ head.push(''); rows.forEach(r=>r.push('')); }, file, {cls:'add'}) + (nc>2 ? btnA('− Ostatnia kolumna', ()=>{ if(!confirm('Usunąć ostatnią kolumnę tabeli?')) return false; head.pop(); rows.forEach(r=>r.length=Math.min(r.length,nc-1)); }, file, {cls:'add',style:'border-color:#E8D5D7;background:#FDF6F6;color:#8C3A43'}) : '') : '';
+  return `<div class="fld">${label?`<label class="lbl">${label}</label>`:''}${o.help?`<p class="help" style="margin:-2px 0 8px">${o.help}</p>`:''}<div style="display:flex;flex-direction:column;gap:6px;overflow-x:auto">${hd}${body}</div><div class="row" style="gap:8px">${btnA('+ Wiersz', ()=>{ rows.push(Array(nc).fill('')); }, file, {cls:'add'})}${colBtns}</div></div>`;
+}
+function card(id, title, body, open, extra) {
+  const o = id in S.open ? S.open[id] : !!open;
+  return `<details class="card dcard" ${o?'open':''} ontoggle="S.open['${id}']=this.open"><summary><span>${title}${extra?` <span class="hint" style="font-family:'Hanken Grotesk';font-size:12.5px;font-weight:500">${extra}</span>`:''}</span></summary><div class="dbody">${body}</div></details>`;
+}
+function binURL(path) { const b = S.bins.find(x=>x.path===path); return b ? 'data:image/webp;base64,'+b.base64 : null; }
+function imgURL(p) { if (!p) return ''; if (/^(https?:|data:)/.test(p)) return p; p = p.replace(/^(\.\.\/)+/,'').replace(/^\//,''); return binURL(p) || SITE()+p; }
+const thumb = (p, st='') => `<img class="thumb" src="${escH(imgURL(p))}" alt="" style="${st}" onerror="this.style.opacity=.25">`;
+
+// ============ zdjęcia: wgrywanie z kompresją ============
+async function compressImg(file, maxW) {
+  const u = URL.createObjectURL(file);
+  const img = await new Promise((ok,er)=>{const i=new Image();i.onload=()=>ok(i);i.onerror=er;i.src=u;});
+  URL.revokeObjectURL(u);
+  const sc = Math.min(1, maxW/img.width); const c=document.createElement('canvas');
+  c.width=Math.round(img.width*sc); c.height=Math.round(img.height*sc);
+  c.getContext('2d').drawImage(img,0,0,c.width,c.height);
+  const blob = await new Promise(ok=>c.toBlob(ok,'image/webp',.82));
+  return new Promise(ok=>{const r=new FileReader();r.onload=()=>ok({b64:r.result.split(',')[1], w:img.width, h:img.height});r.readAsDataURL(blob);});
+}
+// zwraca ścieżkę względem assets/ (np. "maszyny/x-abc.webp") albo null
+function pickImage(dir, base) {
+  return new Promise(ok => {
+    const inp = document.createElement('input'); inp.type='file'; inp.accept='image/*';
+    inp.onchange = async () => {
+      const f = inp.files[0]; if (!f || !/^image\//.test(f.type)) return ok(null);
+      const r = await compressImg(f, 1600);
+      if (r.w < 800 && !confirm('Zdjęcie ma tylko '+r.w+'×'+r.h+' px — na stronie może być rozmyte. Wgrać mimo to?')) return ok(null);
+      const path = 'assets/'+dir+'/'+(slugify(base)||'zdjecie')+'-'+Date.now().toString(36)+'.webp';
+      S.bins.push({ path, base64: r.b64 }); ok(path.slice(7));
+    };
+    inp.click();
+  });
+}
 
 // ============ publikacja ============
 async function publish() {
   if (S.pub==='run') return;
-  if (S.view==='blogedit' && S.post) { if (!savePost(S.post.draft===true)) return; } // najpierw domknij edytowany wpis
+  if (S.view==='blogedit' && S.post) { if (!savePost(S.post.draft===true)) return; }
   const used = JSON.stringify(Object.keys(S.dirty).map(p=>S.files[p]));
-  S.bins = S.bins.filter(b => used.includes(b.path)); // zdjęcia wstawione i potem usunięte nie lecą do repo
+  S.bins = S.bins.filter(b => used.includes(b.path) || used.includes(b.path.replace(/^assets\//,'')));
   if (!dirtyCount()) { renderTop(); return; }
+  const errs = clientCheck(); if (errs.length) { S.pub='err'; S.lastErr='Nie opublikowano — popraw:\n• '+errs.join('\n• '); renderTop(); return; }
   S.pub='run'; S.lastErr=null; renderTop();
   try {
-    const strip = (k,v) => (k && k[0]==='_') ? undefined : v; // pola robocze (_new,_remote,_orig) nie trafiają do repo
+    const strip = (k,v) => (k && k[0]==='_') ? undefined : v;
     const files = Object.keys(S.dirty).map(p => ({ path: p, text: JSON.stringify(S.files[p], strip, 1) }))
       .concat(S.bins.map(b => ({ path: b.path, base64: b.base64 })))
       .concat(S.deletes.map(p => ({ path: p, delete: true })));
-    await api('/api/publish', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ files, message: 'CMS: aktualizacja treści ('+files.length+' plików)' }) });
-    for (const p of Object.keys(S.dirty)) S.orig[p] = JSON.parse(JSON.stringify(S.files[p]));
+    await api('/api/publish', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ files, message: 'CMS: '+summaryLine() }) });
+    for (const p of Object.keys(S.dirty)) S.orig[p] = clone(S.files[p]);
+    for (const p of S.deletes) delete S.orig[p];
     S.dirty={}; S.bins=[]; S.deletes=[]; S.pub='done'; S.chgOpen=false;
   } catch(e) { S.pub='err'; S.lastErr = (e.message||'Błąd') + (e.details ? '\n• '+e.details.join('\n• ') : ''); }
   renderTop();
 }
+function summaryLine() { const l = changeList(); return l.length ? l.slice(0,4).map(x=>x.where).join(', ') + (l.length>4?' i '+(l.length-4)+' więcej':'') : 'aktualizacja treści'; }
+function clientCheck() {
+  const e = [];
+  if (S.dirty['content/realizacje.json']) for (const r of REAL()) { if (!r.img) e.push('Realizacja „'+r.title+'”: brak zdjęcia głównego'); if (!/^[a-z0-9-]+$/.test(r.slug||'')) e.push('Realizacja „'+r.title+'”: niepoprawny adres'); }
+  for (const [p,[key]] of Object.entries(ARR)) if (S.dirty[p]) { const ks = F(p).map(x=>x[key]); const d = ks.filter((k,i)=>ks.indexOf(k)!==i); if (d.length) e.push(ARR[p][1]+': zdublowany adres „'+d[0]+'”'); }
+  return e;
+}
+window.discardAll = () => {
+  if (!confirm('Odrzucić wszystkie nieopublikowane zmiany? Tej operacji nie da się cofnąć.')) return;
+  for (const p of Object.keys(S.dirty)) { if (S.orig[p]) S.files[p] = clone(S.orig[p]); else delete S.files[p]; }
+  S.dirty={}; S.bins=[]; S.deletes=[]; S.post=null; S.chgOpen=false; S.pub='idle'; S.ready=false;
+  if (S.view==='blogedit') S.view='blog';
+  render();
+};
 
-// ============ lista zmian (co, gdzie) ============
+// ============ lista zmian ============
+const norm = v => (v==null || (Array.isArray(v)&&!v.length) || v==='') ? null : v;
+const same = (a,b) => JSON.stringify(norm(a))===JSON.stringify(norm(b));
 function changeList() {
   const out = [];
-  const same = (a,b) => JSON.stringify(a)===JSON.stringify(b);
   for (const path of Object.keys(S.dirty)) {
     const cur = S.files[path], old = S.orig[path];
+    if (!cur) continue;
     if (path==='content/seo.json') {
       for (const [pg,p] of Object.entries(cur.pages||{})) {
         const o = old && old.pages && old.pages[pg] || {}; const w = [];
-        if (p.title!==o.title) w.push('meta title');
-        if (p.description!==o.description) w.push('meta description');
-        const alts = Object.entries(p.alts||{}).filter(([s,a])=>(o.alts||{})[s]!==a).map(([s])=>s.split('/').pop());
+        if (!same(p.title,o.title)) w.push('meta title');
+        if (!same(p.description,o.description)) w.push('meta description');
+        const alts = Object.entries(p.alts||{}).filter(([s,a])=>!same((o.alts||{})[s],a)).map(([s])=>s.split('/').pop());
         if (alts.length) w.push('alt: '+alts.join(', '));
-        if (w.length) out.push({ sec:'SEO', where: PAGE_NAMES[pg]||pg, what: w.join(' · ') });
+        if (w.length) out.push({ sec:'SEO', where: STATIC_NAMES[pg]||pg, what: w.join(' · ') });
       }
     } else if (path==='content/strona-glowna.json') {
       const byGroup = {};
-      for (const k of Object.keys(cur)) if (cur[k]!==(old||{})[k]) { const g=k.split('.')[0]; (byGroup[g]=byGroup[g]||[]).push(LABELS[k.split('.').slice(1).join('.')]||autoLabel(k.split('.').slice(1).join('.'))); }
-      for (const [g,f] of Object.entries(byGroup)) out.push({ sec:'Teksty', where: (GROUPS.find(x=>x[0]===g)||[g,g])[1], what: f.join(' · ') });
-    } else if (path==='content/maszyny.json') {
-      cur.forEach((m,i)=>{ const o=(old||[]).find(x=>x.id===m.id)||{}; const w=[];
-        if (m.name!==o.name) w.push('nazwa'); if (m.models!==o.models) w.push('modele'); if (m.short!==o.short) w.push('opis');
-        if (w.length) out.push({ sec:'Maszyny', where: o.name||m.name, what: w.join(' · ') }); });
+      for (const k of Object.keys(cur)) if (cur[k]!==(old||{})[k]) { const g=k.split('.')[0], s=k.split('.').slice(1).join('.'); (byGroup[g]=byGroup[g]||[]).push(LABELS[s]||autoLabel(s)); }
+      for (const [g,f] of Object.entries(byGroup)) out.push({ sec:'Strona główna', where: (GROUPS.find(x=>x[0]===g)||[g,g])[1], what: f.join(' · ') });
+    } else if (ARR[path]) {
+      const [key, sec] = ARR[path];
+      for (const r of cur) {
+        const o = (old||[]).find(x=>x[key]===r[key]);
+        const nm = r.name || r.title || r[key];
+        if (!o) { out.push({ sec, where: nm, what: 'nowa pozycja' }); continue; }
+        const w = [...new Set([...Object.keys(r),...Object.keys(o)])].filter(k=>k[0]!=='_' && !same(r[k],o[k])).map(k=>FL[k]||k);
+        if (w.length) out.push({ sec, where: nm, what: w.join(' · ') });
+      }
+      for (const o of (old||[])) if (!cur.find(x=>x[key]===o[key])) out.push({ sec, where: o.name||o.title||o[key], what: 'usunięcie — strona zniknie' });
     } else if (path.startsWith('content/blog/')) {
       const t = '„'+(cur.title||cur.slug)+'”';
       if (!old) out.push({ sec:'Blog', where: 'Nowy wpis '+t, what: (cur.draft?'zapisany jako szkic (nie pokaże się na stronie)':'zostanie opublikowany pod /blog/'+cur.slug+'/') + (cur.featured?' · wyróżniony na stronie głównej':'') });
@@ -114,19 +306,20 @@ function changeList() {
         if (w.length) out.push({ sec:'Blog', where: 'Wpis '+t, what: w.join(' · ') }); }
     }
   }
-  for (const p of S.deletes) out.push({ sec:'Blog', where: 'Usunięcie wpisu', what: p.replace('content/blog/','').replace('.json','') + ' — strona /blog/…/ zniknie, adres przestanie działać' });
-  const imgs = S.bins.filter(b=>b.path.startsWith('uploads/'));
-  if (imgs.length) out.push({ sec:'Zdjęcia', where: imgs.length+' now'+(imgs.length===1?'e zdjęcie':'e zdjęcia'), what: imgs.map(b=>b.path.split('/').pop()).join(', ') });
+  for (const p of S.deletes) out.push({ sec:'Blog', where: 'Usunięcie wpisu', what: p.replace('content/blog/','').replace('.json','') + ' — strona zniknie, adres przestanie działać' });
+  const imgs = S.bins;
+  if (imgs.length) out.push({ sec:'Zdjęcia', where: imgs.length+(imgs.length===1?' nowe zdjęcie':' nowe zdjęcia'), what: imgs.map(b=>b.path.split('/').pop()).join(', ') });
   return out;
 }
 window.toggleChg = () => { S.chgOpen=!S.chgOpen; renderTop(); };
 
-// ============ widoki ============
+// ============ szkielet ============
+const NAV = [['dash','◧','Pulpit'],['seo','⌕','SEO i opisy zdjęć'],['texts','¶','Strona główna — teksty'],['machines','⚙','Maszyny i karty'],['cats','▦','Kategorie maszyn'],['real','◩','Realizacje'],['blog','✎','Blog']];
 function render() {
   const app = $('#app');
   if (S.view==='login') { app.innerHTML = loginView(); return; }
   app.innerHTML = `
-  <div style="display:grid;grid-template-columns:232px 1fr;min-height:100vh">
+  <div style="display:grid;grid-template-columns:240px 1fr;min-height:100vh">
     <aside style="background:#14160E;color:#ECE7D7;padding:22px 0;display:flex;flex-direction:column;position:sticky;top:0;height:100vh">
       <div style="display:flex;align-items:center;gap:9px;padding:0 22px;margin-bottom:30px">
         <span style="width:8px;height:8px;background:#B7D44B"></span>
@@ -134,14 +327,15 @@ function render() {
         <span class="mono" style="font-size:10px;color:#7E8A63;letter-spacing:.14em">CMS</span>
       </div>
       <nav style="display:flex;flex-direction:column;gap:2px;padding:0 12px">
-        ${[['dash','◧ Pulpit'],['seo','⌕ SEO podstron'],['texts','¶ Teksty na stronie'],['machines','⚙ Maszyny'],['blog','✎ Blog']].map(([v,l]) =>
-          `<button class="navbtn ${S.view===v||S.view==='blogedit'&&v==='blog'?'on':''}" onclick="go('${v}')">${l}</button>`).join('')}
+        ${NAV.map(([v,i,l]) => `<button class="navbtn ${S.view===v||(S.view==='blogedit'&&v==='blog')?'on':''}" onclick="go('${v}')"><span class="ic">${i}</span>${l}</button>`).join('')}
       </nav>
-      <div style="margin-top:auto;padding:18px 22px;border-top:1px solid rgba(236,231,215,.1)">
+      <div style="margin-top:auto;padding:18px 22px;border-top:1px solid rgba(236,231,215,.1);display:flex;flex-direction:column;gap:8px">
+        ${S.demo?`<span class="mono" style="font-size:10.5px;color:#D9A62E;line-height:1.5">TRYB PODGLĄDU<br><span style="color:#7E8A63">bez serwera — publikacja niczego nie wysyła</span></span>`:''}
+        <a href="${S.demo?ROOT+'index.html':'https://www.agro-weld.pl/'}" target="_blank" style="font-size:12px;color:#A7AE92;text-decoration:none">Otwórz stronę ↗</a>
         <button class="navbtn" style="padding:4px 0;font-size:12px;color:#7E8A63" onclick="logout()">Wyloguj →</button>
       </div>
     </aside>
-    <main style="display:flex;flex-direction:column">
+    <main style="display:flex;flex-direction:column;min-width:0">
       <header id="topbar" style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 32px;background:#fff;border-bottom:1px solid #DDD9C9;position:sticky;top:0;z-index:5"></header>
       <div id="main" style="flex:1;padding:28px 32px"></div>
     </main>
@@ -150,14 +344,14 @@ function render() {
 }
 function renderTop() {
   const t = $('#topbar'); if (!t) return;
-  const names = { dash:'Pulpit', seo:'SEO podstron', texts:'Teksty na stronie', machines:'Maszyny', blog:'Blog', blogedit:'Blog — edycja wpisu' };
+  const names = Object.fromEntries(NAV.map(x=>[x[0],x[2]])); names.blogedit='Blog — edycja wpisu';
   const n = dirtyCount();
   t.innerHTML = `<div style="font-family:'Chakra Petch',sans-serif;font-size:17px;font-weight:700">${names[S.view]||''}</div>
   <div class="row">
     ${S.pub==='run' ? `<span class="mono" style="font-size:12px;color:#41571F">⟳ Publikowanie…</span>` : ''}
-    ${S.pub==='done' ? `<span style="font-size:12.5px;color:#41571F;font-weight:600">✓ Opublikowano — zmiany na stronie za ~2 min</span>` : ''}
-    ${S.pub==='err' ? `<span style="font-size:12.5px;color:#8C3A43;font-weight:600;white-space:pre-line;max-width:480px">${escH(S.lastErr)}</span>` : ''}
-    ${n&&S.pub!=='run' ? `<button onclick="toggleChg()" style="border:1px solid ${S.chgOpen?'#8C3A43':'#E8D5D7'};background:${S.chgOpen?'#FDF6F6':'#fff'};border-radius:8px;padding:8px 12px;font-size:12.5px;color:#8C3A43;font-weight:600">● Nieopublikowane zmiany (${n}) <span style="font-size:10px">${S.chgOpen?'▲':'▼'}</span></button>` : ''}
+    ${S.pub==='done' ? `<span style="font-size:12.5px;color:#41571F;font-weight:600">${S.demo?'✓ Podgląd: publikacja zasymulowana (nic nie wysłano)':'✓ Opublikowano — zmiany na stronie za ~2 min'}</span>` : ''}
+    ${S.pub==='err' ? `<span style="font-size:12.5px;color:#8C3A43;font-weight:600;white-space:pre-line;max-width:520px">${escH(S.lastErr)}</span>` : ''}
+    ${n&&S.pub!=='run' ? `<button onclick="toggleChg()" style="border:1px solid ${S.chgOpen?'#8C3A43':'#E8D5D7'};background:${S.chgOpen?'#FDF6F6':'#fff'};border-radius:8px;padding:8px 12px;font-size:12.5px;color:#8C3A43;font-weight:600">● Nieopublikowane zmiany (${changeList().length||n}) <span style="font-size:10px">${S.chgOpen?'▲':'▼'}</span></button>` : ''}
     <button class="btn ${n?'btn-p':''}" ${n&&S.pub!=='run'?'':'disabled'} onclick="publish()">${S.pub==='run'?'Publikuję…':'Opublikuj zmiany'}</button>
   </div>
   ${n&&S.chgOpen&&S.pub!=='run' ? chgPanel() : ''}`;
@@ -165,16 +359,17 @@ function renderTop() {
 function chgPanel() {
   const list = changeList();
   const secs = [...new Set(list.map(x=>x.sec))];
-  return `<div style="position:absolute;right:32px;top:100%;width:520px;max-height:70vh;overflow:auto;background:#fff;border:1px solid #DDD9C9;border-radius:12px;box-shadow:0 24px 50px -20px rgba(20,22,14,.35);padding:18px 20px;z-index:6">
+  return `<div style="position:absolute;right:32px;top:100%;width:560px;max-height:70vh;overflow:auto;background:#fff;border:1px solid #DDD9C9;border-radius:12px;box-shadow:0 24px 50px -20px rgba(20,22,14,.35);padding:18px 20px;z-index:6">
     <div style="font-family:'Chakra Petch',sans-serif;font-size:15px;font-weight:700;margin-bottom:4px">Co trafi na stronę po publikacji</div>
     <p style="font-size:12.5px;color:#6B6F5C;margin-bottom:14px">${list.length} ${list.length===1?'zmiana':list.length<5?'zmiany':'zmian'} · po kliknięciu „Opublikuj zmiany” strona przebuduje się w ok. 2 minuty.</p>
     ${secs.map(s=>`<div style="margin-bottom:12px"><div class="mono" style="font-size:10.5px;font-weight:700;letter-spacing:.1em;color:#41571F;margin-bottom:6px">${escH(s.toUpperCase())}</div>
-      ${list.filter(x=>x.sec===s).map(x=>`<div style="display:grid;grid-template-columns:170px 1fr;gap:12px;padding:8px 0;border-top:1px solid #F5F3EA;font-size:13px"><span style="font-weight:700">${escH(x.where)}</span><span style="color:#4A4D3E;line-height:1.45">${escH(x.what)}</span></div>`).join('')}</div>`).join('')}
+      ${list.filter(x=>x.sec===s).map(x=>`<div style="display:grid;grid-template-columns:190px 1fr;gap:12px;padding:8px 0;border-top:1px solid #F5F3EA;font-size:13px"><span style="font-weight:700">${escH(x.where)}</span><span style="color:#4A4D3E;line-height:1.45">${escH(x.what)}</span></div>`).join('')}</div>`).join('')}
     ${!list.length?'<p style="font-size:13px;color:#6B6F5C">Brak zmian treści (tylko pliki pomocnicze).</p>':''}
+    <div style="border-top:1px solid #EFEDE4;padding-top:12px;margin-top:6px"><button class="btn-r" style="border:0;background:none" onclick="discardAll()">Odrzuć wszystkie zmiany</button></div>
   </div>`;
 }
-window.go = async v => { S.view=v; render(); };
-window.logout = async () => { await fetch('/api/logout',{credentials:'same-origin'}); S.view='login'; render(); };
+window.go = v => { S.view=v; S.chgOpen=false; render(); window.scrollTo(0,0); };
+window.logout = async () => { try { await api('/api/logout'); } catch(e){} S.view='login'; render(); };
 
 function loginView() {
   return `<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:#14160E">
@@ -201,113 +396,184 @@ window.doLogin = async e => {
 
 async function renderMain() {
   const m = $('#main'); if (!m) return;
-  m.innerHTML = '<p style="color:#6B6F5C">Wczytuję…</p>';
+  REG = [];
+  if (!S.ready) m.innerHTML = '<p style="color:#6B6F5C">Wczytuję…</p>';
   try {
-    if (S.view==='dash') return m.innerHTML = dashView();
-    if (S.view==='seo') { await loadJSON('content/seo.json'); return seoView(m); }
-    if (S.view==='texts') { await loadJSON('content/strona-glowna.json'); return textsView(m); }
-    if (S.view==='machines') { await loadJSON('content/maszyny.json'); return machinesView(m); }
-    if (S.view==='blog') { await loadPosts(); return blogView(m); }
-    if (S.view==='blogedit') { await loadJSON('content/maszyny.json'); return blogEditView(m); }
-  } catch(e){ m.innerHTML = `<p style="color:#8C3A43;font-weight:600">Błąd: ${escH(e.message)}</p>`; }
+    await loadAll();
+    REG = [];
+    const V = { dash:dashView, seo:seoView, texts:textsView, machines:machinesView, cats:catsView, real:realView, blog:blogView, blogedit:blogEditView };
+    await V[S.view](m);
+  } catch(e){ console.error(e); m.innerHTML = `<p style="color:#8C3A43;font-weight:600">Błąd: ${escH(e.message)}</p>`; }
 }
-function dashView() {
-  const cards = [['seo','⌕','SEO podstron','Tytuły i opisy widoczne w Google oraz opisy zdjęć (alty) — z twardymi limitami znaków.'],
-    ['texts','¶','Teksty na stronie','Nagłówki i opisy sekcji strony głównej oraz dane kontaktowe.'],
-    ['machines','⚙','Maszyny','Nazwy, opisy i modele maszyn — zmiana pojawia się wszędzie, gdzie maszyna występuje.'],
-    ['blog','✎','Blog','Nowe wpisy z edytorem wizualnym, zdjęciami i automatycznym SEO.']];
-  return `<div style="max-width:980px">
-    <p style="font-size:14.5px;color:#5E6A47;margin-bottom:24px">Wybierz, co chcesz edytować. Zmiany trafiają na stronę po kliknięciu „Opublikuj zmiany" (ok. 2 minuty).</p>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
-    ${cards.map(([v,i,t,d])=>`<button class="card" style="text-align:left;display:flex;gap:16px;cursor:pointer" onclick="go('${v}')">
-      <span style="font-size:24px">${i}</span><span><span style="display:block;font-family:'Chakra Petch',sans-serif;font-size:16px;font-weight:700;margin-bottom:4px">${t}</span>
-      <span style="display:block;font-size:13.5px;color:#6B6F5C;line-height:1.5">${d}</span></span></button>`).join('')}
-    </div></div>`;
+// lista po lewej (wyszukiwarka + grupy)
+function pane(items, isOn, pick, o={}) {
+  const groups = [...new Set(items.map(x=>x.grp))];
+  return `<div class="pane"><div style="padding:10px;border-bottom:1px solid #EFEDE4"><input class="inp" style="padding:8px 11px;font-size:13px" placeholder="${o.ph||'Szukaj…'}" oninput="paneFilter(this.value)"></div>
+    <div class="plist">${groups.map(g=>`<div class="pgrp" data-g="${escH(g)}">${escH(g)}</div>`+items.filter(x=>x.grp===g).map(x=>{ const n=reg({fn:()=>pick(x),noRender:false});
+      return `<button class="pitem ${isOn(x)?'on':''}" data-s="${escH((x.name+' '+(x.sub||'')).toLowerCase())}" data-gg="${escH(g)}" onclick="act(${n})">${x.dot?`<span class="dot" style="background:${x.dot}"></span>`:''}<span style="flex:1;min-width:0"><span style="display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${escH(x.name)}</span>${x.sub?`<span class="mono" style="display:block;font-size:10px;color:#9A9680;font-weight:400;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${escH(x.sub)}</span>`:''}</span></button>`; }).join('')).join('')}</div>
+    ${o.foot||''}</div>`;
 }
+window.paneFilter = q => { q=q.toLowerCase().trim(); document.querySelectorAll('.pitem').forEach(b=>b.classList.toggle('hidden', !!q && !b.dataset.s.includes(q))); document.querySelectorAll('.pgrp').forEach(g=>{ g.classList.toggle('hidden', !document.querySelector(`.pitem[data-gg="${CSS.escape(g.dataset.g)}"]:not(.hidden)`)); }); };
+const head = (title, url, extra) => `<div class="row" style="justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap"><div><div style="font-family:'Chakra Petch',sans-serif;font-size:24px;font-weight:700;line-height:1.15">${escH(title)}</div>${url?`<a class="mono" href="${escH(S.demo?'#':'https://www.agro-weld.pl'+url)}" target="_blank" style="font-size:11.5px">agro-weld.pl${escH(url)} ↗</a>`:''}</div>${extra||''}</div>`;
 
-// ---------- SEO ----------
-function counterRow(id, val, max, warnAt) {
-  const len = (val||'').length, col = len>max?'#8C3A43':len>=warnAt?'#7BA829':'#D9A62E';
-  return { cnt: `<span class="cnt" id="cnt-${id}" style="color:${col}">${len} / ${max}</span>`, bar: `<div class="bar"><div id="bar-${id}" style="width:${Math.min(100,len/max*100)}%;background:${col}"></div></div>` };
+// ============ strony (SEO) ============
+function allPages() {
+  const out = [];
+  for (const k of Object.keys(SEO().pages)) { if (/^(blog|maszyny)\/[^/]+\/index\.html$/.test(k) && !/^(blog|maszyny)\/index\.html$/.test(k)) continue; out.push({t:'static',k,name:STATIC_NAMES[k]||k.replace('/index.html',''),url:'/'+k.replace('index.html',''),grp:'Strony stałe'}); }
+  for (const c of KAT()) out.push({t:'cat',k:c.slug,name:c.name,url:'/maszyny/'+c.slug+'/',grp:'Kategorie maszyn'});
+  for (const p of PROD()) out.push({t:'prod',k:p.slug,name:p.name,url:'/maszyny/'+p.cat+'/'+p.slug+'/',grp:'Karty maszyn'});
+  for (const r of REAL()) out.push({t:'real',k:r.slug,name:r.title,url:'/realizacje/'+r.slug+'/',grp:'Realizacje'});
+  for (const p of S.posts) out.push({t:'blog',k:p.slug,name:p.title,url:'/blog/'+p.slug+'/',grp:'Blog'});
+  return out;
 }
-window.cntU = (id, len, max, warn) => {
-  const col = len>max?'#8C3A43':len>=warn?'#7BA829':'#D9A62E';
-  const c=$('#cnt-'+id); if(c){c.textContent=len+' / '+max;c.style.color=col;}
-  const b=$('#bar-'+id); if(b){b.style.width=Math.min(100,len/max*100)+'%';b.style.background=col;}
-};
-function seoView(m) {
-  const seo = S.files['content/seo.json'];
-  const pages = Object.keys(seo.pages);
-  if (!seo.pages[S.seoPage]) S.seoPage = pages[0];
-  const p = seo.pages[S.seoPage];
-  const t = counterRow('t', p.title, LIM.title, 40), d = counterRow('d', p.description, LIM.desc, 120);
-  m.innerHTML = `<div style="display:grid;grid-template-columns:250px 1fr;gap:24px;max-width:1100px;align-items:start">
-    <div style="background:#fff;border:1px solid #DDD9C9;border-radius:12px;overflow:hidden">
-      <div style="padding:12px 16px;font-size:11.5px;font-weight:700;letter-spacing:.08em;color:#6B6F5C;border-bottom:1px solid #EFEDE4">PODSTRONY</div>
-      ${pages.map(pg=>`<button onclick="S.seoPage='${pg}';renderMain()" style="width:100%;text-align:left;padding:11px 16px;border:0;border-bottom:1px solid #F5F3EA;font-size:13px;font-weight:600;background:${pg===S.seoPage?'#F3F6E4':'none'};color:#4A4D3E">${escH(PAGE_NAMES[pg]||pg.replace('/index.html','').replace('index.html','Strona główna'))}</button>`).join('')}
-    </div>
-    <div style="display:flex;flex-direction:column;gap:18px">
-      <div class="card">
-        <div class="row" style="justify-content:space-between;margin-bottom:8px"><label class="lbl" style="margin:0">Meta title <span style="font-weight:400;color:#6B6F5C">— tytuł w Google</span></label>${t.cnt}</div>
-        <input class="inp" maxlength="${LIM.title}" value="${escH(p.title)}" oninput="seoSet('title',this.value)">${t.bar}
-        <p id="tHint" style="font-size:12.5px;margin-top:6px;color:${(p.title||'').length>=40?'#41571F':'#9A7B1E'}">${(p.title||'').length>=40?'Dobra długość. Więcej niż '+LIM.title+' znaków nie da się wpisać.':'Trochę za krótki — dobre tytuły mają 40–60 znaków.'}</p>
-        <div class="row" style="justify-content:space-between;margin:20px 0 8px"><label class="lbl" style="margin:0">Meta description <span style="font-weight:400;color:#6B6F5C">— opis pod tytułem</span></label>${d.cnt}</div>
-        <textarea class="inp" rows="3" maxlength="${LIM.desc}" oninput="seoSet('description',this.value)">${escH(p.description)}</textarea>${d.bar}
+function rec(pg) {
+  if (pg.t==='static') return { file:'content/seo.json', o:SEO().pages[pg.k], tk:'title', dk:'description' };
+  if (pg.t==='cat') return { file:'content/kategorie.json', o:KAT().find(x=>x.slug===pg.k), tk:'metaTitle', dk:'metaDesc' };
+  if (pg.t==='prod') return { file:'content/produkty.json', o:PROD().find(x=>x.slug===pg.k), tk:'metaTitle', dk:'metaDesc' };
+  if (pg.t==='real') return { file:'content/realizacje.json', o:REAL().find(x=>x.slug===pg.k), tk:'metaTitle', dk:'metaDesc' };
+  const path = 'content/blog/'+pg.k+'.json'; return { file:path, o:S.files[path] || S.posts.find(x=>x.slug===pg.k), tk:'metaTitle', dk:'metaDesc' };
+}
+function fallback(pg, o) {
+  if (pg.t==='cat') return { title:o.h1||o.name, desc:'' };
+  if (pg.t==='prod') return { title:o.name, desc:o.lead };
+  if (pg.t==='real') return { title:o.title+' - realizacja | Agro-Weld', desc:o.lead };
+  if (pg.t==='blog') return { title:o.title, desc:'' };
+  return { title:'', desc:'' };
+}
+function pageIssues(pg) {
+  const r = rec(pg); if (!r.o) return [];
+  const t = r.o[r.tk]||'', d = r.o[r.dk]||'', is = [];
+  if (!t.trim()) is.push(['err','brak meta title']); else if (t.length>LIM.title) is.push(['err','meta title za długi ('+t.length+' zn.)']); else if (t.length<30) is.push(['warn','meta title krótki ('+t.length+' zn.)']);
+  if (!d.trim()) is.push(['err','brak meta description']); else if (d.length>LIM.desc) is.push(['err','meta description za długi ('+d.length+' zn.)']); else if (d.length<70) is.push(['warn','meta description krótki ('+d.length+' zn.)']);
+  if (pg.t==='static') { const e = Object.values(r.o.alts||{}).filter(a=>!(a||'').trim()).length; if (e) is.push(['err',e+' zdjęć bez opisu (alt)']); }
+  if (pg.t==='prod') { const e = (r.o.gallery||[]).filter(g=>!(g[1]||'').trim()).length; if (e) is.push(['err',e+' zdjęć galerii bez opisu']); }
+  if (pg.t==='blog' && !(r.o.coverAlt||'').trim() && r.o.cover) is.push(['warn','miniatura bez opisu (alt)']);
+  return is;
+}
+const issueDot = is => is.some(x=>x[0]==='err') ? '#8C3A43' : is.length ? '#D9A62E' : '#9DBB4A';
+
+async function scanStatic(k) {
+  if (S.html[k]) return S.html[k];
+  let imgs = [];
+  try {
+    const r = await api('/api/file?path='+encodeURIComponent(k));
+    const doc = new DOMParser().parseFromString(r.text, 'text/html');
+    const seen = new Set();
+    for (const im of doc.querySelectorAll('img')) { const src = im.getAttribute('src')||''; if (!src || src.startsWith('data:') || seen.has(src)) continue; seen.add(src); imgs.push({ src, alt: im.getAttribute('alt'), hasAlt: im.hasAttribute('alt') }); }
+  } catch(e) { imgs = null; }
+  return S.html[k] = imgs;
+}
+async function imagesOf(pg, r) {
+  const o = r.o, items = [];
+  if (pg.t==='static') {
+    const scanned = await scanStatic(pg.k) || [];
+    const alts = o.alts || {};
+    const srcs = [...new Set([...scanned.map(x=>x.src), ...Object.keys(alts)])];
+    for (const src of srcs) {
+      const sc = scanned.find(x=>x.src===src);
+      const def = sc ? (sc.alt||'') : '';
+      items.push({ src, alt: src in alts ? alts[src] : def, empty:true, file:r.file,
+        note: !sc ? 'nie występuje już w kodzie strony' : (!sc.hasAlt ? 'w kodzie bez atrybutu alt — zostanie dopisany' : ''),
+        set: v => { (o.alts = o.alts || {})[src] = v; } });
+    }
+    if (!scanned.length) items.note = 'Nie udało się odczytać zdjęć z kodu strony — pokazuję tylko zapisane opisy.';
+  } else if (pg.t==='prod') {
+    const defAlt = (o.gallery&&o.gallery.length) ? o.gallery[0][1] : o.name+' — maszyna Agro-Weld';
+    items.push({ src:'assets/'+o.img, alt:o.imgAlt||'', ph:'Domyślnie: '+defAlt, label:'Zdjęcie główne karty', file:r.file, set:v=>{ if (v) o.imgAlt=v; else delete o.imgAlt; } });
+    (o.gallery||[]).forEach((g,i)=>items.push({ src:'assets/'+g[0], alt:g[1]||'', empty:true, label:'Galeria '+(i+1), file:r.file, set:v=>{ g[1]=v; } }));
+    (o.variants||[]).forEach(v=>v.img && items.push({ src:'assets/'+v.img, alt:(o.singular||o.name)+' '+v.model+' — '+v.capacity, ro:true, label:'Wariant '+v.model, note:'opis tworzy się z nazwy i modelu' }));
+  } else if (pg.t==='cat') {
+    for (const m of MACH().filter(x=>x.cat===pg.k)) items.push({ src:'assets/'+m.img, alt:m.imgAlt||'', ph:'Domyślnie: '+m.name+(m.models?' '+m.models:''), label:m.name, file:'content/maszyny.json', set:v=>{ if (v) m.imgAlt=v; else delete m.imgAlt; }, note:'ten sam opis pojawi się na liście /maszyny/' });
+  } else if (pg.t==='real') {
+    items.push({ src:'assets/'+o.img, alt:o.imgAlt||'', ph:'Domyślnie: '+o.title+' — realizacja Agro-Weld', label:'Zdjęcie główne', file:r.file, set:v=>{ if (v) o.imgAlt=v; else delete o.imgAlt; } });
+    (o.gallery||[]).forEach((src,i)=>{ if (!i) return; items.push({ src:'assets/'+src, alt:(o.galleryAlts||[])[i]||'', ph:'Domyślnie: '+o.title+' - realizacja Agro-Weld', label:'Galeria '+i, file:r.file, set:v=>{ o.galleryAlts = o.galleryAlts || []; o.galleryAlts[i] = v; } }); });
+  } else if (pg.t==='blog') {
+    if (o.cover) items.push({ src:o.cover, alt:o.coverAlt||'', empty:true, label:'Miniatura wpisu', file:r.file, set:v=>{ o.coverAlt=v; } });
+    const tp = document.createElement('template'); tp.innerHTML = o.bodyHtml||'';
+    [...tp.content.querySelectorAll('img')].forEach((im,i)=>items.push({ src:im.getAttribute('src')||'', alt:im.getAttribute('alt')||'', empty:true, label:'W treści — zdjęcie '+(i+1), file:r.file,
+      set:v=>{ const t2=document.createElement('template'); t2.innerHTML=o.bodyHtml||''; const el=t2.content.querySelectorAll('img')[i]; if (el) { el.setAttribute('alt',v); o.bodyHtml=t2.innerHTML; } } }));
+  }
+  return items;
+}
+async function seoView(m) {
+  const pages = allPages();
+  if (!S.sel || !pages.find(p=>p.t===S.sel.t&&p.k===S.sel.k)) S.sel = { t:pages[0].t, k:pages[0].k };
+  const pg = pages.find(p=>p.t===S.sel.t&&p.k===S.sel.k), r = rec(pg), o = r.o, fb = fallback(pg, o);
+  const items = pages.map(p=>({ ...p, sub:p.url, dot:issueDot(pageIssues(p)) }));
+  const imgs = await imagesOf(pg, r);
+  const upd = () => { const g1=$('#gTitle'), g2=$('#gDesc'); if (g1) g1.textContent = o[r.tk] || fb.title; if (g2) g2.textContent = o[r.dk] || fb.desc; };
+  const src = { static:'', cat:'Zapisuje się w danych kategorii.', prod:'Zapisuje się w karcie maszyny.', real:'Zapisuje się w danych realizacji.', blog:'Zapisuje się we wpisie blogowym.' }[pg.t];
+  const iss = pageIssues(pg);
+  m.innerHTML = `<div class="two" style="display:grid;grid-template-columns:290px minmax(0,1fr);gap:24px;max-width:1240px;align-items:start">
+    ${pane(items, x=>x.t===pg.t&&x.k===pg.k, x=>{ S.sel={t:x.t,k:x.k}; }, {ph:'Szukaj podstrony…'})}
+    <div class="stack">
+      ${head(pg.name, pg.url, `<span class="pill" style="background:#EFEDE4;color:#4A4D3E">${escH(pg.grp)}</span>`)}
+      ${iss.length?`<div style="display:flex;gap:8px;flex-wrap:wrap">${iss.map(([k,t])=>`<span class="pill" style="background:${k==='err'?'#FDF6F6':'#FBF3D9'};color:${k==='err'?'#8C3A43':'#9A7B1E'}">${escH(t)}</span>`).join('')}</div>`:''}
+      <div class="card stack">
+        ${fld('Meta title', o[r.tk], v=>{o[r.tk]=v}, r.file, { max:LIM.title, warn:30, hard:true, hint:'tytuł w Google', ph: fb.title?'Puste — strona użyje: '+fb.title:'', after:upd, help:'Dobre tytuły mają 30–60 znaków. Więcej niż '+LIM.title+' nie da się wpisać. '+src })}
+        ${fld('Meta description', o[r.dk], v=>{o[r.dk]=v}, r.file, { max:LIM.desc, warn:70, hard:true, long:true, rows:3, hint:'opis pod tytułem', ph: fb.desc?'Puste — strona użyje początku wstępu':'', after:upd, help:'Ten sam tekst trafia do og:description (podgląd w social media).' })}
       </div>
       <div class="card">
-        <div style="font-size:11.5px;font-weight:700;letter-spacing:.08em;color:#6B6F5C;margin-bottom:14px">TAK ZOBACZY TO GOOGLE</div>
-        <div style="border:1px solid #EFEDE4;border-radius:10px;padding:18px 20px">
+        <div class="sublbl" style="margin-bottom:12px">Tak zobaczy to Google</div>
+        <div style="border:1px solid #EFEDE4;border-radius:10px;padding:18px 20px;max-width:640px">
           <div class="row" style="gap:10px;margin-bottom:6px"><span style="width:26px;height:26px;border-radius:50%;background:#14160E;color:#B7D44B;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700">AW</span>
-          <span><span style="display:block;font-size:13px;color:#202124">Agro-Weld</span><span style="display:block;font-size:12px;color:#5f6368">https://www.agro-weld.pl/${S.seoPage.replace('index.html','')}</span></span></div>
-          <div id="gTitle" style="font-size:19px;color:#1a0dab;line-height:1.3;margin-bottom:3px">${escH(p.title)}</div>
-          <div id="gDesc" style="font-size:13.5px;color:#4d5156;line-height:1.55">${escH(p.description)}</div>
+          <span><span style="display:block;font-size:13px;color:#202124">Agro-Weld</span><span style="display:block;font-size:12px;color:#5f6368">https://www.agro-weld.pl${escH(pg.url)}</span></span></div>
+          <div id="gTitle" style="font-size:19px;color:#1a0dab;line-height:1.3;margin-bottom:3px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${escH(o[r.tk]||fb.title)}</div>
+          <div id="gDesc" style="font-size:13.5px;color:#4d5156;line-height:1.55;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">${escH(o[r.dk]||fb.desc)}</div>
         </div>
       </div>
       <div class="card">
-        <div style="font-size:11.5px;font-weight:700;letter-spacing:.08em;color:#6B6F5C;margin-bottom:4px">OPISY OBRAZKÓW (ALT)</div>
-        <p style="font-size:13px;color:#6B6F5C;margin-bottom:16px">Opisz, co widać na zdjęciu — czyta to Google i osoby niewidome. Max ${LIM.alt} znaków.</p>
-        <div style="display:flex;flex-direction:column;gap:12px">
-        ${Object.entries(p.alts||{}).map(([src,alt],i)=>{
-          const abs = 'https://www.agro-weld.pl/' + src.replace(/^(\.\.\/)+/, '').replace(/^\//,'');
-          const empty = !(alt||'').trim();
-          return `<div style="display:grid;grid-template-columns:64px 1fr 70px;gap:14px;align-items:center">
-            <img src="${escH(abs)}" alt="" style="width:64px;height:48px;object-fit:contain;border-radius:6px;background:#EFEDE4" onerror="this.style.opacity=.2">
-            <div><input class="inp" style="padding:9px 12px;font-size:13.5px;${empty?'border:2px solid #8C3A43;background:#FDF6F6':''}" maxlength="${LIM.alt}" placeholder="${empty?'Brak opisu! Wpisz, co widać na zdjęciu':''}" value="${escH(alt)}" oninput="altSet(${i},this)">
-            <div class="mono" style="font-size:10px;color:#B0AC9C;margin-top:3px">${escH(src)}</div></div>
-            <span class="cnt" style="color:${empty?'#8C3A43':'#6B6F5C'};text-align:right" id="altc${i}">${(alt||'').length}/${LIM.alt}</span>
-          </div>`;}).join('')}
+        <div class="sublbl" style="margin-bottom:4px">Opisy zdjęć (alt) · ${imgs.length}</div>
+        <p class="help" style="margin:0 0 16px">Opisz, co widać na zdjęciu — czyta to Google i osoby niewidome. Max ${LIM.alt} znaków.${pg.t==='static'?' Lista zdjęć jest odczytywana z kodu strony.':' Puste pole = opis domyślny (szary tekst).'}</p>
+        ${imgs.note?`<p class="help" style="color:#9A7B1E;margin:-8px 0 12px">${imgs.note}</p>`:''}
+        <div style="display:flex;flex-direction:column;gap:14px">
+        ${imgs.map(x=>`<div style="display:flex;gap:14px;align-items:flex-start">${thumb(x.src)}
+          ${x.ro ? `<div style="flex:1;min-width:0"><input class="inp" readonly value="${escH(x.alt)}"><div class="mono" style="font-size:10px;color:#B0AC9C;margin-top:3px">${escH(x.label||'')} · ${escH(x.note||'')}</div></div>`
+          : inl(x.alt, x.set, x.file, { max:LIM.alt, hard:true, inlCnt:true, empty:x.empty, ph:x.ph||'Brak opisu! Wpisz, co widać na zdjęciu',
+              under:`<span class="mono" style="font-size:10px;color:#B0AC9C;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${x.label?escH(x.label)+' · ':''}${escH(x.src.split('/').pop())}${x.note?` · <span style="color:#9A7B1E">${escH(x.note)}</span>`:''}</span>` })}
+        </div>`).join('') || '<p class="help">Na tej stronie nie ma zdjęć do opisania.</p>'}
         </div>
       </div>
     </div></div>`;
 }
-window.seoSet = (k,v) => {
-  S.files['content/seo.json'].pages[S.seoPage][k]=v; touch('content/seo.json');
-  const isT = k==='title';
-  cntU(isT?'t':'d', v.length, isT?LIM.title:LIM.desc, isT?40:120);
-  const g=$(isT?'#gTitle':'#gDesc'); if(g) g.textContent=v;
-  if(isT){ const h=$('#tHint'); if(h){ h.textContent = v.length>=40?'Dobra długość. Więcej niż '+LIM.title+' znaków nie da się wpisać.':'Trochę za krótki — dobre tytuły mają 40–60 znaków.'; h.style.color = v.length>=40?'#41571F':'#9A7B1E'; } }
-};
-window.altSet = (i,el) => { const p=S.files['content/seo.json'].pages[S.seoPage]; const k=Object.keys(p.alts)[i]; p.alts[k]=el.value; touch('content/seo.json');
-  const ok=el.value.trim(); const c=$('#altc'+i); if(c){c.textContent=el.value.length+'/'+LIM.alt; c.style.color=ok?'#6B6F5C':'#8C3A43';}
-  el.style.border=ok?'1px solid #C9C5B4':'2px solid #8C3A43'; el.style.background=ok?'#FDFCF8':'#FDF6F6'; };
 
-// ---------- Teksty ----------
+// ============ pulpit ============
+function dashView(m) {
+  const pages = allPages(), probs = pages.map(p=>({p, is:pageIssues(p)})).filter(x=>x.is.length);
+  const errN = probs.filter(x=>x.is.some(i=>i[0]==='err')).length;
+  const cards = [['seo','⌕','SEO i opisy zdjęć','Meta title, description i alty dla '+pages.length+' podstron — stałych, kategorii, kart maszyn, realizacji i bloga.'],
+    ['texts','¶','Strona główna — teksty','Nagłówki i opisy sekcji strony głównej oraz dane kontaktowe w stopce.'],
+    ['machines','⚙','Maszyny i karty',MACH().length+' maszyn na liście i '+PROD().length+' pełnych kart: opisy, dane techniczne, wyposażenie, FAQ, zdjęcia.'],
+    ['cats','▦','Kategorie maszyn',KAT().length+' kategorii: nagłówki, wstęp, sekcje treści z tabelami, FAQ.'],
+    ['real','◩','Realizacje',REAL().length+' wdrożeń: opis, fakty, maszyny, zdjęcia i wideo. Możesz dodać nową.'],
+    ['blog','✎','Blog',S.posts.length+' wpisów. Edytor wizualny, zdjęcia, wyróżnienie na stronie głównej.']];
+  m.innerHTML = `<div style="max-width:1080px" class="stack">
+    <p style="font-size:14.5px;color:#5E6A47">Wybierz, co chcesz edytować. Zmiany trafiają na stronę po kliknięciu „Opublikuj zmiany” (ok. 2 minuty).</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px">
+    ${cards.map(([v,i,t,d])=>`<button class="card" style="text-align:left;display:flex;gap:16px;cursor:pointer;padding:20px" onclick="go('${v}')">
+      <span style="font-size:22px;width:24px;flex:none;color:#41571F">${i}</span><span><span style="display:block;font-family:'Chakra Petch',sans-serif;font-size:16px;font-weight:700;margin-bottom:4px">${t}</span>
+      <span style="display:block;font-size:13.5px;color:#6B6F5C;line-height:1.5">${d}</span></span></button>`).join('')}
+    </div>
+    <div class="card" style="padding:0;overflow:hidden">
+      <div class="row" style="justify-content:space-between;padding:18px 22px;border-bottom:1px solid #EFEDE4">
+        <div><div style="font-family:'Chakra Petch',sans-serif;font-size:16px;font-weight:700">Kontrola SEO</div><p class="help" style="margin:2px 0 0">${probs.length?probs.length+' z '+pages.length+' podstron wymaga uwagi'+(errN?' · '+errN+' z błędem':''):'Wszystkie '+pages.length+' podstron ma poprawne meta tagi.'}</p></div>
+        <span class="row" style="gap:12px;font-size:12px;color:#6B6F5C"><span class="row" style="gap:5px"><span class="dot" style="background:#8C3A43"></span>błąd</span><span class="row" style="gap:5px"><span class="dot" style="background:#D9A62E"></span>do poprawy</span></span>
+      </div>
+      ${probs.map(({p,is})=>{ const n=reg({fn:()=>{ S.sel={t:p.t,k:p.k}; S.view='seo'; render(); return false; }});
+        return `<div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr) 90px;gap:14px;align-items:center;padding:11px 22px;border-bottom:1px solid #F5F3EA;font-size:13px"><span><span class="row" style="gap:8px"><span class="dot" style="background:${issueDot(is)}"></span><b>${escH(p.name)}</b></span><span class="mono" style="display:block;font-size:10px;color:#9A9680;margin-left:15px">${escH(p.grp)}</span></span><span style="color:#4A4D3E">${is.map(x=>escH(x[1])).join(' · ')}</span><button class="btn btn-o" style="padding:6px 12px;font-size:12.5px" onclick="act(${n})">Popraw</button></div>`; }).join('')}
+    </div></div>`;
+}
+
+// ============ teksty strony głównej ============
 function textsView(m) {
-  const sg = S.files['content/strona-glowna.json'];
+  const sg = F('content/strona-glowna.json'), file='content/strona-glowna.json';
   const keys = Object.keys(sg).filter(k=>k.startsWith(S.txtGroup+'.'));
-  m.innerHTML = `<div style="max-width:860px;display:flex;flex-direction:column;gap:18px">
+  m.innerHTML = `<div style="max-width:880px" class="stack">
     <div style="display:flex;gap:8px;flex-wrap:wrap">${GROUPS.map(([g,l])=>`<button class="tabbtn ${g===S.txtGroup?'on':''}" onclick="S.txtGroup='${g}';renderMain()">${l}</button>`).join('')}</div>
-    <div class="card"><div style="display:flex;flex-direction:column;gap:16px">
-    ${keys.map(k=>{
-      const suffix=k.split('.').slice(1).join('.');
-      const lbl = LABELS[suffix] || autoLabel(suffix);
-      const v = sg[k]; const long = v.length>70;
-      return `<div><label class="lbl">${escH(lbl)} <span class="mono" style="font-weight:400;color:#B0AC9C;font-size:10px">${escH(k)}</span></label>
-        ${long?`<textarea class="inp" rows="3" oninput="txtSet('${k}',this.value)">${escH(v)}</textarea>`
-              :`<input class="inp" value="${escH(v)}" oninput="txtSet('${k}',this.value)">`}</div>`;
-    }).join('')||'<p style="color:#6B6F5C">Brak pól w tej sekcji.</p>'}
-    </div></div>
-    <p style="font-size:12.5px;color:#6B6F5C">Zmiany dotyczą polskiej wersji strony. Wersje językowe (EN/DE/RU/FR) zostaną podpięte, gdy strona będzie miała podstrony językowe.</p></div>`;
+    <div class="card stack">
+    ${keys.map(k=>{ const sfx=k.split('.').slice(1).join('.'); return fld(escH(LABELS[sfx]||autoLabel(sfx))+` <span class="mono" style="font-weight:400;color:#B0AC9C;font-size:10px">${escH(k)}</span>`, sg[k], v=>{sg[k]=v}, file, { long: String(sg[k]).length>70 }); }).join('')||'<p style="color:#6B6F5C">Brak pól w tej sekcji.</p>'}
+    </div>
+    <p style="font-size:12.5px;color:#6B6F5C">Nazwy, opisy i zdjęcia maszyn w kartach na stronie głównej edytujesz w „Maszyny i karty” — zmieniają się wszędzie naraz.</p></div>`;
 }
 function autoLabel(sfx){
   const map={name:'Nazwa etapu',desc:'Opis etapu',title:'Tytuł',company:'Nazwa firmy'};
@@ -315,46 +581,153 @@ function autoLabel(sfx){
   if(mm) return (mm[1]==='step'?'Etap ':mm[1]==='i'?'Punkt ':'Karta ')+mm[2]+' — '+(map[mm[3]]||mm[3]);
   return map[sfx]||sfx;
 }
-window.txtSet = (k,v) => { S.files['content/strona-glowna.json'][k]=v; touch('content/strona-glowna.json'); };
 
-// ---------- Maszyny ----------
+// ============ maszyny + karty produktów ============
+function imgBlock(label, path, onPick, help) {
+  const n = reg({ fn: onPick });
+  return `<div class="fld"><label class="lbl">${label}</label><div class="row" style="align-items:flex-start">${thumb(path,'width:120px;height:90px')}<div style="display:flex;flex-direction:column;gap:6px"><button type="button" class="btn btn-o" style="padding:8px 14px;font-size:13px" onclick="act(${n})">Zmień zdjęcie…</button><span class="mono" style="font-size:10px;color:#B0AC9C">${escH(path||'brak')}</span>${help?`<span class="help" style="margin:0;max-width:360px">${help}</span>`:''}</div></div></div>`;
+}
 function machinesView(m) {
-  const list = S.files['content/maszyny.json'];
-  m.innerHTML = `<div style="max-width:980px">
-    <p style="font-size:13.5px;color:#6B6F5C;margin-bottom:16px">Zmiana nazwy, opisu lub modeli pojawia się wszędzie, gdzie maszyna jest pokazana (m.in. karty na stronie głównej). Opisy zdjęć (alty) edytujesz w sekcji SEO.</p>
-    <div style="background:#fff;border:1px solid #DDD9C9;border-radius:12px;overflow:hidden">
-    ${list.map((x,i)=> S.machEdit===i ? `
-      <div style="padding:18px 20px;border-bottom:1px solid #F5F3EA;background:#FBFAF3;display:flex;flex-direction:column;gap:12px">
-        <div style="display:grid;grid-template-columns:1fr 260px;gap:12px">
-          <div><label class="lbl">Nazwa maszyny</label><input class="inp" value="${escH(x.name)}" oninput="machSet(${i},'name',this.value)"></div>
-          <div><label class="lbl">Modele</label><input class="inp" value="${escH(x.models)}" oninput="machSet(${i},'models',this.value)"></div>
-        </div>
-        <div><label class="lbl">Krótki opis (1–2 zdania)</label><textarea class="inp" rows="2" oninput="machSet(${i},'short',this.value)">${escH(x.short)}</textarea></div>
-        <div class="row"><button class="btn btn-d" onclick="S.machEdit=null;renderMain()">Gotowe</button></div>
-      </div>` : `
-      <div style="display:grid;grid-template-columns:1fr 180px 200px 90px;gap:14px;align-items:center;padding:12px 20px;border-bottom:1px solid #F5F3EA">
-        <span><span style="display:block;font-size:14.5px;font-weight:700">${escH(x.name)}</span><span style="display:block;font-size:12.5px;color:#6B6F5C">${escH(x.short)}</span></span>
-        <span class="mono" style="font-size:11px;color:#6B6F5C">${escH(x.models)}</span>
-        <span style="font-size:12.5px;color:#41571F">${escH(x.cat)}</span>
-        <button class="btn btn-o" style="padding:7px 14px;font-size:13px" onclick="S.machEdit=${i};renderMain()">Edytuj</button>
-      </div>`).join('')}
+  const list = MACH(), MF='content/maszyny.json', PF='content/produkty.json';
+  if (!list.find(x=>x.id===S.mSel)) S.mSel = list[0].id;
+  const x = list.find(y=>y.id===S.mSel), p = PROD().find(y=>y.mid===x.id);
+  const items = list.map(y=>({ id:y.id, name:y.name, sub:y.models, grp:catName(y.cat) }));
+  const pickMain = async () => { const np = await pickImage('maszyny', x.slug||x.id); if (!np) return false; if (p && p.img===x.img) { p.img = np; touch(PF); } x.img = np; touch(MF); };
+  let html = `<div class="card stack">
+      <div class="sublbl">Na liście maszyn, w kategorii i na stronie głównej</div>
+      <div style="display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:14px">${fld('Nazwa maszyny', x.name, v=>{x.name=v}, MF)}${fld('Modele', x.models, v=>{x.models=v}, MF, {hint:'oddziel „ · ”'})}</div>
+      ${fld('Krótki opis', x.short, v=>{x.short=v}, MF, {long:true, rows:2, hint:'1–2 zdania'})}
+      ${imgBlock('Zdjęcie na liście', 'assets/'+x.img, pickMain, 'Render maszyny na jasnym tle lub zdjęcie. Kompresja do WebP, szer. do 1600 px.'+(p&&p.img===x.img?' Zmieni też zdjęcie główne karty.':''))}
+      ${fld('Opis zdjęcia (alt)', x.imgAlt, v=>{ if (v) x.imgAlt=v; else delete x.imgAlt; }, MF, {max:LIM.alt, hard:true, ph:'Domyślnie: '+x.name+' — maszyna Agro-Weld'})}
+      ${fld('Adres podstrony', x.url, ()=>{}, null, {ro:true, mono:true, help:'Adres zmienia się tylko razem z przekierowaniem — napisz do agencji.'})}
+    </div>`;
+  if (p) html += prodEditor(p, PF);
+  else html += `<div class="card"><p class="help" style="margin:0">Ta pozycja nie ma osobnej karty produktu — link prowadzi do <span class="mono">${escH(x.url)}</span>.</p></div>`;
+  m.innerHTML = `<div class="two" style="display:grid;grid-template-columns:290px minmax(0,1fr);gap:24px;max-width:1240px;align-items:start">
+    ${pane(items, y=>y.id===x.id, y=>{ S.mSel=y.id; window.scrollTo(0,0); }, {ph:'Szukaj maszyny…'})}
+    <div class="stack">${head(x.name, p?'/maszyny/'+p.cat+'/'+p.slug+'/':x.url, p?'<span class="pill" style="background:#F3F6E4;color:#41571F">ma kartę produktu</span>':'')}${html}</div></div>`;
+}
+function prodEditor(p, file) {
+  const models = p.models || [];
+  const specHead = ['Parametr', ...models];
+  const gal = p.gallery || [];
+  const addGal = async () => { const np = await pickImage('maszyny', p.slug); if (!np) return false; (p.gallery = p.gallery || []).push([np, '']); };
+  const pickImg = async () => { const np = await pickImage('maszyny', p.slug); if (!np) return false; p.img = np; };
+  return [
+    card('p-basic','Karta produktu — podstawowe', `
+      ${fld('Nagłówek H1', p.h1, v=>{p.h1=v}, file, {ph:'Puste — użyje nazwy: '+p.name})}
+      ${fld('Nazwa na karcie', p.name, v=>{p.name=v}, file)}
+      ${fList('Modele', p, 'models', file, {add:'Dodaj model', help:'Kolejność modeli = kolejność kolumn w tabeli danych technicznych.'})}
+      ${fld('Wstęp (lead)', p.lead, v=>{p.lead=v}, file, {long:true})}
+      ${fld('Opis działania', p.desc, v=>{p.desc=v}, file, {long:true})}
+      ${fld('Zastosowanie', p.uses, v=>{p.uses=v}, file, {long:true, hint:'jakie warzywa / owoce'})}
+      ${p.note!==undefined?fld('Przypis pod tabelą', p.note, v=>{p.note=v}, file, {long:true}):''}
+      ${fld('Tekst wezwania do kontaktu (CTA)', p.cta, v=>{p.cta=v}, file, {long:true})}`, true),
+    card('p-img','Zdjęcia karty', `
+      ${imgBlock('Zdjęcie główne', 'assets/'+p.img, pickImg)}
+      ${fld('Opis zdjęcia głównego (alt)', p.imgAlt, v=>{ if (v) p.imgAlt=v; else delete p.imgAlt; }, file, {max:LIM.alt, hard:true, ph:'Domyślnie: '+((gal[0]||[])[1]||p.name+' — maszyna Agro-Weld')})}
+      ${wrap('Galeria', gal.map((g,i)=>`<div class="li">${thumb('assets/'+g[0])}${inl(g[1], v=>{g[1]=v}, file, {max:LIM.alt, hard:true, inlCnt:true, empty:true, ph:'Opis zdjęcia (alt)', under:`<span class="mono" style="font-size:10px;color:#B0AC9C">${escH(g[0].split('/').pop())}</span>`})}${liAct(gal,i,file)}</div>`).join(''), btnA('+ Wgraj zdjęcie do galerii', addGal, file, {cls:'add'}), 'Galeria pokazuje się na karcie od 2 zdjęć. Pierwsze zdjęcie galerii = pierwsze widoczne.')}`, false, gal.length?gal.length+' w galerii':''),
+    card('p-feat','Zalety', fPairs('', p, 'features', file, ['Nagłówek','Opis'], {longB:true, add:'Dodaj zaletę'}), false, (p.features||[]).length+''),
+    card('p-spec','Dane techniczne', `
+      ${fTable('Tabela modeli', p.specs = p.specs || [], specHead, file, {help:'Kolumny = modele z sekcji „podstawowe”.'})}
+      ${fPairs('Parametry wspólne dla wszystkich modeli', p, 'common', file, ['Parametr','Wartość'], {add:'Dodaj parametr'})}`),
+    card('p-equip','Wyposażenie', `${fList('W standardzie', p, 'standard', file)}${fList('Opcje', p, 'options', file, {add:'Dodaj opcję'})}`),
+    p.variants ? card('p-var','Warianty (modele z osobnym opisem)', fObjs('', p, 'variants', file, [['model','Model'],['capacity','Pojemność / parametr'],['desc','Opis',true]], {add:'Dodaj wariant', confirm:'Usunąć wariant?'})) : '',
+    card('p-sec','Sekcje opisowe (SEO)', fObjs('', p, 'sections', file, [['h2','Nagłówek H2'],['p','Treść',true]], {add:'Dodaj sekcję', confirm:'Usunąć sekcję?'}), false, (p.sections||[]).length+''),
+    card('p-faq','FAQ', fObjs('', p, 'faq', file, [['q','Pytanie'],['a','Odpowiedź',true]], {add:'Dodaj pytanie', confirm:'Usunąć pytanie?'}), false, (p.faq||[]).length+''),
+    card('p-meta','Meta tagi karty', `
+      ${fld('Meta title', p.metaTitle, v=>{p.metaTitle=v}, file, {max:LIM.title, warn:30, hard:true})}
+      ${fld('Meta description', p.metaDesc, v=>{p.metaDesc=v}, file, {max:LIM.desc, warn:70, hard:true, long:true, rows:3})}`, false, (p.metaTitle||'').length>LIM.title?'<span style="color:#8C3A43">za długi tytuł</span>':''),
+  ].join('');
+}
+
+// ============ kategorie ============
+function catsView(m) {
+  const list = KAT(), file='content/kategorie.json';
+  if (!list.find(x=>x.slug===S.cSel)) S.cSel = list[0].slug;
+  const c = list.find(x=>x.slug===S.cSel);
+  const items = list.map(x=>({ k:x.slug, name:x.name, sub:'/maszyny/'+x.slug+'/', grp:'Kategorie', dot:issueDot(pageIssues({t:'cat',k:x.slug})) }));
+  const secs = c.sections = c.sections || [];
+  const secHtml = secs.map((s,si)=>{
+    const its = s.items = s.items || [];
+    const itHtml = its.map((it,ii)=>{
+      let body = '';
+      if ('p' in it) body = `<div class="sublbl">Akapit</div>${inl(it.p, v=>{it.p=v}, file, {long:true})}`;
+      else if (it.ul) body = fList('Lista punktowana', it, 'ul', file, {long:true, add:'Dodaj punkt'});
+      else if (it.table) { it.table.head = it.table.head || []; it.table.rows = it.table.rows || []; body = fTable('Tabela', it.table.rows, it.table.head, file, {headEdit:true}); }
+      return `<div class="li" style="background:#fff"><div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:6px">${body}</div>${liAct(its,ii,file,{confirm:'Usunąć ten blok?'})}</div>`;
+    }).join('');
+    const adds = `<div class="row" style="gap:8px">${btnA('+ Akapit',()=>{its.push({p:''})},file,{cls:'add'})}${btnA('+ Lista',()=>{its.push({ul:['']})},file,{cls:'add'})}${btnA('+ Tabela',()=>{its.push({table:{head:['Parametr',''],rows:[['','']]}})},file,{cls:'add'})}</div>`;
+    return `<div class="sub" style="background:#FAF9F4"><div class="row" style="justify-content:space-between"><span class="sublbl">Sekcja ${si+1}</span>${liAct(secs,si,file,{confirm:'Usunąć całą sekcję „'+(s.h2||'')+'”?'})}</div>${fld('Nagłówek H2', s.h2, v=>{s.h2=v}, file)}<div class="lst">${itHtml}</div>${adds}</div>`;
+  }).join('');
+  m.innerHTML = `<div class="two" style="display:grid;grid-template-columns:290px minmax(0,1fr);gap:24px;max-width:1240px;align-items:start">
+    ${pane(items, x=>x.k===c.slug, x=>{ S.cSel=x.k; window.scrollTo(0,0); })}
+    <div class="stack">${head(c.name, '/maszyny/'+c.slug+'/')}
+      ${c.template?`<div class="card" style="background:#FBF3D9;border-color:#EAD9A0"><p class="help" style="margin:0;color:#6B5A1E">Ta kategoria ma własny układ strony. Tu edytujesz nagłówek, wstęp, sekcje, FAQ i meta — bloki modeli Verbruggen zmienia agencja.</p></div>`:''}
+      ${card('c-basic','Nagłówek i wstęp', `${fld('Nagłówek H1', c.h1, v=>{c.h1=v}, file)}${fList('Wstęp — akapity', c, 'intro', file, {long:true, add:'Dodaj akapit', help:'Możesz używać linków &lt;a href="/maszyny/…/"&gt;…&lt;/a&gt; i pogrubień &lt;strong&gt;…&lt;/strong&gt;.'})}`, true)}
+      ${card('c-sec','Sekcje treści', `<div class="lst" style="gap:12px">${secHtml}</div>${btnA('+ Dodaj sekcję',()=>{secs.push({h2:'',items:[{p:''}]})},file,{cls:'add'})}`, false, secs.length+'')}
+      ${card('c-faq','FAQ', fObjs('', c, 'faq', file, [['q','Pytanie'],['a','Odpowiedź',true]], {add:'Dodaj pytanie', confirm:'Usunąć pytanie?'}), false, (c.faq||[]).length+'')}
+      ${card('c-cta','Wezwanie do kontaktu', fld('Tekst CTA', c.cta, v=>{c.cta=v}, file, {long:true}))}
+      ${card('c-meta','Meta tagi kategorii', `${fld('Meta title', c.metaTitle, v=>{c.metaTitle=v}, file, {max:LIM.title, warn:30, hard:true})}${fld('Meta description', c.metaDesc, v=>{c.metaDesc=v}, file, {max:LIM.desc, warn:70, hard:true, long:true, rows:3})}<p class="help" style="margin:0">Opisy zdjęć maszyn tej kategorii: „SEO i opisy zdjęć” → ${escH(c.name)}.</p>`)}
     </div></div>`;
 }
-window.machSet = (i,k,v) => { S.files['content/maszyny.json'][i][k]=v; touch('content/maszyny.json'); };
 
-// ---------- Blog ----------
+// ============ realizacje ============
+function realView(m) {
+  const list = REAL(), file='content/realizacje.json';
+  if (!list.length) { m.innerHTML = '<div class="card">Brak realizacji. '+btnA('+ Nowa realizacja', newReal, file, {cls:'add'})+'</div>'; return; }
+  if (!list.find(x=>x.slug===S.rSel)) S.rSel = list[0].slug;
+  const r = list.find(x=>x.slug===S.rSel);
+  const items = list.map(x=>({ k:x.slug, name:x.title||'Nowa realizacja (bez tytułu)', sub:(x.ref?x.ref+' · ':'')+(x.cat||''), grp:'Realizacje', dot:issueDot(pageIssues({t:'real',k:x.slug})) }));
+  const cats = [...new Set(list.map(x=>x.cat).filter(Boolean))];
+  const ms = r.machines = r.machines || [];
+  const gal = r.gallery || [];
+  const pickMain = async () => { const np = await pickImage('realizacje', r.slug); if (!np) return false; r.img = np; };
+  const addGal = async () => { const np = await pickImage('realizacje', r.slug); if (!np) return false; if (!r.gallery || !r.gallery.length) r.gallery = [r.img || np]; r.gallery.push(np); };
+  const rmGal = i => () => { if (!confirm('Usunąć zdjęcie z galerii?')) return false; gal.splice(i,1); if (r.galleryAlts) r.galleryAlts.splice(i,1); };
+  const del = () => { if (!confirm('Usunąć realizację „'+r.title+'”? Strona /realizacje/'+r.slug+'/ zniknie po publikacji.')) return false; list.splice(list.indexOf(r),1); S.rSel=null; };
+  const slugN = reg({ set:v=>{ r.slug=slugify(v); }, file });
+  m.innerHTML = `<div class="two" style="display:grid;grid-template-columns:290px minmax(0,1fr);gap:24px;max-width:1240px;align-items:start">
+    ${pane(items, x=>x.k===r.slug, x=>{ S.rSel=x.k; window.scrollTo(0,0); }, {foot:`<div style="padding:10px;border-top:1px solid #EFEDE4">${btnA('+ Nowa realizacja', newReal, file, {cls:'add', style:'margin:0;width:100%'})}</div>`})}
+    <div class="stack">${head(r.title||'Nowa realizacja', '/realizacje/'+r.slug+'/', btnA('Usuń realizację', del, file, {cls:'btn btn-r', style:'border:0'}))}
+      ${card('r-basic','Podstawowe', `
+        ${fld('Tytuł', r.title, v=>{ r.title=v; if (r._new) { r.slug=slugify(v); const s=$('#rSlug'); if (s) s.value=r.slug; } }, file)}
+        ${r._new?`<div class="fld"><label class="lbl">Adres <span class="hint">— /realizacje/…/, tworzy się z tytułu</span></label><input id="rSlug" class="inp mono" style="font-size:12.5px" value="${escH(r.slug)}" onchange="setF(${slugN},this);this.value=S.files['content/realizacje.json'].find(x=>x._new).slug"></div>`:''}
+        <div style="display:grid;grid-template-columns:minmax(0,1fr) 160px;gap:14px"><div class="fld"><label class="lbl">Kategoria</label>${inl(r.cat, v=>{r.cat=v}, file, {ph:'np. Sortowanie'})}<datalist id="rcats">${cats.map(c=>`<option value="${escH(c)}">`).join('')}</datalist></div>${fld('Nr referencyjny', r.ref, v=>{r.ref=v}, file, {ph:'2026-001'})}</div>
+        ${fld('Wstęp (lead)', r.lead, v=>{r.lead=v}, file, {long:true, rows:2})}`, true)}
+      ${card('r-body','Zadanie i rozwiązanie', fList('Akapity', r, 'body', file, {long:true, add:'Dodaj akapit'}), false, (r.body||[]).length+' akap.')}
+      ${card('r-facts','Fakty (tabelka obok zdjęcia)', fPairs('', r, 'facts', file, ['Etykieta','Wartość'], {cols:'minmax(0,1fr) minmax(0,1.6fr)', add:'Dodaj fakt'}))}
+      ${card('r-mach','Maszyny w realizacji', `<div style="display:flex;gap:8px;flex-wrap:wrap">${ms.map((id,i)=>{ const mm=MACH().find(x=>x.id===id); return `<span class="chip">${escH(mm?mm.name:id)}${btnA('×',()=>{ms.splice(i,1)},file,{cls:'ib x',style:'width:22px;height:22px'})}</span>`; }).join('')||'<span class="help" style="margin:0">Nic nie wybrano</span>'}</div>
+        <select class="inp" style="font-size:13px" onchange="if(this.value){act(${reg({fn:()=>{ const v=document.querySelector('#rMachSel').value; if (!v || ms.includes(v)) return false; ms.push(v); }, file})})}" id="rMachSel"><option value="">+ Dodaj maszynę…</option>${MCATS.map(([s,n])=>`<optgroup label="${escH(n)}">${MACH().filter(x=>x.cat===s).map(x=>`<option value="${escH(x.id)}">${escH(x.name)}</option>`).join('')}</optgroup>`).join('')}</select>`, false, ms.length+'')}
+      ${card('r-img','Zdjęcia i wideo', `
+        ${imgBlock('Zdjęcie główne', r.img?'assets/'+r.img:'', pickMain, 'Poziome 4:3, min. 1200 px szerokości.')}
+        ${fld('Opis zdjęcia głównego (alt)', r.imgAlt, v=>{ if (v) r.imgAlt=v; else delete r.imgAlt; }, file, {max:LIM.alt, hard:true, ph:'Domyślnie: '+r.title+' — realizacja Agro-Weld'})}
+        ${wrap('Galeria (pod treścią)', gal.map((src,i)=> i===0 ? '' : `<div class="li">${thumb('assets/'+src)}${inl((r.galleryAlts||[])[i], v=>{ r.galleryAlts=r.galleryAlts||[]; r.galleryAlts[i]=v; }, file, {max:LIM.alt, hard:true, inlCnt:true, ph:'Domyślnie: '+r.title+' - realizacja Agro-Weld', under:`<span class="mono" style="font-size:10px;color:#B0AC9C">${escH(src.split('/').pop())}</span>`})}<span class="liact">${btnA('×', rmGal(i), file, {cls:'ib x', title:'Usuń'})}</span></div>`).join(''), btnA('+ Wgraj zdjęcie do galerii', addGal, file, {cls:'add'}), 'Pierwsze zdjęcie galerii to zdjęcie główne — tu widać kolejne.')}
+        ${fld('Wideo z YouTube', r.video, v=>{ const mm=/(?:v=|youtu\.be\/|embed\/)([\w-]{11})/.exec(v); const id = mm?mm[1]:v.trim(); if (id) r.video=id; else delete r.video; }, file, {ph:'Wklej link lub ID filmu', mono:true, help:'Np. https://youtu.be/… — zapisujemy samo ID filmu.'})}`)}
+      ${card('r-meta','Meta tagi', `${fld('Meta title', r.metaTitle, v=>{r.metaTitle=v}, file, {max:LIM.title, warn:30, hard:true, ph:r.title+' - realizacja | Agro-Weld'})}${fld('Meta description', r.metaDesc, v=>{r.metaDesc=v}, file, {max:LIM.desc, warn:70, hard:true, long:true, rows:3, ph:'Puste — użyje wstępu'})}`, false, (r.metaTitle||'').length>LIM.title?'<span style="color:#8C3A43">za długi tytuł ('+r.metaTitle.length+')</span>':'')}
+    </div></div>`;
+  const ci = m.querySelector('.dbody input[placeholder="np. Sortowanie"]'); if (ci) ci.setAttribute('list','rcats');
+}
+function newReal() {
+  const list = REAL();
+  const r = { slug:'nowa-realizacja-'+Date.now().toString(36), ref:'', cat:'', title:'', img:'', lead:'', body:[''], machines:[], facts:[], metaTitle:'', metaDesc:'', _new:true };
+  list.unshift(r); S.rSel = r.slug; S.open['r-basic']=true;
+}
+
+// ============ blog ============
 async function loadPosts() {
   let files = [];
   try { files = await api('/api/list?path=content/blog'); } catch(e) {}
   S.posts = [];
   for (const f of files.filter(x=>x.name.endsWith('.json'))) { if (S.deletes.includes(f.path)) continue; const p = await loadJSON(f.path); p._remote = true; if (!S.posts.includes(p)) S.posts.push(p); }
+  for (const path of Object.keys(S.dirty)) if (path.startsWith('content/blog/') && S.files[path] && !S.posts.includes(S.files[path])) S.posts.push(S.files[path]);
   S.posts.sort((a,b)=>b.date.localeCompare(a.date));
 }
 function blogView(m) {
-  m.innerHTML = `<div style="max-width:980px">
+  m.innerHTML = `<div style="max-width:1080px">
     <div style="display:flex;justify-content:flex-end;margin-bottom:16px"><button class="btn btn-d" onclick="newPost()">+ Nowy wpis</button></div>
     <div style="background:#fff;border:1px solid #DDD9C9;border-radius:12px;overflow:hidden">
-    ${S.posts.map((p,i)=>`<div style="display:grid;grid-template-columns:1fr 150px 100px 44px 130px;gap:14px;align-items:center;padding:16px 20px;border-bottom:1px solid #F5F3EA">
+    ${S.posts.map((p,i)=>`<div style="display:grid;grid-template-columns:minmax(0,1fr) 150px 100px 44px 130px;gap:14px;align-items:center;padding:16px 20px;border-bottom:1px solid #F5F3EA">
       <span><span style="font-size:15px;font-weight:700">${escH(p.title)}${p.draft?' <span class="pill" style="background:#FBF3D9;color:#9A7B1E;font-size:11px">Szkic — nie na stronie</span>':''}${p.featured?' <span class="pill" style="background:#F3F6E4;color:#41571F;font-size:11px">★ Na stronie głównej</span>':''}</span><span style="display:block;font-size:12.5px;color:#6B6F5C">blog/${escH(p.slug)}/</span></span>
       <span style="font-size:13px;color:#41571F">${escH(p.category)}</span>
       <span class="mono" style="font-size:11.5px;color:#6B6F5C">${escH(p.date)}</span>
@@ -365,7 +738,6 @@ function blogView(m) {
     </div></div>`;
 }
 window.newPost = () => { S.post = { slug:'', managed:true, draft:false, featured:false, machines:[], title:'', category:CATS[0][0], catSlug:CATS[0][1], date:new Date().toISOString().slice(0,10), read:5, cover:null, coverAlt:'', coverPad:false, excerpt:'', metaTitle:'', metaDesc:'', lead:'', bodyHtml:'<p></p>', _new:true }; S.view='blogedit'; render(); };
-// jeden wyróżniony wpis: ustawienie na jednym zdejmuje z pozostałych
 function setFeatured(slug) {
   for (const p of S.posts) { const want = p.slug===slug; if (!!p.featured!==want) { p.featured = want; if (!want) delete p.featured; const path='content/blog/'+p.slug+'.json'; S.files[path]=p; touch(path); } }
 }
@@ -376,169 +748,167 @@ window.featurePost = i => {
   else setFeatured(p.slug);
   renderMain();
 };
-window.editPost = i => { const o = S.posts[i]; S.post = JSON.parse(JSON.stringify(o)); S.post._orig = o.slug; S.view='blogedit'; render(); };
+window.editPost = i => { const o = S.posts[i]; S.post = clone(o); S.post._orig = o.slug; S.post._remote = o._remote; S.view='blogedit'; render(); };
 
+function counterRow(id, val, max, warnAt) {
+  const len = (val||'').length, col = cntCol(len,max,warnAt);
+  return { cnt: `<span class="cnt" id="cnt-${id}" style="color:${col}">${len} / ${max}</span>`, bar: `<div class="bar"><div id="bar-${id}" style="width:${Math.min(100,len/max*100)}%;background:${col}"></div></div>` };
+}
+window.cntU = (id, len, max, warn) => { const col = cntCol(len,max,warn); const c=$('#cnt-'+id); if(c){c.textContent=len+' / '+max;c.style.color=col;} };
 function blogEditView(m) {
   const p = S.post;
-  const mt = counterRow('mt', p.metaTitle, LIM.title, 40), md = counterRow('md', p.metaDesc, LIM.desc, 120);
-  m.innerHTML = `<div style="display:grid;grid-template-columns:1fr 300px;gap:24px;max-width:1160px;align-items:start">
+  if (!p) { S.view='blog'; return blogView(m); }
+  const mt = counterRow('mt', p.metaTitle, LIM.title, 30), md = counterRow('md', p.metaDesc, LIM.desc, 70);
+  m.innerHTML = `<div style="display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:24px;max-width:1160px;align-items:start">
     <div class="card" style="padding:26px">
-      <button class="btn" style="background:none;color:#41571F;padding:0;margin-bottom:16px;font-size:13px" onclick="go('blog')">← Wróć do listy wpisów</button>
+      <button class="btn" style="background:none;color:#41571F;padding:0;margin-bottom:16px;font-size:13px" onclick="leavePost()">← Wróć do listy wpisów</button>
       <input id="pTitle" value="${escH(p.title)}" placeholder="Tytuł wpisu…" oninput="postTitle(this.value)" style="width:100%;border:0;font-family:'Chakra Petch',sans-serif;font-size:26px;font-weight:700;padding:6px 0;background:none;border-bottom:2px solid #EFEDE4;margin-bottom:6px">
-      <div class="mono" style="font-size:11px;color:#6B6F5C;margin-bottom:18px">agro-weld.pl/blog/<span style="color:#41571F" id="pSlug">${escH(p.slug)||'…'}</span>/ <span style="color:#B0AC9C">(adres tworzy się sam)</span></div>
+      <div class="mono" style="font-size:11px;color:#6B6F5C;margin-bottom:18px">agro-weld.pl/blog/<span style="color:#41571F" id="pSlug">${escH(p.slug)||'…'}</span>/ <span style="color:#B0AC9C">${p._new?'(adres tworzy się sam)':'(adresu opublikowanego wpisu nie zmieniamy)'}</span></div>
       <div><label class="lbl">Zajawka (pod tytułem artykułu)</label>
       <textarea class="inp" rows="2" oninput="pSet('lead',this.value)">${escH(p.lead)}</textarea></div>
-      <div style="display:flex;gap:4px;border:1px solid #DDD9C9;border-radius:9px;padding:6px;margin:16px 0;background:#FDFCF8;flex-wrap:wrap">
-        ${[['bold','B','Pogrubienie'],['italic','I','Kursywa'],['h2','H2','Nagłówek'],['h3','H3','Podnagłówek'],['ul','• Lista','Lista'],['link','🔗 Link','Wstaw link'],['img','🖼 Zdjęcie','Wstaw zdjęcie']].map(([c,l,t])=>
+      <div style="display:flex;gap:4px;border:1px solid #DDD9C9;border-radius:9px;padding:6px;margin:16px 0;background:#FDFCF8;flex-wrap:wrap;position:sticky;top:70px;z-index:2">
+        ${[['bold','B','Pogrubienie'],['italic','I','Kursywa'],['h2','H2','Nagłówek'],['h3','H3','Podnagłówek'],['ul','• Lista','Lista'],['ol','1. Lista','Lista numerowana'],['link','Link','Wstaw link'],['unlink','Usuń link','Usuń link'],['img','Zdjęcie','Wstaw zdjęcie'],['p','Akapit','Zwykły tekst']].map(([c,l,t])=>
           `<button type="button" title="${t}" onmousedown="event.preventDefault()" onclick="tool('${c}')" style="border:0;background:none;border-radius:6px;padding:7px 11px;font-size:13.5px;${c==='bold'?'font-weight:700':''}${c==='italic'?'font-style:italic':''}">${l}</button>`).join('')}
       </div>
       <div id="pBody" class="art" contenteditable="true" oninput="pSet('bodyHtml',null)" onclick="imgAlt(event)" onpaste="pastePic(event)" ondrop="dropPic(event)" ondragover="event.preventDefault()">${dispBody(p.bodyHtml)}</div>
-      <input id="imgInput" type="file" accept="image/*" class="hidden" onchange="insertImg(this)">
+      <p class="help">Kliknij zdjęcie w treści, aby zmienić jego opis (alt). Zdjęcia możesz wkleić lub przeciągnąć.</p>
     </div>
-    <div style="display:flex;flex-direction:column;gap:16px;position:sticky;top:76px">
+    <div style="display:flex;flex-direction:column;gap:16px">
       <div class="card" style="padding:20px">
-        <div style="font-size:11.5px;font-weight:700;letter-spacing:.08em;color:#6B6F5C;margin-bottom:12px">WPIS</div>
+        <div class="sublbl" style="margin-bottom:12px">Wpis</div>
         <label class="lbl">Kategoria</label>
-        <select class="inp" style="margin-bottom:12px" onchange="pCat(this.value)">${CATS.map(([n,s])=>`<option ${n===p.category?'selected':''}>${n}</option>`).join('')}</select>
+        <select class="inp" style="margin-bottom:12px" onchange="pCat(this.value)">${CATS.map(([n])=>`<option ${n===p.category?'selected':''}>${n}</option>`).join('')}</select>
         <label class="lbl">Data publikacji</label>
         <input type="date" class="inp" value="${escH(p.date)}" oninput="pSet('date',this.value)" style="margin-bottom:12px">
-        <label class="lbl">Zdjęcie miniatury (lista wpisów i strona główna)</label>
+        <label class="lbl">Zdjęcie miniatury</label>
         ${p.cover?coverThumb(p.cover, p.coverPad):''}
         <button class="btn btn-o" style="width:100%" onclick="$('#coverInput').click()">${p.cover?'Zmień zdjęcie':'Wgraj zdjęcie'}</button>
         <input id="coverInput" type="file" accept="image/*" class="hidden" onchange="setCover(this)">
         <div style="font-size:12px;color:#6B6F5C;line-height:1.5;margin-top:8px;background:#F7F5EC;border-radius:8px;padding:9px 11px">
-          <b>Wymiary:</b> poziome, proporcje 3:2, min. 1200×800 px (najlepiej 1600×1067). Zapisujemy w WebP, szerokość do 1200 px.<br>
-          <b>Kadr:</b> na liście wpisów 168 px wysokości, na stronie głównej ok. 300 px — zdjęcie jest przycinane do środka, więc temat trzymaj centralnie.
+          <b>Wymiary:</b> poziome 3:2, min. 1200×800 px. Zapisujemy w WebP do 1200 px.<br>
+          <b>Kadr:</b> zdjęcie jest przycinane do środka — temat trzymaj centralnie.
           <span id="coverDim" class="mono" style="display:block;margin-top:4px;color:${p._coverW?(p._coverW<1200?'#9A7B1E':'#41571F'):'#B0AC9C'}">${p._coverW?'Wgrane: '+p._coverW+'×'+p._coverH+' px'+(p._coverW<1200?' — trochę mało, może być rozmyte':''):''}</span>
         </div>
-        <label style="display:flex;align-items:center;gap:8px;font-size:13px;margin-top:8px;cursor:pointer"><input type="checkbox" ${p.coverPad?'checked':''} onchange="pSet('coverPad',this.checked);renderMain()"> Render maszyny na jasnym tle (pokaż całość, bez przycinania)</label>
+        <label style="display:flex;align-items:center;gap:8px;font-size:13px;margin-top:8px;cursor:pointer"><input type="checkbox" ${p.coverPad?'checked':''} onchange="pSet('coverPad',this.checked);renderMain()"> Render maszyny na jasnym tle (bez przycinania)</label>
         <input class="inp" style="margin-top:8px" maxlength="${LIM.alt}" placeholder="Opis zdjęcia (alt) — co widać" value="${escH(p.coverAlt)}" oninput="pSet('coverAlt',this.value)">
-        <label style="display:flex;align-items:center;gap:8px;font-size:13px;margin-top:14px;cursor:pointer;padding:10px 12px;border:1px solid ${p.featured?'#41571F':'#DDD9C9'};border-radius:8px;background:${p.featured?'#F3F6E4':'#fff'}"><input type="checkbox" ${p.featured?'checked':''} onchange="pSet('featured',this.checked);renderMain()"> <span><b>★ Wyróżnij na stronie głównej</b><span style="display:block;font-size:12px;color:#6B6F5C">Duża karta w sekcji Blog. Tylko jeden wpis — zastąpi obecny.</span></span></label>
+        <label style="display:flex;align-items:center;gap:8px;font-size:13px;margin-top:14px;cursor:pointer;padding:10px 12px;border:1px solid ${p.featured?'#41571F':'#DDD9C9'};border-radius:8px;background:${p.featured?'#F3F6E4':'#fff'}"><input type="checkbox" ${p.featured?'checked':''} onchange="pSet('featured',this.checked);renderMain()"> <span><b>★ Wyróżnij na stronie głównej</b><span style="display:block;font-size:12px;color:#6B6F5C">Tylko jeden wpis — zastąpi obecny.</span></span></label>
         <label class="lbl" style="margin-top:12px">Krótki opis na liście wpisów</label>
         <textarea class="inp" rows="3" oninput="pSet('excerpt',this.value)">${escH(p.excerpt)}</textarea>
       </div>
       <div class="card" style="padding:20px">
-        <div style="font-size:11.5px;font-weight:700;letter-spacing:.08em;color:#6B6F5C;margin-bottom:6px">MASZYNY Z ARTYKUŁU</div>
-        <p style="font-size:12.5px;color:#6B6F5C;margin-bottom:10px">Zaznacz maszyny lub kategorie, o których jest artykuł — pokażą się jako linki obok treści.</p>
+        <div class="sublbl" style="margin-bottom:6px">Maszyny z artykułu</div>
+        <p style="font-size:12.5px;color:#6B6F5C;margin-bottom:10px">Pokażą się jako linki obok treści.</p>
         <div id="pMach" style="display:flex;flex-direction:column;gap:6px;margin-bottom:10px">${(p.machines||[]).map(k=>machChip(k)).join('')||'<span style="font-size:12.5px;color:#B0AC9C">Nic nie wybrano</span>'}</div>
         <select class="inp" style="font-size:13px" onchange="addMach(this.value);this.value=''">
           <option value="">+ Dodaj maszynę lub kategorię…</option>
           <optgroup label="Kategorie">${MCATS.map(([s,n])=>`<option value="cat:${s}">${escH(n)}</option>`).join('')}</optgroup>
-          <optgroup label="Maszyny">${(S.files['content/maszyny.json']||[]).map(x=>`<option value="m:${x.id}">${escH(x.name)} — ${escH(x.models)}</option>`).join('')}</optgroup>
+          <optgroup label="Maszyny">${(MACH()||[]).map(x=>`<option value="m:${x.id}">${escH(x.name)} — ${escH(x.models)}</option>`).join('')}</optgroup>
         </select>
       </div>
       <div class="card" style="padding:20px">
-        <div style="font-size:11.5px;font-weight:700;letter-spacing:.08em;color:#6B6F5C;margin-bottom:6px">SEO WPISU</div>
+        <div class="sublbl" style="margin-bottom:6px">SEO wpisu</div>
         <p style="font-size:12.5px;color:#6B6F5C;margin-bottom:12px">Wypełnia się samo z tytułu i zajawki. Możesz poprawić.</p>
         <div class="row" style="justify-content:space-between;margin-bottom:5px"><label class="lbl" style="margin:0;font-size:12px">Meta title</label>${mt.cnt}</div>
-        <input class="inp" style="font-size:13px;margin-bottom:12px" maxlength="${LIM.title}" value="${escH(p.metaTitle)}" oninput="pSet('metaTitle',this.value);cntU('mt',this.value.length,LIM.title,40)">
+        <input class="inp" style="font-size:13px;margin-bottom:12px" maxlength="${LIM.title}" value="${escH(p.metaTitle)}" oninput="pSet('metaTitle',this.value);cntU('mt',this.value.length,LIM.title,30)">
         <div class="row" style="justify-content:space-between;margin-bottom:5px"><label class="lbl" style="margin:0;font-size:12px">Meta description</label>${md.cnt}</div>
-        <textarea class="inp" style="font-size:12.5px" rows="3" maxlength="${LIM.desc}" oninput="pSet('metaDesc',this.value);cntU('md',this.value.length,LIM.desc,120)">${escH(p.metaDesc)}</textarea>
+        <textarea class="inp" style="font-size:12.5px" rows="3" maxlength="${LIM.desc}" oninput="pSet('metaDesc',this.value);cntU('md',this.value.length,LIM.desc,70)">${escH(p.metaDesc)}</textarea>
       </div>
       <div class="card" style="padding:20px">
         <button class="btn btn-p" style="width:100%;margin-bottom:8px" onclick="savePost(false)">Zapisz wpis do publikacji</button>
         <button class="btn btn-o" style="width:100%;margin-bottom:8px" onclick="savePost(true)">Zapisz jako szkic (niewidoczny)</button>
         ${p._remote?`<button class="btn" style="width:100%;background:none;color:#8C3A43;font-size:13px" onclick="delPost()">Usuń wpis ze strony</button>`:''}
-        <p style="font-size:12px;color:#6B6F5C">Zmiany trafią na stronę po kliknięciu „Opublikuj zmiany" na górze.</p>
+        <p style="font-size:12px;color:#6B6F5C">Zmiany trafią na stronę po kliknięciu „Opublikuj zmiany” na górze.</p>
       </div>
-    </div></div>`;
+    </div></div>
+    <input id="imgInput" type="file" accept="image/*" class="hidden" onchange="insertImg(this)">`;
 }
-window.pSet = (k,v) => { if(k==='bodyHtml') S.post.bodyHtml = $('#pBody').innerHTML; else S.post[k]=v; };
+window.leavePost = () => { if (S.post && S.post._touched && !confirm('Wpis ma niezapisane zmiany. Wyjść bez zapisywania?')) return; S.post=null; go('blog'); };
+window.pSet = (k,v) => { if(k==='bodyHtml') S.post.bodyHtml = $('#pBody').innerHTML; else S.post[k]=v; S.post._touched = true; };
 function machChip(key) {
   const [t,id] = key.split(':'); let name='?', sub='';
   if (t==='cat') { const c=MCATS.find(x=>x[0]===id); name=c?c[1]:id; sub='Kategoria maszyn'; }
-  else { const mm=(S.files['content/maszyny.json']||[]).find(x=>x.id===id); name=mm?mm.name:id; sub=mm?mm.models:''; }
+  else { const mm=(MACH()||[]).find(x=>x.id===id); name=mm?mm.name:id; sub=mm?mm.models:''; }
   return `<div style="display:flex;align-items:center;gap:10px;border:1px solid #DDD9C9;border-radius:8px;padding:8px 10px;font-size:13px"><span style="flex:1"><b>${escH(name)}</b><span class="mono" style="display:block;font-size:10px;color:#8A8163">${escH(sub)}</span></span><button onclick="rmMach('${key}')" style="border:0;background:none;color:#8C3A43;font-size:16px" title="Usuń">×</button></div>`;
 }
-window.addMach = k => { if(!k) return; S.post.machines = S.post.machines||[]; if (!S.post.machines.includes(k)) S.post.machines.push(k); renderMain(); };
-window.rmMach = k => { S.post.machines = (S.post.machines||[]).filter(x=>x!==k); renderMain(); };
-window.pCat = n => { const c = CATS.find(x=>x[0]===n); S.post.category=c[0]; S.post.catSlug=c[1]; };
-window.postTitle = v => { S.post.title=v; if (S.post._new){ S.post.slug=slugify(v); $('#pSlug').textContent=S.post.slug||'…'; }
-  if (S.post._new) { S.post.metaTitle=(v+' | Agro-Weld').slice(0,LIM.title); } };
+const keepBody = () => { const b=$('#pBody'); if (b) S.post.bodyHtml = b.innerHTML; };
+window.addMach = k => { if(!k) return; keepBody(); S.post.machines = S.post.machines||[]; if (!S.post.machines.includes(k)) S.post.machines.push(k); S.post._touched=true; renderMain(); };
+window.rmMach = k => { keepBody(); S.post.machines = (S.post.machines||[]).filter(x=>x!==k); S.post._touched=true; renderMain(); };
+window.pCat = n => { const c = CATS.find(x=>x[0]===n); S.post.category=c[0]; S.post.catSlug=c[1]; S.post._touched=true; };
+window.postTitle = v => { S.post.title=v; S.post._touched=true; if (S.post._new){ S.post.slug=slugify(v); $('#pSlug').textContent=S.post.slug||'…'; S.post.metaTitle=(v+' | Agro-Weld').slice(0,LIM.title); } };
 window.tool = c => {
   $('#pBody').focus();
   if (c==='bold') document.execCommand('bold');
   else if (c==='italic') document.execCommand('italic');
-  else if (c==='h2'||c==='h3') document.execCommand('formatBlock',false,c.toUpperCase());
+  else if (c==='h2'||c==='h3'||c==='p') document.execCommand('formatBlock',false,c.toUpperCase());
   else if (c==='ul') document.execCommand('insertUnorderedList');
+  else if (c==='ol') document.execCommand('insertOrderedList');
   else if (c==='link'){ const u=prompt('Adres linku (np. /maszyny/ albo https://…):'); if(u) document.execCommand('createLink',false,u); }
+  else if (c==='unlink') document.execCommand('unlink');
   else if (c==='img') $('#imgInput').click();
-  S.post.bodyHtml = $('#pBody').innerHTML;
+  S.post.bodyHtml = $('#pBody').innerHTML; S.post._touched=true;
 };
-async function compressImg(file, maxW) {
-  const u = URL.createObjectURL(file);
-  const img = await new Promise((ok,er)=>{const i=new Image();i.onload=()=>ok(i);i.onerror=er;i.src=u;});
-  URL.revokeObjectURL(u);
-  const sc = Math.min(1, maxW/img.width); const c=document.createElement('canvas');
-  c.width=Math.round(img.width*sc); c.height=Math.round(img.height*sc);
-  c.getContext('2d').drawImage(img,0,0,c.width,c.height);
-  const blob = await new Promise(ok=>c.toBlob(ok,'image/webp',.82));
-  const b64 = await new Promise(ok=>{const r=new FileReader();r.onload=()=>ok(r.result.split(',')[1]);r.readAsDataURL(blob);});
-  return b64;
-}
-function dispBody(html) { // widok w edytorze: nowe zdjęcia jako base64 (jeszcze nie ma ich w repo), stare — pełny adres strony
-  const d = document.createElement('div'); d.innerHTML = html || '<p></p>';
-  d.querySelectorAll('img').forEach(im=>{
+function dispBody(html) {
+  const d = document.createElement('template'); d.innerHTML = html || '<p></p>';
+  d.content.querySelectorAll('img').forEach(im=>{
     const src = im.getAttribute('src')||'';
-    if (src.startsWith('/uploads/')) {
+    if (src.startsWith('/uploads/') || src.startsWith('/assets/')) {
       const b = S.bins.find(x=>'/'+x.path===src);
       im.setAttribute('data-path', src);
-      im.setAttribute('src', b ? 'data:image/webp;base64,'+b.base64 : 'https://www.agro-weld.pl'+src);
+      im.setAttribute('src', b ? 'data:image/webp;base64,'+b.base64 : SITE()+src.slice(1));
     }
   });
   return d.innerHTML;
 }
 async function addImage(f) {
   if (!f || !/^image\//.test(f.type)) return;
-  const b64 = await compressImg(f, 1600);
+  const { b64 } = await compressImg(f, 1600);
   const path = 'uploads/blog/' + (S.post.slug||slugify(S.post.title)||'wpis') + '-' + Date.now().toString(36) + '.webp';
   S.bins.push({ path, base64: b64 });
   const alt = prompt('Opis zdjęcia (alt) — napisz, co widać na zdjęciu:', '') || '';
   const el = $('#pBody'); el.focus();
   document.execCommand('insertHTML', false,
     '<figure><img src="data:image/webp;base64,'+b64+'" data-path="/'+path+'" alt="'+escH(alt)+'"><figcaption>'+(escH(alt)||'Podpis zdjęcia — kliknij i zmień albo usuń')+'</figcaption></figure><p><br></p>');
-  S.post.bodyHtml = el.innerHTML; renderTop();
+  S.post.bodyHtml = el.innerHTML; S.post._touched=true; renderTop();
 }
 window.insertImg = inp => { const f = inp.files[0]; inp.value=''; addImage(f); };
 window.pastePic = e => { const f = [...(e.clipboardData&&e.clipboardData.files||[])].find(x=>/^image\//.test(x.type)); if (f) { e.preventDefault(); addImage(f); } };
 window.dropPic = e => { const f = [...(e.dataTransfer&&e.dataTransfer.files||[])].find(x=>/^image\//.test(x.type)); if (f) { e.preventDefault(); addImage(f); } };
-window.imgAlt = e => { if (e.target.tagName!=='IMG') return; const a = prompt('Opis zdjęcia (alt) — co widać na zdjęciu:', e.target.alt||''); if (a!==null) { e.target.alt = a; S.post.bodyHtml = $('#pBody').innerHTML; } };
+window.imgAlt = e => { if (e.target.tagName!=='IMG') return; const a = prompt('Opis zdjęcia (alt) — co widać na zdjęciu (max '+LIM.alt+' znaków):', e.target.alt||''); if (a!==null) { e.target.alt = a.slice(0,LIM.alt); S.post.bodyHtml = $('#pBody').innerHTML; S.post._touched=true; } };
 function coverThumb(path, pad) {
-  const b = S.bins.find(x=>x.path===path);
-  const src = b ? 'data:image/webp;base64,'+b.base64 : 'https://www.agro-weld.pl/'+path;
-  return `<div style="position:relative;margin-bottom:8px"><img src="${src}" alt="" style="width:100%;height:110px;object-fit:${pad?'contain':'cover'};${pad?'padding:8px;':''}border-radius:8px;border:1px solid #DDD9C9;background:#E3DCC8;display:block"><span class="mono" style="position:absolute;right:6px;bottom:6px;font-size:9.5px;background:rgba(20,22,14,.7);color:#ECE7D7;padding:2px 6px;border-radius:4px">podgląd kadru z listy</span></div>`;
+  return `<div style="position:relative;margin-bottom:8px"><img src="${escH(imgURL(path))}" alt="" style="width:100%;height:110px;object-fit:${pad?'contain':'cover'};${pad?'padding:8px;':''}border-radius:8px;border:1px solid #DDD9C9;background:#E3DCC8;display:block"><span class="mono" style="position:absolute;right:6px;bottom:6px;font-size:9.5px;background:rgba(20,22,14,.7);color:#ECE7D7;padding:2px 6px;border-radius:4px">podgląd kadru z listy</span></div>`;
 }
 window.setCover = async inp => {
   const f = inp.files[0]; if(!f) return; inp.value='';
   if (!/^image\//.test(f.type)) return alert('To nie jest plik ze zdjęciem.');
-  const dim = await new Promise(ok=>{const i=new Image();const u=URL.createObjectURL(f);i.onload=()=>{ok([i.width,i.height]);URL.revokeObjectURL(u)};i.onerror=()=>ok([0,0]);i.src=u;});
-  if (dim[0] && dim[0] < 800) { if (!confirm('Zdjęcie ma tylko '+dim[0]+'×'+dim[1]+' px — na stronie będzie rozmyte. Wgrać mimo to?')) return; }
-  S.post._coverW = dim[0]; S.post._coverH = dim[1];
-  const b64 = await compressImg(f, 1200);
-  S.bins = S.bins.filter(b=>b.path!==S.post.cover); // poprzednia, niewysłana okładka nie leci do repo
+  keepBody();
+  const { b64, w, h } = await compressImg(f, 1200);
+  if (w < 800 && !confirm('Zdjęcie ma tylko '+w+'×'+h+' px — na stronie będzie rozmyte. Wgrać mimo to?')) return;
+  S.post._coverW = w; S.post._coverH = h;
+  S.bins = S.bins.filter(b=>b.path!==S.post.cover);
   const path = 'uploads/blog/' + (S.post.slug||slugify(S.post.title)||'wpis') + '-c' + Date.now().toString(36) + '.webp';
   S.bins.push({ path, base64: b64 });
-  S.post.cover = path; renderMain(); renderTop();
+  S.post.cover = path; S.post._touched=true; renderMain(); renderTop();
 };
 function cleanBody(html) {
-  const d = document.createElement('div'); d.innerHTML = html;
-  d.querySelectorAll('script,style,iframe,object,embed').forEach(el=>el.remove());
-  d.querySelectorAll('*').forEach(el=>{
+  const d = document.createElement('template'); d.innerHTML = html;
+  const c = d.content;
+  c.querySelectorAll('script,style,iframe,object,embed').forEach(el=>el.remove());
+  c.querySelectorAll('*').forEach(el=>{
     [...el.attributes].forEach(a=>{ if (/^on/i.test(a.name)) el.removeAttribute(a.name); });
     el.removeAttribute('style'); el.removeAttribute('class');
     if ((el.getAttribute('href')||'').trim().toLowerCase().startsWith('javascript:')) el.removeAttribute('href');
     if (/^(SPAN|DIV|FONT)$/.test(el.tagName)) { while(el.firstChild) el.parentNode.insertBefore(el.firstChild, el); el.remove(); }
   });
-  d.querySelectorAll('img').forEach(im=>{
+  c.querySelectorAll('img').forEach(im=>{
     const dp = im.getAttribute('data-path');
     if (dp) { im.setAttribute('src', dp); im.removeAttribute('data-path'); }
-    else im.setAttribute('src', (im.getAttribute('src')||'').replace('https://www.agro-weld.pl',''));
-    if ((im.getAttribute('src')||'').startsWith('data:')) { const fg=im.closest('figure'); (fg||im).remove(); } // obraz bez pliku — nie publikujemy base64
+    else im.setAttribute('src', (im.getAttribute('src')||'').replace('https://www.agro-weld.pl','').replace(ROOT,'/'));
+    if ((im.getAttribute('src')||'').startsWith('data:')) { const fg=im.closest('figure'); (fg||im).remove(); }
   });
-  d.querySelectorAll('figure').forEach(f=>{ if (!f.querySelector('img')) f.remove(); });
+  c.querySelectorAll('figure').forEach(f=>{ if (!f.querySelector('img')) f.remove(); });
   let n = 0;
-  d.querySelectorAll('h2').forEach(h=>{ if(!h.id) h.id = slugify(h.textContent)||('sekcja-'+(++n)); });
-  d.querySelectorAll('a').forEach(a=>{ a.className='inline'; });
+  c.querySelectorAll('h2').forEach(h=>{ if(!h.id) h.id = slugify(h.textContent)||('sekcja-'+(++n)); });
+  c.querySelectorAll('a').forEach(a=>{ a.className='inline'; });
   return d.innerHTML;
 }
 window.savePost = (draft) => {
@@ -555,8 +925,8 @@ window.savePost = (draft) => {
   p.read = Math.max(2, Math.round(words/200));
   if (p.draft && p.featured) { p.featured = false; }
   if (!(p.machines||[]).length) delete p.machines;
-  delete p._new; delete p._coverW; delete p._coverH;
-  if (p.featured) for (const x of S.posts) if (x.featured && x.slug!==p.slug && x.slug!==p._orig) { delete x.featured; const xp='content/blog/'+x.slug+'.json'; S.files[xp]=x; touch(xp); } // jeden wyróżniony
+  delete p._new; delete p._coverW; delete p._coverH; delete p._touched;
+  if (p.featured) for (const x of S.posts) if (x.featured && x.slug!==p.slug && x.slug!==p._orig) { delete x.featured; const xp='content/blog/'+x.slug+'.json'; S.files[xp]=x; touch(xp); }
   if (!p.featured) delete p.featured;
   const path = 'content/blog/'+p.slug+'.json';
   S.files[path] = p; touch(path);
@@ -566,16 +936,23 @@ window.savePost = (draft) => {
 };
 window.delPost = () => {
   const p = S.post;
-  if (!confirm('Usunąć wpis „'+p.title+'" ze strony? Zniknie przy najbliższej publikacji.')) return;
+  if (!confirm('Usunąć wpis „'+p.title+'” ze strony? Zniknie przy najbliższej publikacji.')) return;
   const path = 'content/blog/'+p.slug+'.json';
   delete S.dirty[path]; delete S.files[path];
   S.posts = S.posts.filter(x=>x.slug!==p.slug);
-  if (p._remote) { S.deletes.push(path); }
+  if (p._remote) S.deletes.push(path);
   S.post = null; renderTop(); go('blog');
 };
 
-// start: sprawdź sesję
-(async () => { try { await api('/api/list?path=content'); S.view='dash'; } catch(e) { S.view='login'; } render(); })();
+// start: sprawdź sesję (bez serwera → tryb podglądu na plikach projektu)
+(async () => {
+  try {
+    const r = await fetch('/api/list?path=content', { credentials:'same-origin' });
+    if (!(r.headers.get('content-type')||'').includes('json')) { S.demo = true; S.view = 'dash'; }
+    else S.view = r.ok ? 'dash' : 'login';
+  } catch(e) { S.demo = true; S.view = 'dash'; }
+  render();
+})();
 </script>
 </body>
 </html>

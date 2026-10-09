@@ -13,7 +13,7 @@
         var fit = m.imgType === 'photo' ? 'width:100%;height:100%;object-fit:cover' : 'max-width:100%;max-height:100%;object-fit:contain';
         return '        <a class="prow" id="' + escA(m.id) + '" href="' + escA(m.url || '/maszyny/' + c[0] + '/') + '" style="scroll-margin-top:96px">\n' +
           '          <span class="pimg" style="height:210px;border-right:1px solid #14160E;background-color:#F1ECDF;background-image:linear-gradient(rgba(20,22,14,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(20,22,14,.05) 1px,transparent 1px);background-size:24px 24px;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:' + (m.imgType === 'photo' ? '0' : '20px') + '">' +
-          '<img class="rowimg" src="' + escA(img) + '" alt="' + escA(m.name + ' — maszyna Agro-Weld') + '" loading="lazy" style="' + fit + ';display:block"></span>\n' +
+          '<img class="rowimg" src="' + escA(img) + '" alt="' + escA(m.imgAlt || (m.name + ' — maszyna Agro-Weld')) + '" loading="lazy" style="' + fit + ';display:block"></span>\n' +
           '          <span style="padding:24px 30px;display:flex;flex-direction:column;justify-content:center">\n' +
           '            <span class="mono" style="display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:10px;font-size:11.5px;letter-spacing:.05em"><span style="color:#8C3A43;font-weight:700">' + esc(m.models || '') + '</span><span class="rowarrow" style="font-size:19px;color:#8C3A43;font-weight:700">↗</span></span>\n' +
           '            <span style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px"><h3 style="font-size:25px;letter-spacing:-.01em;line-height:1.1">' + esc(m.name) + '</h3>' +

@@ -19,7 +19,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://www.agro-weld.pl/assets/realizacje/linia-ziemniaki-1.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap"><link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"></noscript>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Linia do pakowania ziemniaków - realizacja | Agro-Weld","url":"https://www.agro-weld.pl/realizacje/linia-do-pakowania-ziemniakow/","description":"Rozbudowana linia do pakowania ziemniaków: kosz 1,5 m³, separator, czyszczarka szczotkowa, polerka, stół rolkowy, wagoworkownica. Realizacja Agro-Weld."}</script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -34,7 +34,7 @@ a{color:#41571F}a:hover{color:#8C3A43}
 [data-reveal]{opacity:0}
 [data-reveal][data-in]{animation:awReveal .8s cubic-bezier(.2,.7,.2,1) both}
 @keyframes awReveal{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
-@keyframes awPulse{0%,100%{box-shadow:0 0 0 0 rgba(183,212,75,.5)}50%{box-shadow:0 0 0 8px rgba(183,212,75,0)}}
+@keyframes awPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.45)}}
 @keyframes awDrift{0%,100%{transform:translate(0,0)}50%{transform:translate(-26px,22px)}}
 .navlink{position:relative;color:#C3C8AF;text-decoration:none;transition:color .25s}
 .navlink::after{content:'';position:absolute;left:0;bottom:-6px;width:0;height:2px;background:#B7D44B;transition:width .3s}
@@ -121,7 +121,7 @@ th[scope="row"]{min-width:120px}
 
 <header style="position:sticky;top:0;z-index:60;background:rgba(20,22,14,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(236,231,215,.12)">
   <div class="pad" style="max-width:1280px;margin:0 auto;padding:0 32px;height:78px;display:flex;align-items:center;justify-content:space-between;gap:24px">
-    <a href="/" style="display:flex;align-items:center;gap:11px;flex-shrink:0"><span style="background:#ECE7D7;border-radius:8px;padding:7px 9px;display:flex"><img src="../../assets/logo.webp" alt="Agro-Weld" style="height:34px;width:auto;display:block"></span></a>
+    <a href="/" style="display:flex;align-items:center;gap:11px;flex-shrink:0"><span style="background:#ECE7D7;border-radius:8px;padding:7px 9px;display:flex"><img src="../../assets/logo-96.webp" srcset="../../assets/logo-96.webp 1x, ../../assets/logo-192.webp 2x" width="36" height="34" alt="Agro-Weld" style="height:34px;width:auto;display:block"></span></a>
     <nav class="hnav" style="display:flex;align-items:center;gap:28px;font-size:14.5px;font-weight:600;color:#C3C8AF" aria-label="Menu główne">
       <div class="subwrap">
         <a class="navlink" href="/maszyny/" style="color:#B7D44B">Oferta <span style="font-size:9px;opacity:.6">▾</span></a>
@@ -172,11 +172,11 @@ th[scope="row"]{min-width:120px}
   <div class="pad" style="max-width:1280px;margin:0 auto;padding:0 32px">
     <div class="fgrid" style="display:grid;grid-template-columns:1.5fr 1fr 1fr 1.3fr;gap:40px;padding-bottom:46px;border-bottom:1px solid rgba(236,231,215,.1)">
       <div>
-        <span style="background:#ECE7D7;display:inline-block;padding:11px 13px;border-radius:9px;margin-bottom:20px"><img src="../../assets/logo.webp" alt="Agro-Weld" style="height:42px;display:block"></span>
-        <p style="font-size:14.5px;line-height:1.6;max-width:300px;color:#7E8A63">Polski producent maszyn i linii technologicznych do czyszczenia, sortowania, obróbki i pakowania — dla rolnictwa, przetwórstwa i przemysłu.</p>
+        <span style="background:#ECE7D7;display:inline-block;padding:11px 13px;border-radius:9px;margin-bottom:20px"><img src="../../assets/logo-96.webp" srcset="../../assets/logo-96.webp 1x, ../../assets/logo-192.webp 2x" width="44" height="42" loading="lazy" alt="Agro-Weld" style="height:42px;width:auto;display:block"></span>
+        <p style="font-size:14.5px;line-height:1.6;max-width:300px;color:#A0AA84">Polski producent maszyn i linii technologicznych do czyszczenia, sortowania, obróbki i pakowania — dla rolnictwa, przetwórstwa i przemysłu.</p>
       </div>
       <nav aria-label="Nawigacja — stopka">
-        <div class="mono" style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#5E6A47;margin-bottom:18px">Nawigacja</div>
+        <div class="mono" style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#8E9A72;margin-bottom:18px">Nawigacja</div>
         <ul style="display:flex;flex-direction:column;gap:12px;font-size:14.5px">
           <li><a class="awlink" href="/maszyny/">Oferta</a></li>
           <li><a class="awlink" href="/realizacje/">Realizacje</a></li>
@@ -189,7 +189,7 @@ th[scope="row"]{min-width:120px}
         </ul>
       </nav>
       <nav aria-label="Kategorie maszyn — stopka">
-        <div class="mono" style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#5E6A47;margin-bottom:18px">Etapy linii</div>
+        <div class="mono" style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#8E9A72;margin-bottom:18px">Etapy linii</div>
         <ul style="display:flex;flex-direction:column;gap:12px;font-size:14.5px">
           <li><a class="awlink" href="/maszyny/rozladunek-skrzyn/">Rozładunek skrzyń</a></li>
           <li><a class="awlink" href="/maszyny/przyjecie-i-buforowanie/">Przyjęcie i buforowanie</a></li>
@@ -204,9 +204,9 @@ th[scope="row"]{min-width:120px}
         </ul>
       </nav>
       <div>
-        <div class="mono" style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#5E6A47;margin-bottom:18px">Kontakt</div>
+        <div class="mono" style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#8E9A72;margin-bottom:18px">Kontakt</div>
         <ul style="display:flex;flex-direction:column;gap:12px;font-size:14.5px">
-          <li><span style="color:#7E8A63">ul. Ignacego Prądzyńskiego 16, 63-000 Środa Wlkp.</span></li>
+          <li><span style="color:#A0AA84">ul. Ignacego Prądzyńskiego 16, 63-000 Środa Wlkp.</span></li>
           <li><a class="awlink" href="mailto:biuro@agro-weld.pl" style="color:#ECE7D7;font-weight:600">biuro@agro-weld.pl</a></li>
           <li><a class="awlink" href="tel:+48725140257" style="color:#ECE7D7;font-weight:600">+48 725 140 257</a></li>
           <li><a class="awlink" href="tel:+48608230369" style="color:#ECE7D7;font-weight:600">+48 608 230 369</a></li>
@@ -214,13 +214,13 @@ th[scope="row"]{min-width:120px}
       </div>
     </div>
     <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;padding-top:26px;flex-wrap:wrap">
-      <span style="font-size:13px;color:#5E6A47">© 2026 Agro-Weld Spółka z ograniczoną odpowiedzialnością. Wszelkie prawa zastrzeżone.</span>
-      <a class="awlink" href="/polityka-prywatnosci/" style="font-size:13px;color:#5E6A47">Polityka prywatności</a>
-      <button type="button" class="awlink" data-aw-cookie-settings style="font-size:13px;color:#5E6A47;background:none;border:0;padding:0;cursor:pointer;font-family:inherit">Ustawienia cookies</button>
-      <a class="awlink mono" href="/uploads/agro-weld-katalog-2026.pdf" style="font-size:12.5px;color:#7E8A63;letter-spacing:.04em">↓ Pobierz katalog (PDF)</a>
+      <span style="font-size:13px;color:#8E9A72">© 2026 Agro-Weld Spółka z ograniczoną odpowiedzialnością. Wszelkie prawa zastrzeżone.</span>
+      <a class="awlink" href="/polityka-prywatnosci/" style="font-size:13px;color:#8E9A72">Polityka prywatności</a>
+      <button type="button" class="awlink" data-aw-cookie-settings style="font-size:13px;color:#8E9A72;background:none;border:0;padding:0;cursor:pointer;font-family:inherit">Ustawienia cookies</button>
+      <a class="awlink mono" href="/uploads/agro-weld-katalog-2026.pdf" style="font-size:12.5px;color:#A0AA84;letter-spacing:.04em">↓ Pobierz katalog (PDF)</a>
     </div>
     <div style="display:flex;justify-content:flex-end;padding-top:14px">
-      <a class="awlink mono" href="https://echo.media.pl" target="_blank" rel="noopener" style="font-size:12px;letter-spacing:.05em;color:#5A6448">Strona zmontowana i uspawana przez ECHO Media</a>
+      <a class="awlink mono" href="https://echo.media.pl" target="_blank" rel="noopener" style="font-size:12px;letter-spacing:.05em;color:#8E9A72">Strona zmontowana i uspawana przez ECHO Media</a>
     </div>
   </div>
 </footer>

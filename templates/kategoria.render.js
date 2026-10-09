@@ -36,7 +36,7 @@
       var img = m.img ? '../../assets/' + m.img : '../../assets/maszyna-placeholder.png';
       return '      <a class="prow" id="' + escA(m.id) + '" href="' + escA(href) + '" style="display:grid;grid-template-columns:150px 1fr auto;gap:26px;align-items:center;padding:20px 24px;background:#ECE7D7;text-decoration:none;color:#14160E;scroll-margin-top:96px">\n' +
         '        <span style="width:150px;height:100px;flex-shrink:0;background-color:#F1ECDF;background-image:linear-gradient(rgba(20,22,14,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(20,22,14,.05) 1px,transparent 1px);background-size:20px 20px;border:1px solid rgba(20,22,14,.14);display:flex;align-items:center;justify-content:center;overflow:hidden">' +
-        '<img class="prowimg" src="' + escA(img) + '" alt="' + escA(m.name + (m.models ? ' ' + m.models : '')) + '" loading="lazy" style="max-width:86%;max-height:86%;object-fit:contain;display:block"></span>\n' +
+        '<img class="prowimg" src="' + escA(img) + '" alt="' + escA(m.imgAlt || (m.name + (m.models ? ' ' + m.models : ''))) + '" loading="lazy" style="max-width:86%;max-height:86%;object-fit:contain;display:block"></span>\n' +
         '        <div style="min-width:0"><div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:6px"><h3 style="font-size:23px;font-weight:700;letter-spacing:-.01em;line-height:1.1">' + esc(m.name) + '</h3>' +
         (m.models ? '<span class="mono" style="font-size:11px;font-weight:700;color:#8C3A43;letter-spacing:.03em">' + esc(m.models) + '</span>' : '') + '</div>\n' +
         '          <p style="font-size:14px;line-height:1.5;color:#56603F;text-wrap:pretty">' + esc(m.short || '') + '</p></div>\n' +
