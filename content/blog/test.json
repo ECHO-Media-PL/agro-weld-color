@@ -1,0 +1,22 @@
+{
+ "slug": "test",
+ "managed": true,
+ "draft": true,
+ "machines": [
+  "cat:przyjecie-i-buforowanie",
+  "m:kosz-kp1000"
+ ],
+ "title": "Test",
+ "category": "Dobór maszyn",
+ "catSlug": "dobor",
+ "date": "2026-10-09",
+ "read": 2,
+ "cover": "uploads/blog/test-cmv13vsbw.webp",
+ "coverAlt": "",
+ "coverPad": false,
+ "excerpt": "opis123",
+ "metaTitle": "Test | Agro-Weld",
+ "metaDesc": "Testowy wpis na blogu agro-weld.pl",
+ "lead": "testowy wpisik",
+ "bodyHtml": "Testowy wpis123<img src=\"/uploads/blog/test-mv13un67.webp\" alt=\"kp1000\"><p><br></p><p></p>"
+}
