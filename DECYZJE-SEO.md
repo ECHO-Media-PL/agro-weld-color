@@ -23,6 +23,10 @@ Audyt: `uploads/Agro-Weld_audyt_SEO_migracja_dane_v2.xlsx`. Numeracja wg listy u
 - Znaczniki `[DO UZUPEŁNIENIA PRZEZ AGRO-WELD]` z dokumentu usunięte, zdania dokończone neutralnie: liczba stanowisk przy stole SST, tolerancja ważenia wagoworkownicy, wymagania wentylacyjne raszlownicy, lista modeli kompatybilnych z RA-PP-00. Po otrzymaniu danych warto uzupełnić konkretami.
 - Rozbieżności danych technicznych między dokumentem SEO a kartami katalogowymi — **zostawiono wartości z katalogu**: liczarka pobór mocy (katalog 1,5 kW / dokument 0,55 i 1,1 kW), napełniacz NK-2 (katalog 0,75 kW / dokument 1,5 kW), przenośnik RA-PP-00 (dokument podaje 0,55 kW, karta nie podaje). Do decyzji, która wersja jest prawidłowa.
 
+### Meta tagi kategorii /maszyny/ (11.10.2026)
+
+Źródło: `uploads/agroweld - meta tagi - oferta.xlsx`. Wdrożone dla 10 kategorii: title, description, og:title, og:description — w `content/kategorie.json`, `content/seo.json` (nadpisanie przy buildzie, edytowalne w CMS) i w plikach `maszyny/*/index.html`. Kolumna „Fraza główna" jest informacją dla copy, nie trafia do kodu.
+
 ## Czego Render nie zrobi (ustalenia techniczne)
 
 - Reguły przekierowań dopasowują wyłącznie ścieżkę — query string (`?cat=`) jest ignorowany, niezależnie od planu. Dlatego stare adresy kategorii obsługuje skrypt w `<head>` na `/maszyny/`, który podmienia adres na nowy (`location.replace`).

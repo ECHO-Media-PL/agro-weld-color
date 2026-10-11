@@ -50,7 +50,9 @@
    "alts": {
     "../../assets/logo.webp": "Agro-Weld",
     "../../assets/kp5000.webp": "Kosz przyjęciowy KP5000"
-   }
+   },
+   "title": "Kosze przyjęciowe do warzyw, zasobniki buforowe | Agro-Weld",
+   "description": "Agro-Weld ➤ Kosz przyjęciowy do ziemniaków, marchwi i cebuli 1-5 m³, zasobnik buforowy do 24 m³. ✓ Rozdział na frakcje ✓ Opcja INOX ➤ Wycena!"
   },
   "linie-produkcyjne/index.html": {
    "title": "Linie do pakowania warzyw i owoców pod klucz | Agro-Weld",
@@ -79,6 +81,42 @@
   "polityka-prywatnosci/index.html": {
    "title": "Polityka prywatności | Agro-Weld",
    "description": "Informacje o przetwarzaniu danych osobowych przez Agro-Weld Sp. z o.o. — administrator, cele, okres przechowywania, prawa użytkowników, cookies."
+  },
+  "maszyny/rozladunek-skrzyn/index.html": {
+   "title": "Wywrotnica do skrzyniopalet - rozładunek skrzyń | Agro-Weld",
+   "description": "Agro-Weld ➤ Wywrotnice skrzyniopalet polskiej produkcji, udźwig do 2 ton. ✓ Do wózka widłowego lub paletowego ✓ Regulowany wysyp ➤ Zapytaj o wycenę!"
+  },
+  "maszyny/oczyszczanie/index.html": {
+   "title": "Szczotkarki do warzyw i separatory ziemi | Agro-Weld",
+   "description": "Agro-Weld ➤ Czyszczarki szczotkowe i wanny do płukania marchwi, ziemniaków, buraków. ✓ Separator kamieni do 10 t/h ✓ Opcja INOX ➤ Dobierz myjkę!"
+  },
+  "maszyny/selekcja/index.html": {
+   "title": "Stół selekcyjny rolkowy i taśmowy do warzyw | Agro-Weld",
+   "description": "Agro-Weld ➤ Stoły przebiercze do ręcznej selekcji warzyw i owoców, do 10 t/h. ✓ Oświetlenie LED ✓ Rolki PCV, aluminium lub INOX ➤ Dobierz stół!"
+  },
+  "maszyny/pakowanie/index.html": {
+   "title": "Maszyny do pakowania warzyw w worki i big-bagi | Agro-Weld",
+   "description": "Agro-Weld ➤ Wagoworkownice 1-30 kg i raszlownice do worków siatkowych, do 6 t/h. ✓ Cebula i warzywa korzeniowe ✓ Panel 7\" ➤ Zapytaj o wycenę!"
+  },
+  "maszyny/przenosniki/index.html": {
+   "title": "Przenośniki taśmowe i rolkowe do linii warzyw | Agro-Weld",
+   "description": "Agro-Weld ➤ Przenośnik taśmowy poziomy, wznoszący lub odpadowy pod wymiar linii. ✓ Szerokość 20-90 cm ✓ Taśma PCV lub modułowa ➤ Zapytaj o dobór!"
+  },
+  "maszyny/sortowanie/index.html": {
+   "title": "Sortowniki do owoców i kalibrowniki do warzyw | Agro-Weld",
+   "description": "Agro-Weld ➤ Sortownik do borówki amerykańskiej, malin i porzeczek oraz kalibrownik 10-100 mm. ✓ Biała taśma z LED ✓ Case study ➤ Sprawdź ofertę!"
+  },
+  "maszyny/wazenie-i-liczenie/index.html": {
+   "title": "Wagi kontrolne i liczarki do owoców i warzyw | Agro-Weld",
+   "description": "Agro-Weld ➤ Liczarka do jabłek i cytrusów do 350 szt./min, dynamiczna waga kontrolna z odrzutem. ✓ Legalizowana waga AXIS ✓ PLC ➤ Zapytaj o dobór!"
+  },
+  "maszyny/paletyzacja/index.html": {
+   "title": "Paletyzatory do worków i skrzynek Verbruggen | Agro-Weld",
+   "description": "Agro-Weld ➤ Autoryzowany dystrybutor Verbruggen. Paletyzator worków do 40 szt./min, kartonów i skrzynek do 80 szt./min. ✓ Owijanie ✓ Serwis ➤ Wycena!"
+  },
+  "maszyny/pielenie/index.html": {
+   "title": "Pielnik do warzyw - mechaniczne pielenie redlin | Agro-Weld",
+   "description": "Agro-Weld ➤ Pielnik do redlin marchwi i pietruszki, koła kopiujące, 3 lub 5 sekcji. ✓ Mniej herbicydów ✓ Podsiewacz nawozu ➤ Dobierz do ciągnika!"
   }
  }
 }
