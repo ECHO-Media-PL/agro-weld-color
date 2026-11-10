@@ -54,6 +54,11 @@ budżet ≤100 zł/mies., treści muszą być w statycznym HTML (czytelne dla bo
 - Tłumaczenia (EN/DE/RU/FR) — pola per język w JSON, wypełniane przez AI w panelu; strona
   publikuje na razie tylko PL (wersje językowe nie są jeszcze wdrożone na żywej stronie).
 
+- Obrazy (wydajność): build dopisuje do zdjęć w treści wpisów `width`/`height` (odczyt z pliku WebP)
+  oraz `srcset`, jeśli obok leżą warianty `<nazwa>-800.webp` / `<nazwa>-1200.webp`. Miniatury w boksie
+  „Maszyny z artykułu” biorą plik z `assets/thumbs/<img>` (112×88), a gdy go brak — oryginał.
+  Nowe zdjęcia z CMS działają bez wariantów; warianty i miniatury warto dogenerować przy okazji.
+
 ## Do zrobienia (kolejne etapy)
 - cms/ — serwer panelu (Express: auth, edycja JSON, upload zdjęć z kompresją, commit przez
   GitHub API, tłumaczenia przez Anthropic API), UI wg makiety `Panel CMS.dc.html`.

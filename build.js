@@ -39,6 +39,47 @@ function write(rel, s) {
 const src = rel => read(built.has(rel) ? path.join(OUT, rel) : rel);
 const hasSrc = rel => built.has(rel) || fs.existsSync(rel);
 
+// ---------- obrazy: wymiary i warianty responsywne ----------
+// Wymiary WebP z nagłówka pliku (bez zależności npm). Zwraca [w, h] albo null.
+function webpSize(file) {
+  try {
+    const b = fs.readFileSync(file);
+    if (b.toString('ascii', 0, 4) !== 'RIFF' || b.toString('ascii', 8, 12) !== 'WEBP') return null;
+    const c = b.toString('ascii', 12, 16);
+    if (c === 'VP8 ') return [b.readUInt16LE(26) & 0x3fff, b.readUInt16LE(28) & 0x3fff];
+    if (c === 'VP8L') { const v = b.readUInt32LE(21); return [(v & 0x3fff) + 1, ((v >> 14) & 0x3fff) + 1]; }
+    if (c === 'VP8X') return [b.readUIntLE(24, 3) + 1, b.readUIntLE(27, 3) + 1];
+  } catch (e) {}
+  return null;
+}
+// ścieżka pliku w repo dla src obrazka na stronie pageDir (np. 'blog/slug/')
+const imgFile = (srcAttr, pageDir) => srcAttr.startsWith('/') ? srcAttr.slice(1) : path.posix.normalize(pageDir + srcAttr);
+// Dla <img> bez srcset ze wskazaniem na lokalny .webp: dopisuje width/height (jeśli brak)
+// oraz srcset/sizes, gdy obok leżą warianty <nazwa>-800.webp / <nazwa>-1200.webp.
+// Działa też dla zdjęć dodanych później przez CMS — bez wariantów dostają tylko wymiary.
+// dims=false: nie dopisuj width/height (obrazek ma wymiary narzucone przez CSS klasy, np. karty bloga)
+function respImgs(html, pageDir, sizes, dims = true) {
+  return html.replace(/<img\b[^>]*>/g, tag => {
+    if (/\ssrcset=/.test(tag)) return tag;
+    const m = tag.match(/\ssrc="([^"?#]+\.webp)"/); if (!m || /^https?:/.test(m[1])) return tag;
+    const file = imgFile(m[1], pageDir), dim = webpSize(file); if (!dim) return tag;
+    let add = '';
+    if (dims && !/\swidth=/.test(tag) && !/\sheight=/.test(tag)) {
+      add += ' width="' + dim[0] + '" height="' + dim[1] + '"';
+      // atrybut height nie może narzucić wysokości — proporcje zostają z CSS (aspect-ratio) albo z pliku
+      const st = tag.match(/\sstyle="([^"]*)"/);
+      if (!st) add += ' style="max-width:100%;height:auto"';
+      else if (!/(^|;)\s*height\s*:/.test(st[1])) tag = tag.replace(st[0], ' style="' + st[1].replace(/;?\s*$/, ';') + 'height:auto"');
+    }
+    const vars = [800, 1200].filter(w => w < dim[0] && fs.existsSync(file.replace(/\.webp$/, '-' + w + '.webp')));
+    if (vars.length) add += ' srcset="' + vars.map(w => m[1].replace(/\.webp$/, '-' + w + '.webp') + ' ' + w + 'w').concat(m[1] + ' ' + dim[0] + 'w').join(', ') + '" sizes="' + sizes + '"';
+    if (!/\sdecoding=/.test(tag)) add += ' decoding="async"';
+    return add ? tag.replace(/^<img\b/, '<img' + add) : tag;
+  });
+}
+// miniatura 112×88 (assets/thumbs/…) generowana dla zdjęć maszyn; brak pliku → oryginał
+const thumb = img => fs.existsSync('assets/thumbs/' + img) ? 'thumbs/' + img : img;
+
 // ---------- 1. czysty katalog wyjściowy ----------
 fs.rmSync(OUT, { recursive: true, force: true });
 fs.mkdirSync(OUT, { recursive: true });
@@ -135,14 +176,14 @@ function relMachines(p) {
     const [t, id] = key.split(':');
     if (t === 'cat') { const n = MCATS[id]; return n ? { href: '/maszyny/' + id + '/', img: null, name: n, sub: 'Kategoria maszyn' } : null; }
     const m = machines.find(x => x.id === id); if (!m) return null;
-    return { href: m.url || '/maszyny/#' + m.id, img: m.img ? '../../assets/' + m.img : null, name: m.name, sub: m.models || '' };
+    return { href: m.url || '/maszyny/#' + m.id, img: m.img ? '../../assets/' + thumb(m.img) : null, name: m.name, sub: m.models || '' };
   }).filter(Boolean);
   if (!items.length) return '';
   return '<div data-reveal style="margin-top:20px;border:1px solid rgba(20,22,14,.2);padding:20px 22px">\n' +
     '        <div class="mono" style="font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#41571F;margin-bottom:14px">Maszyny z artykułu</div>\n' +
     '        <div style="display:flex;flex-direction:column;gap:10px">\n' +
     items.map(it => '          <a class="relm" href="' + escA(it.href) + '">' +
-      (it.img ? '<img src="' + escA(it.img) + '" alt="' + escA(it.name) + '" style="width:56px;height:44px;object-fit:contain;flex:none">' : ICON) +
+      (it.img ? '<img src="' + escA(it.img) + '" alt="' + escA(it.name) + '" width="56" height="44" loading="lazy" decoding="async" style="width:56px;height:44px;object-fit:contain;flex:none">' : ICON) +
       '<span style="flex:1;font-size:14px;font-weight:700">' + esc(it.name) + '<br><span class="mono" style="font-size:10px;font-weight:400;color:#8A8163">' + esc(it.sub) + '</span></span><span class="rarr" style="color:#8C3A43;font-weight:700">↗</span></a>').join('\n') +
     '\n        </div>\n      </div>';
 }
@@ -179,7 +220,7 @@ for (const p of posts) {
     CRUMB: esc(p.title.length > 44 ? p.title.slice(0, 42).trim() + '…' : p.title),
     CATEGORY: esc(p.category), DATE: fmtDate(p.date), READ: p.read || 5,
     TITLE: esc(p.title), LEAD: esc(p.lead || ''), TOC: tocFromBody(p.bodyHtml || ''),
-    BODY: p.bodyHtml || '', RELATED: relatedCards(p), RELM: relMachines(p),
+    BODY: respImgs(p.bodyHtml || '', 'blog/' + p.slug + '/', '(max-width:900px) 92vw, 760px'), RELATED: relatedCards(p), RELM: relMachines(p),
   };
   let html = tpl;
   for (const [k, v] of Object.entries(fill)) html = html.split('{{' + k + '}}').join(v);
@@ -193,7 +234,7 @@ if (hasSrc('blog/index.html')) {
   const cards = managed.map(p => {
     const cover = p.cover ? '../' + p.cover : '../assets/maszyna-placeholder.png';
     return '<article style="display:contents" data-cat="' + escA(p.catSlug || 'dobor') + '"><a class="bcard" href="/blog/' + p.slug + '/">\n' +
-      '        <span class="bthumb' + (p.coverPad ? ' pad' : '') + '"><img src="' + escA(cover) + '" alt="' + escA(p.coverAlt || p.title) + '" loading="lazy"></span>\n' +
+      '        <span class="bthumb' + (p.coverPad ? ' pad' : '') + '">' + respImgs('<img src="' + escA(cover) + '" alt="' + escA(p.coverAlt || p.title) + '" loading="lazy">', 'blog/', '(max-width:700px) 92vw, 360px', false) + '</span>\n' +
       '        <span class="mono" style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase"><span class="bkicker">' + esc(p.category) + '</span><span style="color:#8A8163">' + fmtDate(p.date) + '</span></span>\n' +
       '        <h2 class="btitle" style="font-size:24px;line-height:1.14;color:#14160E;margin-bottom:11px;text-wrap:balance">' + esc(p.title) + '</h2>\n' +
       '        <p style="font-size:14.5px;line-height:1.6;color:#56603F;text-wrap:pretty;margin-bottom:20px">' + esc(p.excerpt || '') + '</p>\n' +
@@ -221,7 +262,7 @@ if (feat && hasSrc('index.html') && src('index.html').includes('<!--CMS:HOMEBLOG
     '          <span class="mono" style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase"><span style="color:#8C3A43">' + esc(mini.category) + '</span><span style="color:#8A8163">' + fmtDate(mini.date) + '</span></span>\n' +
     '          <h3 class="btitle" style="font-size:21px;line-height:1.14;margin-bottom:9px;text-wrap:balance">' + esc(mini.title) + '</h3>\n' +
     '          <p style="font-size:14px;line-height:1.55;color:#56603F;text-wrap:pretty">' + esc(mini.excerpt || '') + '</p>\n        </a>' : '';
-  let home = region(src('index.html'), 'HOMEBLOG', '      ' + featHtml);
+  let home = region(src('index.html'), 'HOMEBLOG', '      ' + respImgs(featHtml, '', '(max-width:900px) 92vw, 600px', false));
   if (home.includes('<!--CMS:HOMEMINI-->')) home = region(home, 'HOMEMINI', '        ' + miniHtml);
   write('index.html', home);
 }
