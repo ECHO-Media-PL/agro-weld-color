@@ -80,6 +80,9 @@ a.idx:hover svg{transform:rotate(-8deg) scale(1.08)}
 .idxa{opacity:.35;transition:opacity .3s,transform .3s}
 .idxi{width:42px;height:42px;flex-shrink:0;display:flex;align-items:center;justify-content:center;border:1px solid rgba(183,212,75,.4);color:#B7D44B;background:rgba(183,212,75,.07);transition:background .3s,color .3s,border-color .3s}
 .idx.soon .idxi{border-color:rgba(236,231,215,.16);color:#7E8A63;background:transparent}
+/* 11 etapów: desktop 6 + 5 w dwóch rzędach, średnie ekrany 4 + 4 + 3 — każdy rząd wypełniony */
+@media(min-width:700px){.idxwrap .idx{min-width:0;flex:1 1 calc(25% - 1px)}.idxwrap .idxa{position:absolute;top:12px;right:14px}.idxwrap .idx>span:nth-child(2) span:last-child{white-space:normal!important;line-height:1.2}}
+@media(min-width:1100px){.idxwrap .idx{flex-basis:calc(100%/6 - 1px);gap:10px;padding:16px 14px}.idxwrap .idxi{width:34px;height:34px}.idxwrap .idx>span:nth-child(2) span:last-child{font-size:14px!important}}
 .prow{transition:background .3s;display:grid;grid-template-columns:360px 1fr;background:#ECE7D7;color:#14160E}
 .prow:hover{background:#F4EFE2;color:#14160E}
 .prow:hover .rowimg{transform:scale(1.05)}
