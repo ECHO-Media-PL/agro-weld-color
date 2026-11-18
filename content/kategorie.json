@@ -1124,6 +1124,26 @@
   "cta": "Planujesz linię do warzyw lub owoców i potrzebujesz doboru przenośników pod konkretny układ hali? Opisz nam liczbę i wysokość odcinków transportowych – dobierzemy odpowiednie typy przenośników z całej gamy Agro-Weld."
  },
  {
+  "name": "Przechowalnictwo",
+  "slug": "przechowalnictwo",
+  "ogImage": "assets/maszyny/combivent-50.webp",
+  "metaTitle": "Chłodzenie i wentylacja przechowalni warzyw | Agro-Weld",
+  "metaDesc": "Agro-Weld ➤ Agregaty chłodząco-wentylacyjne Combivent do przechowalni ziemniaków i warzyw, free cooler, nawilżanie, automatyka. ➤ Pobierz katalog!",
+  "h1": "Chłodzenie i wentylacja przechowalni ziemniaków i warzyw",
+  "intro": [
+   "Wyposażenie przechowalni pod klucz: agregaty chłodząco-wentylacyjne Combivent 50 i 70, free cooler Airmix, nawilżacze, klapy powietrzne z automatyką, komputer przechowalni StorCom oraz czujniki i rozdzielnice. Pełne dane techniczne znajdziesz w katalogu."
+  ],
+  "download": {
+   "href": "/uploads/agro-weld-storage-and-cooling-en.pdf",
+   "file": "Agro-Weld-Storage-and-cooling.pdf",
+   "label": "Pobierz katalog",
+   "meta": "PDF · EN · 13 stron · 4,6 MB"
+  },
+  "sections": [],
+  "faq": [],
+  "cta": "Opisz nam przechowalnię — produkt, pojemność i warunki — dobierzemy chłodzenie, wentylację i automatykę."
+ },
+ {
   "name": "Pielenie",
   "slug": "pielenie",
   "ogImage": "assets/maszyny/pielnik-1.webp",

@@ -1,6 +1,6 @@
 // Renderer karty produktu — templates/produkt.html + content/produkty.json
 (function (root) {
-  var CATS = [['rozladunek-skrzyn','Rozładunek skrzyń'],['przyjecie-i-buforowanie','Przyjęcie i buforowanie'],['oczyszczanie','Oczyszczanie'],['sortowanie','Sortowanie'],['selekcja','Selekcja'],['wazenie-i-liczenie','Ważenie i liczenie'],['pakowanie','Pakowanie'],['paletyzacja','Paletyzacja'],['przenosniki','Przenośniki'],['pielenie','Pielenie']];
+  var CATS = [['rozladunek-skrzyn','Rozładunek skrzyń'],['przyjecie-i-buforowanie','Przyjęcie i buforowanie'],['oczyszczanie','Oczyszczanie'],['sortowanie','Sortowanie'],['selekcja','Selekcja'],['wazenie-i-liczenie','Ważenie i liczenie'],['pakowanie','Pakowanie'],['paletyzacja','Paletyzacja'],['przenosniki','Przenośniki'],['przechowalnictwo','Przechowalnictwo'],['pielenie','Pielenie']];
   var esc = function (s) { return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); };
   var escA = function (s) { return esc(s).replace(/"/g,'&quot;'); };
   var pad2 = function (n) { return (n < 10 ? '0' : '') + n; };

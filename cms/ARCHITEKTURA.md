@@ -59,6 +59,12 @@ budżet ≤100 zł/mies., treści muszą być w statycznym HTML (czytelne dla bo
   „Maszyny z artykułu” biorą plik z `assets/thumbs/<img>` (112×88), a gdy go brak — oryginał.
   Nowe zdjęcia z CMS działają bez wariantów; warianty i miniatury warto dogenerować przy okazji.
 
+- Kategoria z katalogiem PDF zamiast maszyn (np. `przechowalnictwo`): pole `download` w `kategorie.json`
+  (`href`, `file` — nazwa zapisywanego pliku, `label`, `meta`). Przycisk w nagłówku ma atrybut `download`,
+  więc plik pobiera się od razu. Puste bloki (maszyny, treść, FAQ) renderer pomija — znaczniki `<!--IF:…-->`
+  w `templates/kategoria.html`. Lista etapów (11; przechowalnictwo = 10, pielenie = 11) jest w tablicach CATS: kategoria/produkt/listing.render.js,
+  `MCATS` w build.js i panelu CMS oraz w menu i stopce stron statycznych i szablonów.
+
 ## Do zrobienia (kolejne etapy)
 - cms/ — serwer panelu (Express: auth, edycja JSON, upload zdjęć z kompresją, commit przez
   GitHub API, tłumaczenia przez Anthropic API), UI wg makiety `Panel CMS.dc.html`.

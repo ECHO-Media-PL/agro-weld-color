@@ -169,7 +169,7 @@ function region(html, name, inner) {
 }
 
 // ---------- 4. blog: wpisy ----------
-const MCATS = { 'rozladunek-skrzyn':'Rozładunek skrzyń', 'przyjecie-i-buforowanie':'Przyjęcie i buforowanie', 'oczyszczanie':'Oczyszczanie', 'sortowanie':'Sortowanie', 'selekcja':'Selekcja', 'wazenie-i-liczenie':'Ważenie i liczenie', 'pakowanie':'Pakowanie', 'paletyzacja':'Paletyzacja', 'przenosniki':'Przenośniki', 'pielenie':'Pielenie' };
+const MCATS = { 'rozladunek-skrzyn':'Rozładunek skrzyń', 'przyjecie-i-buforowanie':'Przyjęcie i buforowanie', 'oczyszczanie':'Oczyszczanie', 'sortowanie':'Sortowanie', 'selekcja':'Selekcja', 'wazenie-i-liczenie':'Ważenie i liczenie', 'pakowanie':'Pakowanie', 'paletyzacja':'Paletyzacja', 'przenosniki':'Przenośniki', 'przechowalnictwo':'Przechowalnictwo', 'pielenie':'Pielenie' };
 const ICON = '<span style="width:56px;height:44px;display:flex;align-items:center;justify-content:center;color:#8C3A43;flex:none"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 13h11a3 3 0 0 1 0 6h-11a3 3 0 0 1 0-6z M9 5h6v4H9z"></path></svg></span>';
 function relMachines(p) {
   const items = (p.machines || []).map(key => {

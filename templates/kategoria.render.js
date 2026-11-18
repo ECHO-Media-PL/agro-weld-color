@@ -3,7 +3,8 @@
   var CATS = [
     ['rozladunek-skrzyn', 'Rozładunek skrzyń'], ['przyjecie-i-buforowanie', 'Przyjęcie i buforowanie'], ['oczyszczanie', 'Oczyszczanie'],
     ['sortowanie', 'Sortowanie'], ['selekcja', 'Selekcja'], ['wazenie-i-liczenie', 'Ważenie i liczenie'], ['pakowanie', 'Pakowanie'],
-    ['paletyzacja', 'Paletyzacja'], ['przenosniki', 'Przenośniki'], ['pielenie', 'Pielenie']
+    ['paletyzacja', 'Paletyzacja'], ['przenosniki', 'Przenośniki'], ['przechowalnictwo', 'Przechowalnictwo'],
+    ['pielenie', 'Pielenie']
   ];
   // aliasy pola "cat" w maszyny.json → slug kategorii
   var CATALIAS = {};
@@ -85,6 +86,11 @@
     }).join('\n        ');
   }
 
+  function cut(html, name, inner) {
+    var a = '<!--IF:' + name + '-->', b = '<!--/IF:' + name + '-->', i = html.indexOf(a), j = html.indexOf(b);
+    return i < 0 || j < 0 ? html : html.slice(0, i) + inner + html.slice(j + b.length);
+  }
+
   function render(cat, machines, tpl) {
     var idx = CATS.findIndex(function (c) { return c[0] === cat.slug; });
     var num = pad2(idx + 1), name = (CATS[idx] || [cat.slug, cat.name])[1];
@@ -95,22 +101,33 @@
         { '@type': 'ListItem', position: 1, name: 'Start', item: 'https://www.agro-weld.pl/' },
         { '@type': 'ListItem', position: 2, name: 'Maszyny', item: 'https://www.agro-weld.pl/maszyny/' },
         { '@type': 'ListItem', position: 3, name: name, item: url }] },
-      { '@type': 'ItemList', name: name + ' — maszyny Agro-Weld', itemListElement: list.map(function (m, i) { return { '@type': 'ListItem', position: i + 1, name: m.name, url: m.url ? 'https://www.agro-weld.pl' + m.url : url + '#' + m.id }; }) },
-      { '@type': 'FAQPage', mainEntity: cat.faq.map(function (f) { return { '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: stripTags(f.a) } }; }) }
-    ] });
+      list.length && { '@type': 'ItemList', name: name + ' — maszyny Agro-Weld', itemListElement: list.map(function (m, i) { return { '@type': 'ListItem', position: i + 1, name: m.name, url: m.url ? 'https://www.agro-weld.pl' + m.url : url + '#' + m.id }; }) },
+      cat.faq.length && { '@type': 'FAQPage', mainEntity: cat.faq.map(function (f) { return { '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: stripTags(f.a) } }; }) }
+    ].filter(Boolean) });
     var lead = cat.intro[0] || '', rest = cat.intro.slice(1);
     var fill = {
       META_TITLE: esc(cat.metaTitle || cat.h1), META_DESC: escA(cat.metaDesc || ''), SLUG: cat.slug, NAME: esc(name), NUM: num,
       JSONLD: jsonld, H1: esc(cat.h1 || name), LEAD: lead,
       OGIMAGE: 'https://www.agro-weld.pl/' + (cat.ogImage || (list[0] && list[0].img ? 'assets/' + list[0].img : 'assets/logo.webp')),
       INTRO_REST: rest.map(function (p) { return '<p style="font-size:16.5px;line-height:1.7;color:#3B4230;margin:0 0 16px;text-wrap:pretty">' + p + '</p>'; }).join('\n'),
-      STAGES: renderStages(cat.slug), MACHINES: renderMachines(list), MCOUNT: pad2(list.length),
+      TOTAL: pad2(CATS.length), STAGES: renderStages(cat.slug), MACHINES: renderMachines(list), MCOUNT: pad2(list.length),
       TOC: renderToc(cat.sections, cat.faq.length > 0), CONTENT: renderSections(cat.sections),
       FAQ: renderFaq(cat.faq), CTA: cat.cta || 'Opisz nam surowiec i skalę produkcji — dobierzemy maszyny pod Twoją linię.'
     };
     var html = tpl;
+    // Kategoria bez maszyn z katalogiem do pobrania (np. przechowalnictwo): w nagłówku jeden przycisk
+    // pobierania (atrybut download — plik zapisuje się od razu, bez otwierania PDF w karcie),
+    // a puste bloki (maszyny, treść, FAQ) znikają. Bloki oznaczone w szablonie komentarzami <!--IF:X-->…<!--/IF:X-->.
+    var d = cat.download;
+    if (d && d.href) {
+      html = cut(html, 'HEROBTNS', '<a class="btn btnd" href="' + escA(d.href) + '" download="' + escA(d.file || d.href.split('/').pop()) + '" style="background:#14160E;color:#ECE7D7;padding:15px 26px;border-radius:7px;font-weight:700;font-size:15px">' + esc(d.label || 'Pobierz katalog') + ' <span class="ard">↓</span></a>' +
+        (d.meta ? '<span class="mono" style="align-self:center;font-size:11px;letter-spacing:.06em;color:#8A8163">' + esc(d.meta) + '</span>' : ''));
+    }
+    if (!list.length && d && d.href) html = cut(html, 'MACHINES', '');
+    if (!cat.sections.length && !rest.length) html = cut(html, 'CONTENT', '');
+    if (!cat.faq.length) html = cut(html, 'FAQ', '');
     Object.keys(fill).forEach(function (k) { html = html.split('{{' + k + '}}').join(fill[k]); });
-    return html;
+    return html.replace(/<!--\/?IF:[A-Z]+-->\n?/g, '');
   }
 
   var api = { render: render, CATS: CATS, machinesFor: machinesFor,

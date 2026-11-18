@@ -1,6 +1,6 @@
 // Listing /maszyny/ — grupy kategorii z content/maszyny.json
 (function (root) {
-  var CATS = [["rozladunek-skrzyn","Rozładunek skrzyń"],["przyjecie-i-buforowanie","Przyjęcie i buforowanie"],["oczyszczanie","Oczyszczanie"],["sortowanie","Sortowanie"],["selekcja","Selekcja"],["wazenie-i-liczenie","Ważenie i liczenie"],["pakowanie","Pakowanie"],["paletyzacja","Paletyzacja"],["przenosniki","Przenośniki"],["pielenie","Pielenie"]];
+  var CATS = [["rozladunek-skrzyn","Rozładunek skrzyń"],["przyjecie-i-buforowanie","Przyjęcie i buforowanie"],["oczyszczanie","Oczyszczanie"],["sortowanie","Sortowanie"],["selekcja","Selekcja"],["wazenie-i-liczenie","Ważenie i liczenie"],["pakowanie","Pakowanie"],["paletyzacja","Paletyzacja"],["przenosniki","Przenośniki"],["przechowalnictwo","Przechowalnictwo"],["pielenie","Pielenie"]];
   var esc = function (s) { return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); };
   var escA = function (s) { return esc(s).replace(/"/g,'&quot;'); };
   var pad2 = function (n) { return (n < 10 ? '0' : '') + n; };
@@ -20,6 +20,10 @@
           (card ? '<span class="mono" style="font-size:10px;font-weight:700;color:#14160E;background:#B7D44B;padding:4px 9px;border-radius:4px;letter-spacing:.03em">Karta produktu →</span>' : '<span class="mono" style="font-size:10px;font-weight:700;color:#ECE7D7;background:#8C3A43;padding:4px 9px;border-radius:4px;letter-spacing:.03em">Dystrybucja</span>') + '</span>\n' +
           '            <p style="font-size:15px;line-height:1.6;color:#56603F;max-width:620px;text-wrap:pretty">' + esc(m.short || '') + '</p>\n          </span>\n        </a>';
       }).join('\n');
+      // kategoria bez maszyn (np. przechowalnictwo — tylko katalog PDF): jeden wiersz prowadzący na stronę kategorii
+      if (!list.length) rows = '        <a class="prow" href="/maszyny/' + c[0] + '/" style="scroll-margin-top:96px;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:26px 30px">\n' +
+        '          <span style="font-size:15px;line-height:1.6;color:#56603F;max-width:720px;text-wrap:pretty">Agregaty chłodząco-wentylacyjne, free cooler, nawilżanie i automatyka przechowalni — szczegóły w katalogu do pobrania.</span>\n' +
+        '          <span class="mono" style="font-size:11.5px;font-weight:700;color:#8C3A43;white-space:nowrap">Strona kategorii →</span>\n        </a>';
       return '    <div id="' + c[0] + '" style="scroll-margin-top:96px">\n' +
         '      <div data-reveal style="display:flex;align-items:center;gap:16px;margin-bottom:20px"><span class="mono" style="font-size:12px;font-weight:700;letter-spacing:.1em;color:#8C3A43">' + pad2(i + 1) + '</span>' +
         '<h2 style="font-size:28px;letter-spacing:-.01em"><a href="/maszyny/' + c[0] + '/" style="color:#14160E">' + esc(c[1]) + '</a></h2><span style="flex:1;height:1px;background:rgba(20,22,14,.2)"></span>' +
